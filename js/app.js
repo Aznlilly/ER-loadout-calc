@@ -15,6 +15,9 @@ const WEAPON_SLOTS = ["r1", "r2", "r3", "l1", "l2", "l3"];
 const TALISMAN_SLOTS = ["tal1", "tal2", "tal3", "tal4"];
 const ALL_SLOTS = [...ARMOR_SLOTS, ...WEAPON_SLOTS, ...TALISMAN_SLOTS];
 const STORAGE_KEY = "er-loadout-equip-v1";
+const LOAD_RATIO_MIN = 0.05;
+const LOAD_RATIO_MAX = 1.2;
+const LOAD_RATIO_SLIDER_SCALE = 1000; // slider stores tenths of a percent
 
 const SLOT_LABELS = {
   helm: "Helm",
@@ -39,6 +42,7 @@ function emptySlot() {
 
 let EQUIPMENT = Object.fromEntries(ALL_SLOTS.map((s) => [s, emptySlot()]));
 let talismanSlotCount = 4;
+let loadRatio = 0.699;
 let pickerSlot = null;
 
 const EXCLUDED = {
@@ -302,7 +306,7 @@ function saveState() {
     slots: EQUIPMENT,
     talismanSlotCount,
     stats: getStats(),
-    loadRatio: parseFloat(document.getElementById("load-ratio").value),
+    loadRatio,
     goal: document.querySelector('input[name="goal"]:checked')?.value,
     resistanceStat: document.getElementById("resistance-stat").value,
     minweightMetric: document.getElementById("minweight-metric").value,
@@ -366,12 +370,7 @@ function loadSavedState() {
     }
   }
 
-  const ratio = parseFloat(data.loadRatio);
-  if (Number.isFinite(ratio)) {
-    const clamped = Math.max(0.05, Math.min(1.2, ratio));
-    document.getElementById("load-ratio").value = String(clamped);
-    document.getElementById("load-ratio-value").textContent = `${(clamped * 100).toFixed(1)}%`;
-  }
+  if (data.loadRatio != null) applyLoadRatio(data.loadRatio);
 
   if (["poise", "negation", "resistance", "minweight"].includes(data.goal)) {
     const radio = document.querySelector(`input[name="goal"][value="${data.goal}"]`);
@@ -602,13 +601,67 @@ function onEquipKey(e) {
   openPicker(slotEl.getAttribute("data-slot"));
 }
 
+function clampLoadRatio(raw) {
+  const v = parseFloat(raw);
+  if (!Number.isFinite(v)) return loadRatio;
+  return Math.max(LOAD_RATIO_MIN, Math.min(LOAD_RATIO_MAX, v));
+}
+
+function sliderUnitsFromRatio(ratio) {
+  return Math.round(ratio * LOAD_RATIO_SLIDER_SCALE);
+}
+
+function ratioFromSliderUnits(units) {
+  return clampLoadRatio(parseFloat(units) / LOAD_RATIO_SLIDER_SCALE);
+}
+
+function applyLoadRatio(raw) {
+  // Snap to 0.1% so the label, slider, and optimizer always agree.
+  loadRatio = sliderUnitsFromRatio(clampLoadRatio(raw)) / LOAD_RATIO_SLIDER_SCALE;
+  const el = document.getElementById("load-ratio");
+  if (el) el.value = String(sliderUnitsFromRatio(loadRatio));
+  const label = document.getElementById("load-ratio-value");
+  if (label) label.textContent = `${(loadRatio * 100).toFixed(1)}%`;
+}
+
+function resultArmorWeight(result) {
+  return totalWeight(ARMOR_SLOTS.map((s) => result && result.selection[s]).filter(Boolean));
+}
+
+function resultExceedsLoadCap(result, maxLoad, ratio, reservedWeight) {
+  const armorW = resultArmorWeight(result);
+  const total = armorW + reservedWeight;
+  if (total > maxLoad * ratio + 1e-9) return true;
+  if (maxLoad > 0 && isHeavierLoadClass(loadClass(total / maxLoad), allowedLoadClass(ratio))) {
+    return true;
+  }
+  return false;
+}
+
+function optimizeArmorForLoad(pool, objective, requiredSlots) {
+  const { maxLoad, ratio, talismanWeight, weaponWeight, budgetForArmor } = getLoadBudget();
+  const reservedWeight = talismanWeight + weaponWeight;
+  let budget = budgetForArmor;
+  for (let i = 0; i < 30; i++) {
+    const result = optimizeArmor(pool, objective, budget, requiredSlots);
+    if (!result) return { result: null, maxLoad, budgetForArmor };
+    if (!resultExceedsLoadCap(result, maxLoad, ratio, reservedWeight)) {
+      return { result, maxLoad, budgetForArmor };
+    }
+    const armorW = resultArmorWeight(result);
+    budget = Math.min(budget, armorW) - 0.1;
+    if (budget < 0) break;
+  }
+  return { result: null, maxLoad, budgetForArmor };
+}
+
 function getLoadBudget() {
   const stats = getStats();
   const talismans = getSelectedTalismans();
   const weapons = getEquippedWeapons();
   const armor = getEquippedArmor();
   const maxLoad = computeMaxEquipLoad(stats.end, talismans, EQUIP_LOAD_TABLE);
-  const ratio = parseFloat(document.getElementById("load-ratio").value);
+  const ratio = loadRatio;
   const talismanWeight = totalWeight(talismans);
   const weaponWeight = totalWeight(weapons);
   const armorWeight = totalWeight(armor);
@@ -734,8 +787,7 @@ function runOptimizer() {
   }
 
   const objective = currentObjective();
-  const { budgetForArmor, maxLoad } = getLoadBudget();
-  const result = optimizeArmor(pool, objective, budgetForArmor, requiredSlots);
+  const { result, maxLoad, budgetForArmor } = optimizeArmorForLoad(pool, objective, requiredSlots);
   if (!result) {
     resultsEl.innerHTML = `<p class="hint">No armor combination fits that weight budget with the current locks, weapons, and talismans.${escapeHtml(hint)} Try a lighter load class, unlock a heavy piece, or check the Item Pool.</p>`;
     return;
@@ -755,7 +807,7 @@ function renderResult(result, objective, talismans, ctx) {
   const resultsEl = document.getElementById("results-content");
   const armorPieces = ARMOR_SLOTS.map((s) => result.selection[s]).filter(Boolean);
   const weapons = getEquippedWeapons();
-  const totalArmorWeight = result.totalWeight;
+  const totalArmorWeight = totalWeight(armorPieces);
   const talismanWeight = totalWeight(talismans);
   const weaponWeight = totalWeight(weapons);
   const totalEquippedWeight = totalArmorWeight + talismanWeight + weaponWeight;
@@ -1243,16 +1295,14 @@ async function init() {
     }));
 
   document.getElementById("load-ratio").addEventListener("input", (e) => {
-    document.getElementById("load-ratio-value").textContent = (parseFloat(e.target.value) * 100).toFixed(1) + "%";
+    applyLoadRatio(ratioFromSliderUnits(e.target.value));
     updateLoadBudgetDisplay();
     saveState();
   });
 
   document.querySelectorAll(".preset-btn[data-preset]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const val = btn.getAttribute("data-preset");
-      document.getElementById("load-ratio").value = val;
-      document.getElementById("load-ratio-value").textContent = (parseFloat(val) * 100).toFixed(1) + "%";
+      applyLoadRatio(btn.getAttribute("data-preset"));
       updateLoadBudgetDisplay();
       saveState();
     });

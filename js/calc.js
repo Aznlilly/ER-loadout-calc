@@ -67,6 +67,17 @@ function loadClass(ratio) {
   return "light";
 }
 
+const LOAD_CLASS_RANK = { light: 0, medium: 1, heavy: 2, overloaded: 3 };
+
+/** Heaviest roll class allowed when staying at or under maxRatio. */
+function allowedLoadClass(maxRatio) {
+  return loadClass(maxRatio);
+}
+
+function isHeavierLoadClass(actual, allowed) {
+  return (LOAD_CLASS_RANK[actual] || 0) > (LOAD_CLASS_RANK[allowed] || 0);
+}
+
 /**
  * Sums poise across a set of armor pieces, then applies any poise-boosting
  * talisman bonuses (e.g. Bull-Goat's Talisman).
@@ -117,6 +128,8 @@ if (typeof module !== "undefined") {
     computeMaxEquipLoad,
     totalWeight,
     loadClass,
+    allowedLoadClass,
+    isHeavierLoadClass,
     computeTotalPoise,
     computeNegation,
     computeResistances,

@@ -3,13 +3,28 @@
 // This is a Multiple-Choice Knapsack Problem (MCKP): choose exactly one item
 // from each of up to 4 groups (helm/chest/gauntlets/legs) to maximize a
 // per-item "value" subject to a total weight budget. Solved with a weight-
-// discretized DP, which is exact up to the chosen resolution (0.1 units).
+// discretized DP. Capacity is floored and item weights are ceiled so a
+// selected combo never exceeds the real kg budget (inner approximation).
 
 const SLOT_ORDER = ["helm", "chest", "gauntlets", "legs"];
 const WEIGHT_RESOLUTION = 10; // discretize weight into 1/10ths of a unit
+const WEIGHT_EPS = 1e-9;
 
-function toUnits(weight) {
-  return Math.max(0, Math.round(weight * WEIGHT_RESOLUTION));
+function toCapacityUnits(weight) {
+  return Math.max(0, Math.floor(weight * WEIGHT_RESOLUTION + WEIGHT_EPS));
+}
+
+function toItemUnits(weight) {
+  return Math.max(0, Math.ceil(weight * WEIGHT_RESOLUTION - WEIGHT_EPS));
+}
+
+function selectionWeight(selection) {
+  let w = 0;
+  for (const key in selection) {
+    const it = selection[key];
+    if (it && typeof it.weight === "number") w += it.weight;
+  }
+  return w;
 }
 
 /**
@@ -51,7 +66,7 @@ function scoreItem(item, objective) {
 function optimizeArmor(itemsBySlot, objective, maxWeight, requiredSlots) {
   const slots = (requiredSlots && requiredSlots.length ? requiredSlots : SLOT_ORDER)
     .filter((s) => itemsBySlot[s] && itemsBySlot[s].length);
-  const capacity = toUnits(maxWeight);
+  const capacity = toCapacityUnits(maxWeight);
   if (capacity < 0 || !slots.length) return null;
 
   // dp[w] = best score achievable using EXACTLY w weight-units so far (only
@@ -72,7 +87,7 @@ function optimizeArmor(itemsBySlot, objective, maxWeight, requiredSlots) {
       if (dpScore[w] === NEG_INF) continue;
       // Option: try adding each candidate item in this slot.
       for (const item of items) {
-        const iw = toUnits(item.weight);
+        const iw = toItemUnits(item.weight);
         const nw = w + iw;
         if (nw > capacity) continue;
         const ns = dpScore[w] + scoreItem(item, objective);
@@ -86,21 +101,26 @@ function optimizeArmor(itemsBySlot, objective, maxWeight, requiredSlots) {
     dpChoice = newChoice;
   }
 
-  // Find the best score across all weights <= capacity (best-so-far scan,
-  // since a lighter combination might tie or the array may have gaps).
+  // Best score among combos that also fit the real kg budget, not just the
+  // discretized table (a lighter cell can win on actual weight).
   let bestW = -1;
   let bestScore = NEG_INF;
+  let bestActual = 0;
   for (let w = 0; w <= capacity; w++) {
+    if (dpScore[w] === NEG_INF) continue;
+    const actual = selectionWeight(dpChoice[w]);
+    if (actual > maxWeight + WEIGHT_EPS) continue;
     if (dpScore[w] > bestScore) {
       bestScore = dpScore[w];
       bestW = w;
+      bestActual = actual;
     }
   }
   if (bestW < 0 || bestScore === NEG_INF) return null;
 
   return {
     selection: dpChoice[bestW],
-    totalWeight: bestW / WEIGHT_RESOLUTION,
+    totalWeight: bestActual,
     totalScore: bestScore,
   };
 }

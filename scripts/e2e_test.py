@@ -122,6 +122,25 @@ with sync_playwright() as p:
     if "shield" not in (budget_text or "").lower():
         raise SystemExit("armor budget should subtract equipped shield weight")
 
+    # Light / Medium / Heavy presets must stick at 29.9 / 69.9 / 99.9
+    for preset, expected, slider in [
+        ("0.299", 0.299, "299"),
+        ("0.699", 0.699, "699"),
+        ("0.999", 0.999, "999"),
+    ]:
+        page.click(f'.preset-btn[data-preset="{preset}"]')
+        got_slider = page.input_value("#load-ratio")
+        got_ratio = page.evaluate("() => getLoadBudget().ratio")
+        label = page.text_content("#load-ratio-value")
+        print(f"Preset {preset}: slider={got_slider} ratio={got_ratio} label={label}")
+        if got_slider.strip() != slider:
+            raise SystemExit(f"preset {preset} slider should be {slider}, got {got_slider}")
+        if abs(float(got_ratio) - expected) > 0.0005:
+            raise SystemExit(f"preset {preset} should use ratio {expected}, got {got_ratio}")
+        expected_label = f"{expected * 100:.1f}%"
+        if label.strip() != expected_label:
+            raise SystemExit(f"preset {preset} label should be {expected_label}, got {label}")
+
     # Click Medium preset then optimize
     page.click('.preset-btn[data-preset="0.699"]')
     page.click("#optimize-btn")
@@ -140,6 +159,52 @@ with sync_playwright() as p:
     print("Chest filled:", chest_name)
     if chest_name.strip() in ("Empty", "", None):
         raise SystemExit("unlocked chest was not filled")
+    load_badge = page.locator("#results-content .badge").first.text_content()
+    print("Load badge after Medium optimize:", load_badge)
+    if "heavy" in (load_badge or "").lower() or "overload" in (load_badge or "").lower():
+        raise SystemExit(f"Medium (<70%) optimize should stay under heavy, got {load_badge}")
+
+    cap_checks = page.evaluate(
+        """() => {
+          const out = {};
+          for (const ratio of [0.299, 0.45, 0.699, 0.70, 0.999, 1.0]) {
+            applyLoadRatio(ratio);
+            const b = getLoadBudget();
+            const result = optimizeArmor(getArmorPool(), { type: "poise" }, b.budgetForArmor, getRequiredArmorSlots());
+            let armorW = 0;
+            if (result && result.selection) {
+              for (const s of ARMOR_SLOTS) {
+                const it = result.selection[s];
+                if (it && it.weight) armorW += it.weight;
+              }
+            }
+            const total = result ? armorW + b.talismanWeight + b.weaponWeight : null;
+            const got = total == null || !b.maxLoad ? null : total / b.maxLoad;
+            const cls = got == null ? "none" : loadClass(got);
+            out[String(ratio)] = {
+              used: b.ratio,
+              over: total == null ? false : total > b.maxLoad * ratio + 1e-9,
+              cls,
+              allowed: allowedLoadClass(ratio),
+              heavier: got == null ? false : isHeavierLoadClass(cls, allowedLoadClass(ratio)),
+              infeasible: !result
+            };
+          }
+          applyLoadRatio(0.699);
+          updateLoadBudgetDisplay();
+          return out;
+        }"""
+    )
+    print("Load cap checks:", cap_checks)
+    for ratio, row in cap_checks.items():
+        if abs(float(row["used"]) - float(ratio)) > 0.0005:
+            raise SystemExit(f"slider ratio {ratio} stored as {row['used']}")
+        if row.get("over"):
+            raise SystemExit(f"ratio {ratio} combo exceeded the slider cap")
+        if row.get("heavier"):
+            raise SystemExit(
+                f"ratio {ratio} produced {row.get('cls')} heavier than {row.get('allowed')}"
+            )
 
     sug = page.inner_html("#optimizer-suggestions") if page.locator("#optimizer-suggestions").count() else ""
     print("Suggestions present:", bool(sug))
