@@ -17,10 +17,12 @@ or special/hidden content.
 
 ## Features
 
-- Enter your 8 base stats; the tool derives your character level and max
+- Enter your 8 base stats (a first visit starts at 10 / rune level 1); the tool derives your character level and max
   equip load (including any equip-load-boosting talismans, e.g. Great-Jar's
   Arsenal or Erdtree's Favor — detected automatically from talisman effect
-  text, not hardcoded).
+  text, not hardcoded). Stats, equipment, pouches, class, regions, sources,
+  and goal settings are saved in the browser so they come back on the next
+  visit. Item-pool excludes stay session-only.
 - Pick up to 4 talismans (weight and equip-load/poise bonuses are factored in).
 - Equip weapons and shields in either hand; their weight is subtracted from
   the armor optimizer's load budget.

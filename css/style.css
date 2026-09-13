@@ -209,7 +209,16 @@ a.wiki-link:hover { text-decoration: underline; }
 .summary-item .label { display: block; font-size: 0.75rem; color: var(--text-dim); }
 .summary-item .value { font-size: 1.2rem; color: var(--accent); font-weight: bold; }
 
-.site-footer { color: var(--text-dim); font-size: 0.8rem; text-align: center; margin-top: 30px; }
+.site-footer {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 30px;
+  padding: 16px 16px 8px;
+  line-height: 1.5;
+}
+.site-footer a { color: var(--accent); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
 
 .hidden { display: none !important; }
 
@@ -453,6 +462,8 @@ a.wiki-link:hover { text-decoration: underline; }
   color: var(--text-dim);
 }
 
+.equip-hint { margin-bottom: 8px; }
+.equip-actions { margin: 0 0 12px; }
 #equip-load-readout { margin-top: 14px; }
 
 .item-picker-overlay {

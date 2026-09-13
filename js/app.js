@@ -269,27 +269,85 @@ function getEquippedArmor() {
   return ARMOR_SLOTS.map((s) => itemForSlot(s)).filter(Boolean);
 }
 
-function saveEquipment() {
+const STAT_INPUT_IDS = {
+  vig: "stat-vig",
+  mind: "stat-min",
+  end: "stat-end",
+  str: "stat-str",
+  dex: "stat-dex",
+  int: "stat-int",
+  fai: "stat-fai",
+  arc: "stat-arc",
+};
+
+function clampInt(n, min, max) {
+  const v = parseInt(n, 10);
+  if (!Number.isFinite(v)) return null;
+  return Math.max(min, Math.min(max, v));
+}
+
+function readSave() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    return data && typeof data === "object" ? data : null;
+  } catch (_) {
+    return null;
+  }
+}
+
+function saveState() {
   const payload = {
     slots: EQUIPMENT,
     talismanSlotCount,
+    stats: getStats(),
+    loadRatio: parseFloat(document.getElementById("load-ratio").value),
+    goal: document.querySelector('input[name="goal"]:checked')?.value,
+    resistanceStat: document.getElementById("resistance-stat").value,
+    minweightMetric: document.getElementById("minweight-metric").value,
+    minweightTarget: document.getElementById("minweight-target").value,
+    twoHanding: document.getElementById("weapon-two-hand").checked,
+    onlyMeetable: document.getElementById("weapon-only-meetable").checked,
+    weaponCategory: document.getElementById("weapon-category").value,
+    includeAltered: document.getElementById("include-altered").checked,
+    sources: Object.fromEntries(
+      Object.entries(SOURCE_CHECKBOX_IDS).map(([source, id]) => {
+        const el = document.getElementById(id);
+        return [source, el ? el.checked : true];
+      })
+    ),
+    startingClass: selectedStartingClass,
+    regions: [...selectedRegions],
   };
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
   } catch (_) { /* ignore quota / private mode */ }
 }
 
-function loadSavedEquipment() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-    const data = JSON.parse(raw);
-    if (data.talismanSlotCount >= 1 && data.talismanSlotCount <= 4) {
-      talismanSlotCount = data.talismanSlotCount;
-      const sel = document.getElementById("talisman-slot-count");
-      if (sel) sel.value = String(talismanSlotCount);
-    }
-    if (!data.slots) return;
+function saveEquipment() {
+  saveState();
+}
+
+function applySavedWeaponCategory(data) {
+  if (!data || data.weaponCategory == null) return;
+  const sel = document.getElementById("weapon-category");
+  if (!sel) return;
+  if ([...sel.options].some((o) => o.value === data.weaponCategory)) {
+    sel.value = data.weaponCategory;
+  }
+}
+
+function loadSavedState() {
+  const data = readSave();
+  if (!data) return;
+
+  if (data.talismanSlotCount >= 1 && data.talismanSlotCount <= 4) {
+    talismanSlotCount = data.talismanSlotCount;
+    const sel = document.getElementById("talisman-slot-count");
+    if (sel) sel.value = String(talismanSlotCount);
+  }
+  if (data.slots) {
     for (const slot of ALL_SLOTS) {
       const saved = data.slots[slot];
       if (!saved) continue;
@@ -299,7 +357,64 @@ function loadSavedEquipment() {
       );
       EQUIPMENT[slot] = { id: item ? id : null, locked: !!saved.locked };
     }
-  } catch (_) { /* ignore corrupt saves */ }
+  }
+
+  if (data.stats && typeof data.stats === "object") {
+    for (const [key, id] of Object.entries(STAT_INPUT_IDS)) {
+      const v = clampInt(data.stats[key], 1, 99);
+      if (v != null) document.getElementById(id).value = String(v);
+    }
+  }
+
+  const ratio = parseFloat(data.loadRatio);
+  if (Number.isFinite(ratio)) {
+    const clamped = Math.max(0.05, Math.min(1.2, ratio));
+    document.getElementById("load-ratio").value = String(clamped);
+    document.getElementById("load-ratio-value").textContent = `${(clamped * 100).toFixed(1)}%`;
+  }
+
+  if (["poise", "negation", "resistance", "minweight"].includes(data.goal)) {
+    const radio = document.querySelector(`input[name="goal"][value="${data.goal}"]`);
+    if (radio) radio.checked = true;
+  }
+  if (data.resistanceStat) {
+    const sel = document.getElementById("resistance-stat");
+    if ([...sel.options].some((o) => o.value === data.resistanceStat)) sel.value = data.resistanceStat;
+  }
+  if (data.minweightMetric) {
+    const sel = document.getElementById("minweight-metric");
+    if ([...sel.options].some((o) => o.value === data.minweightMetric)) sel.value = data.minweightMetric;
+  }
+  if (data.minweightTarget != null && data.minweightTarget !== "") {
+    document.getElementById("minweight-target").value = String(data.minweightTarget);
+  }
+
+  if (typeof data.twoHanding === "boolean") {
+    document.getElementById("weapon-two-hand").checked = data.twoHanding;
+  }
+  if (typeof data.onlyMeetable === "boolean") {
+    document.getElementById("weapon-only-meetable").checked = data.onlyMeetable;
+  }
+  if (typeof data.includeAltered === "boolean") {
+    document.getElementById("include-altered").checked = data.includeAltered;
+  }
+  if (data.sources && typeof data.sources === "object") {
+    for (const [source, id] of Object.entries(SOURCE_CHECKBOX_IDS)) {
+      if (typeof data.sources[source] === "boolean") {
+        document.getElementById(id).checked = data.sources[source];
+      }
+    }
+  }
+
+  if (data.startingClass === "" || STARTING_CLASS_ORDER.includes(data.startingClass)) {
+    selectedStartingClass = data.startingClass;
+  }
+  if (Array.isArray(data.regions)) {
+    selectedRegions.clear();
+    for (const region of data.regions) {
+      if (MASTER_REGION_ORDER.includes(region)) selectedRegions.add(region);
+    }
+  }
 }
 
 function setSlotItem(slot, id) {
@@ -423,6 +538,14 @@ function closePicker() {
   document.getElementById("item-picker-overlay").classList.add("hidden");
 }
 
+function unequipAll() {
+  for (const slot of ALL_SLOTS) EQUIPMENT[slot] = emptySlot();
+  saveEquipment();
+  renderEquipment();
+  updateDerivedCharacterInfo();
+  renderWeaponResults();
+}
+
 function setupEquipmentBoard() {
   document.getElementById("equip-board").addEventListener("click", onEquipClick);
   document.getElementById("equip-talismans").addEventListener("click", onEquipClick);
@@ -437,7 +560,9 @@ function setupEquipmentBoard() {
     updateDerivedCharacterInfo();
   });
 
+  document.getElementById("unequip-all").addEventListener("click", unequipAll);
   document.getElementById("include-altered").addEventListener("change", () => {
+    saveState();
     if (pickerSlot) renderPickerList();
   });
   document.getElementById("picker-search").addEventListener("input", renderPickerList);
@@ -999,6 +1124,7 @@ function toggleAreaFilter(region) {
 function onPoolExclusionsChanged() {
   renderPoolChecklist();
   onExclusionsChanged(poolActiveTab);
+  saveState();
 }
 
 function updatePoolCountLabel() {
@@ -1068,6 +1194,7 @@ function setupItemPoolDrawer() {
 
   ["source-elden-ring", "source-shadow-of-the-erdtree", "source-tarnished-edition"].forEach((id) => {
     document.getElementById(id).addEventListener("change", () => {
+      saveState();
       renderWeaponResults();
       renderPoolChecklist();
       if (pickerSlot) renderPickerList();
@@ -1079,7 +1206,14 @@ function setupItemPoolDrawer() {
 
 function setupGoalToggles() {
   const radios = document.querySelectorAll('input[name="goal"]');
-  radios.forEach((r) => r.addEventListener("change", updateGoalVisibility));
+  radios.forEach((r) => r.addEventListener("change", () => {
+    updateGoalVisibility();
+    saveState();
+  }));
+  ["resistance-stat", "minweight-metric", "minweight-target"].forEach((id) => {
+    document.getElementById(id).addEventListener("change", saveState);
+    document.getElementById(id).addEventListener("input", saveState);
+  });
   updateGoalVisibility();
 }
 
@@ -1092,8 +1226,9 @@ function updateGoalVisibility() {
 
 async function init() {
   await loadData();
-  loadSavedEquipment();
+  loadSavedState();
   populateWeaponCategories();
+  applySavedWeaponCategory(readSave());
   setupEquipmentBoard();
   setupGoalToggles();
   setupItemPoolDrawer();
@@ -1102,6 +1237,7 @@ async function init() {
 
   document.querySelectorAll("#panel-character input")
     .forEach((el) => el.addEventListener("input", () => {
+      saveState();
       updateDerivedCharacterInfo();
       renderWeaponResults();
     }));
@@ -1109,6 +1245,7 @@ async function init() {
   document.getElementById("load-ratio").addEventListener("input", (e) => {
     document.getElementById("load-ratio-value").textContent = (parseFloat(e.target.value) * 100).toFixed(1) + "%";
     updateLoadBudgetDisplay();
+    saveState();
   });
 
   document.querySelectorAll(".preset-btn[data-preset]").forEach((btn) => {
@@ -1117,13 +1254,17 @@ async function init() {
       document.getElementById("load-ratio").value = val;
       document.getElementById("load-ratio-value").textContent = (parseFloat(val) * 100).toFixed(1) + "%";
       updateLoadBudgetDisplay();
+      saveState();
     });
   });
 
   document.getElementById("optimize-btn").addEventListener("click", runOptimizer);
 
   ["weapon-two-hand", "weapon-only-meetable", "weapon-category"].forEach((id) => {
-    document.getElementById(id).addEventListener("change", renderWeaponResults);
+    document.getElementById(id).addEventListener("change", () => {
+      saveState();
+      renderWeaponResults();
+    });
   });
 
   renderWeaponResults();

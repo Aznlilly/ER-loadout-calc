@@ -16,11 +16,11 @@
   <section class="panel" id="panel-character">
     <h2>1. Character</h2>
     <div class="grid stats-grid">
-      <label>Vigor <input type="number" id="stat-vig" min="1" max="99" value="40"></label>
-      <label>Mind <input type="number" id="stat-min" min="1" max="99" value="20"></label>
-      <label>Endurance <input type="number" id="stat-end" min="1" max="99" value="40"></label>
-      <label>Strength <input type="number" id="stat-str" min="1" max="99" value="20"></label>
-      <label>Dexterity <input type="number" id="stat-dex" min="1" max="99" value="20"></label>
+      <label>Vigor <input type="number" id="stat-vig" min="1" max="99" value="10"></label>
+      <label>Mind <input type="number" id="stat-min" min="1" max="99" value="10"></label>
+      <label>Endurance <input type="number" id="stat-end" min="1" max="99" value="10"></label>
+      <label>Strength <input type="number" id="stat-str" min="1" max="99" value="10"></label>
+      <label>Dexterity <input type="number" id="stat-dex" min="1" max="99" value="10"></label>
       <label>Intelligence <input type="number" id="stat-int" min="1" max="99" value="10"></label>
       <label>Faith <input type="number" id="stat-fai" min="1" max="99" value="10"></label>
       <label>Arcane <input type="number" id="stat-arc" min="1" max="99" value="10"></label>
@@ -32,6 +32,9 @@
   <section class="panel" id="panel-equipment">
     <h2>2. Equipment <span class="hint">(lock any slot so Optimize leaves it alone)</span></h2>
     <p class="hint equip-hint">Click a slot to choose an item. Weapons and shields can go in either hand; their weight is subtracted from the armor budget. Locked pieces stay put; unlocked armor is what the optimizer fills around them. Weapon and talisman suggestions appear under Results and are not auto-equipped.</p>
+    <div class="equip-actions">
+      <button type="button" class="preset-btn" id="unequip-all">Unequip All</button>
+    </div>
 
     <div class="equip-board" id="equip-board">
       <div class="equip-col" id="equip-weapons-left"></div>
@@ -185,6 +188,7 @@
 </main>
 
 <footer class="site-footer">
+  <p>Spot wrong item stats, locations, or other data? <a href="https://github.com/Aznlilly/ER-loadout-calc/issues" target="_blank" rel="noopener noreferrer">Open a GitHub issue</a> and we will take a look.</p>
 </footer>
 
 <script src="js/calc.js"></script>

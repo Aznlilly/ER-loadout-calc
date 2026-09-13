@@ -48,6 +48,12 @@ def classify_source(available_text):
     return "Elden Ring"  # default/unknown treated as base
 
 
+# Wiki comparison tables can be wrong; these win after the raw scrape.
+WEIGHT_OVERRIDES = {
+    "Mausoleum Knight Armor": 11.8,
+}
+
+
 def main():
     out = []
     seen_ids = {}
@@ -93,6 +99,8 @@ def main():
                 "dlc": is_dlc,
                 "altered": "(altered)" in name.lower(),
             }
+            if name in WEIGHT_OVERRIDES:
+                item["weight"] = WEIGHT_OVERRIDES[name]
             out.append(item)
 
     apply_icons(out)

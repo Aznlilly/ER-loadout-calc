@@ -19,6 +19,36 @@ with sync_playwright() as p:
     # Sanity: derived level shown
     level = page.text_content("#derived-level")
     print("Derived level:", level)
+    if (level.strip() != "1":
+        raise SystemExit("default stats of 10 should be character level 1")
+
+    footer_html = page.inner_html(".site-footer")
+    print("Issues footer present:", "github.com/Aznlilly/ER-loadout-calc/issues" in footer_html)
+    if "github.com/Aznlilly/ER-loadout-calc/issues" not in footer_html:
+        raise SystemExit("footer should link to the GitHub issues page")
+    maus_w = page.evaluate(
+        """() => {
+      const un = ARMOR.find(a => a.name === "Mausoleum Knight Armor");
+      const al = ARMOR.find(a => a.name === "Mausoleum Knight Armor (Altered)");
+      return { un: un && un.weight, al: al && al.weight };
+    }"""
+    )
+    print("Mausoleum Knight Armor weights:", maus_w)
+    if maus_w["un"] != 11.8:
+        raise SystemExit("Mausoleum Knight Armor should weigh 11.8")
+    if maus_w["al"] != 10.8:
+        raise SystemExit("Mausoleum Knight Armor (Altered) should weigh 10.8")
+
+    page.fill("#stat-str", "25")
+    page.wait_for_timeout(150)
+    page.reload(wait_until="networkidle")
+    page.wait_for_timeout(400)
+    saved_str = page.input_value("#stat-str")
+    print("Strength after reload:", saved_str)
+    if saved_str != "25":
+        raise SystemExit("stats should persist across reloads")
+    page.fill("#stat-str", "10")
+    page.wait_for_timeout(100)
 
     # Talisman pouches: 2 active slots
     page.select_option("#talisman-slot-count", "2")
@@ -146,6 +176,19 @@ with sync_playwright() as p:
     print("\n--- weapons ---")
     print(page.text_content("#weapon-results")[:500])
 
+    page.click("#unequip-all")
+    page.wait_for_timeout(200)
+    helm_cleared = page.text_content('[data-slot="helm"] .slot-name')
+    r1_cleared = page.text_content('[data-slot="r1"] .slot-name')
+    helm_unlocked = "locked" not in (page.get_attribute('[data-slot="helm"]', "class") or "")
+    print("Unequip All cleared helm:", helm_cleared)
+    print("Unequip All cleared R1:", r1_cleared)
+    print("Unequip All unlocked helm:", helm_unlocked)
+    if helm_cleared.strip() != "Empty" or r1_cleared.strip() != "Empty":
+        raise SystemExit("Unequip All should empty every slot")
+    if not helm_unlocked:
+        raise SystemExit("Unequip All should unlock slots")
+
     # --- Item Pool drawer ---
     print("\n--- item pool drawer ---")
     page.click("#toggle-item-pool-drawer")
@@ -236,8 +279,11 @@ with sync_playwright() as p:
     print("Starting class picker present:", page.locator("#starting-class").count() > 0)
     class_options = page.locator("#starting-class option").all_text_contents()
     print("Heavy Knight class option present:", "Heavy Knight" in class_options)
+    print("Idus Knight class option present:", "Idus Knight" in class_options)
     if "Heavy Knight" not in class_options:
         raise SystemExit("Class picker should include Heavy Knight")
+    if "Idus Knight" not in class_options:
+        raise SystemExit("Class picker should include Idus Knight")
 
     page.locator("#area-select-none").click()
     page.wait_for_timeout(150)
@@ -438,6 +484,36 @@ with sync_playwright() as p:
         raise SystemExit("Heavy Knight + Starting Gear should include the Steel set and Hefty Scimitar")
     if heavy["silver"]["inPool"] or heavy["idus"]["inPool"]:
         raise SystemExit("Heavy Knight + Starting Gear should exclude the Idus Knight kit")
+
+    page.select_option("#starting-class", "Idus Knight")
+    page.wait_for_timeout(150)
+    idus = page.evaluate(
+        """() => {
+      const silver = ARMOR.find(a => a.name === "Silver Grooved Helm");
+      const steel = ARMOR.find(a => a.name === "Steel Helm");
+      const sword = WEAPONS.find(w => w.name === "Idus Sword");
+      const shield = WEAPONS.find(w => w.name === "Silver Grooved Shield");
+      const scim = WEAPONS.find(w => w.name === "Hefty Scimitar");
+      return {
+        silver: { inPool: isIncluded(silver, "armor"), classes: silver.startingClasses || [], areas: silver.areas },
+        steel: { inPool: isIncluded(steel, "armor") },
+        sword: { inPool: isIncluded(sword, "weapons"), classes: sword.startingClasses || [] },
+        shield: { inPool: isIncluded(shield, "weapons"), classes: shield.startingClasses || [] },
+        scim: { inPool: isIncluded(scim, "weapons") },
+      };
+    }"""
+    )
+    print("Idus Knight kit:", idus)
+    if idus["silver"]["classes"] != ["Idus Knight"]:
+        raise SystemExit("Silver Grooved Helm should be tagged as Idus Knight starting gear")
+    if idus["sword"]["classes"] != ["Idus Knight"] or idus["shield"]["classes"] != ["Idus Knight"]:
+        raise SystemExit("Idus Sword and Silver Grooved Shield should be tagged as Idus Knight starting gear")
+    if "Starting Gear" not in idus["silver"]["areas"] or "Liurnia of the Lakes" not in idus["silver"]["areas"]:
+        raise SystemExit("Silver Grooved Helm should be Starting Gear and Liurnia")
+    if not idus["silver"]["inPool"] or not idus["sword"]["inPool"] or not idus["shield"]["inPool"]:
+        raise SystemExit("Idus Knight + Starting Gear should include the Silver Grooved kit and Idus Sword")
+    if idus["steel"]["inPool"] or idus["scim"]["inPool"]:
+        raise SystemExit("Idus Knight + Starting Gear should exclude the Heavy Knight kit")
 
     page.select_option("#starting-class", "")
     page.wait_for_timeout(150)
