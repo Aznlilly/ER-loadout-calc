@@ -1,0 +1,1087 @@
+[
+ {
+  "name": "AGED ONE'S EXULTATION",
+  "effect": "Madness in the vicinity increases attack power by 20% for 30 seconds",
+  "weight": "0.9",
+  "location": "Abyssal Woods: Dropped by the Winter Lantern enemy you kill nearest to the Abandoned Church. These enemies can only be killed by executing a parry and riposte just as they are about to catch you. Elden Ring Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "AILMENT TALISMAN",
+  "effect": "Boosts resistance stats by roughly 350 for a short time after a status effect is applied to you",
+  "weight": "0.6",
+  "location": "The Ailment Talisman can be looted from a corpse. The body can be found lying at the edge of an unfinished wooden bridge of the Abandoned Ailing Village. [Elden Ring Shadow of the Erdtree Interactive Map]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "ARROW'S SOARING STING TALISMAN",
+  "effect": "Increases the effective range of bows by 50% and raises attack power of arrows and bolts by 8%",
+  "weight": "1.1",
+  "location": "Found on top of a tower at Fog Rift Fort. From within the door of the tower where Black Knight Garrew was, go through a gap between the tower and the rock wall to the right of the door. Take the stairs going up around the cliff, then at the top take the ladder to the right going up the upper level of the tower. On reaching the top turn left to take another latter leading to the uppermost level of the tower, where a treasure chest resides that holds the Talisman. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "BELOVED STARDUST",
+  "effect": "Shortens casting speed for sorcery and incantations by the utmost, but increases damage taken",
+  "weight": "1.3",
+  "location": "Given by Count Ymir after completing the first part of his quest line. Elden Ring Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "BLADE OF MERCY",
+  "effect": "Raises attack power by 20% for 20 seconds after each critical hit",
+  "weight": "1.3",
+  "location": "Scorched Ruins: Once you head up on the left side of the building, cross to the other side using the cloth-like material as a bridge, and enter the door on the left. Open the chest inside to find the item. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "BLESSED BLUE DEW TALISMAN",
+  "effect": "Slowly restores FP (0.5 FP per second)",
+  "weight": "1.2",
+  "location": "Church of Benediction. Head inside the church and investigate the statue of Marika to find the Talisman See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "BOLTDRAKE TALISMAN +3",
+  "effect": "Boosts lightning damage negation by 22%",
+  "weight": "0.9",
+  "location": "Boltdrake Talisman +3, can be found at Shadow Keep. From the Storehouse Site of Grace, First Floor, take the small stairs up and turn right while on the wooden platform. You will be attacked by a Fire Knight at a Distance, jump at what appears to be a dining area with tables and chairs to find the item there. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "CERULEAN SEED TALISMAN +1",
+  "effect": "Greatly boosts FP restoration from Flask of Cerulean Tears by 30%",
+  "weight": "1.1",
+  "location": "Sound the Hanging Bell in Finger Ruins of Dheo. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "CLARIFYING HORN CHARM +2",
+  "effect": "Vastly raises focus by 230",
+  "weight": "0.9",
+  "location": "+2 variant: Lamenter's Gaol: After dropping down the small cave infested with rats, continue following the path and go straight. You'll find this talisman on a corpse on the right side once you enter the area. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "CRIMSON AMBER MEDALLION +3",
+  "effect": "Boosts maximum HP by 10%",
+  "weight": "0.6",
+  "location": "A +3 variant of the Crimson Amber Medallion drops as a reward upon defeating the Death Knight boss located at the Fog Rift Catacombs. See Shadow of the Erdtree Map [Video Link]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "CERULEAN AMBER MEDALLION +3",
+  "effect": "Boosts maximum FP by 12.5%",
+  "weight": "0.6",
+  "location": "Can be obtained after defeating the Death Knight in Scorpion River Catacombs. Elden Ring Shadow of the Erdtree Interactive Map [Video Link]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "CRIMSON SEED TALISMAN +1",
+  "effect": "Greatly boosts HP restoration from Flask of Crimson Tears by 30%",
+  "weight": "1.1",
+  "location": "In the centre of the Finger Ruins of Rhia. Go to the large ring of fingers (as shown by the Ruins Map given by Count Ymir), and then sound the hanging bell from one of the fingers that's pointing down. The Hole-Laden Necklace given by Ymir is required to sound it. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "CRUSADE INSIGNIA",
+  "effect": "Raises attack power by 15% for 20 seconds after defeating an enemy",
+  "weight": "1.2",
+  "location": "The Crusade Insignia Talisman is acquired upon defeating the Fire Knight Queelign NPC Invader. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "DRIED BOUQUET",
+  "effect": "Raises attack power by 15% for 30 seconds when summoned spirit dies",
+  "weight": "0.8",
+  "location": "Belurat Tower Settlement: From where you got the Bone Bow, as you exit the doorway, make a hard left and you'll see a pile of rubble that you can jump on and you'll see there's a secret room tucked behind it. Go inside a large storeroom where you can find the following items: x5 Thin Beast Bones, x1 Scadutree Fragment, and x1 Dried Bouquet. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "ENRAGED DIVINE BEAST",
+  "effect": "Raises damage of storms by 10%",
+  "weight": "0.7",
+  "location": "Can be selected as one of the possible rewards when trading Remembrance of the Dancing Lion with Enia at the Roundtable Hold.",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "FINE CRUCIBLE FEATHER TALISMAN",
+  "effect": "Improves backsteps but increases damage taken by 15%",
+  "weight": "0.6",
+  "location": "Climb up on the first tree branch and jump on the second one on the left to find the talisman. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "FLAMEDRAKE TALISMAN +3",
+  "effect": "Boosts fire damage negation by 22%",
+  "weight": "0.9",
+  "location": "A +3 variation of the Flamedrake Talisman can be found inside a chest. You'll have to go over the cages and on the right side, you'll find the chest that contains the talisman. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "GOLDEN BRAID",
+  "effect": "Boosts holy damage negation by 22%",
+  "weight": "0.9",
+  "location": "Scaduview: The talisman is looted from a corpse found inside the trunk of a tree. The corpse is located in the Scaduview region. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "IMMUNIZING HORN CHARM +2",
+  "effect": "Vastly raises immunity by 180",
+  "weight": "0.9",
+  "location": "+2 Variant: Drops upon defeating the Lesser Ulcerated Tree Spirit in the sewers section of Belurat Tower Settlement. Map Link [Video Location]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "LACERATING CROSSED-TREE",
+  "effect": "Enhances dash attacks by 15% in PvE and 7.5% in PvP",
+  "weight": "0.8",
+  "location": "You get it from aiding Needle Knight Leda in invading and defeating Hornsent after she chooses him as a target, you have to go back to the Highroad Cross site of grace and talk to her after doing so and she will give the talisman to you.",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "MOTTLED NECKLACE +2",
+  "effect": "Vastly raises robustness, immunity, and focus by 100",
+  "weight": "1.2",
+  "location": "+2 Version - In the Rauh Ancient ruins just after getting past the forge giant across the bridge. You must make your way through the ruin it was in front of, and once at the top proceed past the large stone structure all the way to the end of the area and unblock the spirit spring. Then jump down onto the spring and jump back up to the opposite side. The necklace will be at the top of the stairs. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "OUTER GOD HEIRLOOM",
+  "effect": "Raises arcane +5",
+  "weight": "0.6",
+  "location": "Found inside a chest, at the top of Prospect Town. Inside a small building. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "PEARL SHIELD TALISMAN",
+  "effect": "Boosts all non-physical damage negation by 20% while guarding",
+  "weight": "0.9",
+  "location": "Found inside a chest in a small camp of Messmer soldiers in the woods. Southwestern of Taylew's Ruined Forge Site of Grace. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "PEARLDRAKE TALISMAN +3",
+  "effect": "Boosts non-physical damage negation by 11%",
+  "weight": "1.2",
+  "location": "+3 Variation : Can be found within Shadow Keep, Specimen Storehouse. You must progress until the sixth floor to pull the lever that moves the statues. Once you do this, return to the second floor and find the head of the statue to pull this item from its beard. Shadow of the Erdtree Map.",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "RELLANA'S CAMEO",
+  "effect": "Enhances attacks by 45% after maintaining the same stance for 1 second",
+  "weight": "0.8",
+  "location": "Located in Castle Ensis just behind hostile NPC Moonrithyll, lying on an altar. [Elden Ring Shadow of the Erdtree Interactive Map]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "RETALIATORY CROSSED-TREE",
+  "effect": "Enhances attacks executed after rolling or backstepping by 17%",
+  "weight": "0.3",
+  "location": "You need to follow Leda's questline, and invade Ansbach. Then return to the grace where You talk to Leda and say your farewells. She will give you this talisman before her dialogue ends",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "SHARPSHOT TALISMAN",
+  "effect": "Boosts attack power of precision-aimed shots by 12%",
+  "weight": "0.6",
+  "location": "Found inside Albinauric's Shack. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "SHATTERED STONE TALISMAN",
+  "effect": "Raises potency of kicking and stomping skills by 10%",
+  "weight": "0.8",
+  "location": "Moorth Ruins. Fall on the first rooftop visible from the gap on the ground, turn left, and walk on the ledge to find the Talisman. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "SMITHING TALISMAN",
+  "effect": "Enhances weapon-throwing attacks by 10%",
+  "weight": "1.3",
+  "location": "Ruined Forge Starfall Past See Shadow of the Erdtree Map\nThe talisman is looted from a corpse. The body is inside a room filled with Fire Blob enemies, on the upper-most level of the Ruined Forge of Starfall Past.",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "SPELLDRAKE TALISMAN +3",
+  "effect": "Boosts magic damage negation by 22%",
+  "weight": "0.9",
+  "location": "A +3 variant of the Spelldrake Talisman can be looted off a corpse. The body is located inside a storeroom underneath the castle front bridge of Castle Ensis. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "ST. TRINA'S SMILE",
+  "effect": "Sleep in the vicinity increases attack power by 20% for 30 seconds",
+  "weight": "0.9",
+  "location": "Obtained as a drop upon defeating a hostile NPC, Thiollier. See Shadow of the Erdtree Map\nThiollier only becomes hostile if you pursue St. Trina and Thiollier's quest. Please visit their pages for the quest guide.",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "STALWART HORN CHARM +2",
+  "effect": "Vastly raises robustness by 180",
+  "weight": "0.6",
+  "location": "+2 variant can be found at Bonny Gaol: After you jump down the hole, head east past the rats and climb up the ladder. Defeat the Inner Jar monster, you will find the talisman in the room. See Shadow of the Erdtree Map [Video Location]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "TALISMAN OF ALL CRUCIBLES",
+  "effect": "Grants effects of all crucible talismans, but but increases damage taken by 45%",
+  "weight": "1.9",
+  "location": "Start at the Ancient Ruins, Grand Starway Site of Grace, head southwest to the elevator. At bottom of the elavator looking south west, there is 2 paths of floating platforms, go to the left one, following it around and it loops to chest with this talisman. See Shadow of the Erdtree Map [Video Link]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "TALISMAN OF LORD'S BESTOWAL",
+  "effect": "Increases poise by 54% after using a flask of tears",
+  "weight": "3.0",
+  "location": "Shadow Keep. Can be found beside the big golden tree. See Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "TALISMAN OF THE DREAD",
+  "effect": "Raises potency of magma by 15%",
+  "weight": "0.6",
+  "location": "Elder's Hovel: Can be found on a corpse inside Elder's Hovel. Elden Ring Shadow of the Erdtree Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "TWO-HANDED SWORD TALISMAN",
+  "effect": "Enhances attacks with two-handed weapons by 15%",
+  "weight": "1.2",
+  "location": "Temple Town Ruins: After the fight with the Horned Warrior, just continue up to the next room to find a chest with this item inside. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "TWO-HEADED TURTLE TALISMAN",
+  "effect": "Greatly raises stamina recovery speed by 10/s (22.2%).",
+  "weight": "1.0",
+  "location": "It's inside a cave beneath a waterfall guarded by enemies Just east of Rivermouth Cave. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "VERDIGRIS DISCUS",
+  "effect": "Takes 10% less damage when at heavy load, and 20% when overloaded",
+  "weight": "4.5",
+  "location": "Ancient Rauh Ruins, in front of a statue. Elden Ring Shadow of the Erdtree Map [Video Link]",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "VIRIDIAN AMBER MEDALLION +3",
+  "effect": "Boosts maximum stamina by 17%",
+  "weight": "0.6",
+  "location": "Darklight Catacombs, right after the first canon imp. Jump over on the ledge to the right and then drop down to that small archway under it. Elden Ring Shadow of the Erdtree Interactive Map",
+  "available": "Shadow of the Erdtree DLC"
+ },
+ {
+  "name": "CRIMSON AMBER MEDALLION",
+  "effect": "Boosts maximum HP by 6%",
+  "weight": "0.3",
+  "location": "Can be purchased from the Nomadic Merchant at the eastern side of Weeping Peninsula, for  1,500 Runes. Map link [Video Location]",
+  "available": "Base Game"
+ },
+ {
+  "name": "CRIMSON AMBER MEDALLION +1",
+  "effect": "Boosts maximum HP by 7%",
+  "weight": "0.3",
+  "location": "Found in Volcano Manor. Go to the Prison Town Church Site of Grace, go out and through the little town as if you were progressing through the manor as normal, and use a Stonesword Key to go through the fog gate. An Abductor Virgin is there, but you can easily run up the stairs to the level above, where the talisman is on a dead body. Map link [Video Location]",
+  "available": "Base Game"
+ },
+ {
+  "name": "CRIMSON AMBER MEDALLION +2",
+  "effect": "Boosts maximum HP by 8%",
+  "weight": "0.3",
+  "location": "Can be found just southwest of the Leyndell, Ashen Capital Site of Grace, by dropping down the open sewer grate to the beam below. Map link [Video Location]",
+  "available": "Base Game"
+ },
+ {
+  "name": "CRIMSON SEED TALISMAN",
+  "effect": "Boosts HP restoration from the Flask of Crimson Tears by 20%",
+  "weight": "0.8",
+  "location": "Can be found In the first locked imp's room at the beginning of the dungeon in Sainted Hero's Grave, in Altus Plateau. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "BLESSED DEW TALISMAN",
+  "effect": "Restores 2 HP per second",
+  "weight": "0.6",
+  "location": "Leyndell: Found west of the Divine Bridge Site of Grace, guarded by a Golem. Map Link\nYou can teleport here from the Tower of Return in Weeping Peninsula. Map Link\nCan also be reached from the Fortified Manor in Leyndell Royal Capital, through a closed door in the ground floor entrance hall and up an elevator.",
+  "available": "Base Game"
+ },
+ {
+  "name": "CERULEAN AMBER MEDALLION",
+  "effect": "Boosts maximum FP by 7%",
+  "weight": "0.3",
+  "location": "Can be obtained by defeating the Bloodhound Knight in Lakeside Crystal Cave. See the Location on the Elden Ring Map here.",
+  "available": "Base Game"
+ },
+ {
+  "name": "CERULEAN AMBER MEDALLION +1",
+  "effect": "Boosts maximum FP by 9%",
+  "weight": "0.3",
+  "location": "Castle Sol: Found on a corpse hanging by a wooden ledge above the southern walls of the castle. This area is accessed by climbing a ladder behind the church in the southeast and following the walls west. Beware the very powerful dual sword knight guarding the area. He can teleport behind you and perform long combos. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "CERULEAN AMBER MEDALLION +2",
+  "effect": "Boosts maximum FP by 11%",
+  "weight": "0.3",
+  "location": "Lunar Estate Ruins: Found in a treasure chest in an underground room in the northwestern half of the ruins. Look for an Imp Statue pressed up against the wall. This requires one Stonesword Key. The stairs are also concealed by an illusory floor. Simply hit the floor next to the Imp Statue to reveal the stairs. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "CERULEAN SEED TALISMAN",
+  "effect": "Boosts FP restoration from Flask of Cerulean Tears by 20%",
+  "weight": "0.8",
+  "location": "Can be found in the rafters of the Carian Study Hall, next to a body. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "VIRIDIAN AMBER MEDALLION",
+  "effect": "Boosts maximum stamina by 11%",
+  "weight": "0.6",
+  "location": "Can be found in Tombsward Cave, a small dungeon in the Weeping Peninsula: Located southeast of the Fourth Church of Marika. The medallion is obtained after defeating the boss, Miranda the Blighted Bloom. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "VIRIDIAN AMBER MEDALLION +1",
+  "effect": "Boosts maximum stamina by 13%",
+  "weight": "0.6",
+  "location": "Altus Plateau, south of the Outer Wall Battleground Site of Grace: You will hear Margit whisper, \"I see you, Tarnished...\" to you before appearing on the road. Defeat him again and it will drop. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "VIRIDIAN AMBER MEDALLION +2",
+  "effect": "Boosts maximum stamina by 15%",
+  "weight": "0.6",
+  "location": "Miquella's Haligtree: The closest site of grace is the Haligtree Town Plaza. Go south towards the roof with a dead body on it. For reference, the dead body is two stories above the talisman. Continue southeast, and jump down once. Jump across the gap, and then do an immediate 180 turn and make a running jump into the building below. It'll be in a chest guarded by Scarlet Rot Zombies. Map link [Video location]",
+  "available": "Base Game"
+ },
+ {
+  "name": "GREEN TURTLE TALISMAN",
+  "effect": "Raises stamina recovery speed by 8/s (17.7%).",
+  "weight": "0.7",
+  "location": "Summonwater Village. In an underground area on the outskirts of the village. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ARSENAL CHARM",
+  "effect": "Raises maximum Equip Load by 15%",
+  "weight": "1.5",
+  "location": "Given by Nepheli Loux inside the Roundtable Hold. Note that you must exhaust all dialogue with Nepheli in her initial location within Stormveil Castle prior to defeating Godrick the Grafted for her to reward you with the talisman. There are various other triggers that may prevent the player from obtaining the talisman too, such as entering Liurnia prior to defeating Godrick, and possibly entering Caelid.\n\nIf she does not appear, make sure that you have spoken to Gideon Ofnir and rested at the Godrick the Grafted Site of Grace. She will then reward you with the Arsenal Charm.",
+  "available": "Base game"
+ },
+ {
+  "name": "ARSENAL CHARM+1",
+  "effect": "Raises maximum Equip Load by 17%",
+  "weight": "1.5",
+  "location": "Can be found in Altus Tunnel. In the second cavern, head through the tunnel in the south to find a wooden balcony overlooking a pit. Drop down on the left side to an overgrown root below. Follow the root going upwards to reach an upper balcony above where you can loot the talisman from a corpse. Map link",
+  "available": "Base game"
+ },
+ {
+  "name": "GREAT-JAR'S ARSENAL",
+  "effect": "Raises maximum Equip Load by 19%.",
+  "weight": "1.5",
+  "location": "Reward for completing the 3 duelist NPC invasions in Dragonbarrow (Caelid North) for the giant Living Jar in the area. You will only be able to access this area by coming up from Siofra Deep River Well in the underground. This area can also be accessed by climbing the roots above the large crystal at the bottom of the valley. However, this is most likely unintentional. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "ERDTREE'S FAVOR",
+  "effect": "Raises maximum HP (3%), Stamina (7%), and Equip Load (5%)",
+  "weight": "1.5",
+  "location": "Can be found at Fringefolk Hero's Grave. (Limgrave)",
+  "available": "Base game"
+ },
+ {
+  "name": "ERDTREE'S FAVOR +1",
+  "effect": "Raises maximum HP (3.5%), Stamina (8.5%), and Equip Load (6.5%)",
+  "weight": "1.5",
+  "location": "Can be found in the boss room after the boss fight near the forsaken depths grace in the Subterranean Shunning-Grounds.",
+  "available": "Base game"
+ },
+ {
+  "name": "ERDTREE'S FAVOR +2",
+  "effect": "Raises maximum HP (4%), Stamina (10%), and Equip Load (8%)",
+  "weight": "1.5",
+  "location": "Can be found in Leyndell, Ashen Capital and may only be accessed near endgame/post-game. Found on top of a branch jutting out of the ground in a large courtyard, guarded by two large rotten beasts. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "RADAGON'S SCARSEAL",
+  "effect": "Raises Vigor, Endurance, Strength, and Dexterity by 3, but increases all damage taken by 10%.",
+  "weight": "0.8",
+  "location": "Drops from the boss of Weeping Evergaol (Ancient Hero of Zamor) in the Weeping Peninsula. See map here.",
+  "available": "Base game"
+ },
+ {
+  "name": "RADAGON'S SORESEAL",
+  "effect": "Raises Vigor, Endurance, Strength, and Dexterity by 5, but increases all damage taken by 15%.",
+  "weight": "0.8",
+  "location": "Fort Faroth, Caelid: Found on a corpse by dropping down the opening from the roof and exploring around the wooden walkways. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "MARIKA'S SCARSEAL",
+  "effect": "Raises Mind, Intelligence, Faith, and Arcane by 3, but increases all damage taken by 10%.",
+  "weight": "0.8",
+  "location": "Found on a corpse at the base of the waterfall found at the highest level of Siofra River. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "MARIKA'S SORESEAL",
+  "effect": "Raises Mind, Intelligence, Faith, and Arcane by 5, but increases all damage taken by 15%.",
+  "weight": "0.8",
+  "location": "Found on an altar in a room requiring a Stonesword Key in Elphael, Brace of the Haligtree. Map Link.\nFrom the Elphael Inner Wall Site of Grace ( Map Link), leave the area through the eastern door and head down the ladder to the south-east. After going through the arch, turn right and follow the path, circling the city until you get to the imp statue. Be careful of enemies along the way and inside the room as you pick up the talisman.",
+  "available": "Base game"
+ },
+ {
+  "name": "STARSCOURGE HEIRLOOM",
+  "effect": "Raises Strength by 5.",
+  "weight": "0.8",
+  "location": "Can be found in Fort Gael (Caelid). Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "PROSTHESIS-WEARER HEIRLOOM",
+  "effect": "Raises Dexterity by 5.",
+  "weight": "0.8",
+  "location": "Finish the sidequest given by Gowry in Caelid, then return to Millicent to receive the talisman.",
+  "available": "Base game"
+ },
+ {
+  "name": "STARGAZER HEIRLOOM",
+  "effect": "Raises Intelligence by 5.",
+  "weight": "0.6",
+  "location": "Found on a body lying at the top of the Divine Tower of Liurnia. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "TWO FINGERS HEIRLOOM",
+  "effect": "Raises Faith by 5.",
+  "weight": "0.6",
+  "location": "Can be found on the lower level of the Purified Ruins (Liurnia of the Lakes). It is on the chest in front of you as you descend. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "DRAGONCREST SHIELD TALISMAN",
+  "effect": "Reduces Physical Damage taken by 10%",
+  "weight": "0.8",
+  "location": "Found on one of the edges of Bestial Sanctum (Caelid) Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "DRAGONCREST SHIELD TALISMAN +1",
+  "effect": "Reduces Physical Damage taken by 13%",
+  "weight": "0.8",
+  "location": "Can be found in a locked imp's room in Sainted Hero's Grave (Altus Plateau). When you reach the area with the big axes stomping the ground, you need to get on the first one and jump on the ledge on the left wall.",
+  "available": "Base game"
+ },
+ {
+  "name": "DRAGONCREST SHIELD TALISMAN +2",
+  "effect": "Reduces Physical Damage taken by 17%",
+  "weight": "0.8",
+  "location": "Can be found on a floating platform in Crumbling Farum Azula between Dragon Temple Lift and Dragon Temple Rooftop.",
+  "available": "Base game"
+ },
+ {
+  "name": "DRAGONCREST GREATSHIELD TALISMAN",
+  "effect": "Reduces Physical Damage taken by 20%.",
+  "weight": "0.8",
+  "location": "At a building north to the Drainage Channel Site of Grace (Haligtree).",
+  "available": "Base game"
+ },
+ {
+  "name": "SPELLDRAKE TALISMAN",
+  "effect": "Reduces Magic Damage taken by 13%. (Effect reduced to 4% in PvP)",
+  "weight": "0.6",
+  "location": "Acquired by defeating Runebear at the end of the Earthbore Cave in the Weeping Peninsula. Map Link",
+  "available": "Base Game"
+ },
+ {
+  "name": "SPELLDRAKE TALISMAN+1",
+  "effect": "Reduces Magic Damage taken by 17%. (Effect reduced to 5% in PvP)",
+  "weight": "0.6",
+  "location": "Sellia, Town of Sorcery: Found in a small room in the northwest section of town, right under the balcony containing the Staff of Loss. This room is initially sealed by a barrier that can be dispelled by lighting a brazier atop a tower in the southwest of town. Map Link",
+  "available": "Base Game"
+ },
+ {
+  "name": "SPELLDRAKE TALISMAN+2",
+  "effect": "Reduces Magic Damage taken by 20%. (Effect reduced to 6% in PvP)",
+  "weight": "0.6",
+  "location": "Found in the secret catacombs underneath the Hidden Path to the Haligtree by turning right just before the Stray Mimic Tear's boss door, following the corridor up and taking the lift. The talisman can be found on a corpse in an alcove at the top. See the location's page for details on how to get to the catacombs. Map Link",
+  "available": "Base Game"
+ },
+ {
+  "name": "FLAMEDRAKE TALISMAN",
+  "effect": "Reduces Fire Damage taken by 13% (Effect reduced to 4% in PvP)",
+  "weight": "0.6",
+  "location": "Can be obtained as a reward for defeating the Beastman of Farum Azula in Groveside Cave in Limgrave. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "FLAMEDRAKE TALISMAN +1",
+  "effect": "Reduces Fire Damage taken by 17% (Effect reduced to 5% in PvP)",
+  "weight": "0.6",
+  "location": "Found at Leyndell Royal Capital, head up the elevator leading towards the Grand Lift of Rold, on the ground against a column. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "FLAMEDRAKE TALISMAN +2",
+  "effect": "Reduces Fire Damage taken by 20% (Effect reduced to 6% in PvP)",
+  "weight": "0.6",
+  "location": "Dropped by the Beastman of Farum Azula in Dragonbarrow Cave in eastern Dragonbarrow. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "BOLTDRAKE TALISMAN",
+  "effect": "Boosts Lightning Damage negation by 13%",
+  "weight": "0.6",
+  "location": "Can be found at Stormveil Castle. When you reach the main castle grounds where you fight the Lion Guardian, head inside the room with the armored statues, and through the arch doorway, to reach the Limgrave Tower Bridge Site of Grace. Specifically, you'll find the on a body that you can loot, just at the top of the first set of stairs, resting against a pillar on the left side. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "BOLTDRAKE TALISMAN +1",
+  "effect": "Boosts Lightning Damage negation by 17%",
+  "weight": "0.6",
+  "location": "Can be found in a storage shed inside the Old Altus Tunnel dungeon. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "BOLTDRAKE TALISMAN +2",
+  "effect": "Boosts Lightning Damage negation by 20%",
+  "weight": "0.6",
+  "location": "Found on a corpse hanging off an opening in a tall tower south of the Dragon Temple Rooftop Site of Grace. Reaching this area is a bit complex: Map link [Video Location, Crumbling Farum Azula]",
+  "available": "Base Game"
+ },
+ {
+  "name": "HALIGDRAKE TALISMAN",
+  "effect": "Reduces Holy Damage taken by 13%",
+  "weight": "0.6",
+  "location": "Looted off a body in the stranded graveyard. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "HALIGDRAKE TALISMAN +1",
+  "effect": "Reduces Holy Damage taken by 17%",
+  "weight": "0.6",
+  "location": "Looted off a body near Lyndell Catacombs site of grace, below Leyndell Royal Capital, behind two hidden walls.",
+  "available": "Base game"
+ },
+ {
+  "name": "HALIGDRAKE TALISMAN +2",
+  "effect": "Reduces Holy Damage taken by 20%",
+  "weight": "0.6",
+  "location": "Looted off a body in Mohgwyn Palace, found in a small cluster of graves near a watchful Giant Crow perched up high.",
+  "available": "Base game"
+ },
+ {
+  "name": "PEARLDRAKE TALISMAN",
+  "effect": "Boosts non-physical damage negation by 5%",
+  "weight": "0.9",
+  "location": "Can be found beyond the lowest (\"Crumbling Lands\") waygate of The Four Belfries. Go through the waygate, then jump down to the north, then jump down to the east (and if you can, use ranged attacks to kill the two beastmen below), then jump down again, then jump down (to the north) one more time.",
+  "available": "Base Game"
+ },
+ {
+  "name": "PEARLDRAKE TALISMAN +1",
+  "effect": "Boosts non-physical damage negation by 7%",
+  "weight": "0.9",
+  "location": "Can be found in Wyndham Ruins in the Mt. Gelmir region. The talisman is found inside a chest at the end of the area sealed by an Imp Statue; a Stonesword Key is required. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "PEARLDRAKE TALISMAN +2",
+  "effect": "Boosts non-physical damage negation by 9%",
+  "weight": "0.9",
+  "location": "Can be found in Miquella's Haligtree. Travel to the Haligtree Town Site of Grace and exit through the northwestern door. Then climb the ladder and turn around to jump southeast across the gap. The talisman will be located on a corpse at the base of a statue, guarded by a Misbegotten Warrior. Map link Video Location",
+  "available": "Base Game"
+ },
+ {
+  "name": "IMMUNIZING HORN CHARM",
+  "effect": "Raises Immunity by 90",
+  "weight": "0.6",
+  "location": "Can be found on one of the corpses in an ant nest in Ainsel River. Map link [Video location]",
+  "available": "Base Game"
+ },
+ {
+  "name": "IMMUNIZING HORN CHARM +1",
+  "effect": "Raises Immunity by 140",
+  "weight": "0.6",
+  "location": "Found in the Lake of Rot, as a guaranteed item drop from the Ancestral Follower southeast of the Lake of Rot Shoreside Site of Grace. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "STALWART HORN CHARM",
+  "effect": "Raises Robustness by 90",
+  "weight": "0.6",
+  "location": "Can be found in Uld Palace Ruins in northeastern Liurnia of the Lakes: Go to the Mausoleum Compound and head north up the incline, then turn West as soon as you pass the horizontal rocks to your left. Proceed forward to the large vertical rock formation. There will be a smaller vertical rock formation on your right. Walk around the larger formation counter-clockwise until you see a hole in the wall. Go through it and you will find the talisman on a corpse to your left overhanging a cliff. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "STALWART HORN CHARM +1",
+  "effect": "Raises Robustness by 140",
+  "weight": "0.6",
+  "location": "Can be found in the southwestern area of Consecrated Snowfield, southeast of Yelough Anix Tunnel entrance. Alternatively, go straight southwest from the Inner Consecrated Snowfield Site of Grace. It is located on a corpse slumped over a log, and is guarded by Ancestral Follower and Ancestral Follower Shaman whose singing can be heard once you are nearby. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "CLARIFYING HORN CHARM",
+  "effect": "Raises Focus by 140",
+  "weight": "0.6",
+  "location": "Found on a corpse lying on the stairs leading to the lift going up to the Deep Siofra Well. [Elden Ring Interactive Map Link]",
+  "available": "Base Game"
+ },
+ {
+  "name": "CLARIFYING HORN CHARM +1",
+  "effect": "Raises Focus by 190",
+  "weight": "0.6",
+  "location": "Can be found on a corpse in the middle and at the lowest floor of a ruin in Nokron, Eternal City. This is above an earlier area in Siofra River. To get there, head southeast from Ancestral Woods Site of Grace, and follow the brick path until it ends at a cliff. Turn left and follow the cliff edge as far as you can, then carefully drop onto the ruins roof. Follow this raised pathway northeast until you reach a square open platform. Descend carefully, and the talisman is found on a corpse in the center. [Elden Ring Interactive Map Link]",
+  "available": "Base Game"
+ },
+ {
+  "name": "MOTTLED NECKLACE",
+  "effect": "Raises Immunity, Robustness, and Focus by 40",
+  "weight": "0.9",
+  "location": "Found at the very edge of the ruined bridge leading to Nokron, Eternal City. This area is accessible via waygate at The Four Belfries through the waygate labeled \"night sky unceasing\". Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "MOTTLED NECKLACE +1",
+  "effect": "Raises Immunity, Robustness, and Focus by 60",
+  "weight": "0.9",
+  "location": "Can be found on a corpse on top of some ruined arches overlooking Hallowhorn Grounds in Nokron, Eternal City. From the stairway leading up to the Hallowhorn Grounds, circle around the left side of the structure and follow the inclines uphill as much as possible. You should eventually be able to get on top of the Hallowhorn Grounds structure. Map link",
+  "available": "Base Game"
+ },
+ {
+  "name": "PRINCE OF DEATH'S PUSTULE",
+  "effect": "Raises Vitality by 90.",
+  "weight": "0.6",
+  "location": "Can be located at Stormveil Castle.\nNearest Site of Grace can be located at Liftside Chamber.\nLooted off a corpse that can be found at the pit of the castle's crypt. The body can be found next to a giant face that is structured from roots. It is guarded by a Lesser Ulcerated Tree Spirit; players will need to defeat the guardian to reach the spot. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "PRINCE OF DEATH'S CYST",
+  "effect": "Raises Vitality by 140.",
+  "weight": "0.6",
+  "location": "Deeproot Depths: Dropped by a large runebear in a cave behind a waterfall northeast of the Deeproot Depths Site of Grace. <span style=\"color:#999999;\">Map link</span>",
+  "available": "Base game"
+ },
+ {
+  "name": "DAGGER TALISMAN",
+  "effect": "Increases Critical Damage by 17%.",
+  "weight": "1.1",
+  "location": "On a corpse. The closest Site of Grace is the Temple of Eiglay. Two Stonesword Keys are required to reach the item. Elden Ring Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "CURVED SWORD TALISMAN",
+  "effect": "Increases Guard Counter damage by 20%.",
+  "weight": "0.7",
+  "location": "Looted from a treasure chest inside the room where you fight the Banished Knight, located at the wine cellar of Stormveil Castle. You must use the secret back entrance that Gatekeeper Gostoc suggests to reach the said room. Map link.",
+  "available": "Base game"
+ },
+ {
+  "name": "TWINBLADE TALISMAN",
+  "effect": "Increases damage of final hit in attack chains by 45%.",
+  "weight": "0.7",
+  "location": "Castle Morne: From the \"Back of the Castle\" Site of Grace, drop down to the western end of the castle and follow the path along the outer walls. There is a tower section of the walls in the westernmost corner. Climb up the ladder and go around the tower to find a chest where the talisman can be found. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "AXE TALISMAN",
+  "effect": "Increases Charge Attack damage by 10%.",
+  "weight": "0.8",
+  "location": "Found in a cellar underneath the Mistwood Ruins. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "HAMMER TALISMAN",
+  "effect": "Increases Stamina damage against blocking enemies by 40%.",
+  "weight": "0.9",
+  "location": "Dropped by defeating Recusant Henricus North-East of Stormhill Shack. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "SPEAR TALISMAN",
+  "effect": "Increases Counterattack damage of thrusting weapons by 15%.",
+  "weight": "0.5",
+  "location": "Found in a chest inside Lakeside Crystal Cave near a Demi-Human campfire. See it on the Elden Ring Map here.",
+  "available": "Base game"
+ },
+ {
+  "name": "LANCE TALISMAN",
+  "effect": "Increases damage of attacks while on horseback by 15%.",
+  "weight": "0.7",
+  "location": "Northeast Stormhill. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "CLAW TALISMAN",
+  "effect": "Increases Jump Attack damage by 15%.",
+  "weight": "0.7",
+  "location": "Located at Stormveil Castle, looted off a corpse situated on a watchtower. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "GREATSHIELD TALISMAN",
+  "effect": "Reduces stamina damage taken while blocking by 20%.",
+  "weight": "0.9",
+  "location": "Found in a chest on a Wagon East of Grace \"Erdtree-Gazing Hill\" behind Ancient Dragon Lansseax. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ARROW'S STING TALISMAN",
+  "effect": "Raises attack power of arrows and bolts by 10%.",
+  "weight": "0.7",
+  "location": "Located in a chest on the top of the tower directly above Impassable Greatbridge (Grace), which is infront of the Redmane Castle in Caelid. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ARROW'S REACH TALISMAN",
+  "effect": "Increases bow effective range by 65%.",
+  "weight": "0.7",
+  "location": "Inside the tower above Stormgate. It can be accesed by going up and turn left, all around until you get back to Stormgate but through the upper ground. Map Coordinates Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "GRAVEN-SCHOOL TALISMAN",
+  "effect": "Increases damage of Sorceries by 4%.",
+  "weight": "0.7",
+  "location": "Found up the ladder close to the Debate Hall Site of Grace in Raya Lucaria and then down the hole to another the room with Living Jars.\nBefore the Red Wolf of Radagon, hit the bookshelf next to the left stair-case which will lead to a secret room. Go up the ladder close to the left, near the entrance of the room. Run down the left side and then jump down the hole of the broken wooden structure to another room with Living Jars. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "GRAVEN-MASS TALISMAN",
+  "effect": "Increases damage of Sorceries by 8%.",
+  "weight": "1.0",
+  "location": "Albinauric Rise within the eastern Consecrated Snowfield, which can be accessed using both Haligtree Secret Medallion (Left) and Haligtree Secret Medallion (Right) at the Grand Lift of Rold.",
+  "available": "Base game"
+ },
+ {
+  "name": "FAITHFUL'S CANVAS TALISMAN",
+  "effect": "Increases damage of Incantations by 4%.",
+  "weight": "0.7",
+  "location": "Sellia Crystal Tunnel. Located on a corpse guarded by two Prawn Miners. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "FLOCK'S CANVAS TALISMAN",
+  "effect": "Increases damage of Incantations by 8%.",
+  "weight": "1.0",
+  "location": "Drops from Gowry after completing the Millicent questline and killing him.",
+  "available": "Base game"
+ },
+ {
+  "name": "PRIMAL GLINTSTONE BLADE",
+  "effect": "Spells consume 25% less FP, but maximum HP is reduced by 15%.",
+  "weight": "0.6",
+  "location": "Stargazer Ruins in Mountaintops of the Giants: Found in a chest in an underground area near the center of the ruins. The entrance is sealed by a barrier and there is a talking Jellyfish outside who is looking for her sister. Summon your Spirit Jellyfish that you acquired at the beginning of the game to unlock the seal. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "MOON OF NOKSTELLA",
+  "effect": "Increases memory slots by 2.",
+  "weight": "0.8",
+  "location": "Found in a chest underneath a massive throne in Nokstella, Eternal City. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "OLD LORD'S TALISMAN",
+  "effect": "Extends spell effect duration by 30%.",
+  "weight": "0.5",
+  "location": "Found in a chest in Crumbling Farum Azula. Map Link.\nWhen you get on the large crumbling bridge, instead of going up to the boss, go the opposite way down to a building. Navigate through it and take the ladder down to a bridge connecting to the tower housing the chest.",
+  "available": "Base game"
+ },
+ {
+  "name": "RADAGON ICON",
+  "effect": "Shortens spell casting time by 30 Virtual Dexterity.",
+  "weight": "0.7",
+  "location": "Raya Lucaria Academy: Found inside a treasure chest on the second floor of the Debate Parlor Site of Grace. From the Debate Parlor Site of Grace, head forward leading to the courtyard. Make a hard right and jump over the fence. Climb up the ladder and head through the broken glass window. The treasure chest is on the east section. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ROAR MEDALLION",
+  "effect": "Increases damage of roars and breath attacks by 15%.",
+  "weight": "0.7",
+  "location": "Dropped by the Stonedigger Troll, located in the Limgrave Tunnels. He is found at the end of the dungeon. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "COMPANION JAR",
+  "effect": "Increases damage of throwing pots by 20%.",
+  "weight": "0.6",
+  "location": "After complete Jar Bairn's side quest at Jarburg, recieve from Jar Bairn's previous location.",
+  "available": "Base game"
+ },
+ {
+  "name": "PERFUMER'S TALISMAN",
+  "effect": "Increases damage of perfume items by 20%.",
+  "weight": "0.6",
+  "location": "Can be found in Perfumer's Ruins in a chest underground below stairs in the room with the yellow poison flower. Elden Ring Map here",
+  "available": "Base game"
+ },
+ {
+  "name": "CARIAN FILIGREED CREST",
+  "effect": "Lowers FP consumed by Skills by 25%.",
+  "weight": "0.8",
+  "location": "Can be purchased from War Counselor Iji as part of Blaidd's questline. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "WARRIOR JAR SHARD",
+  "effect": "Boosts the attack power of Skills by 10%.",
+  "weight": "0.9",
+  "location": "Drops from Iron Fist Alexander when you kill him without completing his questline. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "SHARD OF ALEXANDER",
+  "effect": "Greatly boosts the attack power of Skills by 15%.",
+  "weight": "0.9",
+  "location": "Drops from Iron Fist Alexander after completing his questline.",
+  "available": "Base game"
+ },
+ {
+  "name": "GODFREY ICON",
+  "effect": "Increases attack power of charged Spells and Skills by 15%.",
+  "weight": "0.8",
+  "location": "Drops from Godefrey the Grafted. Map link\nGolden Lineage Evergaol, east of Grand Lift of Dectus.",
+  "available": "Base game"
+ },
+ {
+  "name": "BULL-GOAT'S TALISMAN",
+  "effect": "Raises Poise by 33%.",
+  "weight": "0.5",
+  "location": "In the back of Dragonbarrow Cave. From the entrance, take a left into the Lesser Runebear's patrol route. Search that side of the cave and it will be at the end of it on a corpse. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "BLUE DANCER CHARM",
+  "effect": "Raises physical scaling damage with lower equipment load by up to 15%.",
+  "weight": "0.9",
+  "location": "Dropped by the Guardian Golem boss in the Highroad Cave. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "MAGIC SCORPION CHARM",
+  "effect": "Raises Magic Damage by 12%, but increases Physical Damage taken by 10%.",
+  "weight": "0.8",
+  "location": "Obtained from talking to Preceptor Seluvis after obtaining the Fingerslayer Blade but before giving it to Ranni the Witch.\nObtained by giving Preceptor Seluvis the Amber Starlight after Seluvis tells you about his scheme.",
+  "available": "Base game"
+ },
+ {
+  "name": "FIRE SCORPION CHARM",
+  "effect": "Raises Fire Damage, but increases Physical Damage taken by 10%.",
+  "weight": "0.8",
+  "location": "Found up the ramparts on a wooden platform to the west in Fort Laiedd within Mt. Gelmir. Elden Ring Map here",
+  "available": "Base game"
+ },
+ {
+  "name": "LIGHTNING SCORPION CHARM",
+  "effect": "Raises Lightning Damage, but increases Physical Damage taken by 10%.",
+  "weight": "0.8",
+  "location": "Can be found in the Wyndham Catacombs in a room sealed by an Imp Statue, requires a Stonesword Key. Elden Ring Map here",
+  "available": "Base game"
+ },
+ {
+  "name": "SACRED SCORPION CHARM",
+  "effect": "Raises Holy Damage, but increases Physical Damage taken by 10%.",
+  "weight": "0.8",
+  "location": "Dropped by invader Anastasia, Tarnished-Eater when defeated. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "CRUCIBLE SCALE TALISMAN",
+  "effect": "Reduces damage taken from critical hits by 30%.",
+  "weight": "1.1",
+  "location": "Can be found in Leyndell Catacombs. Elden Ring Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "CRUCIBLE FEATHER TALISMAN",
+  "effect": "Improves dodge rolling by +6 iframes, but increases damage taken by 30%.",
+  "weight": "0.8",
+  "location": "Auriza Hero's Grave. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "CRUCIBLE KNOT TALISMAN",
+  "effect": "Prevents taking increased damage and being staggered from headshots.",
+  "weight": "0.5",
+  "location": "Dropped by Omenkiller, located in the Village of the Albinaurics. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "RED-FEATHERED BRANCHSWORD",
+  "effect": "Raises attack power by 20% when HP is below 20%.",
+  "weight": "1.4",
+  "location": "Liurnia of the Lakes: Drops from a Deathbird boss that spawns directly north-east of Scenic Isle site of grace near collapsed structure at night. Elden Ring Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "BLUE-FEATHERED BRANCHSWORD",
+  "effect": "Reduces damage taken by 50% when HP is below 20%.",
+  "weight": "1.1",
+  "location": "Drops from a Deathbird east of the Warmaster's Shack near collapsed structure with Rune Fragments and Sanctuary stones on it. Elden Ring Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "RITUAL SWORD TALISMAN",
+  "effect": "Raises attack power by 10% when HP is at maximum.",
+  "weight": "0.9",
+  "location": "Located in Lux Ruins, in a chest down a set of stairs after the boss. Elden Ring Map here",
+  "available": "Base game"
+ },
+ {
+  "name": "RITUAL SHIELD TALISMAN",
+  "effect": "Reduces damage taken by 30% when HP is at maximum.",
+  "weight": "0.9",
+  "location": "From the West Capital Rampart site of grace in Leyndell, follow the marble stairway heading South-Southwest, past a Valiant Gargoyle near a Golden Seed and up the stair toward a giant Colloseum, the talisman is at the top of the hill, in front of the door of the Colloseum. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ASSASSIN'S CRIMSON DAGGER",
+  "effect": "Critical hits restore 10% + 85 HP.",
+  "weight": "0.8",
+  "location": "Dropped by Black Knife Assassin, found inside Deathtouched Catacombs. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ASSASSIN'S CERULEAN DAGGER",
+  "effect": "Critical hits restores 15 FP.",
+  "weight": "0.8",
+  "location": "Dropped by the Black Knife Assassin boss found in Black Knife Catacombs in the northeast of the Liurnia of the Lakes region. See its exact location in the Elden Ring Map.",
+  "available": "Base game"
+ },
+ {
+  "name": "WINGED SWORD INSIGNIA",
+  "effect": "Raises attack power with successive attacks (3% \u2192 5% \u2192 10%).",
+  "weight": "1.4",
+  "location": "Stillwater Cave: Dropped by the Cleanrot Knight boss upon defeat. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ROTTEN WINGED SWORD INSIGNIA",
+  "effect": "Greatly raises attack power with successive attacks (6% \u2192 8% \u2192 13%).",
+  "weight": "1.4",
+  "location": "Earned after choosing to assist Millicent and successfully defeat her sisters. Map link",
+  "available": "Base game"
+ },
+ {
+  "name": "MILLICENT'S PROSTHESIS",
+  "effect": "Raises dexterity by 5 and raises attack power with successive attacks (4% \u2192 6% \u2192 11%).",
+  "weight": "1.6",
+  "location": "When you are given the choice at the end of Millicent's questline between aiding or challenging her, choose to challenge her. When you kill her, you will automatically receive this talisman. Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "GODSKIN SWADDLING CLOTH",
+  "effect": "Successive attacks restore 3% + 30 HP.",
+  "weight": "0.9",
+  "location": "Spiritcaller's Cave: Dropped by the Godskin Apostle & Godskin Noble in a consecutive boss encounter. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "KINDRED OF ROT'S EXULTATION",
+  "effect": "Poisoning or rot in vicinity increases attack power by 20% for 20s.",
+  "weight": "0.9",
+  "location": "Dropped by the Kindred of Rot in Seethewater Cave. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "LORD OF BLOOD'S EXULTATION",
+  "effect": "Blood loss in vicinity increases attack power by 20% for 20s.",
+  "weight": "0.9",
+  "location": "Drops from Esgar, Priest of Blood in Leyndell Catacombs. Map link",
+  "available": "Base game"
+ },
+ {
+  "name": "TAKER'S CAMEO",
+  "effect": "Restores 3% + 30 HP upon defeating enemies.",
+  "weight": "1.0",
+  "location": "Awarded by Tanith at Volcano Manor after completing the third letter quest. This requires you to visit the Mountaintops of the Giants, invade and defeat Juno Hoslow, Knight of Blood. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "ANCESTRAL SPIRIT'S HORN",
+  "effect": "Restores 3 FP upon defeating enemies.",
+  "weight": "1.2",
+  "location": "Obtained when unlocking the Remembrance of the Regal Ancestor's power by handing it over to Enia at Roundtable Hold.",
+  "available": "Base game"
+ },
+ {
+  "name": "GOLD SCARAB",
+  "effect": "Increases runes obtained from defeated enemies by 20%.",
+  "weight": "1.2",
+  "location": "Dropped by Cleanrot Knight (Sickle) & Cleanrot Knight (Spear) boss found in Abandoned Cave in Caelid. Map link",
+  "available": "Base game"
+ },
+ {
+  "name": "SILVER SCARAB",
+  "effect": "Raises item discovery by 75.",
+  "weight": "1.2",
+  "location": "Found in a chest in Hidden Path to the Haligtree. In the large central room, there is a broken section of railing. There you can drop down to an invisible platform, and walk to a small room. The chest is past an illusory wall, behind the Grave Glovewort (9). Map Link",
+  "available": "Base game"
+ },
+ {
+  "name": "CREPUS'S VIAL",
+  "effect": "Eliminates all sound made by the wearer during movement.",
+  "weight": "0.7",
+  "location": "Obtained by the enemy you kill during the second assassination task in the Volcano Manor questline, Rileigh the Idle. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "CONCEALING VEIL",
+  "effect": "Conceals wearer while crouching away from foes.",
+  "weight": "0.9",
+  "location": "Dropped by the boss in Sage's Cave. See the exact location: Elden Ring Map.",
+  "available": "Base game"
+ },
+ {
+  "name": "LONGTAIL CAT TALISMAN",
+  "effect": "Renders the wearer immune to non-lethal Fall Damage.",
+  "weight": "0.6",
+  "location": "Raya Lucaria Academy: Looted off a corpse that can be found at the bottom section of the large rotating lift. Past the graveyard section of Raya Lucaria Academy, simply ride the lift down and defeat the single Pendulum Statue enemy. Map link",
+  "available": "Base game"
+ },
+ {
+  "name": "FURLED FINGER'S TRICK-MIRROR",
+  "effect": "Take on appearance of a Host of Fingers.",
+  "weight": "0.7",
+  "location": "Can be purchased from Twin Maiden Husks at the Roundtable Hold for 5,000 Runes.",
+  "available": "Base game"
+ },
+ {
+  "name": "HOST'S TRICK-MIRROR",
+  "effect": "Take on appearance of a cooperator.",
+  "weight": "0.7",
+  "location": "Can be purchased from Twin Maiden Husks at the Roundtable Hold for 5,000 Runes.",
+  "available": "Base game"
+ },
+ {
+  "name": "SHABRIRI'S WOE",
+  "effect": "Constantly attracts enemies' aggression.",
+  "weight": "0.6",
+  "location": "Can be found on a body at the edge of the Frenzied Flame Village. Map Link.",
+  "available": "Base game"
+ },
+ {
+  "name": "DAEDICAR'S WOE",
+  "effect": "Increases damage taken by 100%.",
+  "weight": "0.8",
+  "location": "You get this at the end of Rya's questline if you do not give her the Tonic of Forgetfulness. ('edit\u00a0: Rya will still drop the talisman even if the potion was given to her. After completing the manor questlines, you will find her in the drawing room. Exhaust her dialogues, rest, and go back to her location. She will be gone, and the talisman will be dropped on the floor.)",
+  "available": "Base game"
+ },
+ {
+  "name": "SACRIFICIAL TWIG",
+  "effect": "Will be lost on death in place of runes.",
+  "weight": "1",
+  "location": "Sold by Patches at Murkwater Cave after he sets up shop.\n3 sold by the Isolated Merchant at the Weeping Peninsula for 3.000 runes each.\nLiurnia of the Lakes: Found on a corpse sitting by a stone platform jutting out of the cliffs in the southern landmass. This is accessible from the top of the long stretch of land where the Malefactor's Evergaol is located.\n3 sold by the Isolated Merchant in Dragonbarrow for 3,000 er runes each.\nGiven by Edgar when spoken to for the first time at Castle Morne.",
+  "available": "Base game"
+ },
+ {
+  "name": "ENTWINING UMBILICAL CORD",
+  "effect": "Changes demeanour of wearer's actions.",
+  "weight": "0.5",
+  "location": "It is currently unavailable in-game.",
+  "available": "Base game"
+ }
+]

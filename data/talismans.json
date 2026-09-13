@@ -1,0 +1,1972 @@
+[
+ {
+  "id": "aged-one-s-exultation",
+  "name": "Aged One's Exultation",
+  "effect": "Madness in the vicinity increases attack power by 20% for 30 seconds",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Abyssal Woods"
+  ],
+  "icon": "img/talismans/aged-one-s-exultation.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Aged_One%27s_Exultation"
+ },
+ {
+  "id": "ailment-talisman",
+  "name": "Ailment Talisman",
+  "effect": "Boosts resistance stats by roughly 350 for a short time after a status effect is applied to you",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Gravesite Plain"
+  ],
+  "icon": "img/talismans/ailment-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Ailment_Talisman"
+ },
+ {
+  "id": "arrow-s-soaring-sting-talisman",
+  "name": "Arrow's Soaring Sting Talisman",
+  "effect": "Increases the effective range of bows by 50% and raises attack power of arrows and bolts by 8%",
+  "weight": 1.1,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Gravesite Plain"
+  ],
+  "icon": "img/talismans/arrow-s-soaring-sting-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Arrow%27s_Soaring_Sting_Talisman"
+ },
+ {
+  "id": "beloved-stardust",
+  "name": "Beloved Stardust",
+  "effect": "Shortens casting speed for sorcery and incantations by the utmost, but increases damage taken",
+  "weight": 1.3,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/beloved-stardust.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Beloved_Stardust"
+ },
+ {
+  "id": "blade-of-mercy",
+  "name": "Blade of Mercy",
+  "effect": "Raises attack power by 20% for 20 seconds after each critical hit",
+  "weight": 1.3,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Gravesite Plain"
+  ],
+  "icon": "img/talismans/blade-of-mercy.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Blade_of_Mercy"
+ },
+ {
+  "id": "blessed-blue-dew-talisman",
+  "name": "Blessed Blue Dew Talisman",
+  "effect": "Slowly restores FP (0.5 FP per second)",
+  "weight": 1.2,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Gravesite Plain"
+  ],
+  "icon": "img/talismans/blessed-blue-dew-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Blessed_Blue_Dew_Talisman"
+ },
+ {
+  "id": "boltdrake-talisman-3",
+  "name": "Boltdrake Talisman +3",
+  "effect": "Boosts lightning damage negation by 22%",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Shadow Keep"
+  ],
+  "icon": "img/talismans/boltdrake-talisman-3.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman_%2B3"
+ },
+ {
+  "id": "cerulean-seed-talisman-1",
+  "name": "Cerulean Seed Talisman +1",
+  "effect": "Greatly boosts FP restoration from Flask of Cerulean Tears by 30%",
+  "weight": 1.1,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/cerulean-seed-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Seed_Talisman_%2B1"
+ },
+ {
+  "id": "clarifying-horn-charm-2",
+  "name": "Clarifying Horn Charm +2",
+  "effect": "Vastly raises focus by 230",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/clarifying-horn-charm-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Clarifying_Horn_Charm_%2B2"
+ },
+ {
+  "id": "crimson-amber-medallion-3",
+  "name": "Crimson Amber Medallion +3",
+  "effect": "Boosts maximum HP by 10%",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/crimson-amber-medallion-3.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion_%2B3"
+ },
+ {
+  "id": "cerulean-amber-medallion-3",
+  "name": "Cerulean Amber Medallion +3",
+  "effect": "Boosts maximum FP by 12.5%",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/cerulean-amber-medallion-3.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion_%2B3"
+ },
+ {
+  "id": "crimson-seed-talisman-1",
+  "name": "Crimson Seed Talisman +1",
+  "effect": "Greatly boosts HP restoration from Flask of Crimson Tears by 30%",
+  "weight": 1.1,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/crimson-seed-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Seed_Talisman_%2B1"
+ },
+ {
+  "id": "crusade-insignia",
+  "name": "Crusade Insignia",
+  "effect": "Raises attack power by 15% for 20 seconds after defeating an enemy",
+  "weight": 1.2,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/crusade-insignia.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crusade_Insignia"
+ },
+ {
+  "id": "dried-bouquet",
+  "name": "Dried Bouquet",
+  "effect": "Raises attack power by 15% for 30 seconds when summoned spirit dies",
+  "weight": 0.8,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Belurat, Tower Settlement"
+  ],
+  "icon": "img/talismans/dried-bouquet.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Dried_Bouquet"
+ },
+ {
+  "id": "enraged-divine-beast",
+  "name": "Enraged Divine Beast",
+  "effect": "Raises damage of storms by 10%",
+  "weight": 0.7,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Roundtable Hold"
+  ],
+  "icon": "img/talismans/enraged-divine-beast.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Enraged_Divine_Beast"
+ },
+ {
+  "id": "fine-crucible-feather-talisman",
+  "name": "Fine Crucible Feather Talisman",
+  "effect": "Improves backsteps but increases damage taken by 15%",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Ancient Ruins of Rauh"
+  ],
+  "icon": "img/talismans/fine-crucible-feather-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Fine_Crucible_Feather_Talisman"
+ },
+ {
+  "id": "flamedrake-talisman-3",
+  "name": "Flamedrake Talisman +3",
+  "effect": "Boosts fire damage negation by 22%",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/flamedrake-talisman-3.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman_%2B3"
+ },
+ {
+  "id": "golden-braid",
+  "name": "Golden Braid",
+  "effect": "Boosts holy damage negation by 22%",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Scaduview"
+  ],
+  "icon": "img/talismans/golden-braid.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Golden_Braid"
+ },
+ {
+  "id": "immunizing-horn-charm-2",
+  "name": "Immunizing Horn Charm +2",
+  "effect": "Vastly raises immunity by 180",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Belurat, Tower Settlement"
+  ],
+  "icon": "img/talismans/immunizing-horn-charm-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Immunizing_Horn_Charm_%2B2"
+ },
+ {
+  "id": "lacerating-crossed-tree",
+  "name": "Lacerating Crossed-tree",
+  "effect": "Enhances dash attacks by 15% in PvE and 7.5% in PvP",
+  "weight": 0.8,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/lacerating-crossed-tree.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Lacerating_Crossed-tree"
+ },
+ {
+  "id": "mottled-necklace-2",
+  "name": "Mottled Necklace +2",
+  "effect": "Vastly raises robustness, immunity, and focus by 100",
+  "weight": 1.2,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Ancient Ruins of Rauh"
+  ],
+  "icon": "img/talismans/mottled-necklace-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace_%2B2"
+ },
+ {
+  "id": "outer-god-heirloom",
+  "name": "Outer God Heirloom",
+  "effect": "Raises arcane +5",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Gravesite Plain"
+  ],
+  "icon": "img/talismans/outer-god-heirloom.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Outer_God_Heirloom"
+ },
+ {
+  "id": "pearl-shield-talisman",
+  "name": "Pearl Shield Talisman",
+  "effect": "Boosts all non-physical damage negation by 20% while guarding",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/pearl-shield-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Pearl_Shield_Talisman"
+ },
+ {
+  "id": "pearldrake-talisman-3",
+  "name": "Pearldrake Talisman +3",
+  "effect": "Boosts non-physical damage negation by 11%",
+  "weight": 1.2,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Shadow Keep"
+  ],
+  "icon": "img/talismans/pearldrake-talisman-3.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman_%2B3"
+ },
+ {
+  "id": "rellana-s-cameo",
+  "name": "Rellana's Cameo",
+  "effect": "Enhances attacks by 45% after maintaining the same stance for 1 second",
+  "weight": 0.8,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Gravesite Plain"
+  ],
+  "icon": "img/talismans/rellana-s-cameo.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Rellana%27s_Cameo"
+ },
+ {
+  "id": "retaliatory-crossed-tree",
+  "name": "Retaliatory Crossed-tree",
+  "effect": "Enhances attacks executed after rolling or backstepping by 17%",
+  "weight": 0.3,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/retaliatory-crossed-tree.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Retaliatory_Crossed-tree"
+ },
+ {
+  "id": "sharpshot-talisman",
+  "name": "Sharpshot Talisman",
+  "effect": "Boosts attack power of precision-aimed shots by 12%",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Scaduview"
+  ],
+  "icon": "img/talismans/sharpshot-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Sharpshot_Talisman"
+ },
+ {
+  "id": "shattered-stone-talisman",
+  "name": "Shattered Stone Talisman",
+  "effect": "Raises potency of kicking and stomping skills by 10%",
+  "weight": 0.8,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/shattered-stone-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Shattered_Stone_Talisman"
+ },
+ {
+  "id": "smithing-talisman",
+  "name": "Smithing Talisman",
+  "effect": "Enhances weapon-throwing attacks by 10%",
+  "weight": 1.3,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/smithing-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Smithing_Talisman"
+ },
+ {
+  "id": "spelldrake-talisman-3",
+  "name": "Spelldrake Talisman +3",
+  "effect": "Boosts magic damage negation by 22%",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Gravesite Plain"
+  ],
+  "icon": "img/talismans/spelldrake-talisman-3.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman_%2B3"
+ },
+ {
+  "id": "st-trina-s-smile",
+  "name": "St. Trina's Smile",
+  "effect": "Sleep in the vicinity increases attack power by 20% for 30 seconds",
+  "weight": 0.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/st-trina-s-smile.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/St._Trina%27s_Smile"
+ },
+ {
+  "id": "stalwart-horn-charm-2",
+  "name": "Stalwart Horn Charm +2",
+  "effect": "Vastly raises robustness by 180",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/stalwart-horn-charm-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Stalwart_Horn_Charm_%2B2"
+ },
+ {
+  "id": "talisman-of-all-crucibles",
+  "name": "Talisman of All Crucibles",
+  "effect": "Grants effects of all crucible talismans, but but increases damage taken by 45%",
+  "weight": 1.9,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Ancient Ruins of Rauh"
+  ],
+  "icon": "img/talismans/talisman-of-all-crucibles.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Talisman_of_All_Crucibles"
+ },
+ {
+  "id": "talisman-of-lord-s-bestowal",
+  "name": "Talisman of Lord's Bestowal",
+  "effect": "Increases poise by 54% after using a flask of tears",
+  "weight": 3.0,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [
+   "Shadow Keep"
+  ],
+  "icon": "img/talismans/talisman-of-lord-s-bestowal.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Talisman_of_Lord%27s_Bestowal"
+ },
+ {
+  "id": "talisman-of-the-dread",
+  "name": "Talisman of the Dread",
+  "effect": "Raises potency of magma by 15%",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/talisman-of-the-dread.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Talisman_of_the_Dread"
+ },
+ {
+  "id": "two-handed-sword-talisman",
+  "name": "Two-handed Sword Talisman",
+  "effect": "Enhances attacks with two-handed weapons by 15%",
+  "weight": 1.2,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/two-handed-sword-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Two-handed_Sword_Talisman"
+ },
+ {
+  "id": "two-headed-turtle-talisman",
+  "name": "Two-headed Turtle Talisman",
+  "effect": "Greatly raises stamina recovery speed by 10/s (22.2%).",
+  "weight": 1.0,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/two-headed-turtle-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Two-headed_Turtle_Talisman"
+ },
+ {
+  "id": "verdigris-discus",
+  "name": "Verdigris Discus",
+  "effect": "Takes 10% less damage when at heavy load, and 20% when overloaded",
+  "weight": 4.5,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/verdigris-discus.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Verdigris_Discus"
+ },
+ {
+  "id": "viridian-amber-medallion-3",
+  "name": "Viridian Amber Medallion +3",
+  "effect": "Boosts maximum stamina by 17%",
+  "weight": 0.6,
+  "source": "Shadow of the Erdtree",
+  "dlc": true,
+  "areas": [],
+  "icon": "img/talismans/viridian-amber-medallion-3.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion_%2B3"
+ },
+ {
+  "id": "crimson-amber-medallion",
+  "name": "Crimson Amber Medallion",
+  "effect": "Boosts maximum HP by 6%",
+  "weight": 0.3,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Weeping Peninsula"
+  ],
+  "icon": "img/talismans/crimson-amber-medallion.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion"
+ },
+ {
+  "id": "crimson-amber-medallion-1",
+  "name": "Crimson Amber Medallion +1",
+  "effect": "Boosts maximum HP by 7%",
+  "weight": 0.3,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/crimson-amber-medallion-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion_%2B1"
+ },
+ {
+  "id": "crimson-amber-medallion-2",
+  "name": "Crimson Amber Medallion +2",
+  "effect": "Boosts maximum HP by 8%",
+  "weight": 0.3,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Ashen Capital",
+   "Leyndell, Royal Capital"
+  ],
+  "icon": "img/talismans/crimson-amber-medallion-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion_%2B2"
+ },
+ {
+  "id": "crimson-seed-talisman",
+  "name": "Crimson Seed Talisman",
+  "effect": "Boosts HP restoration from the Flask of Crimson Tears by 20%",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau"
+  ],
+  "icon": "img/talismans/crimson-seed-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Seed_Talisman"
+ },
+ {
+  "id": "blessed-dew-talisman",
+  "name": "Blessed Dew Talisman",
+  "effect": "Restores 2 HP per second",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Royal Capital",
+   "Weeping Peninsula"
+  ],
+  "icon": "img/talismans/blessed-dew-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Blessed_Dew_Talisman"
+ },
+ {
+  "id": "cerulean-amber-medallion",
+  "name": "Cerulean Amber Medallion",
+  "effect": "Boosts maximum FP by 7%",
+  "weight": 0.3,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/cerulean-amber-medallion.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion"
+ },
+ {
+  "id": "cerulean-amber-medallion-1",
+  "name": "Cerulean Amber Medallion +1",
+  "effect": "Boosts maximum FP by 9%",
+  "weight": 0.3,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mountaintops of the Giants"
+  ],
+  "icon": "img/talismans/cerulean-amber-medallion-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion_%2B1"
+ },
+ {
+  "id": "cerulean-amber-medallion-2",
+  "name": "Cerulean Amber Medallion +2",
+  "effect": "Boosts maximum FP by 11%",
+  "weight": 0.3,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/cerulean-amber-medallion-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion_%2B2"
+ },
+ {
+  "id": "cerulean-seed-talisman",
+  "name": "Cerulean Seed Talisman",
+  "effect": "Boosts FP restoration from Flask of Cerulean Tears by 20%",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/cerulean-seed-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Seed_Talisman"
+ },
+ {
+  "id": "viridian-amber-medallion",
+  "name": "Viridian Amber Medallion",
+  "effect": "Boosts maximum stamina by 11%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Weeping Peninsula"
+  ],
+  "icon": "img/talismans/viridian-amber-medallion.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion"
+ },
+ {
+  "id": "viridian-amber-medallion-1",
+  "name": "Viridian Amber Medallion +1",
+  "effect": "Boosts maximum stamina by 13%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau",
+   "Capital Outskirts"
+  ],
+  "icon": "img/talismans/viridian-amber-medallion-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion_%2B1"
+ },
+ {
+  "id": "viridian-amber-medallion-2",
+  "name": "Viridian Amber Medallion +2",
+  "effect": "Boosts maximum stamina by 15%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Miquella's Haligtree"
+  ],
+  "icon": "img/talismans/viridian-amber-medallion-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion_%2B2"
+ },
+ {
+  "id": "green-turtle-talisman",
+  "name": "Green Turtle Talisman",
+  "effect": "Raises stamina recovery speed by 8/s (17.7%).",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/green-turtle-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Green_Turtle_Talisman"
+ },
+ {
+  "id": "arsenal-charm",
+  "name": "Arsenal Charm",
+  "effect": "Raises maximum Equip Load by 15%",
+  "weight": 1.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Roundtable Hold"
+  ],
+  "icon": "img/talismans/arsenal-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Arsenal_Charm"
+ },
+ {
+  "id": "arsenal-charm-1",
+  "name": "Arsenal Charm+1",
+  "effect": "Raises maximum Equip Load by 17%",
+  "weight": 1.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau"
+  ],
+  "icon": "img/talismans/arsenal-charm-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Arsenal_Charm%2B1"
+ },
+ {
+  "id": "great-jar-s-arsenal",
+  "name": "Great-jar's Arsenal",
+  "effect": "Raises maximum Equip Load by 19%.",
+  "weight": 1.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid",
+   "Dragonbarrow",
+   "Siofra River"
+  ],
+  "icon": "img/talismans/great-jar-s-arsenal.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Great-jar%27s_Arsenal"
+ },
+ {
+  "id": "erdtree-s-favor",
+  "name": "Erdtree's Favor",
+  "effect": "Raises maximum HP (3%), Stamina (7%), and Equip Load (5%)",
+  "weight": 1.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/erdtree-s-favor.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Erdtree%27s_Favor"
+ },
+ {
+  "id": "erdtree-s-favor-1",
+  "name": "Erdtree's Favor +1",
+  "effect": "Raises maximum HP (3.5%), Stamina (8.5%), and Equip Load (6.5%)",
+  "weight": 1.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/erdtree-s-favor-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Erdtree%27s_Favor_%2B1"
+ },
+ {
+  "id": "erdtree-s-favor-2",
+  "name": "Erdtree's Favor +2",
+  "effect": "Raises maximum HP (4%), Stamina (10%), and Equip Load (8%)",
+  "weight": 1.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Ashen Capital",
+   "Leyndell, Royal Capital"
+  ],
+  "icon": "img/talismans/erdtree-s-favor-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Erdtree%27s_Favor_%2B2"
+ },
+ {
+  "id": "radagon-s-scarseal",
+  "name": "Radagon's Scarseal",
+  "effect": "Raises Vigor, Endurance, Strength, and Dexterity by 3, but increases all damage taken by 10%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Weeping Peninsula"
+  ],
+  "icon": "img/talismans/radagon-s-scarseal.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Radagon%27s_Scarseal"
+ },
+ {
+  "id": "radagon-s-soreseal",
+  "name": "Radagon's Soreseal",
+  "effect": "Raises Vigor, Endurance, Strength, and Dexterity by 5, but increases all damage taken by 15%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid",
+   "Dragonbarrow"
+  ],
+  "icon": "img/talismans/radagon-s-soreseal.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Radagon%27s_Soreseal"
+ },
+ {
+  "id": "marika-s-scarseal",
+  "name": "Marika's Scarseal",
+  "effect": "Raises Mind, Intelligence, Faith, and Arcane by 3, but increases all damage taken by 10%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Siofra River"
+  ],
+  "icon": "img/talismans/marika-s-scarseal.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Marika%27s_Scarseal"
+ },
+ {
+  "id": "marika-s-soreseal",
+  "name": "Marika's Soreseal",
+  "effect": "Raises Mind, Intelligence, Faith, and Arcane by 5, but increases all damage taken by 15%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Miquella's Haligtree"
+  ],
+  "icon": "img/talismans/marika-s-soreseal.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Marika%27s_Soreseal"
+ },
+ {
+  "id": "starscourge-heirloom",
+  "name": "Starscourge Heirloom",
+  "effect": "Raises Strength by 5.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid"
+  ],
+  "icon": "img/talismans/starscourge-heirloom.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Starscourge_Heirloom"
+ },
+ {
+  "id": "prosthesis-wearer-heirloom",
+  "name": "Prosthesis-wearer Heirloom",
+  "effect": "Raises Dexterity by 5.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid"
+  ],
+  "icon": "img/talismans/prosthesis-wearer-heirloom.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Prosthesis-wearer_Heirloom"
+ },
+ {
+  "id": "stargazer-heirloom",
+  "name": "Stargazer Heirloom",
+  "effect": "Raises Intelligence by 5.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/stargazer-heirloom.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Stargazer_Heirloom"
+ },
+ {
+  "id": "two-fingers-heirloom",
+  "name": "Two Fingers Heirloom",
+  "effect": "Raises Faith by 5.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/two-fingers-heirloom.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Two_Fingers_Heirloom"
+ },
+ {
+  "id": "dragoncrest-shield-talisman",
+  "name": "Dragoncrest Shield Talisman",
+  "effect": "Reduces Physical Damage taken by 10%",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid",
+   "Dragonbarrow"
+  ],
+  "icon": "img/talismans/dragoncrest-shield-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Shield_Talisman"
+ },
+ {
+  "id": "dragoncrest-shield-talisman-1",
+  "name": "Dragoncrest Shield Talisman +1",
+  "effect": "Reduces Physical Damage taken by 13%",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau"
+  ],
+  "icon": "img/talismans/dragoncrest-shield-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Shield_Talisman_%2B1"
+ },
+ {
+  "id": "dragoncrest-shield-talisman-2",
+  "name": "Dragoncrest Shield Talisman +2",
+  "effect": "Reduces Physical Damage taken by 17%",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Crumbling Farum Azula"
+  ],
+  "icon": "img/talismans/dragoncrest-shield-talisman-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Shield_Talisman_%2B2"
+ },
+ {
+  "id": "dragoncrest-greatshield-talisman",
+  "name": "Dragoncrest Greatshield Talisman",
+  "effect": "Reduces Physical Damage taken by 20%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Miquella's Haligtree"
+  ],
+  "icon": "img/talismans/dragoncrest-greatshield-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Greatshield_Talisman"
+ },
+ {
+  "id": "spelldrake-talisman",
+  "name": "Spelldrake Talisman",
+  "effect": "Reduces Magic Damage taken by 13%. (Effect reduced to 4% in PvP)",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Weeping Peninsula"
+  ],
+  "icon": "img/talismans/spelldrake-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman"
+ },
+ {
+  "id": "spelldrake-talisman-1",
+  "name": "Spelldrake Talisman+1",
+  "effect": "Reduces Magic Damage taken by 17%. (Effect reduced to 5% in PvP)",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid"
+  ],
+  "icon": "img/talismans/spelldrake-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman%2B1"
+ },
+ {
+  "id": "spelldrake-talisman-2",
+  "name": "Spelldrake Talisman+2",
+  "effect": "Reduces Magic Damage taken by 20%. (Effect reduced to 6% in PvP)",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Miquella's Haligtree"
+  ],
+  "icon": "img/talismans/spelldrake-talisman-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman%2B2"
+ },
+ {
+  "id": "flamedrake-talisman",
+  "name": "Flamedrake Talisman",
+  "effect": "Reduces Fire Damage taken by 13% (Effect reduced to 4% in PvP)",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Crumbling Farum Azula",
+   "Limgrave"
+  ],
+  "icon": "img/talismans/flamedrake-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman"
+ },
+ {
+  "id": "flamedrake-talisman-1",
+  "name": "Flamedrake Talisman +1",
+  "effect": "Reduces Fire Damage taken by 17% (Effect reduced to 5% in PvP)",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
+  "icon": "img/talismans/flamedrake-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman_%2B1"
+ },
+ {
+  "id": "flamedrake-talisman-2",
+  "name": "Flamedrake Talisman +2",
+  "effect": "Reduces Fire Damage taken by 20% (Effect reduced to 6% in PvP)",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Crumbling Farum Azula",
+   "Dragonbarrow"
+  ],
+  "icon": "img/talismans/flamedrake-talisman-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman_%2B2"
+ },
+ {
+  "id": "boltdrake-talisman",
+  "name": "Boltdrake Talisman",
+  "effect": "Boosts Lightning Damage negation by 13%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/boltdrake-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman"
+ },
+ {
+  "id": "boltdrake-talisman-1",
+  "name": "Boltdrake Talisman +1",
+  "effect": "Boosts Lightning Damage negation by 17%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau"
+  ],
+  "icon": "img/talismans/boltdrake-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman_%2B1"
+ },
+ {
+  "id": "boltdrake-talisman-2",
+  "name": "Boltdrake Talisman +2",
+  "effect": "Boosts Lightning Damage negation by 20%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Crumbling Farum Azula"
+  ],
+  "icon": "img/talismans/boltdrake-talisman-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman_%2B2"
+ },
+ {
+  "id": "haligdrake-talisman",
+  "name": "Haligdrake Talisman",
+  "effect": "Reduces Holy Damage taken by 13%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/haligdrake-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Haligdrake_Talisman"
+ },
+ {
+  "id": "haligdrake-talisman-1",
+  "name": "Haligdrake Talisman +1",
+  "effect": "Reduces Holy Damage taken by 17%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
+  "icon": "img/talismans/haligdrake-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Haligdrake_Talisman_%2B1"
+ },
+ {
+  "id": "haligdrake-talisman-2",
+  "name": "Haligdrake Talisman +2",
+  "effect": "Reduces Holy Damage taken by 20%",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mohgwyn Palace"
+  ],
+  "icon": "img/talismans/haligdrake-talisman-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Haligdrake_Talisman_%2B2"
+ },
+ {
+  "id": "pearldrake-talisman",
+  "name": "Pearldrake Talisman",
+  "effect": "Boosts non-physical damage negation by 5%",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/pearldrake-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman"
+ },
+ {
+  "id": "pearldrake-talisman-1",
+  "name": "Pearldrake Talisman +1",
+  "effect": "Boosts non-physical damage negation by 7%",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/pearldrake-talisman-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman_%2B1"
+ },
+ {
+  "id": "pearldrake-talisman-2",
+  "name": "Pearldrake Talisman +2",
+  "effect": "Boosts non-physical damage negation by 9%",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Miquella's Haligtree"
+  ],
+  "icon": "img/talismans/pearldrake-talisman-2.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman_%2B2"
+ },
+ {
+  "id": "immunizing-horn-charm",
+  "name": "Immunizing Horn Charm",
+  "effect": "Raises Immunity by 90",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Ainsel River"
+  ],
+  "icon": "img/talismans/immunizing-horn-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Immunizing_Horn_Charm"
+ },
+ {
+  "id": "immunizing-horn-charm-1",
+  "name": "Immunizing Horn Charm +1",
+  "effect": "Raises Immunity by 140",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Lake of Rot"
+  ],
+  "icon": "img/talismans/immunizing-horn-charm-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Immunizing_Horn_Charm_%2B1"
+ },
+ {
+  "id": "stalwart-horn-charm",
+  "name": "Stalwart Horn Charm",
+  "effect": "Raises Robustness by 90",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/stalwart-horn-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Stalwart_Horn_Charm"
+ },
+ {
+  "id": "stalwart-horn-charm-1",
+  "name": "Stalwart Horn Charm +1",
+  "effect": "Raises Robustness by 140",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Consecrated Snowfield"
+  ],
+  "icon": "img/talismans/stalwart-horn-charm-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Stalwart_Horn_Charm_%2B1"
+ },
+ {
+  "id": "clarifying-horn-charm",
+  "name": "Clarifying Horn Charm",
+  "effect": "Raises Focus by 140",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Siofra River"
+  ],
+  "icon": "img/talismans/clarifying-horn-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Clarifying_Horn_Charm"
+ },
+ {
+  "id": "clarifying-horn-charm-1",
+  "name": "Clarifying Horn Charm +1",
+  "effect": "Raises Focus by 190",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Nokron, Eternal City",
+   "Siofra River"
+  ],
+  "icon": "img/talismans/clarifying-horn-charm-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Clarifying_Horn_Charm_%2B1"
+ },
+ {
+  "id": "mottled-necklace",
+  "name": "Mottled Necklace",
+  "effect": "Raises Immunity, Robustness, and Focus by 40",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Nokron, Eternal City"
+  ],
+  "icon": "img/talismans/mottled-necklace.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace"
+ },
+ {
+  "id": "mottled-necklace-1",
+  "name": "Mottled Necklace +1",
+  "effect": "Raises Immunity, Robustness, and Focus by 60",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Nokron, Eternal City"
+  ],
+  "icon": "img/talismans/mottled-necklace-1.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace_%2B1"
+ },
+ {
+  "id": "prince-of-death-s-pustule",
+  "name": "Prince of Death's Pustule",
+  "effect": "Raises Vitality by 90.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/prince-of-death-s-pustule.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Prince_of_Death%27s_Pustule"
+ },
+ {
+  "id": "prince-of-death-s-cyst",
+  "name": "Prince of Death's Cyst",
+  "effect": "Raises Vitality by 140.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Deeproot Depths"
+  ],
+  "icon": "img/talismans/prince-of-death-s-cyst.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Prince_of_Death%27s_Cyst"
+ },
+ {
+  "id": "dagger-talisman",
+  "name": "Dagger Talisman",
+  "effect": "Increases Critical Damage by 17%.",
+  "weight": 1.1,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/dagger-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Dagger_Talisman"
+ },
+ {
+  "id": "curved-sword-talisman",
+  "name": "Curved Sword Talisman",
+  "effect": "Increases Guard Counter damage by 20%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/curved-sword-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Curved_Sword_Talisman"
+ },
+ {
+  "id": "twinblade-talisman",
+  "name": "Twinblade Talisman",
+  "effect": "Increases damage of final hit in attack chains by 45%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Weeping Peninsula"
+  ],
+  "icon": "img/talismans/twinblade-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Twinblade_Talisman"
+ },
+ {
+  "id": "axe-talisman",
+  "name": "Axe Talisman",
+  "effect": "Increases Charge Attack damage by 10%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/axe-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Axe_Talisman"
+ },
+ {
+  "id": "hammer-talisman",
+  "name": "Hammer Talisman",
+  "effect": "Increases Stamina damage against blocking enemies by 40%.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/hammer-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Hammer_Talisman"
+ },
+ {
+  "id": "spear-talisman",
+  "name": "Spear Talisman",
+  "effect": "Increases Counterattack damage of thrusting weapons by 15%.",
+  "weight": 0.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/spear-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Spear_Talisman"
+ },
+ {
+  "id": "lance-talisman",
+  "name": "Lance Talisman",
+  "effect": "Increases damage of attacks while on horseback by 15%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/lance-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Lance_Talisman"
+ },
+ {
+  "id": "claw-talisman",
+  "name": "Claw Talisman",
+  "effect": "Increases Jump Attack damage by 15%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/claw-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Claw_Talisman"
+ },
+ {
+  "id": "greatshield-talisman",
+  "name": "Greatshield Talisman",
+  "effect": "Reduces stamina damage taken while blocking by 20%.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/greatshield-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Greatshield_Talisman"
+ },
+ {
+  "id": "arrow-s-sting-talisman",
+  "name": "Arrow's Sting Talisman",
+  "effect": "Raises attack power of arrows and bolts by 10%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid"
+  ],
+  "icon": "img/talismans/arrow-s-sting-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Arrow%27s_Sting_Talisman"
+ },
+ {
+  "id": "arrow-s-reach-talisman",
+  "name": "Arrow's Reach Talisman",
+  "effect": "Increases bow effective range by 65%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Consecrated Snowfield"
+  ],
+  "icon": "img/talismans/arrow-s-reach-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Arrow%27s_Reach_Talisman"
+ },
+ {
+  "id": "graven-school-talisman",
+  "name": "Graven-school Talisman",
+  "effect": "Increases damage of Sorceries by 4%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/graven-school-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Graven-school_Talisman"
+ },
+ {
+  "id": "graven-mass-talisman",
+  "name": "Graven-mass Talisman",
+  "effect": "Increases damage of Sorceries by 8%.",
+  "weight": 1.0,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Consecrated Snowfield",
+   "Miquella's Haligtree"
+  ],
+  "icon": "img/talismans/graven-mass-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Graven-mass_Talisman"
+ },
+ {
+  "id": "faithful-s-canvas-talisman",
+  "name": "Faithful's Canvas Talisman",
+  "effect": "Increases damage of Incantations by 4%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid"
+  ],
+  "icon": "img/talismans/faithful-s-canvas-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Faithful%27s_Canvas_Talisman"
+ },
+ {
+  "id": "flock-s-canvas-talisman",
+  "name": "Flock's Canvas Talisman",
+  "effect": "Increases damage of Incantations by 8%.",
+  "weight": 1.0,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/flock-s-canvas-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Flock%27s_Canvas_Talisman"
+ },
+ {
+  "id": "primal-glintstone-blade",
+  "name": "Primal Glintstone Blade",
+  "effect": "Spells consume 25% less FP, but maximum HP is reduced by 15%.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mountaintops of the Giants"
+  ],
+  "icon": "img/talismans/primal-glintstone-blade.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Primal_Glintstone_Blade"
+ },
+ {
+  "id": "moon-of-nokstella",
+  "name": "Moon of Nokstella",
+  "effect": "Increases memory slots by 2.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Nokstella, Eternal City"
+  ],
+  "icon": "img/talismans/moon-of-nokstella.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Moon_of_Nokstella"
+ },
+ {
+  "id": "old-lord-s-talisman",
+  "name": "Old Lord's Talisman",
+  "effect": "Extends spell effect duration by 30%.",
+  "weight": 0.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Crumbling Farum Azula"
+  ],
+  "icon": "img/talismans/old-lord-s-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Old_Lord%27s_Talisman"
+ },
+ {
+  "id": "radagon-icon",
+  "name": "Radagon Icon",
+  "effect": "Shortens spell casting time by 30 Virtual Dexterity.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/radagon-icon.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Radagon_Icon"
+ },
+ {
+  "id": "roar-medallion",
+  "name": "Roar Medallion",
+  "effect": "Increases damage of roars and breath attacks by 15%.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/roar-medallion.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Roar_Medallion"
+ },
+ {
+  "id": "companion-jar",
+  "name": "Companion Jar",
+  "effect": "Increases damage of throwing pots by 20%.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/companion-jar.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Companion_Jar"
+ },
+ {
+  "id": "perfumer-s-talisman",
+  "name": "Perfumer's Talisman",
+  "effect": "Increases damage of perfume items by 20%.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau"
+  ],
+  "icon": "img/talismans/perfumer-s-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Perfumer%27s_Talisman"
+ },
+ {
+  "id": "carian-filigreed-crest",
+  "name": "Carian Filigreed Crest",
+  "effect": "Lowers FP consumed by Skills by 25%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/carian-filigreed-crest.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Carian_Filigreed_Crest"
+ },
+ {
+  "id": "warrior-jar-shard",
+  "name": "Warrior Jar Shard",
+  "effect": "Boosts the attack power of Skills by 10%.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/warrior-jar-shard.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Warrior_Jar_Shard"
+ },
+ {
+  "id": "shard-of-alexander",
+  "name": "Shard of Alexander",
+  "effect": "Greatly boosts the attack power of Skills by 15%.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/shard-of-alexander.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Shard_of_Alexander"
+ },
+ {
+  "id": "godfrey-icon",
+  "name": "Godfrey Icon",
+  "effect": "Increases attack power of charged Spells and Skills by 15%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau"
+  ],
+  "icon": "img/talismans/godfrey-icon.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Godfrey_Icon"
+ },
+ {
+  "id": "bull-goat-s-talisman",
+  "name": "Bull-goat's Talisman",
+  "effect": "Raises Poise by 33%.",
+  "weight": 0.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Dragonbarrow"
+  ],
+  "icon": "img/talismans/bull-goat-s-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Bull-goat%27s_Talisman"
+ },
+ {
+  "id": "blue-dancer-charm",
+  "name": "Blue Dancer Charm",
+  "effect": "Raises physical scaling damage with lower equipment load by up to 15%.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/blue-dancer-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Blue_Dancer_Charm"
+ },
+ {
+  "id": "magic-scorpion-charm",
+  "name": "Magic Scorpion Charm",
+  "effect": "Raises Magic Damage by 12%, but increases Physical Damage taken by 10%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/magic-scorpion-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Magic_Scorpion_Charm"
+ },
+ {
+  "id": "fire-scorpion-charm",
+  "name": "Fire Scorpion Charm",
+  "effect": "Raises Fire Damage, but increases Physical Damage taken by 10%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/fire-scorpion-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Fire_Scorpion_Charm"
+ },
+ {
+  "id": "lightning-scorpion-charm",
+  "name": "Lightning Scorpion Charm",
+  "effect": "Raises Lightning Damage, but increases Physical Damage taken by 10%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/lightning-scorpion-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Lightning_Scorpion_Charm"
+ },
+ {
+  "id": "sacred-scorpion-charm",
+  "name": "Sacred Scorpion Charm",
+  "effect": "Raises Holy Damage, but increases Physical Damage taken by 10%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid",
+   "Limgrave"
+  ],
+  "icon": "img/talismans/sacred-scorpion-charm.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Sacred_Scorpion_Charm"
+ },
+ {
+  "id": "crucible-scale-talisman",
+  "name": "Crucible Scale Talisman",
+  "effect": "Reduces damage taken from critical hits by 30%.",
+  "weight": 1.1,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
+  "icon": "img/talismans/crucible-scale-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Scale_Talisman"
+ },
+ {
+  "id": "crucible-feather-talisman",
+  "name": "Crucible Feather Talisman",
+  "effect": "Improves dodge rolling by +6 iframes, but increases damage taken by 30%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/crucible-feather-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Feather_Talisman"
+ },
+ {
+  "id": "crucible-knot-talisman",
+  "name": "Crucible Knot Talisman",
+  "effect": "Prevents taking increased damage and being staggered from headshots.",
+  "weight": 0.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/crucible-knot-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Knot_Talisman"
+ },
+ {
+  "id": "red-feathered-branchsword",
+  "name": "Red-feathered Branchsword",
+  "effect": "Raises attack power by 20% when HP is below 20%.",
+  "weight": 1.4,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/red-feathered-branchsword.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Red-feathered_Branchsword"
+ },
+ {
+  "id": "blue-feathered-branchsword",
+  "name": "Blue-feathered Branchsword",
+  "effect": "Reduces damage taken by 50% when HP is below 20%.",
+  "weight": 1.1,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/blue-feathered-branchsword.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Blue-feathered_Branchsword"
+ },
+ {
+  "id": "ritual-sword-talisman",
+  "name": "Ritual Sword Talisman",
+  "effect": "Raises attack power by 10% when HP is at maximum.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Altus Plateau"
+  ],
+  "icon": "img/talismans/ritual-sword-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Ritual_Sword_Talisman"
+ },
+ {
+  "id": "ritual-shield-talisman",
+  "name": "Ritual Shield Talisman",
+  "effect": "Reduces damage taken by 30% when HP is at maximum.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
+  "icon": "img/talismans/ritual-shield-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Ritual_Shield_Talisman"
+ },
+ {
+  "id": "assassin-s-crimson-dagger",
+  "name": "Assassin's Crimson Dagger",
+  "effect": "Critical hits restore 10% + 85 HP.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/talismans/assassin-s-crimson-dagger.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Assassin%27s_Crimson_Dagger"
+ },
+ {
+  "id": "assassin-s-cerulean-dagger",
+  "name": "Assassin's Cerulean Dagger",
+  "effect": "Critical hits restores 15 FP.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/assassin-s-cerulean-dagger.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Assassin%27s_Cerulean_Dagger"
+ },
+ {
+  "id": "winged-sword-insignia",
+  "name": "Winged Sword Insignia",
+  "effect": "Raises attack power with successive attacks (3% \u2192 5% \u2192 10%).",
+  "weight": 1.4,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/winged-sword-insignia.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Winged_Sword_Insignia"
+ },
+ {
+  "id": "rotten-winged-sword-insignia",
+  "name": "Rotten Winged Sword Insignia",
+  "effect": "Greatly raises attack power with successive attacks (6% \u2192 8% \u2192 13%).",
+  "weight": 1.4,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/rotten-winged-sword-insignia.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Rotten_Winged_Sword_Insignia"
+ },
+ {
+  "id": "millicent-s-prosthesis",
+  "name": "Millicent's Prosthesis",
+  "effect": "Raises dexterity by 5 and raises attack power with successive attacks (4% \u2192 6% \u2192 11%).",
+  "weight": 1.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/millicent-s-prosthesis.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Millicent%27s_Prosthesis"
+ },
+ {
+  "id": "godskin-swaddling-cloth",
+  "name": "Godskin Swaddling Cloth",
+  "effect": "Successive attacks restore 3% + 30 HP.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mountaintops of the Giants"
+  ],
+  "icon": "img/talismans/godskin-swaddling-cloth.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Godskin_Swaddling_Cloth"
+ },
+ {
+  "id": "kindred-of-rot-s-exultation",
+  "name": "Kindred of Rot's Exultation",
+  "effect": "Poisoning or rot in vicinity increases attack power by 20% for 20s.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/kindred-of-rot-s-exultation.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Kindred_of_Rot%27s_Exultation"
+ },
+ {
+  "id": "lord-of-blood-s-exultation",
+  "name": "Lord of Blood's Exultation",
+  "effect": "Blood loss in vicinity increases attack power by 20% for 20s.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
+  "icon": "img/talismans/lord-of-blood-s-exultation.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Lord_of_Blood%27s_Exultation"
+ },
+ {
+  "id": "taker-s-cameo",
+  "name": "Taker's Cameo",
+  "effect": "Restores 3% + 30 HP upon defeating enemies.",
+  "weight": 1.0,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/taker-s-cameo.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Taker%27s_Cameo"
+ },
+ {
+  "id": "ancestral-spirit-s-horn",
+  "name": "Ancestral Spirit's Horn",
+  "effect": "Restores 3 FP upon defeating enemies.",
+  "weight": 1.2,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Roundtable Hold"
+  ],
+  "icon": "img/talismans/ancestral-spirit-s-horn.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Ancestral_Spirit%27s_Horn"
+ },
+ {
+  "id": "gold-scarab",
+  "name": "Gold Scarab",
+  "effect": "Increases runes obtained from defeated enemies by 20%.",
+  "weight": 1.2,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Caelid"
+  ],
+  "icon": "img/talismans/gold-scarab.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Gold_Scarab"
+ },
+ {
+  "id": "silver-scarab",
+  "name": "Silver Scarab",
+  "effect": "Raises item discovery by 75.",
+  "weight": 1.2,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Miquella's Haligtree"
+  ],
+  "icon": "img/talismans/silver-scarab.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Scarab"
+ },
+ {
+  "id": "crepus-s-vial",
+  "name": "Crepus's Vial",
+  "effect": "Eliminates all sound made by the wearer during movement.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/crepus-s-vial.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Crepus%27s_Vial"
+ },
+ {
+  "id": "concealing-veil",
+  "name": "Concealing Veil",
+  "effect": "Conceals wearer while crouching away from foes.",
+  "weight": 0.9,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "icon": "img/talismans/concealing-veil.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Concealing_Veil"
+ },
+ {
+  "id": "longtail-cat-talisman",
+  "name": "Longtail Cat Talisman",
+  "effect": "Renders the wearer immune to non-lethal Fall Damage.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/longtail-cat-talisman.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Longtail_Cat_Talisman"
+ },
+ {
+  "id": "furled-finger-s-trick-mirror",
+  "name": "Furled Finger's Trick-mirror",
+  "effect": "Take on appearance of a Host of Fingers.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Roundtable Hold"
+  ],
+  "icon": "img/talismans/furled-finger-s-trick-mirror.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Furled_Finger%27s_Trick-mirror"
+ },
+ {
+  "id": "host-s-trick-mirror",
+  "name": "Host's Trick-mirror",
+  "effect": "Take on appearance of a cooperator.",
+  "weight": 0.7,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Roundtable Hold"
+  ],
+  "icon": "img/talismans/host-s-trick-mirror.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Host%27s_Trick-mirror"
+ },
+ {
+  "id": "shabriri-s-woe",
+  "name": "Shabriri's Woe",
+  "effect": "Constantly attracts enemies' aggression.",
+  "weight": 0.6,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
+  "icon": "img/talismans/shabriri-s-woe.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Shabriri%27s_Woe"
+ },
+ {
+  "id": "daedicar-s-woe",
+  "name": "Daedicar's Woe",
+  "effect": "Increases damage taken by 100%.",
+  "weight": 0.8,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/daedicar-s-woe.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Daedicar%27s_Woe"
+ },
+ {
+  "id": "sacrificial-twig",
+  "name": "Sacrificial Twig",
+  "effect": "Will be lost on death in place of runes.",
+  "weight": 1.0,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [
+   "Dragonbarrow",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
+  ],
+  "icon": "img/talismans/sacrificial-twig.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Sacrificial_Twig"
+ },
+ {
+  "id": "entwining-umbilical-cord",
+  "name": "Entwining Umbilical Cord",
+  "effect": "Changes demeanour of wearer's actions.",
+  "weight": 0.5,
+  "source": "Elden Ring",
+  "dlc": false,
+  "areas": [],
+  "icon": "img/talismans/entwining-umbilical-cord.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Entwining_Umbilical_Cord"
+ }
+]

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elden Ring Loadout Optimizer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <h1>Elden Ring Loadout Optimizer</h1>
+  <p class="tagline">Enter your character's stats, lock any equipment you want to keep, and let the optimizer fill the rest.</p>
+</header>
+
+<main>
+  <section class="panel" id="panel-character">
+    <h2>1. Character</h2>
+    <div class="grid stats-grid">
+      <label>Vigor <input type="number" id="stat-vig" min="1" max="99" value="40"></label>
+      <label>Mind <input type="number" id="stat-min" min="1" max="99" value="20"></label>
+      <label>Endurance <input type="number" id="stat-end" min="1" max="99" value="40"></label>
+      <label>Strength <input type="number" id="stat-str" min="1" max="99" value="20"></label>
+      <label>Dexterity <input type="number" id="stat-dex" min="1" max="99" value="20"></label>
+      <label>Intelligence <input type="number" id="stat-int" min="1" max="99" value="10"></label>
+      <label>Faith <input type="number" id="stat-fai" min="1" max="99" value="10"></label>
+      <label>Arcane <input type="number" id="stat-arc" min="1" max="99" value="10"></label>
+    </div>
+    <p class="derived">Character Level: <strong id="derived-level">—</strong> &nbsp;|&nbsp;
+      Base Max Equip Load (Endurance only): <strong id="derived-base-load">—</strong></p>
+  </section>
+
+  <section class="panel" id="panel-equipment">
+    <h2>2. Equipment <span class="hint">(lock any slot so Optimize leaves it alone)</span></h2>
+    <p class="hint equip-hint">Click a slot to choose an item. Weapons and shields can go in either hand; their weight is subtracted from the armor budget. Locked pieces stay put; unlocked armor is what the optimizer fills around them. Weapon and talisman suggestions appear under Results and are not auto-equipped.</p>
+
+    <div class="equip-board" id="equip-board">
+      <div class="equip-col" id="equip-weapons-left"></div>
+      <div class="equip-col" id="equip-armor"></div>
+      <div class="equip-col" id="equip-weapons-right"></div>
+    </div>
+
+    <div class="equip-talisman-bar">
+      <label class="pouch-control">Talisman pouches
+        <select id="talisman-slot-count">
+          <option value="1">1 (starting)</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4 (fully unlocked)</option>
+        </select>
+      </label>
+      <div class="equip-talismans" id="equip-talismans"></div>
+    </div>
+    <p class="derived" id="equip-load-readout">Current load: <strong id="equip-current-load">—</strong></p>
+  </section>
+
+  <div id="item-picker-overlay" class="item-picker-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+    <div class="item-picker">
+      <h3 id="picker-title">Choose item</h3>
+      <input type="text" id="picker-search" class="search-box" placeholder="Search…">
+      <div id="picker-list" class="pick-list"></div>
+      <div class="picker-actions">
+        <button type="button" class="preset-btn" id="picker-unequip">Unequip</button>
+        <button type="button" class="preset-btn" id="picker-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="panel" id="panel-item-pool">
+    <h2>3. Item Pool <span class="hint">(what the optimizer &amp; weapon list are allowed to pick from)</span></h2>
+
+    <div class="goal-row">
+      <label><input type="checkbox" id="source-elden-ring" checked> Elden Ring <span class="hint">(base game)</span></label>
+      <label><input type="checkbox" id="source-shadow-of-the-erdtree" checked> Shadow of the Erdtree <span class="hint">(DLC)</span></label>
+      <label><input type="checkbox" id="source-tarnished-edition" checked> Tarnished Edition <span class="hint">(Tarnished Pack DLC, released Aug 2026)</span></label>
+    </div>
+
+    <div id="pool-area-filters" class="area-filters"></div>
+
+    <label class="checkbox-row">
+      <input type="checkbox" id="include-altered" checked>
+      Include "Altered" armor variants
+    </label>
+
+    <button type="button" id="toggle-item-pool-drawer" class="preset-btn" aria-expanded="false">Customize Item Pool ▾</button>
+
+    <div id="item-pool-drawer" class="drawer hidden">
+      <div class="drawer-tabs">
+        <button type="button" class="tab-btn active" data-tab="armor">Armor</button>
+        <button type="button" class="tab-btn" data-tab="weapons">Weapons</button>
+        <button type="button" class="tab-btn" data-tab="talismans">Talismans</button>
+      </div>
+
+      <div id="pool-tab-armor" class="pool-tab">
+        <div class="goal-row">
+          <select id="pool-armor-slot">
+            <option value="helm">Helms</option>
+            <option value="chest">Chest Armor</option>
+            <option value="gauntlets">Gauntlets</option>
+            <option value="legs">Legs</option>
+          </select>
+        </div>
+      </div>
+      <div id="pool-tab-weapons" class="pool-tab hidden">
+        <div class="goal-row">
+          <select id="pool-weapon-category"><option value="">All categories</option></select>
+        </div>
+      </div>
+      <div id="pool-tab-talismans" class="pool-tab hidden"></div>
+
+      <input type="text" id="pool-search" class="search-box" placeholder="Search this tab…">
+
+      <div class="goal-row">
+        <button type="button" class="preset-btn" id="pool-select-all">Check all</button>
+        <button type="button" class="preset-btn" id="pool-select-none">Uncheck all</button>
+        <button type="button" class="preset-btn" id="pool-reset">Reset All Excludes</button>
+        <span class="hint" id="pool-count-label"></span>
+      </div>
+      <div id="pool-checklist" class="pick-list pool-checklist"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-goal">
+    <h2>4. Optimization Goal</h2>
+
+    <div class="goal-row">
+      <label><input type="radio" name="goal" value="poise" checked> Maximize Poise</label>
+      <label><input type="radio" name="goal" value="negation"> Maximize Total Damage Negation</label>
+      <label><input type="radio" name="goal" value="resistance"> Maximize a Specific Resistance</label>
+      <label><input type="radio" name="goal" value="minweight"> Minimize Weight for a Target</label>
+    </div>
+
+    <div id="goal-resistance-options" class="goal-sub hidden">
+      <label>Resistance:
+        <select id="resistance-stat">
+          <option value="immunity">Immunity (poison/rot)</option>
+          <option value="robustness">Robustness (bleed/frost)</option>
+          <option value="focus">Focus (sleep/madness)</option>
+          <option value="vitality">Vitality (death blight)</option>
+        </select>
+      </label>
+    </div>
+
+    <div id="goal-minweight-options" class="goal-sub hidden">
+      <label>Target metric:
+        <select id="minweight-metric">
+          <option value="poise">Poise</option>
+          <option value="negation">Total Negation</option>
+        </select>
+      </label>
+      <label>Target value: <input type="number" id="minweight-target" value="60" min="0"></label>
+    </div>
+
+    <div id="load-budget-section">
+      <h3>Equip Load Budget</h3>
+      <div class="goal-row">
+        <button type="button" class="preset-btn" data-preset="0.299">Light (&lt;30%)</button>
+        <button type="button" class="preset-btn" data-preset="0.699">Medium (&lt;70%)</button>
+        <button type="button" class="preset-btn" data-preset="0.999">Heavy (&lt;100%)</button>
+      </div>
+      <label>Max load ratio: <input type="range" id="load-ratio" min="0.05" max="1.20" step="0.01" value="0.699">
+        <span id="load-ratio-value">69.9%</span></label>
+      <p class="derived">Armor weight budget: <strong id="derived-budget">—</strong> / Max equip load (with talismans): <strong id="derived-maxload">—</strong></p>
+    </div>
+
+    <button type="button" id="optimize-btn" class="primary-btn">Optimize Armor</button>
+  </section>
+
+  <section class="panel" id="panel-results">
+    <h2>Results</h2>
+    <div id="results-content"><p class="hint">Run the optimizer to see results here.</p></div>
+  </section>
+
+  <section class="panel" id="panel-weapons">
+    <h2>Weapon &amp; Shield Recommendations</h2>
+    <p class="hint">Ranked by how well your current stats pay off the weapon's scaling. Filter to Small / Medium / Greatshields / Thrusting Shields when you want a shield. Attack values shown are wiki reference values (fixed high stat investment), not computed from your exact stats — treat them as a rough guide.</p>
+    <div class="goal-row">
+      <label><input type="checkbox" id="weapon-two-hand"> Two-handing (Strength × 1.5)</label>
+      <label>Category:
+        <select id="weapon-category"><option value="">All</option></select>
+      </label>
+      <label><input type="checkbox" id="weapon-only-meetable" checked> Only weapons I can wield</label>
+    </div>
+    <div id="weapon-results"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Data and item images sourced from community wiki references (Fextralife). Not affiliated with FromSoftware or Bandai Namco.</p>
+</footer>
+
+<script src="js/calc.js"></script>
+<script src="js/optimizer.js"></script>
+<script src="js/weapons.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
