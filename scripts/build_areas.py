@@ -188,6 +188,45 @@ STARTING_GEAR_EXTRA = {
     "Club",
 }
 
+STARTING_CLASS_ORDER = [
+    "Vagabond", "Warrior", "Hero", "Bandit", "Astrologer",
+    "Prophet", "Samurai", "Prisoner", "Confessor", "Wretch",
+    "Idus Knight",
+]
+
+STARTING_CLASS_BY_NAME = {
+    "Silver Grooved Helm": ["Idus Knight"],
+    "Silver Grooved Armor": ["Idus Knight"],
+    "Silver Grooved Gauntlets": ["Idus Knight"],
+    "Silver Grooved Greaves": ["Idus Knight"],
+    "Silver Grooved Shield": ["Idus Knight"],
+    "Idus Sword": ["Idus Knight"],
+    "Longsword": ["Vagabond"],
+    "Halberd": ["Vagabond"],
+    "Heater Shield": ["Vagabond"],
+    "Scimitar": ["Warrior"],
+    "Riveted Wooden Shield": ["Warrior"],
+    "Battle Axe": ["Hero"],
+    "Large Leather Shield": ["Hero"],
+    "Great Knife": ["Bandit"],
+    "Shortbow": ["Bandit"],
+    "Buckler": ["Bandit"],
+    "Astrologer's Staff": ["Astrologer"],
+    "Short Sword": ["Astrologer"],
+    "Scripture Wooden Shield": ["Astrologer"],
+    "Short Spear": ["Prophet"],
+    "Finger Seal": ["Prophet", "Confessor"],
+    "Rickety Shield": ["Prophet"],
+    "Uchigatana": ["Samurai"],
+    "Longbow": ["Samurai"],
+    "Red Thorn Roundshield": ["Samurai"],
+    "Estoc": ["Prisoner"],
+    "Glintstone Staff": ["Prisoner"],
+    "Broadsword": ["Confessor"],
+    "Blue Crest Heater Shield": ["Confessor"],
+    "Club": ["Wretch"],
+}
+
 
 def norm(s):
     s = (s or "").lower().strip()
@@ -339,6 +378,23 @@ def sort_areas(areas):
     if STARTING_GEAR in areas:
         return [STARTING_GEAR] + [a for a in areas if a != STARTING_GEAR]
     return areas
+
+
+def starting_classes_from_text(text):
+    tl = text or ""
+    if not re.search(r"starting equipment|starting weapon|starting class", tl, re.I):
+        return []
+    found = []
+    for cls in STARTING_CLASS_ORDER:
+        if re.search(rf"\b{re.escape(cls)}\b", tl, re.I):
+            found.append(cls)
+    return found
+
+
+def starting_classes_for(name, acquire=""):
+    found = set(starting_classes_from_text(acquire))
+    found.update(STARTING_CLASS_BY_NAME.get(name, []))
+    return [cls for cls in STARTING_CLASS_ORDER if cls in found]
 
 
 def load_json(rel):
@@ -572,12 +628,31 @@ def main():
     for a in armor:
         a["areas"] = sort_areas(areas_by_armor_id.get(a["id"], []))
         a["wiki"] = wiki_url_for(a["name"])
+        info = obtain_info.get(a["id"])
+        acquire = info[2] if info else ""
+        classes = starting_classes_for(a["name"], acquire)
+        if not classes and is_altered_item(a):
+            sibling = unaltered_by_key.get((a["slot"], norm(unaltered_name(a["name"]))))
+            if sibling:
+                sinfo = obtain_info.get(sibling["id"])
+                sacquire = sinfo[2] if sinfo else ""
+                classes = starting_classes_for(sibling["name"], sacquire)
+        if classes:
+            a["startingClasses"] = classes
+        else:
+            a.pop("startingClasses", None)
     for w in weapons:
         w["areas"] = sort_areas(areas_by_weapon_id.get(w["id"], []))
         w["wiki"] = wiki_url_for(w["name"])
+        classes = starting_classes_for(w["name"])
+        if classes:
+            w["startingClasses"] = classes
+        else:
+            w.pop("startingClasses", None)
     for t in talismans:
         t["areas"] = sort_areas(areas_by_talisman_id.get(t["id"], []))
         t["wiki"] = wiki_url_for(t["name"])
+        t.pop("startingClasses", None)
 
     write_json("data/armor.json", armor)
     write_json("data/weapons.json", weapons)

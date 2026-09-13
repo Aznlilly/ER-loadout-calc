@@ -292,6 +292,28 @@ a.wiki-link:hover { text-decoration: underline; }
 }
 .area-filter-actions { margin-bottom: 8px; }
 
+.starting-class-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+.starting-class-picker select {
+  background: #2a251c;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.starting-class-picker select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
 .area-btn {
   background: #2a251c;
   border: 1px solid var(--border);

@@ -67,6 +67,12 @@ const MASTER_REGION_ORDER = [
   ...DLC_REGIONS,
 ];
 const selectedRegions = new Set(MASTER_REGION_ORDER);
+const STARTING_CLASS_ORDER = [
+  "Vagabond", "Warrior", "Hero", "Bandit", "Astrologer",
+  "Prophet", "Samurai", "Prisoner", "Confessor", "Wretch",
+  "Idus Knight",
+];
+let selectedStartingClass = "";
 
 const SOURCE_CHECKBOX_IDS = {
   "Elden Ring": "source-elden-ring",
@@ -193,12 +199,20 @@ function allRegionsSelected() {
   return MASTER_REGION_ORDER.every((r) => selectedRegions.has(r));
 }
 
+function areaMatchesFilter(area, item) {
+  if (!selectedRegions.has(area)) return false;
+  if (area === STARTING_GEAR_REGION && selectedStartingClass) {
+    return (item.startingClasses || []).includes(selectedStartingClass);
+  }
+  return true;
+}
+
 function matchesRegionFilter(item) {
-  if (allRegionsSelected()) return true;
   if (selectedRegions.size === 0) return false;
   const areas = item.areas || [];
+  if (allRegionsSelected() && !areas.length) return true;
   if (!areas.length) return false;
-  return areas.some((a) => selectedRegions.has(a));
+  return areas.some((a) => areaMatchesFilter(a, item));
 }
 
 function isIncluded(item, type) {
@@ -903,7 +917,7 @@ function renderAreaFilters() {
 
   const label = document.createElement("div");
   label.className = "hint area-filters-label";
-  label.textContent = "An item is in the pool if you have access to any place it can be obtained. None, then Limgrave, for a Limgrave-only run. Starting Gear is every class kit — leave it off, or turn it on and uncheck classes you did not pick.";
+  label.textContent = "An item is in the pool if you have access to any place it can be obtained. None, then Limgrave, for a Limgrave-only run. Starting Gear is class kits; pick your class next to All / None to keep only that kit.";
   container.appendChild(label);
 
   const actions = document.createElement("div");
@@ -929,6 +943,31 @@ function renderAreaFilters() {
   });
   actions.appendChild(allBtn);
   actions.appendChild(noneBtn);
+
+  const classWrap = document.createElement("label");
+  classWrap.className = "starting-class-picker";
+  classWrap.setAttribute("for", "starting-class");
+  classWrap.append("Class ");
+  const classSelect = document.createElement("select");
+  classSelect.id = "starting-class";
+  const anyOpt = document.createElement("option");
+  anyOpt.value = "";
+  anyOpt.textContent = "Any class";
+  classSelect.appendChild(anyOpt);
+  for (const cls of STARTING_CLASS_ORDER) {
+    const opt = document.createElement("option");
+    opt.value = cls;
+    opt.textContent = cls;
+    classSelect.appendChild(opt);
+  }
+  classSelect.value = selectedStartingClass;
+  classSelect.addEventListener("change", () => {
+    selectedStartingClass = classSelect.value;
+    if (selectedStartingClass) selectedRegions.add(STARTING_GEAR_REGION);
+    onPoolExclusionsChanged();
+  });
+  classWrap.appendChild(classSelect);
+  actions.appendChild(classWrap);
   container.appendChild(actions);
 
   const row = document.createElement("div");

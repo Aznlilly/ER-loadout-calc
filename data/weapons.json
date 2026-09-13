@@ -4607,7 +4607,10 @@
    "Starting Gear",
    "Liurnia of the Lakes"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer%27s_Staff"
+  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer%27s_Staff",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "axe-of-godfrey",
@@ -5020,7 +5023,10 @@
   "areas": [
    "Starting Gear"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Battle_Axe"
+  "wiki": "https://eldenring.wiki.fextralife.com/Battle_Axe",
+  "startingClasses": [
+   "Hero"
+  ]
  },
  {
   "id": "battle-hammer",
@@ -5761,7 +5767,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Broadsword"
+  "wiki": "https://eldenring.wiki.fextralife.com/Broadsword",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "butchering-knife",
@@ -6736,7 +6745,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Club"
+  "wiki": "https://eldenring.wiki.fextralife.com/Club",
+  "startingClasses": [
+   "Wretch"
+  ]
  },
  {
   "id": "coded-sword",
@@ -8455,7 +8467,10 @@
    "Starting Gear",
    "Liurnia of the Lakes"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Estoc"
+  "wiki": "https://eldenring.wiki.fextralife.com/Estoc",
+  "startingClasses": [
+   "Prisoner"
+  ]
  },
  {
   "id": "executioner-s-greataxe",
@@ -8689,7 +8704,11 @@
   "areas": [
    "Starting Gear"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Finger_Seal"
+  "wiki": "https://eldenring.wiki.fextralife.com/Finger_Seal",
+  "startingClasses": [
+   "Prophet",
+   "Confessor"
+  ]
  },
  {
   "id": "flail",
@@ -9854,7 +9873,10 @@
    "Limgrave",
    "Liurnia of the Lakes"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Glintstone_Staff"
+  "wiki": "https://eldenring.wiki.fextralife.com/Glintstone_Staff",
+  "startingClasses": [
+   "Prisoner"
+  ]
  },
  {
   "id": "godskin-peeler",
@@ -10607,7 +10629,10 @@
    "Starting Gear",
    "Liurnia of the Lakes"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Great_Knife"
+  "wiki": "https://eldenring.wiki.fextralife.com/Great_Knife",
+  "startingClasses": [
+   "Bandit"
+  ]
  },
  {
   "id": "great-mace",
@@ -11115,7 +11140,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Halberd"
+  "wiki": "https://eldenring.wiki.fextralife.com/Halberd",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "halo-scythe",
@@ -12508,7 +12536,10 @@
   "areas": [
    "Starting Gear"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Longbow"
+  "wiki": "https://eldenring.wiki.fextralife.com/Longbow",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "longhaft-axe",
@@ -12600,7 +12631,10 @@
   "areas": [
    "Starting Gear"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Longsword"
+  "wiki": "https://eldenring.wiki.fextralife.com/Longsword",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "lordsworn-s-greatsword",
@@ -15803,7 +15837,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Scimitar"
+  "wiki": "https://eldenring.wiki.fextralife.com/Scimitar",
+  "startingClasses": [
+   "Warrior"
+  ]
  },
  {
   "id": "scorpion-s-stinger",
@@ -16225,7 +16262,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Short_Spear"
+  "wiki": "https://eldenring.wiki.fextralife.com/Short_Spear",
+  "startingClasses": [
+   "Prophet"
+  ]
  },
  {
   "id": "short-sword",
@@ -16273,7 +16313,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Short_Sword"
+  "wiki": "https://eldenring.wiki.fextralife.com/Short_Sword",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "shortbow",
@@ -16321,7 +16364,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Shortbow"
+  "wiki": "https://eldenring.wiki.fextralife.com/Shortbow",
+  "startingClasses": [
+   "Bandit"
+  ]
  },
  {
   "id": "shotel",
@@ -17674,7 +17720,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Uchigatana"
+  "wiki": "https://eldenring.wiki.fextralife.com/Uchigatana",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "urumi",
@@ -18744,7 +18793,10 @@
    "Altus Plateau",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Rickety_Shield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Rickety_Shield",
+  "startingClasses": [
+   "Prophet"
+  ]
  },
  {
   "id": "riveted-wooden-shield",
@@ -18792,7 +18844,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Riveted_Wooden_Shield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Riveted_Wooden_Shield",
+  "startingClasses": [
+   "Warrior"
+  ]
  },
  {
   "id": "blue-white-wooden-shield",
@@ -18887,7 +18942,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Scripture_Wooden_Shield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Scripture_Wooden_Shield",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "red-thorn-roundshield",
@@ -18934,7 +18992,10 @@
   "areas": [
    "Starting Gear"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Red_Thorn_Roundshield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Red_Thorn_Roundshield",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "pillory-shield",
@@ -19029,7 +19090,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Buckler"
+  "wiki": "https://eldenring.wiki.fextralife.com/Buckler",
+  "startingClasses": [
+   "Bandit"
+  ]
  },
  {
   "id": "iron-roundshield",
@@ -20050,7 +20114,10 @@
    "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Large_Leather_Shield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Large_Leather_Shield",
+  "startingClasses": [
+   "Hero"
+  ]
  },
  {
   "id": "black-leather-shield",
@@ -20189,7 +20256,10 @@
   "areas": [
    "Starting Gear"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Heater_Shield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Heater_Shield",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "blue-crest-heater-shield",
@@ -20236,7 +20306,10 @@
   "areas": [
    "Starting Gear"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Blue_Crest_Heater_Shield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Blue_Crest_Heater_Shield",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "red-crest-heater-shield",
@@ -20977,7 +21050,10 @@
    "Starting Gear",
    "Liurnia of the Lakes"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Shield"
+  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Shield",
+  "startingClasses": [
+   "Idus Knight"
+  ]
  },
  {
   "id": "verdigris-greatshield",
@@ -22269,7 +22345,10 @@
    "Starting Gear",
    "Liurnia of the Lakes"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Idus_Sword"
+  "wiki": "https://eldenring.wiki.fextralife.com/Idus_Sword",
+  "startingClasses": [
+   "Idus Knight"
+  ]
  },
  {
   "id": "hefty-scimitar",

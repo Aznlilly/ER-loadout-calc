@@ -233,6 +233,7 @@ with sync_playwright() as p:
     print("Starting Gear button present:", "Starting Gear" in area_buttons_html)
     print("Starting Gear listed before Limgrave:", area_buttons_html.find("Starting Gear") < area_buttons_html.find("Limgrave"))
     print("Limgrave button present:", "Limgrave" in area_buttons_html)
+    print("Starting class picker present:", page.locator("#starting-class").count() > 0)
 
     page.locator("#area-select-none").click()
     page.wait_for_timeout(150)
@@ -336,6 +337,65 @@ with sync_playwright() as p:
     page.wait_for_timeout(150)
     limgrave_btn = page.locator(".area-btn", has_text="Limgrave").first
     print("Limgrave highlight still on after rechecking:", "area-btn-on" in (limgrave_btn.get_attribute("class") or ""))
+
+    page.locator("#area-select-none").click()
+    page.wait_for_timeout(150)
+    page.select_option("#starting-class", "Hero")
+    page.wait_for_timeout(200)
+    sg_btn = page.locator(".area-btn", has_text="Starting Gear").first
+    print("Starting Gear on after picking Hero:", "area-btn-on" in (sg_btn.get_attribute("class") or ""))
+    if "area-btn-on" not in (sg_btn.get_attribute("class") or ""):
+        raise SystemExit("Picking a class should turn Starting Gear on")
+    class_pool = page.evaluate(
+        """() => {
+      const names = ["Champion Headband", "Bandit Mask", "Vagabond Knight Helm", "Kaiden Helm"];
+      const armor = Object.fromEntries(names.map(n => {
+        const a = ARMOR.find(x => x.name === n);
+        return [n, { inPool: isIncluded(a, "armor"), classes: a.startingClasses || [] }];
+      }));
+      const axe = WEAPONS.find(w => w.name === "Battle Axe");
+      const seal = WEAPONS.find(w => w.name === "Finger Seal");
+      return {
+        armor,
+        axe: { inPool: isIncluded(axe, "weapons"), classes: axe.startingClasses || [] },
+        seal: { inPool: isIncluded(seal, "weapons"), classes: seal.startingClasses || [] },
+      };
+    }"""
+    )
+    print("Hero class tags:", class_pool)
+    champ_hero = class_pool["armor"]["Champion Headband"]
+    bandit_hero = class_pool["armor"]["Bandit Mask"]
+    vagabond_hero = class_pool["armor"]["Vagabond Knight Helm"]
+    kaiden_hero = class_pool["armor"]["Kaiden Helm"]
+    if champ_hero["classes"] != ["Hero"]:
+        raise SystemExit("Champion Headband should be tagged as Hero starting gear")
+    if "Bandit" not in bandit_hero["classes"]:
+        raise SystemExit("Bandit Mask should be tagged as Bandit starting gear")
+    if not champ_hero["inPool"]:
+        raise SystemExit("Hero + Starting Gear should include Champion Headband")
+    if bandit_hero["inPool"]:
+        raise SystemExit("Hero + Starting Gear (Limgrave off) should exclude Bandit Mask")
+    if vagabond_hero["inPool"]:
+        raise SystemExit("Hero + Starting Gear should exclude Vagabond Knight Helm")
+    if kaiden_hero["inPool"]:
+        raise SystemExit("Hero + Starting Gear should exclude Kaiden Helm")
+    if not class_pool["axe"]["inPool"]:
+        raise SystemExit("Hero + Starting Gear should include Battle Axe")
+    if class_pool["seal"]["inPool"]:
+        raise SystemExit("Hero + Starting Gear should exclude Finger Seal")
+
+    page.select_option("#starting-class", "")
+    page.wait_for_timeout(150)
+    any_class = page.evaluate(
+        """() => ({
+      champ: isIncluded(ARMOR.find(a => a.name === "Champion Headband"), "armor"),
+      bandit: isIncluded(ARMOR.find(a => a.name === "Bandit Mask"), "armor"),
+      seal: isIncluded(WEAPONS.find(w => w.name === "Finger Seal"), "weapons"),
+    })"""
+    )
+    print("Any class + Starting Gear:", any_class)
+    if not any_class["champ"] or not any_class["bandit"] or not any_class["seal"]:
+        raise SystemExit("Any class should include every Starting Gear kit")
 
     page.locator("#area-select-all").click()
     page.wait_for_timeout(200)

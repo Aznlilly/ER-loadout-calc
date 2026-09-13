@@ -47,10 +47,11 @@ or special/hidden content.
   An item is in the pool if **any** of its obtain paths is turned on (so
   Champion Headband is available from Starting Gear *or* Caelid, not both).
   **None**, then **Limgrave**, for a Limgrave-only run. **Starting Gear**
-  (first chip) is every class kit — leave it off, or turn it on and uncheck
-  classes you did not pick in Customize. Untagged items are included only
-  when every chip is on (**All**). Customize still excludes individual
-  pieces without turning a region chip off.
+  (first chip) is every class kit. Use **Class** next to All / None to keep
+  only your starting kit; other selected regions still count (Hero still
+  gets Champion Headband from Caelid if that chip is on). Untagged items
+  are included only when every chip is on (**All**). Customize still
+  excludes individual pieces without turning a region chip off.
 - Toggle "Altered" armor variants on/off.
 - Weapon recommendations ranked by how well your stats pay off each weapon's
   scaling grades, filtered by whether you meet its Str/Dex/Int/Fai/Arc
@@ -205,7 +206,8 @@ HTML caches under `data/raw/wiki_cache/` are local-only and gitignored.
   wiki's per-region item lists. Weapons still rely mainly on those lists
   (the raw weapon tables have no location field); the eight Tarnished Pack
   weapons are tagged from their item-page locations instead. Class kits
-  also have a **Starting Gear** chip (before Limgrave). Altered and
+  also have a **Starting Gear** chip (before Limgrave) and a **Class**
+  picker to keep only one kit's obtain path. Altered and
   unaltered armor are tagged separately when their drop spots differ
   (Stormveil Banished Knights drop the altered chest/helm, not the cape
   versions). Each item also has a `"wiki"` URL. Untagged items are only

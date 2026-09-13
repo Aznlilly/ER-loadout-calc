@@ -94,7 +94,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/helm-silver-grooved-helm.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Helm"
+  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Helm",
+  "startingClasses": [
+   "Idus Knight"
+  ]
  },
  {
   "id": "helm-steel-helm",
@@ -1727,7 +1730,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/helm-astrologer-hood.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Hood"
+  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Hood",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "helm-azur-s-glintstone-crown",
@@ -1792,7 +1798,10 @@
    "Limgrave"
   ],
   "icon": "img/armor/helm-bandit-mask.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Mask"
+  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Mask",
+  "startingClasses": [
+   "Bandit"
+  ]
  },
  {
   "id": "helm-banished-knight-helm",
@@ -2176,7 +2185,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/helm-blue-cloth-cowl.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Blue_Cloth_Cowl"
+  "wiki": "https://eldenring.wiki.fextralife.com/Blue_Cloth_Cowl",
+  "startingClasses": [
+   "Warrior"
+  ]
  },
  {
   "id": "helm-blue-festive-hood",
@@ -2434,7 +2446,10 @@
    "Caelid"
   ],
   "icon": "img/armor/helm-champion-headband.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Headband"
+  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Headband",
+  "startingClasses": [
+   "Hero"
+  ]
  },
  {
   "id": "helm-cleanrot-helm",
@@ -2600,7 +2615,10 @@
    "Mt. Gelmir"
   ],
   "icon": "img/armor/helm-confessor-hood.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Hood"
+  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Hood",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "helm-confessor-hood-altered",
@@ -2633,7 +2651,10 @@
    "Mt. Gelmir"
   ],
   "icon": "img/armor/helm-confessor-hood-altered.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Hood_(Altered)"
+  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Hood_(Altered)",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "helm-consort-s-mask",
@@ -4593,7 +4614,10 @@
    "Dragonbarrow"
   ],
   "icon": "img/armor/helm-land-of-reeds-helm.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Helm"
+  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Helm",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "helm-lazuli-glintstone-crown",
@@ -5700,7 +5724,10 @@
    "Ainsel River"
   ],
   "icon": "img/armor/helm-prisoner-iron-mask.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Prisoner_Iron_Mask"
+  "wiki": "https://eldenring.wiki.fextralife.com/Prisoner_Iron_Mask",
+  "startingClasses": [
+   "Prisoner"
+  ]
  },
  {
   "id": "helm-prophet-blindfold",
@@ -5733,7 +5760,10 @@
    "Capital Outskirts"
   ],
   "icon": "img/armor/helm-prophet-blindfold.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Blindfold"
+  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Blindfold",
+  "startingClasses": [
+   "Prophet"
+  ]
  },
  {
   "id": "helm-pumpkin-helm",
@@ -6607,7 +6637,10 @@
    "Mountaintops of the Giants"
   ],
   "icon": "img/armor/helm-vagabond-knight-helm.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Helm"
+  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Helm",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "helm-veteran-s-helm",
@@ -6897,7 +6930,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/chest-silver-grooved-armor.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Armor"
+  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Armor",
+  "startingClasses": [
+   "Idus Knight"
+  ]
  },
  {
   "id": "chest-dryleaf-robe",
@@ -8425,7 +8461,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/chest-astrologer-robe.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Robe"
+  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Robe",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "chest-azur-s-glintstone-robe",
@@ -8491,7 +8530,10 @@
    "Roundtable Hold"
   ],
   "icon": "img/armor/chest-bandit-garb.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Garb"
+  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Garb",
+  "startingClasses": [
+   "Bandit"
+  ]
  },
  {
   "id": "chest-banished-knight-armor",
@@ -8686,7 +8728,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/chest-blue-cloth-vest.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Blue_Cloth_Vest"
+  "wiki": "https://eldenring.wiki.fextralife.com/Blue_Cloth_Vest",
+  "startingClasses": [
+   "Warrior"
+  ]
  },
  {
   "id": "chest-blue-silver-mail-armor",
@@ -8914,7 +8959,10 @@
    "Caelid"
   ],
   "icon": "img/armor/chest-champion-pauldron.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Pauldron"
+  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Pauldron",
+  "startingClasses": [
+   "Hero"
+  ]
  },
  {
   "id": "chest-cleanrot-armor",
@@ -9076,7 +9124,10 @@
    "Mt. Gelmir"
   ],
   "icon": "img/armor/chest-confessor-armor.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Armor"
+  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Armor",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "chest-crucible-axe-armor",
@@ -9974,7 +10025,10 @@
    "Dragonbarrow"
   ],
   "icon": "img/armor/chest-land-of-reeds-armor.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Armor"
+  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Armor",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "chest-leather-draped-tabard",
@@ -10451,7 +10505,10 @@
    "Ainsel River"
   ],
   "icon": "img/armor/chest-prisoner-clothing.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Prisoner_Clothing"
+  "wiki": "https://eldenring.wiki.fextralife.com/Prisoner_Clothing",
+  "startingClasses": [
+   "Prisoner"
+  ]
  },
  {
   "id": "chest-prophet-robe",
@@ -10484,7 +10541,10 @@
    "Capital Outskirts"
   ],
   "icon": "img/armor/chest-prophet-robe.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Robe"
+  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Robe",
+  "startingClasses": [
+   "Prophet"
+  ]
  },
  {
   "id": "chest-queen-s-robe",
@@ -10968,7 +11028,10 @@
    "Mountaintops of the Giants"
   ],
   "icon": "img/armor/chest-vagabond-knight-armor.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Armor"
+  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Armor",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "chest-veteran-s-armor",
@@ -11231,7 +11294,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/chest-astrologer-robe-altered.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Robe_(Altered)"
+  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Robe_(Altered)",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "chest-banished-knight-armor-altered",
@@ -11775,7 +11841,10 @@
    "Mt. Gelmir"
   ],
   "icon": "img/armor/chest-confessor-armor-altered.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Armor_(Altered)"
+  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Armor_(Altered)",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "chest-consort-s-robe",
@@ -12902,7 +12971,10 @@
    "Dragonbarrow"
   ],
   "icon": "img/armor/chest-land-of-reeds-armor-altered.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Armor_(Altered)"
+  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Armor_(Altered)",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "chest-lazuli-robe",
@@ -13902,7 +13974,10 @@
    "Capital Outskirts"
   ],
   "icon": "img/armor/chest-prophet-robe-altered.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Robe_(Altered)"
+  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Robe_(Altered)",
+  "startingClasses": [
+   "Prophet"
+  ]
  },
  {
   "id": "chest-radahn-s-lion-armor-altered",
@@ -14702,7 +14777,10 @@
    "Mountaintops of the Giants"
   ],
   "icon": "img/armor/chest-vagabond-knight-armor-altered.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Armor_(Altered)"
+  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Armor_(Altered)",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "chest-veteran-s-armor-altered",
@@ -14926,7 +15004,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/gauntlets-silver-grooved-gauntlets.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Gauntlets"
+  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Gauntlets",
+  "startingClasses": [
+   "Idus Knight"
+  ]
  },
  {
   "id": "gauntlets-steel-gauntlets",
@@ -15962,7 +16043,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/gauntlets-astrologer-gloves.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Gloves"
+  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Gloves",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "gauntlets-azur-s-manchettes",
@@ -16026,7 +16110,10 @@
    "Roundtable Hold"
   ],
   "icon": "img/armor/gauntlets-bandit-manchettes.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Manchettes"
+  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Manchettes",
+  "startingClasses": [
+   "Bandit"
+  ]
  },
  {
   "id": "gauntlets-banished-knight-gauntlets",
@@ -16475,7 +16562,10 @@
    "Caelid"
   ],
   "icon": "img/armor/gauntlets-champion-bracers.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Bracers"
+  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Bracers",
+  "startingClasses": [
+   "Hero"
+  ]
  },
  {
   "id": "gauntlets-cleanrot-gauntlets",
@@ -16541,7 +16631,10 @@
    "Mt. Gelmir"
   ],
   "icon": "img/armor/gauntlets-confessor-gloves.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Gloves"
+  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Gloves",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "gauntlets-crucible-gauntlets",
@@ -17471,7 +17564,10 @@
    "Dragonbarrow"
   ],
   "icon": "img/armor/gauntlets-land-of-reeds-gauntlets.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Gauntlets"
+  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Gauntlets",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "gauntlets-leather-gloves",
@@ -18689,7 +18785,10 @@
    "Mountaintops of the Giants"
   ],
   "icon": "img/armor/gauntlets-vagabond-knight-gauntlets.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Gauntlets"
+  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Gauntlets",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "gauntlets-veteran-s-gauntlets",
@@ -18820,7 +18919,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/gauntlets-warrior-gauntlets.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Warrior_Gauntlets"
+  "wiki": "https://eldenring.wiki.fextralife.com/Warrior_Gauntlets",
+  "startingClasses": [
+   "Warrior"
+  ]
  },
  {
   "id": "gauntlets-white-reed-gauntlets",
@@ -18981,7 +19083,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/legs-silver-grooved-greaves.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Greaves"
+  "wiki": "https://eldenring.wiki.fextralife.com/Silver_Grooved_Greaves",
+  "startingClasses": [
+   "Idus Knight"
+  ]
  },
  {
   "id": "legs-steel-greaves",
@@ -20021,7 +20126,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/legs-astrologer-trousers.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Trousers"
+  "wiki": "https://eldenring.wiki.fextralife.com/Astrologer_Trousers",
+  "startingClasses": [
+   "Astrologer"
+  ]
  },
  {
   "id": "legs-bandit-boots",
@@ -20054,7 +20162,10 @@
    "Roundtable Hold"
   ],
   "icon": "img/armor/legs-bandit-boots.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Boots"
+  "wiki": "https://eldenring.wiki.fextralife.com/Bandit_Boots",
+  "startingClasses": [
+   "Bandit"
+  ]
  },
  {
   "id": "legs-banished-knight-greaves",
@@ -20313,7 +20424,10 @@
    "Caelid"
   ],
   "icon": "img/armor/legs-champion-gaiters.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Gaiters"
+  "wiki": "https://eldenring.wiki.fextralife.com/Champion_Gaiters",
+  "startingClasses": [
+   "Hero"
+  ]
  },
  {
   "id": "legs-carian-knight-greaves",
@@ -20509,7 +20623,10 @@
    "Mt. Gelmir"
   ],
   "icon": "img/armor/legs-confessor-boots.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Boots"
+  "wiki": "https://eldenring.wiki.fextralife.com/Confessor_Boots",
+  "startingClasses": [
+   "Confessor"
+  ]
  },
  {
   "id": "legs-consort-s-trousers",
@@ -20995,7 +21112,10 @@
    "Dragonbarrow"
   ],
   "icon": "img/armor/legs-land-of-reeds-greaves.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Greaves"
+  "wiki": "https://eldenring.wiki.fextralife.com/Land_of_Reeds_Greaves",
+  "startingClasses": [
+   "Samurai"
+  ]
  },
  {
   "id": "legs-leather-trousers",
@@ -21379,7 +21499,10 @@
    "Ainsel River"
   ],
   "icon": "img/armor/legs-prisoner-trousers.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Prisoner_Trousers"
+  "wiki": "https://eldenring.wiki.fextralife.com/Prisoner_Trousers",
+  "startingClasses": [
+   "Prisoner"
+  ]
  },
  {
   "id": "legs-prophet-trousers",
@@ -21412,7 +21535,10 @@
    "Capital Outskirts"
   ],
   "icon": "img/armor/legs-prophet-trousers.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Trousers"
+  "wiki": "https://eldenring.wiki.fextralife.com/Prophet_Trousers",
+  "startingClasses": [
+   "Prophet"
+  ]
  },
  {
   "id": "legs-radahn-s-greaves",
@@ -21863,7 +21989,10 @@
    "Liurnia of the Lakes"
   ],
   "icon": "img/armor/legs-warrior-greaves.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Warrior_Greaves"
+  "wiki": "https://eldenring.wiki.fextralife.com/Warrior_Greaves",
+  "startingClasses": [
+   "Warrior"
+  ]
  },
  {
   "id": "legs-vagabond-knight-greaves",
@@ -21896,7 +22025,10 @@
    "Mountaintops of the Giants"
   ],
   "icon": "img/armor/legs-vagabond-knight-greaves.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Greaves"
+  "wiki": "https://eldenring.wiki.fextralife.com/Vagabond_Knight_Greaves",
+  "startingClasses": [
+   "Vagabond"
+  ]
  },
  {
   "id": "legs-veteran-s-greaves",
