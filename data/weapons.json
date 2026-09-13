@@ -22393,9 +22393,13 @@
   "source": "Tarnished Edition",
   "icon": "img/weapons/hefty-scimitar.png",
   "areas": [
+   "Starting Gear",
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Hefty_Scimitar"
+  "wiki": "https://eldenring.wiki.fextralife.com/Hefty_Scimitar",
+  "startingClasses": [
+   "Heavy Knight"
+  ]
  },
  {
   "id": "leontiel-s-greatsword",

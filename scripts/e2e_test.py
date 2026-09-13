@@ -234,6 +234,10 @@ with sync_playwright() as p:
     print("Starting Gear listed before Limgrave:", area_buttons_html.find("Starting Gear") < area_buttons_html.find("Limgrave"))
     print("Limgrave button present:", "Limgrave" in area_buttons_html)
     print("Starting class picker present:", page.locator("#starting-class").count() > 0)
+    class_options = page.locator("#starting-class option").all_text_contents()
+    print("Heavy Knight class option present:", "Heavy Knight" in class_options)
+    if "Heavy Knight" not in class_options:
+        raise SystemExit("Class picker should include Heavy Knight")
 
     page.locator("#area-select-none").click()
     page.wait_for_timeout(150)
@@ -264,6 +268,27 @@ with sync_playwright() as p:
         raise SystemExit("Limgrave-only pool should not include Champion Headband")
     if "Starting Gear" not in champ["areas"] or "Caelid" not in champ["areas"]:
         raise SystemExit("Champion Headband should be Starting Gear and Caelid")
+
+    maus = page.evaluate(
+        """() => {
+      const names = [
+        "Mausoleum Knight Armor",
+        "Mausoleum Knight Armor (Altered)",
+        "Mausoleum Knight Gauntlets",
+        "Mausoleum Knight Greaves",
+      ];
+      return Object.fromEntries(names.map(n => {
+        const a = ARMOR.find(x => x.name === n);
+        return [n, a ? a.areas : null];
+      }));
+    }"""
+    )
+    print("Mausoleum Knight areas:", maus)
+    for name, areas in maus.items():
+        if not areas or "Liurnia of the Lakes" not in areas:
+            raise SystemExit(f"{name} should be tagged Liurnia of the Lakes")
+        if "Weeping Peninsula" in areas:
+            raise SystemExit(f"{name} should not be tagged Weeping Peninsula")
 
     page.locator(".area-btn", has_text="Starting Gear").first.click()
     page.wait_for_timeout(150)
@@ -383,6 +408,36 @@ with sync_playwright() as p:
         raise SystemExit("Hero + Starting Gear should include Battle Axe")
     if class_pool["seal"]["inPool"]:
         raise SystemExit("Hero + Starting Gear should exclude Finger Seal")
+
+    page.select_option("#starting-class", "Heavy Knight")
+    page.wait_for_timeout(150)
+    heavy = page.evaluate(
+        """() => {
+      const steel = ARMOR.find(a => a.name === "Steel Helm");
+      const silver = ARMOR.find(a => a.name === "Silver Grooved Helm");
+      const scim = WEAPONS.find(w => w.name === "Hefty Scimitar");
+      const idus = WEAPONS.find(w => w.name === "Idus Sword");
+      return {
+        steel: { inPool: isIncluded(steel, "armor"), classes: steel.startingClasses || [], areas: steel.areas },
+        silver: { inPool: isIncluded(silver, "armor"), classes: silver.startingClasses || [] },
+        scim: { inPool: isIncluded(scim, "weapons"), classes: scim.startingClasses || [], areas: scim.areas },
+        idus: { inPool: isIncluded(idus, "weapons") },
+      };
+    }"""
+    )
+    print("Heavy Knight kit:", heavy)
+    if heavy["steel"]["classes"] != ["Heavy Knight"]:
+        raise SystemExit("Steel Helm should be tagged as Heavy Knight starting gear")
+    if heavy["scim"]["classes"] != ["Heavy Knight"]:
+        raise SystemExit("Hefty Scimitar should be tagged as Heavy Knight starting gear")
+    if "Starting Gear" not in heavy["steel"]["areas"] or "Weeping Peninsula" not in heavy["steel"]["areas"]:
+        raise SystemExit("Steel Helm should be Starting Gear and Weeping Peninsula")
+    if "Starting Gear" not in heavy["scim"]["areas"] or "Limgrave" not in heavy["scim"]["areas"]:
+        raise SystemExit("Hefty Scimitar should be Starting Gear and Limgrave")
+    if not heavy["steel"]["inPool"] or not heavy["scim"]["inPool"]:
+        raise SystemExit("Heavy Knight + Starting Gear should include the Steel set and Hefty Scimitar")
+    if heavy["silver"]["inPool"] or heavy["idus"]["inPool"]:
+        raise SystemExit("Heavy Knight + Starting Gear should exclude the Idus Knight kit")
 
     page.select_option("#starting-class", "")
     page.wait_for_timeout(150)

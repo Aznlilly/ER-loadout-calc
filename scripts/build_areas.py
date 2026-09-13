@@ -171,11 +171,13 @@ DLC_REGIONS = {
 
 STARTING_GEAR = "Starting Gear"
 
-# TE Idus Knight kit (shop text omits "starting") plus every class's
-# starting arms. Armor kits are inferred from acquire prose.
+# TE kits (shop text omits "starting") plus every class's starting arms.
+# Base-game armor kits are inferred from acquire prose.
 STARTING_GEAR_EXTRA = {
     "Silver Grooved Helm", "Silver Grooved Armor", "Silver Grooved Gauntlets",
     "Silver Grooved Greaves", "Silver Grooved Shield", "Idus Sword",
+    "Steel Helm", "Steel Armor", "Steel Gauntlets", "Steel Greaves",
+    "Hefty Scimitar",
     "Longsword", "Halberd", "Heater Shield",
     "Scimitar", "Riveted Wooden Shield",
     "Battle Axe", "Large Leather Shield",
@@ -191,7 +193,7 @@ STARTING_GEAR_EXTRA = {
 STARTING_CLASS_ORDER = [
     "Vagabond", "Warrior", "Hero", "Bandit", "Astrologer",
     "Prophet", "Samurai", "Prisoner", "Confessor", "Wretch",
-    "Idus Knight",
+    "Heavy Knight", "Idus Knight",
 ]
 
 STARTING_CLASS_BY_NAME = {
@@ -201,6 +203,11 @@ STARTING_CLASS_BY_NAME = {
     "Silver Grooved Greaves": ["Idus Knight"],
     "Silver Grooved Shield": ["Idus Knight"],
     "Idus Sword": ["Idus Knight"],
+    "Steel Helm": ["Heavy Knight"],
+    "Steel Armor": ["Heavy Knight"],
+    "Steel Gauntlets": ["Heavy Knight"],
+    "Steel Greaves": ["Heavy Knight"],
+    "Hefty Scimitar": ["Heavy Knight"],
     "Longsword": ["Vagabond"],
     "Halberd": ["Vagabond"],
     "Heater Shield": ["Vagabond"],
@@ -577,6 +584,12 @@ def main():
         "Scaled Armor (Altered)": ["Mt. Gelmir"],
         "Scaled Gauntlets": ["Mt. Gelmir"],
         "Scaled Greaves": ["Mt. Gelmir"],
+        # Wiki acquire text claims a Mausoleum Knight at the Weeping Peninsula
+        # Walking Mausoleum. There isn't one; they farm in Liurnia.
+        "Mausoleum Knight Armor": ["Liurnia of the Lakes"],
+        "Mausoleum Knight Armor (Altered)": ["Liurnia of the Lakes"],
+        "Mausoleum Knight Gauntlets": ["Liurnia of the Lakes"],
+        "Mausoleum Knight Greaves": ["Liurnia of the Lakes"],
     }
 
     # Tarnished Pack weapons are not on the per-region wiki item lists.

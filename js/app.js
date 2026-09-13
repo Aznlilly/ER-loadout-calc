@@ -70,7 +70,7 @@ const selectedRegions = new Set(MASTER_REGION_ORDER);
 const STARTING_CLASS_ORDER = [
   "Vagabond", "Warrior", "Hero", "Bandit", "Astrologer",
   "Prophet", "Samurai", "Prisoner", "Confessor", "Wretch",
-  "Idus Knight",
+  "Heavy Knight", "Idus Knight",
 ];
 let selectedStartingClass = "";
 

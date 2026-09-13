@@ -126,10 +126,14 @@
   "dlc": false,
   "altered": false,
   "areas": [
+   "Starting Gear",
    "Weeping Peninsula"
   ],
   "icon": "img/armor/helm-steel-helm.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Helm"
+  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Helm",
+  "startingClasses": [
+   "Heavy Knight"
+  ]
  },
  {
   "id": "helm-dane-s-hat",
@@ -6894,10 +6898,14 @@
   "dlc": false,
   "altered": false,
   "areas": [
+   "Starting Gear",
    "Weeping Peninsula"
   ],
   "icon": "img/armor/chest-steel-armor.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Armor"
+  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Armor",
+  "startingClasses": [
+   "Heavy Knight"
+  ]
  },
  {
   "id": "chest-silver-grooved-armor",
@@ -13321,8 +13329,7 @@
   "dlc": false,
   "altered": false,
   "areas": [
-   "Liurnia of the Lakes",
-   "Weeping Peninsula"
+   "Liurnia of the Lakes"
   ],
   "icon": "img/armor/chest-mausoleum-knight-armor.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Knight_Armor"
@@ -13354,8 +13361,7 @@
   "dlc": false,
   "altered": true,
   "areas": [
-   "Liurnia of the Lakes",
-   "Weeping Peninsula"
+   "Liurnia of the Lakes"
   ],
   "icon": "img/armor/chest-mausoleum-knight-armor-altered.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Knight_Armor_(Altered)"
@@ -15036,10 +15042,14 @@
   "dlc": false,
   "altered": false,
   "areas": [
+   "Starting Gear",
    "Weeping Peninsula"
   ],
   "icon": "img/armor/gauntlets-steel-gauntlets.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Gauntlets"
+  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Gauntlets",
+  "startingClasses": [
+   "Heavy Knight"
+  ]
  },
  {
   "id": "gauntlets-dryleaf-arm-wraps",
@@ -19115,10 +19125,14 @@
   "dlc": false,
   "altered": false,
   "areas": [
+   "Starting Gear",
    "Weeping Peninsula"
   ],
   "icon": "img/armor/legs-steel-greaves.png",
-  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Greaves"
+  "wiki": "https://eldenring.wiki.fextralife.com/Steel_Greaves",
+  "startingClasses": [
+   "Heavy Knight"
+  ]
  },
  {
   "id": "legs-dryleaf-cuissardes",
@@ -23343,8 +23357,7 @@
   "dlc": false,
   "altered": false,
   "areas": [
-   "Liurnia of the Lakes",
-   "Weeping Peninsula"
+   "Liurnia of the Lakes"
   ],
   "icon": "img/armor/legs-mausoleum-knight-greaves.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Knight_Greaves"
