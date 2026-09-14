@@ -68,6 +68,11 @@ SKIP_TITLES = {
     "leg armor",
 }
 
+# In-game name collides with a wiki category page. Use the Chain Set piece page.
+ITEM_PAGE_OVERRIDES = {
+    "Gauntlets": "Chain_Gauntlets",
+}
+
 
 def norm_name(s: str) -> str:
     s = htmlmod.unescape(s or "")
@@ -200,7 +205,7 @@ def extract_pairs(html: str) -> dict[str, str]:
 
 
 def fallback_item_page(name: str) -> str | None:
-    page = name.replace(" ", "_")
+    page = ITEM_PAGE_OVERRIDES.get(name, name.replace(" ", "_"))
     html = fetch_html(page)
     if not html:
         return None
@@ -271,8 +276,8 @@ def ext_for(url: str) -> str:
     return ".png"
 
 
-def download(url: str, dest: Path) -> bool:
-    if dest.exists() and dest.stat().st_size > 0:
+def download(url: str, dest: Path, force: bool = False) -> bool:
+    if dest.exists() and dest.stat().st_size > 0 and not force:
         return True
     dest.parent.mkdir(parents=True, exist_ok=True)
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Referer": BASE})
@@ -357,19 +362,23 @@ def process_items(kind: str, items: list, catalog: dict[str, str], icon_map: dic
     missing = []
     for it in items:
         item_id = it["id"]
-        if item_id in icon_map and (ROOT / icon_map[item_id]).exists():
+        if item_id in icon_map and (ROOT / icon_map[item_id]).exists() and it["name"] not in ITEM_PAGE_OVERRIDES:
             continue
-        url = match_url(it["name"], catalog)
+        url = None
+        if it["name"] in ITEM_PAGE_OVERRIDES:
+            url = fallback_item_page(it["name"])
+        if not url:
+            url = match_url(it["name"], catalog)
         if not url:
             missing.append(it)
             continue
         dest = ROOT / "img" / kind / f"{item_id}{ext_for(url)}"
-        pending_dl.append((it, url, dest))
+        pending_dl.append((it, url, dest, it["name"] in ITEM_PAGE_OVERRIDES))
 
     print(f"{kind}: {len(pending_dl)} catalog hits to download, {len(missing)} unmatched", flush=True)
-    for i, (it, url, dest) in enumerate(pending_dl, 1):
+    for i, (it, url, dest, force) in enumerate(pending_dl, 1):
         rel = dest.relative_to(ROOT).as_posix()
-        if download(url, dest):
+        if download(url, dest, force=force):
             icon_map[it["id"]] = rel
         if i % 50 == 0:
             print(f"  {kind} downloaded {i}/{len(pending_dl)}", flush=True)

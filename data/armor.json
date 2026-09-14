@@ -291,7 +291,9 @@
   "altered": false,
   "icon": "img/armor/helm-verdigris-helm.png",
   "areas": [
-   "Enir-Ilim"
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Verdigris_Helm"
  },
@@ -508,7 +510,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/helm-helm-of-night.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Helm_of_Night"
  },
  {
@@ -539,6 +543,8 @@
   "altered": false,
   "icon": "img/armor/helm-igon-s-helm.png",
   "areas": [
+   "Abyssal Woods",
+   "Gravesite Plain",
    "Jagged Peak"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Igon%27s_Helm"
@@ -631,7 +637,9 @@
   "altered": false,
   "icon": "img/armor/helm-freyja-s-helm.png",
   "areas": [
-   "Enir-Ilim"
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Freyja%27s_Helm"
  },
@@ -693,7 +701,12 @@
   "altered": false,
   "icon": "img/armor/helm-messmer-soldier-helm.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
    "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Messmer_Soldier_Helm"
@@ -725,7 +738,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/helm-black-knight-helm.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Black_Knight_Helm"
  },
  {
@@ -883,7 +902,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/helm-salza-s-hood.png",
-  "areas": [],
+  "areas": [
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Salza%27s_Hood"
  },
  {
@@ -977,7 +998,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/helm-death-knight-helm.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Death_Knight_Helm"
  },
  {
@@ -1007,7 +1030,17 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/helm-curseblade-mask.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Scaduview"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Curseblade_Mask"
  },
  {
@@ -1132,7 +1165,10 @@
   "altered": false,
   "icon": "img/armor/helm-common-soldier-helm.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
    "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Common_Soldier_Helm"
@@ -1165,7 +1201,11 @@
   "altered": false,
   "icon": "img/armor/helm-horned-warrior-helm.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Horned_Warrior_Helm"
  },
@@ -1197,7 +1237,11 @@
   "altered": false,
   "icon": "img/armor/helm-divine-beast-helm.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Divine_Beast_Helm"
  },
@@ -1229,7 +1273,10 @@
   "altered": false,
   "icon": "img/armor/helm-divine-bird-helm.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Divine_Bird_Helm"
  },
@@ -1357,7 +1404,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/helm-shadow-militiaman-helm.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Shadow_Militiaman_Helm"
  },
  {
@@ -1513,7 +1566,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/helm-imp-head-lion.png",
-  "areas": [],
+  "areas": [
+   "Ancient Ruins of Rauh"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Imp_Head_(Lion)"
  },
  {
@@ -1673,8 +1728,14 @@
   "altered": false,
   "icon": "img/armor/helm-aristocrat-hat.png",
   "areas": [
+   "Altus Plateau",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Aristocrat_Hat"
  },
@@ -1706,8 +1767,16 @@
   "altered": false,
   "icon": "img/armor/helm-aristocrat-headband.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
+   "Gravesite Plain",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mt. Gelmir",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Aristocrat_Headband"
  },
@@ -1875,7 +1944,6 @@
   "altered": false,
   "icon": "img/armor/helm-banished-knight-helm.png",
   "areas": [
-   "Caelid",
    "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Banished_Knight_Helm"
@@ -1908,7 +1976,8 @@
   "altered": true,
   "icon": "img/armor/helm-banished-knight-helm-altered.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Banished_Knight_Helm_(Altered)"
  },
@@ -1974,6 +2043,7 @@
   "icon": "img/armor/helm-black-dumpling.png",
   "areas": [
    "Leyndell, Royal Capital",
+   "Mountaintops of the Giants",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Black_Dumpling"
@@ -2133,6 +2203,7 @@
   "altered": false,
   "icon": "img/armor/helm-blackguard-s-iron-mask.png",
   "areas": [
+   "Capital Outskirts",
    "Leyndell, Royal Capital",
    "Liurnia of the Lakes"
   ],
@@ -2299,7 +2370,9 @@
   "icon": "img/armor/helm-blue-silver-mail-hood.png",
   "areas": [
    "Consecrated Snowfield",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Scaduview"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Blue_Silver_Mail_Hood"
  },
@@ -2531,6 +2604,7 @@
   "areas": [
    "Altus Plateau",
    "Caelid",
+   "Consecrated Snowfield",
    "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cleanrot_Helm"
@@ -2629,8 +2703,13 @@
   "altered": true,
   "icon": "img/armor/helm-commoner-s-headband-altered.png",
   "areas": [
+   "Ainsel River",
+   "Caelid",
+   "Leyndell, Ashen Capital",
    "Leyndell, Royal Capital",
-   "Limgrave"
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Commoner%27s_Headband_(Altered)"
  },
@@ -2897,6 +2976,7 @@
   "altered": false,
   "icon": "img/armor/helm-cuckoo-knight-helm.png",
   "areas": [
+   "Altus Plateau",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cuckoo_Knight_Helm"
@@ -2929,7 +3009,8 @@
   "altered": false,
   "icon": "img/armor/helm-depraved-perfumer-headscarf.png",
   "areas": [
-   "Altus Plateau"
+   "Altus Plateau",
+   "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Depraved_Perfumer_Headscarf"
  },
@@ -2961,7 +3042,9 @@
   "altered": false,
   "icon": "img/armor/helm-diallos-s-mask.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Mt. Gelmir",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Diallos%27s_Mask"
  },
@@ -3057,6 +3140,7 @@
   "altered": false,
   "icon": "img/armor/helm-duelist-helm.png",
   "areas": [
+   "Altus Plateau",
    "Leyndell, Royal Capital"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Duelist_Helm"
@@ -3089,7 +3173,9 @@
   "altered": false,
   "icon": "img/armor/helm-eccentric-s-hood.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Eccentric%27s_Hood"
  },
@@ -3407,6 +3493,7 @@
   "altered": false,
   "icon": "img/armor/helm-fire-monk-hood.png",
   "areas": [
+   "Ainsel River",
    "Liurnia of the Lakes",
    "Mountaintops of the Giants",
    "Mt. Gelmir"
@@ -3474,7 +3561,8 @@
   "altered": false,
   "icon": "img/armor/helm-foot-soldier-cap.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Cap"
  },
@@ -3506,7 +3594,9 @@
   "altered": false,
   "icon": "img/armor/helm-foot-soldier-helm.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Dragonbarrow",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Helm"
  },
@@ -3538,6 +3628,8 @@
   "altered": false,
   "icon": "img/armor/helm-foot-soldier-helmet.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Helmet"
@@ -3602,7 +3694,10 @@
   "altered": false,
   "icon": "img/armor/helm-gilded-foot-soldier-cap.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Altus Plateau",
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gilded_Foot_Soldier_Cap"
  },
@@ -3666,7 +3761,8 @@
   "altered": false,
   "icon": "img/armor/helm-godrick-knight-helm.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Godrick_Knight_Helm"
  },
@@ -3796,6 +3892,9 @@
   "altered": false,
   "icon": "img/armor/helm-great-horned-headband.png",
   "areas": [
+   "Ainsel River",
+   "Consecrated Snowfield",
+   "Liurnia of the Lakes",
    "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Great_Horned_Headband"
@@ -3892,7 +3991,10 @@
   "altered": false,
   "icon": "img/armor/helm-guardian-mask.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
    "Capital Outskirts",
+   "Consecrated Snowfield",
    "Dragonbarrow",
    "Leyndell, Royal Capital",
    "Liurnia of the Lakes",
@@ -4218,7 +4320,14 @@
   "altered": false,
   "icon": "img/armor/helm-imp-head-cat.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
+   "Leyndell, Royal Capital",
    "Limgrave",
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
    "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Imp_Head_(Cat)"
@@ -4317,7 +4426,12 @@
   "icon": "img/armor/helm-imp-head-fanged.png",
   "areas": [
    "Altus Plateau",
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Imp_Head_(Fanged)"
  },
@@ -4349,6 +4463,8 @@
   "altered": false,
   "icon": "img/armor/helm-imp-head-long-tongued.png",
   "areas": [
+   "Altus Plateau",
+   "Capital Outskirts",
    "Leyndell, Royal Capital"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Imp_Head_(Long-Tongued)"
@@ -4381,7 +4497,15 @@
   "altered": false,
   "icon": "img/armor/helm-imp-head-wolf.png",
   "areas": [
-   "Caelid"
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Imp_Head_(Wolf)"
  },
@@ -4477,6 +4601,10 @@
   "altered": false,
   "icon": "img/armor/helm-iron-kasa.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
    "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Iron_Kasa"
@@ -4573,7 +4701,10 @@
   "altered": false,
   "icon": "img/armor/helm-kaiden-helm.png",
   "areas": [
-   "Limgrave"
+   "Consecrated Snowfield",
+   "Limgrave",
+   "Mountaintops of the Giants",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Kaiden_Helm"
  },
@@ -4738,7 +4869,10 @@
   "icon": "img/armor/helm-leyndell-knight-helm.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leyndell_Knight_Helm"
  },
@@ -4771,6 +4905,7 @@
   "icon": "img/armor/helm-leyndell-soldier-helm.png",
   "areas": [
    "Altus Plateau",
+   "Capital Outskirts",
    "Leyndell, Royal Capital",
    "Mt. Gelmir"
   ],
@@ -5037,6 +5172,7 @@
    "Liurnia of the Lakes",
    "Mountaintops of the Giants",
    "Mt. Gelmir",
+   "Scadu Altus",
    "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Marionette_Soldier_Helm"
@@ -5134,6 +5270,7 @@
   "altered": false,
   "icon": "img/armor/helm-mushroom-head.png",
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mushroom_Head"
@@ -5198,8 +5335,10 @@
   "altered": false,
   "icon": "img/armor/helm-night-maiden-twin-crown.png",
   "areas": [
+   "Ainsel River",
    "Nokron, Eternal City",
-   "Nokstella, Eternal City"
+   "Nokstella, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Night_Maiden_Twin_Crown"
  },
@@ -5359,6 +5498,8 @@
   "altered": false,
   "icon": "img/armor/helm-nox-monk-hood.png",
   "areas": [
+   "Ainsel River",
+   "Liurnia of the Lakes",
    "Nokstella, Eternal City"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Nox_Monk_Hood"
@@ -5423,8 +5564,10 @@
   "altered": false,
   "icon": "img/armor/helm-nox-swordstress-crown.png",
   "areas": [
+   "Ainsel River",
    "Nokron, Eternal City",
-   "Nokstella, Eternal City"
+   "Nokstella, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Nox_Swordstress_Crown"
  },
@@ -5490,8 +5633,13 @@
   "icon": "img/armor/helm-octopus-head.png",
   "areas": [
    "Altus Plateau",
+   "Caelid",
+   "Consecrated Snowfield",
    "Limgrave",
-   "Siofra River"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Siofra River",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Octopus_Head"
  },
@@ -5556,8 +5704,12 @@
   "icon": "img/armor/helm-old-aristocrat-cowl.png",
   "areas": [
    "Altus Plateau",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Old_Aristocrat_Cowl"
  },
@@ -5621,7 +5773,9 @@
   "altered": false,
   "icon": "img/armor/helm-omen-helm.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Omen_Helm"
  },
@@ -5685,8 +5839,14 @@
   "altered": false,
   "icon": "img/armor/helm-page-hood.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Consecrated Snowfield",
+   "Gravesite Plain",
    "Leyndell, Royal Capital",
    "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir",
    "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Page_Hood"
@@ -5720,7 +5880,10 @@
   "icon": "img/armor/helm-perfumer-hood.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Leyndell, Royal Capital",
+   "Scadu Altus"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Perfumer_Hood"
  },
@@ -5926,7 +6089,9 @@
   "altered": false,
   "icon": "img/armor/helm-radahn-soldier-helm.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Dragonbarrow",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Radahn_Soldier_Helm"
  },
@@ -6055,6 +6220,8 @@
   "altered": false,
   "icon": "img/armor/helm-raya-lucarian-helm.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Raya_Lucarian_Helm"
@@ -6087,7 +6254,8 @@
   "altered": false,
   "icon": "img/armor/helm-redmane-knight-helm.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Redmane_Knight_Helm"
  },
@@ -6605,6 +6773,7 @@
   "altered": false,
   "icon": "img/armor/helm-tree-sentinel-helm.png",
   "areas": [
+   "Altus Plateau",
    "Capital Outskirts"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Tree_Sentinel_Helm"
@@ -6638,7 +6807,9 @@
   "icon": "img/armor/helm-twinned-helm.png",
   "areas": [
    "Deeproot Depths",
-   "Limgrave"
+   "Limgrave",
+   "Roundtable Hold",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Twinned_Helm"
  },
@@ -6770,8 +6941,15 @@
   "altered": false,
   "icon": "img/armor/helm-vulgar-militia-helm.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
    "Dragonbarrow",
-   "Liurnia of the Lakes"
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Vulgar_Militia_Helm"
  },
@@ -7230,7 +7408,9 @@
   "altered": false,
   "icon": "img/armor/chest-verdigris-armor.png",
   "areas": [
-   "Enir-Ilim"
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Verdigris_Armor"
  },
@@ -7505,7 +7685,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/chest-armor-of-night.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Armor_of_Night"
  },
  {
@@ -7536,6 +7718,8 @@
   "altered": false,
   "icon": "img/armor/chest-igon-s-armor.png",
   "areas": [
+   "Abyssal Woods",
+   "Gravesite Plain",
    "Jagged Peak"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Igon%27s_Armor"
@@ -7660,7 +7844,9 @@
   "altered": false,
   "icon": "img/armor/chest-freyja-s-armor.png",
   "areas": [
-   "Enir-Ilim"
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Freyja%27s_Armor"
  },
@@ -7782,6 +7968,12 @@
   "altered": false,
   "icon": "img/armor/chest-messmer-soldier-armor.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
+   "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Messmer_Soldier_Armor"
@@ -7843,7 +8035,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/chest-black-knight-armor.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Black_Knight_Armor"
  },
  {
@@ -8031,7 +8229,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/chest-death-knight-armor.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Death_Knight_Armor"
  },
  {
@@ -8157,7 +8357,10 @@
   "altered": false,
   "icon": "img/armor/chest-common-soldier-cloth-armor.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
    "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Common_Soldier_Cloth_Armor"
@@ -8190,7 +8393,11 @@
   "altered": false,
   "icon": "img/armor/chest-horned-warrior-armor.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Horned_Warrior_Armor"
  },
@@ -8222,8 +8429,11 @@
   "altered": false,
   "icon": "img/armor/chest-divine-beast-warrior-armor.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
    "Belurat, Tower Settlement",
-   "Enir-Ilim"
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Divine_Beast_Warrior_Armor"
  },
@@ -8255,7 +8465,10 @@
   "altered": false,
   "icon": "img/armor/chest-divine-bird-warrior-armor.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Divine_Bird_Warrior_Armor"
  },
@@ -8381,7 +8594,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/chest-shadow-militiaman-armor.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Shadow_Militiaman_Armor"
  },
  {
@@ -8411,7 +8630,17 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/chest-ascetic-s-loincloth.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Scaduview"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ascetic%27s_Loincloth"
  },
  {
@@ -8507,8 +8736,14 @@
   "altered": false,
   "icon": "img/armor/chest-aristocrat-coat.png",
   "areas": [
+   "Altus Plateau",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Aristocrat_Coat"
  },
@@ -8540,7 +8775,16 @@
   "altered": false,
   "icon": "img/armor/chest-aristocrat-garb.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
+   "Gravesite Plain",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mt. Gelmir",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Aristocrat_Garb"
  },
@@ -8677,7 +8921,6 @@
   "altered": false,
   "icon": "img/armor/chest-banished-knight-armor.png",
   "areas": [
-   "Caelid",
    "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Banished_Knight_Armor"
@@ -8876,7 +9119,9 @@
   "icon": "img/armor/chest-blue-silver-mail-armor.png",
   "areas": [
    "Consecrated Snowfield",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Scaduview"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Blue_Silver_Mail_Armor"
  },
@@ -9108,7 +9353,10 @@
   "altered": false,
   "icon": "img/armor/chest-cleanrot-armor.png",
   "areas": [
-   "Caelid"
+   "Altus Plateau",
+   "Caelid",
+   "Consecrated Snowfield",
+   "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cleanrot_Armor"
  },
@@ -9172,8 +9420,13 @@
   "altered": false,
   "icon": "img/armor/chest-commoner-s-garb.png",
   "areas": [
+   "Ainsel River",
+   "Caelid",
+   "Leyndell, Ashen Capital",
    "Leyndell, Royal Capital",
-   "Limgrave"
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Commoner%27s_Garb"
  },
@@ -9338,6 +9591,8 @@
   "altered": false,
   "icon": "img/armor/chest-cuckoo-surcoat.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cuckoo_Surcoat"
@@ -9435,7 +9690,9 @@
   "altered": false,
   "icon": "img/armor/chest-eccentric-s-armor.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Eccentric%27s_Armor"
  },
@@ -9499,7 +9756,10 @@
   "altered": false,
   "icon": "img/armor/chest-erdtree-surcoat.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Altus Plateau",
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Erdtree_Surcoat"
  },
@@ -9753,6 +10013,7 @@
   "altered": false,
   "icon": "img/armor/chest-fire-monk-armor.png",
   "areas": [
+   "Ainsel River",
    "Liurnia of the Lakes",
    "Mountaintops of the Giants",
    "Mt. Gelmir"
@@ -9787,6 +10048,8 @@
   "altered": false,
   "icon": "img/armor/chest-fur-raiment.png",
   "areas": [
+   "Ainsel River",
+   "Consecrated Snowfield",
    "Liurnia of the Lakes",
    "Nokron, Eternal City",
    "Siofra River"
@@ -9853,7 +10116,8 @@
   "altered": false,
   "icon": "img/armor/chest-godrick-knight-armor.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Godrick_Knight_Armor"
  },
@@ -9918,7 +10182,8 @@
   "altered": false,
   "icon": "img/armor/chest-tree-and-beast-surcoat.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Tree-and-Beast_Surcoat"
  },
@@ -10110,7 +10375,10 @@
   "altered": false,
   "icon": "img/armor/chest-kaiden-armor.png",
   "areas": [
-   "Limgrave"
+   "Consecrated Snowfield",
+   "Limgrave",
+   "Mountaintops of the Giants",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Kaiden_Armor"
  },
@@ -10179,7 +10447,9 @@
   "icon": "img/armor/chest-leather-draped-tabard.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leather-Draped_Tabard"
  },
@@ -10431,6 +10701,7 @@
   "altered": false,
   "icon": "img/armor/chest-mushroom-body.png",
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mushroom_Body"
@@ -10496,7 +10767,12 @@
   "icon": "img/armor/chest-old-aristocrat-gown.png",
   "areas": [
    "Altus Plateau",
-   "Liurnia of the Lakes"
+   "Capital Outskirts",
+   "Consecrated Snowfield",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Old_Aristocrat_Gown"
  },
@@ -10794,7 +11070,9 @@
   "altered": false,
   "icon": "img/armor/chest-raya-lucarian-robe.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Raya_Lucarian_Robe"
  },
@@ -11084,7 +11362,9 @@
   "icon": "img/armor/chest-twinned-armor.png",
   "areas": [
    "Deeproot Depths",
-   "Limgrave"
+   "Limgrave",
+   "Roundtable Hold",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Twinned_Armor"
  },
@@ -11286,6 +11566,7 @@
    "Liurnia of the Lakes",
    "Mountaintops of the Giants",
    "Mt. Gelmir",
+   "Scadu Altus",
    "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Marionette_Soldier_Armor"
@@ -11383,7 +11664,16 @@
   "altered": true,
   "icon": "img/armor/chest-aristocrat-garb-altered.png",
   "areas": [
-   "Limgrave"
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Aristocrat_Garb_(Altered)"
  },
@@ -11452,7 +11742,9 @@
   "icon": "img/armor/chest-banished-knight-armor-altered.png",
   "areas": [
    "Caelid",
-   "Limgrave"
+   "Crumbling Farum Azula",
+   "Limgrave",
+   "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Banished_Knight_Armor_(Altered)"
  },
@@ -11516,7 +11808,8 @@
   "altered": true,
   "icon": "img/armor/chest-beast-champion-armor-altered.png",
   "areas": [
-   "Crumbling Farum Azula"
+   "Crumbling Farum Azula",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Beast_Champion_Armor_(Altered)"
  },
@@ -11675,7 +11968,9 @@
   "dlc": false,
   "altered": false,
   "icon": "img/armor/chest-bloodsoaked-tabard.png",
-  "areas": [],
+  "areas": [
+   "Consecrated Snowfield"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Bloodsoaked_Tabard"
  },
  {
@@ -12032,7 +12327,10 @@
   "icon": "img/armor/chest-corhyn-s-robe.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Leyndell, Ashen Capital",
+   "Leyndell, Royal Capital",
+   "Mountaintops of the Giants",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Corhyn%27s_Robe"
  },
@@ -12129,6 +12427,7 @@
   "altered": false,
   "icon": "img/armor/chest-cuckoo-knight-armor.png",
   "areas": [
+   "Altus Plateau",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cuckoo_Knight_Armor"
@@ -12223,7 +12522,9 @@
   "altered": false,
   "icon": "img/armor/chest-dirty-chainmail.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Consecrated Snowfield",
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Dirty_Chainmail"
  },
@@ -12608,6 +12909,8 @@
   "altered": false,
   "icon": "img/armor/chest-foot-soldier-tabard.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Tabard"
@@ -12766,6 +13069,7 @@
   "altered": false,
   "icon": "img/armor/chest-gravekeeper-cloak.png",
   "areas": [
+   "Altus Plateau",
    "Leyndell, Royal Capital"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gravekeeper_Cloak"
@@ -12830,7 +13134,10 @@
   "altered": false,
   "icon": "img/armor/chest-guardian-garb.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
    "Capital Outskirts",
+   "Consecrated Snowfield",
    "Dragonbarrow",
    "Leyndell, Royal Capital",
    "Liurnia of the Lakes",
@@ -13131,6 +13438,8 @@
   "altered": false,
   "icon": "img/armor/chest-lazuli-robe.png",
   "areas": [
+   "Caelid",
+   "Gravesite Plain",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Lazuli_Robe"
@@ -13164,7 +13473,9 @@
   "icon": "img/armor/chest-leather-armor.png",
   "areas": [
    "Altus Plateau",
-   "Limgrave"
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leather_Armor"
  },
@@ -13197,7 +13508,10 @@
   "icon": "img/armor/chest-leyndell-knight-armor.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leyndell_Knight_Armor"
  },
@@ -13451,6 +13765,8 @@
   "altered": false,
   "icon": "img/armor/chest-mausoleum-knight-armor.png",
   "areas": [
+   "Consecrated Snowfield",
+   "Deeproot Depths",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Knight_Armor"
@@ -13515,7 +13831,10 @@
   "altered": false,
   "icon": "img/armor/chest-mausoleum-surcoat.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Consecrated Snowfield",
+   "Deeproot Depths",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Surcoat"
  },
@@ -13547,8 +13866,10 @@
   "altered": false,
   "icon": "img/armor/chest-night-maiden-armor.png",
   "areas": [
+   "Ainsel River",
    "Nokron, Eternal City",
-   "Nokstella, Eternal City"
+   "Nokstella, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Night_Maiden_Armor"
  },
@@ -13708,7 +14029,9 @@
   "altered": false,
   "icon": "img/armor/chest-nox-monk-armor.png",
   "areas": [
+   "Ainsel River",
    "Caelid",
+   "Liurnia of the Lakes",
    "Nokstella, Eternal City"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Nox_Monk_Armor"
@@ -13774,8 +14097,10 @@
   "altered": false,
   "icon": "img/armor/chest-nox-swordstress-armor.png",
   "areas": [
+   "Ainsel River",
    "Nokron, Eternal City",
-   "Nokstella, Eternal City"
+   "Nokstella, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Nox_Swordstress_Armor"
  },
@@ -13840,6 +14165,7 @@
   "altered": false,
   "icon": "img/armor/chest-official-s-attire.png",
   "areas": [
+   "Capital Outskirts",
    "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Official%27s_Attire"
@@ -13872,7 +14198,9 @@
   "altered": false,
   "icon": "img/armor/chest-omen-armor.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Omen_Armor"
  },
@@ -13904,8 +14232,15 @@
   "altered": false,
   "icon": "img/armor/chest-page-garb.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Consecrated Snowfield",
+   "Gravesite Plain",
    "Leyndell, Royal Capital",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Page_Garb"
  },
@@ -13970,7 +14305,11 @@
   "altered": false,
   "icon": "img/armor/chest-perfumer-robe.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Altus Plateau",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Leyndell, Royal Capital",
+   "Scadu Altus"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Perfumer_Robe"
  },
@@ -14230,7 +14569,8 @@
   "altered": false,
   "icon": "img/armor/chest-redmane-knight-armor.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Redmane_Knight_Armor"
  },
@@ -14294,7 +14634,9 @@
   "altered": false,
   "icon": "img/armor/chest-redmane-surcoat.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Dragonbarrow",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Redmane_Surcoat"
  },
@@ -14326,6 +14668,9 @@
   "altered": false,
   "icon": "img/armor/chest-ronin-s-armor.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
+   "Liurnia of the Lakes",
    "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ronin%27s_Armor"
@@ -14553,7 +14898,9 @@
   "altered": false,
   "icon": "img/armor/chest-scarlet-tabard.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Dragonbarrow",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Scarlet_Tabard"
  },
@@ -14585,6 +14932,7 @@
   "altered": false,
   "icon": "img/armor/chest-shaman-furs.png",
   "areas": [
+   "Consecrated Snowfield",
    "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Shaman_Furs"
@@ -14778,6 +15126,7 @@
   "altered": false,
   "icon": "img/armor/chest-tree-sentinel-armor.png",
   "areas": [
+   "Altus Plateau",
    "Capital Outskirts"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Tree_Sentinel_Armor"
@@ -14975,7 +15324,15 @@
   "altered": false,
   "icon": "img/armor/chest-vulgar-militia-armor.png",
   "areas": [
-   "Dragonbarrow"
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Dragonbarrow",
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Vulgar_Militia_Armor"
  },
@@ -15302,7 +15659,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-verdigris-gauntlets.png",
   "areas": [
-   "Enir-Ilim"
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Verdigris_Gauntlets"
  },
@@ -15487,7 +15846,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/gauntlets-gauntlets-of-night.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gauntlets_of_Night"
  },
  {
@@ -15518,6 +15879,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-igon-s-gauntlets.png",
   "areas": [
+   "Abyssal Woods",
+   "Gravesite Plain",
    "Jagged Peak"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Igon%27s_Gauntlets"
@@ -15582,7 +15945,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-freyja-s-gauntlets.png",
   "areas": [
-   "Enir-Ilim"
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Freyja%27s_Gauntlets"
  },
@@ -15644,6 +16009,12 @@
   "altered": false,
   "icon": "img/armor/gauntlets-messmer-soldier-gauntlets.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
+   "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Messmer_Soldier_Gauntlets"
@@ -15675,7 +16046,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/gauntlets-black-knight-gauntlets.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Black_Knight_Gauntlets"
  },
  {
@@ -15801,7 +16178,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/gauntlets-death-knight-gauntlets.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Death_Knight_Gauntlets"
  },
  {
@@ -15831,7 +16210,17 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/gauntlets-ascetic-s-wrist-guards.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Scaduview"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ascetic%27s_Wrist_Guards"
  },
  {
@@ -15924,7 +16313,10 @@
   "altered": false,
   "icon": "img/armor/gauntlets-common-soldier-gauntlets.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
    "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Common_Soldier_Gauntlets"
@@ -15957,7 +16349,11 @@
   "altered": false,
   "icon": "img/armor/gauntlets-horned-warrior-gauntlets.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Horned_Warrior_Gauntlets"
  },
@@ -15989,7 +16385,10 @@
   "altered": false,
   "icon": "img/armor/gauntlets-divine-bird-warrior-gauntlets.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Divine_Bird_Warrior_Gauntlets"
  },
@@ -16085,7 +16484,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/gauntlets-shadow-militiaman-gauntlets.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Shadow_Militiaman_Gauntlets"
  },
  {
@@ -16216,7 +16621,9 @@
   "dlc": false,
   "altered": false,
   "icon": "img/armor/gauntlets-azur-s-manchettes.png",
-  "areas": [],
+  "areas": [
+   "Mt. Gelmir"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Azur%27s_Manchettes"
  },
  {
@@ -16285,6 +16692,7 @@
   "icon": "img/armor/gauntlets-banished-knight-gauntlets.png",
   "areas": [
    "Caelid",
+   "Crumbling Farum Azula",
    "Limgrave",
    "Mountaintops of the Giants"
   ],
@@ -16350,7 +16758,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-beast-champion-gauntlets.png",
   "areas": [
-   "Crumbling Farum Azula"
+   "Crumbling Farum Azula",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Beast_Champion_Gauntlets"
  },
@@ -16544,7 +16953,9 @@
   "icon": "img/armor/gauntlets-blue-silver-bracelets.png",
   "areas": [
    "Consecrated Snowfield",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Scaduview"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Blue_Silver_Bracelets"
  },
@@ -16740,7 +17151,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-cleanrot-gauntlets.png",
   "areas": [
+   "Altus Plateau",
    "Caelid",
+   "Consecrated Snowfield",
    "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cleanrot_Gauntlets"
@@ -16841,6 +17254,7 @@
   "altered": false,
   "icon": "img/armor/gauntlets-cuckoo-knight-gauntlets.png",
   "areas": [
+   "Altus Plateau",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cuckoo_Knight_Gauntlets"
@@ -16873,7 +17287,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-depraved-perfumer-gloves.png",
   "areas": [
-   "Altus Plateau"
+   "Altus Plateau",
+   "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Depraved_Perfumer_Gloves"
  },
@@ -16937,7 +17352,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-eccentric-s-manchettes.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Eccentric%27s_Manchettes"
  },
@@ -17099,6 +17516,7 @@
   "altered": false,
   "icon": "img/armor/gauntlets-fire-monk-gauntlets.png",
   "areas": [
+   "Ainsel River",
    "Liurnia of the Lakes",
    "Mountaintops of the Giants",
    "Mt. Gelmir"
@@ -17166,7 +17584,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-foot-soldier-gauntlets.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Gauntlets"
  },
@@ -17200,7 +17619,7 @@
   "areas": [
    "Limgrave"
   ],
-  "wiki": "https://eldenring.wiki.fextralife.com/Gauntlets"
+  "wiki": "https://eldenring.wiki.fextralife.com/Chain_Gauntlets"
  },
  {
   "id": "gauntlets-gelmir-knight-gauntlets",
@@ -17262,7 +17681,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-godrick-knight-gauntlets.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Godrick_Knight_Gauntlets"
  },
@@ -17452,7 +17872,10 @@
   "altered": false,
   "icon": "img/armor/gauntlets-guardian-bracers.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
    "Capital Outskirts",
+   "Consecrated Snowfield",
    "Dragonbarrow",
    "Leyndell, Royal Capital",
    "Liurnia of the Lakes",
@@ -17648,7 +18071,10 @@
   "altered": false,
   "icon": "img/armor/gauntlets-kaiden-gauntlets.png",
   "areas": [
-   "Limgrave"
+   "Consecrated Snowfield",
+   "Limgrave",
+   "Mountaintops of the Giants",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Kaiden_Gauntlets"
  },
@@ -17749,7 +18175,9 @@
   "icon": "img/armor/gauntlets-leather-gloves.png",
   "areas": [
    "Altus Plateau",
-   "Limgrave"
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leather_Gloves"
  },
@@ -17782,7 +18210,10 @@
   "icon": "img/armor/gauntlets-leyndell-knight-gauntlets.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leyndell_Knight_Gauntlets"
  },
@@ -17814,7 +18245,10 @@
   "altered": false,
   "icon": "img/armor/gauntlets-leyndell-soldier-gauntlets.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Altus Plateau",
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leyndell_Soldier_Gauntlets"
  },
@@ -18006,7 +18440,10 @@
   "altered": false,
   "icon": "img/armor/gauntlets-mausoleum-gauntlets.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Consecrated Snowfield",
+   "Deeproot Depths",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Gauntlets"
  },
@@ -18038,6 +18475,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-mausoleum-knight-gauntlets.png",
   "areas": [
+   "Consecrated Snowfield",
+   "Deeproot Depths",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Knight_Gauntlets"
@@ -18100,6 +18539,7 @@
   "altered": false,
   "icon": "img/armor/gauntlets-mushroom-arms.png",
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mushroom_Arms"
@@ -18196,8 +18636,11 @@
   "altered": false,
   "icon": "img/armor/gauntlets-nox-bracelets.png",
   "areas": [
+   "Ainsel River",
+   "Liurnia of the Lakes",
    "Nokron, Eternal City",
-   "Nokstella, Eternal City"
+   "Nokstella, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Nox_Bracelets"
  },
@@ -18229,7 +18672,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-omen-gauntlets.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Omen_Gauntlets"
  },
@@ -18294,7 +18739,10 @@
   "icon": "img/armor/gauntlets-perfumer-gloves.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Leyndell, Royal Capital",
+   "Scadu Altus"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Perfumer_Gloves"
  },
@@ -18390,7 +18838,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-radahn-soldier-gauntlets.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Dragonbarrow",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Radahn_Soldier_Gauntlets"
  },
@@ -18517,6 +18967,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-raya-lucarian-gauntlets.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Raya_Lucarian_Gauntlets"
@@ -18549,7 +19001,8 @@
   "altered": false,
   "icon": "img/armor/gauntlets-redmane-knight-gauntlets.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Redmane_Knight_Gauntlets"
  },
@@ -18581,6 +19034,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-ronin-s-gauntlets.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
+   "Liurnia of the Lakes",
    "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ronin%27s_Gauntlets"
@@ -18711,7 +19167,9 @@
   "altered": false,
   "icon": "img/armor/gauntlets-sorcerer-manchettes.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Sorcerer_Manchettes"
  },
@@ -18872,6 +19330,7 @@
   "altered": false,
   "icon": "img/armor/gauntlets-tree-sentinel-gauntlets.png",
   "areas": [
+   "Altus Plateau",
    "Capital Outskirts"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Tree_Sentinel_Gauntlets"
@@ -18905,7 +19364,9 @@
   "icon": "img/armor/gauntlets-twinned-gauntlets.png",
   "areas": [
    "Deeproot Depths",
-   "Limgrave"
+   "Limgrave",
+   "Roundtable Hold",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Twinned_Gauntlets"
  },
@@ -19006,7 +19467,15 @@
   "altered": false,
   "icon": "img/armor/gauntlets-vulgar-militia-gauntlets.png",
   "areas": [
-   "Dragonbarrow"
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Dragonbarrow",
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Vulgar_Militia_Gauntlets"
  },
@@ -19404,7 +19873,9 @@
   "altered": false,
   "icon": "img/armor/legs-verdigris-greaves.png",
   "areas": [
-   "Enir-Ilim"
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Verdigris_Greaves"
  },
@@ -19589,7 +20060,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/legs-greaves-of-night.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Greaves_of_Night"
  },
  {
@@ -19620,6 +20093,8 @@
   "altered": false,
   "icon": "img/armor/legs-igon-s-loincloth.png",
   "areas": [
+   "Abyssal Woods",
+   "Gravesite Plain",
    "Jagged Peak"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Igon%27s_Loincloth"
@@ -19684,7 +20159,9 @@
   "altered": false,
   "icon": "img/armor/legs-freyja-s-greaves.png",
   "areas": [
-   "Enir-Ilim"
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Freyja%27s_Greaves"
  },
@@ -19746,7 +20223,12 @@
   "altered": false,
   "icon": "img/armor/legs-messmer-soldier-greaves.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
    "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Messmer_Soldier_Greaves"
@@ -19778,7 +20260,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/legs-black-knight-greaves.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Black_Knight_Greaves"
  },
  {
@@ -19904,7 +20392,9 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/legs-death-knight-greaves.png",
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Death_Knight_Greaves"
  },
  {
@@ -19934,7 +20424,17 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/legs-ascetic-s-ankle-guards.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Cerulean Coast",
+   "Charo's Hidden Grave",
+   "Enir-Ilim",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Scaduview"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ascetic%27s_Ankle_Guards"
  },
  {
@@ -20029,7 +20529,10 @@
   "altered": false,
   "icon": "img/armor/legs-common-soldier-greaves.png",
   "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
    "Gravesite Plain",
+   "Scadu Altus",
    "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Common_Soldier_Greaves"
@@ -20062,7 +20565,11 @@
   "altered": false,
   "icon": "img/armor/legs-horned-warrior-greaves.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim",
+   "Gravesite Plain"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Horned_Warrior_Greaves"
  },
@@ -20094,7 +20601,10 @@
   "altered": false,
   "icon": "img/armor/legs-divine-bird-warrior-greaves.png",
   "areas": [
-   "Belurat, Tower Settlement"
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Belurat, Tower Settlement",
+   "Enir-Ilim"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Divine_Bird_Warrior_Greaves"
  },
@@ -20190,7 +20700,13 @@
   "dlc": true,
   "altered": false,
   "icon": "img/armor/legs-shadow-militiaman-greaves.png",
-  "areas": [],
+  "areas": [
+   "Abyssal Woods",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Scadu Altus",
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Shadow_Militiaman_Greaves"
  },
  {
@@ -20359,7 +20875,10 @@
   "altered": false,
   "icon": "img/armor/legs-banished-knight-greaves.png",
   "areas": [
-   "Limgrave"
+   "Caelid",
+   "Crumbling Farum Azula",
+   "Limgrave",
+   "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Banished_Knight_Greaves"
  },
@@ -20391,7 +20910,8 @@
   "altered": false,
   "icon": "img/armor/legs-beast-champion-greaves.png",
   "areas": [
-   "Crumbling Farum Azula"
+   "Crumbling Farum Azula",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Beast_Champion_Greaves"
  },
@@ -20687,6 +21207,7 @@
   "altered": false,
   "icon": "img/armor/legs-cleanrot-greaves.png",
   "areas": [
+   "Altus Plateau",
    "Caelid",
    "Consecrated Snowfield",
    "Miquella's Haligtree"
@@ -20753,7 +21274,13 @@
   "altered": false,
   "icon": "img/armor/legs-commoner-s-shoes.png",
   "areas": [
-   "Limgrave"
+   "Ainsel River",
+   "Caelid",
+   "Leyndell, Ashen Capital",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Commoner%27s_Shoes"
  },
@@ -20888,7 +21415,9 @@
   "altered": false,
   "icon": "img/armor/legs-eccentric-s-breeches.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Eccentric%27s_Breeches"
  },
@@ -21082,7 +21611,8 @@
   "altered": false,
   "icon": "img/armor/legs-godrick-knight-greaves.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Godrick_Knight_Greaves"
  },
@@ -21147,7 +21677,10 @@
   "altered": false,
   "icon": "img/armor/legs-guardian-greaves.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
    "Capital Outskirts",
+   "Consecrated Snowfield",
    "Dragonbarrow",
    "Leyndell, Royal Capital",
    "Liurnia of the Lakes",
@@ -21247,7 +21780,10 @@
   "altered": false,
   "icon": "img/armor/legs-kaiden-trousers.png",
   "areas": [
-   "Limgrave"
+   "Consecrated Snowfield",
+   "Limgrave",
+   "Mountaintops of the Giants",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Kaiden_Trousers"
  },
@@ -21505,6 +22041,7 @@
   "altered": false,
   "icon": "img/armor/legs-mushroom-legs.png",
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mushroom_Legs"
@@ -21633,8 +22170,15 @@
   "altered": false,
   "icon": "img/armor/legs-page-trousers.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Consecrated Snowfield",
+   "Gravesite Plain",
    "Leyndell, Royal Capital",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Page_Trousers"
  },
@@ -21804,7 +22348,9 @@
   "altered": false,
   "icon": "img/armor/legs-radahn-soldier-greaves.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Dragonbarrow",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Radahn_Soldier_Greaves"
  },
@@ -21868,6 +22414,8 @@
   "altered": false,
   "icon": "img/armor/legs-raya-lucarian-greaves.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Raya_Lucarian_Greaves"
@@ -22061,7 +22609,9 @@
   "altered": false,
   "icon": "img/armor/legs-sorcerer-leggings.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Caelid",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Sorcerer_Leggings"
  },
@@ -22158,7 +22708,9 @@
   "icon": "img/armor/legs-twinned-greaves.png",
   "areas": [
    "Deeproot Depths",
-   "Limgrave"
+   "Limgrave",
+   "Roundtable Hold",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Twinned_Greaves"
  },
@@ -22390,7 +22942,11 @@
   "altered": false,
   "icon": "img/armor/legs-perfumer-sarong.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Altus Plateau",
+   "Ancient Ruins of Rauh",
+   "Gravesite Plain",
+   "Leyndell, Royal Capital",
+   "Scadu Altus"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Perfumer_Sarong"
  },
@@ -22455,6 +23011,9 @@
   "altered": false,
   "icon": "img/armor/legs-ronin-s-greaves.png",
   "areas": [
+   "Altus Plateau",
+   "Limgrave",
+   "Liurnia of the Lakes",
    "Mountaintops of the Giants"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ronin%27s_Greaves"
@@ -22552,7 +23111,9 @@
   "icon": "img/armor/legs-blue-silver-mail-skirt.png",
   "areas": [
    "Consecrated Snowfield",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Scaduview"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Blue_Silver_Mail_Skirt"
  },
@@ -22616,6 +23177,7 @@
   "altered": false,
   "icon": "img/armor/legs-tree-sentinel-greaves.png",
   "areas": [
+   "Altus Plateau",
    "Capital Outskirts"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Tree_Sentinel_Greaves"
@@ -22681,8 +23243,11 @@
   "altered": false,
   "icon": "img/armor/legs-nox-greaves.png",
   "areas": [
+   "Ainsel River",
+   "Liurnia of the Lakes",
    "Nokron, Eternal City",
-   "Nokstella, Eternal City"
+   "Nokstella, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Nox_Greaves"
  },
@@ -22714,6 +23279,7 @@
   "altered": false,
   "icon": "img/armor/legs-shaman-leggings.png",
   "areas": [
+   "Consecrated Snowfield",
    "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Shaman_Leggings"
@@ -22746,6 +23312,8 @@
   "altered": false,
   "icon": "img/armor/legs-fur-leggings.png",
   "areas": [
+   "Ainsel River",
+   "Consecrated Snowfield",
    "Liurnia of the Lakes",
    "Siofra River"
   ],
@@ -22779,6 +23347,7 @@
   "altered": false,
   "icon": "img/armor/legs-duelist-greaves.png",
   "areas": [
+   "Altus Plateau",
    "Leyndell, Royal Capital"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Duelist_Greaves"
@@ -22811,6 +23380,7 @@
   "altered": false,
   "icon": "img/armor/legs-fire-monk-greaves.png",
   "areas": [
+   "Ainsel River",
    "Liurnia of the Lakes",
    "Mountaintops of the Giants",
    "Mt. Gelmir"
@@ -22878,7 +23448,8 @@
   "altered": false,
   "icon": "img/armor/legs-foot-soldier-greaves.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Greaves"
  },
@@ -22910,8 +23481,17 @@
   "altered": false,
   "icon": "img/armor/legs-aristocrat-boots.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
+   "Gravesite Plain",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Aristocrat_Boots"
  },
@@ -22944,8 +23524,12 @@
   "icon": "img/armor/legs-old-aristocrat-shoes.png",
   "areas": [
    "Altus Plateau",
+   "Capital Outskirts",
+   "Consecrated Snowfield",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Mountaintops of the Giants",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Old_Aristocrat_Shoes"
  },
@@ -22977,8 +23561,15 @@
   "altered": false,
   "icon": "img/armor/legs-vulgar-militia-greaves.png",
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Capital Outskirts",
    "Dragonbarrow",
-   "Liurnia of the Lakes"
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Vulgar_Militia_Greaves"
  },
@@ -23042,7 +23633,8 @@
   "altered": false,
   "icon": "img/armor/legs-depraved-perfumer-trousers.png",
   "areas": [
-   "Altus Plateau"
+   "Altus Plateau",
+   "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Depraved_Perfumer_Trousers"
  },
@@ -23296,7 +23888,9 @@
   "altered": false,
   "icon": "img/armor/legs-omen-greaves.png",
   "areas": [
-   "Leyndell, Royal Capital"
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Omen_Greaves"
  },
@@ -23423,7 +24017,9 @@
   "icon": "img/armor/legs-leather-boots.png",
   "areas": [
    "Altus Plateau",
-   "Limgrave"
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leather_Boots"
  },
@@ -23489,6 +24085,7 @@
   "icon": "img/armor/legs-leyndell-soldier-greaves.png",
   "areas": [
    "Altus Plateau",
+   "Capital Outskirts",
    "Leyndell, Royal Capital",
    "Mt. Gelmir"
   ],
@@ -23522,7 +24119,10 @@
   "altered": false,
   "icon": "img/armor/legs-mausoleum-greaves.png",
   "areas": [
-   "Liurnia of the Lakes"
+   "Consecrated Snowfield",
+   "Deeproot Depths",
+   "Liurnia of the Lakes",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Greaves"
  },
@@ -23554,6 +24154,7 @@
   "altered": false,
   "icon": "img/armor/legs-cuckoo-knight-greaves.png",
   "areas": [
+   "Altus Plateau",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cuckoo_Knight_Greaves"
@@ -23587,7 +24188,10 @@
   "icon": "img/armor/legs-leyndell-knight-greaves.png",
   "areas": [
    "Altus Plateau",
-   "Leyndell, Royal Capital"
+   "Capital Outskirts",
+   "Leyndell, Royal Capital",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Leyndell_Knight_Greaves"
  },
@@ -23619,7 +24223,8 @@
   "altered": false,
   "icon": "img/armor/legs-redmane-knight-greaves.png",
   "areas": [
-   "Caelid"
+   "Caelid",
+   "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Redmane_Knight_Greaves"
  },
@@ -23651,6 +24256,8 @@
   "altered": false,
   "icon": "img/armor/legs-mausoleum-knight-greaves.png",
   "areas": [
+   "Consecrated Snowfield",
+   "Deeproot Depths",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mausoleum_Knight_Greaves"

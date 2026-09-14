@@ -23,6 +23,11 @@ from pathlib import Path
 
 WIKI_BASE = "https://eldenring.wiki.fextralife.com/"
 
+# In-game name is just "Gauntlets"; the wiki category /Gauntlets is the slot list.
+WIKI_PAGE_OVERRIDES = {
+    "Gauntlets": "Chain_Gauntlets",
+}
+
 ROOT = Path(__file__).resolve().parents[1]
 
 PIECE_SUFFIXES = tuple(sorted((
@@ -338,7 +343,7 @@ QUEST_FLUFF = (
 
 
 def wiki_url_for(name):
-    slug = (name or "").strip().replace(" ", "_")
+    slug = WIKI_PAGE_OVERRIDES.get(name) or (name or "").strip().replace(" ", "_")
     return WIKI_BASE + urllib.parse.quote(slug, safe="_()")
 
 
@@ -455,12 +460,12 @@ def infer_areas_from_param_name(name):
 
 
 def overlay_param_areas(areas_by_armor_id, areas_by_weapon_id, areas_by_talisman_id):
-    """Union regions parsed from ItemLotParam / ShopLineupParam row names."""
+    """Union regions from map-lot IDs and labeled lots/shops."""
     try:
-        from param_io import PARAM_DIR, iter_labeled_item_sources
+        from param_io import PARAM_DIR, iter_labeled_item_sources, iter_map_lot_items
     except ImportError:
         sys.path.insert(0, str(Path(__file__).resolve().parent))
-        from param_io import PARAM_DIR, iter_labeled_item_sources
+        from param_io import PARAM_DIR, iter_labeled_item_sources, iter_map_lot_items
     if not (PARAM_DIR / "ItemLotParam_map.param").exists():
         print("skip param location overlay (no ItemLotParam_map.param)")
         return
@@ -483,6 +488,59 @@ def overlay_param_areas(areas_by_armor_id, areas_by_weapon_id, areas_by_talisman
         if len(bucket[cid]) > before:
             tagged += 1
     print(f"param lots/shops added regions on {tagged} catalog items")
+
+    map_path = ROOT / "data" / "map_ids.json"
+    if not map_path.exists():
+        print("skip map-id overlay (data/map_ids.json missing; run build_map_ids.py)")
+        return
+    maps = json.loads(map_path.read_text(encoding="utf-8"))
+    map_tagged = 0
+
+    def resolve(mid: str) -> dict | None:
+        if mid in maps:
+            return maps[mid]
+        parts = mid.split("_")
+        if len(parts) != 4:
+            return None
+        for cand in (f"{parts[0]}_{parts[1]}_{parts[2]}_00", f"{parts[0]}_{parts[1]}_00_00"):
+            if cand in maps:
+                return maps[cand]
+        return None
+
+    for cid, kind, mid in iter_map_lot_items(game_ids):
+        rec = resolve(mid)
+        areas = rec.get("areas") if rec else None
+        if not areas:
+            continue
+        bucket = buckets.get(kind)
+        if bucket is None:
+            continue
+        before = len(bucket[cid])
+        bucket[cid].update(areas)
+        if len(bucket[cid]) > before:
+            map_tagged += 1
+    print(f"map IDs added regions on {map_tagged} catalog items")
+
+    msb_path = ROOT / "data" / "msb_maps.json"
+    if not msb_path.exists():
+        print("skip MSB overlay (data/msb_maps.json missing; run build_msb_drops.py)")
+        return
+    msb = json.loads(msb_path.read_text(encoding="utf-8"))
+    msb_tagged = 0
+    for kind, items in msb.items():
+        bucket = buckets.get(kind)
+        if bucket is None:
+            continue
+        for cid, map_ids in items.items():
+            before = len(bucket[cid])
+            for mid in map_ids:
+                rec = resolve(mid)
+                areas = rec.get("areas") if rec else None
+                if areas:
+                    bucket[cid].update(areas)
+            if len(bucket[cid]) > before:
+                msb_tagged += 1
+    print(f"MSB enemy placements added regions on {msb_tagged} catalog items")
 
 
 def sort_areas(areas):
@@ -617,12 +675,10 @@ def main():
         "Steel Greaves": "Isolated Merchant Weeping Peninsula",
         "Silver Grooved Gauntlets": "Nomadic Merchant North Liurnia of the Lakes",
         "Silver Grooved Greaves": "Nomadic Merchant North Liurnia of the Lakes",
-        # Wiki table for the unaltered chest/helm is generic or points at Stormveil,
-        # which only drops the (Altered) pieces. Unaltered cape pieces are Castle Sol
-        # / Cathedral of Dragon Communion.
-        "Banished Knight Armor": (
-            "Castle Sol and Cathedral of Dragon Communion. Dropped by Banished Knights."
-        ),
+        # Wiki table for the unaltered chest/helm is generic or points at Stormveil.
+        # Unaltered cape chest is Castle Sol. Cathedral of Dragon Communion
+        # knights drop the (Altered) chest (MSB m60_48_36_00).
+        "Banished Knight Armor": "Castle Sol. Dropped by Banished Knights.",
         "Banished Knight Helm": "Castle Sol. Dropped by Banished Knights.",
     }
 
@@ -689,15 +745,18 @@ def main():
         "Scaled Armor (Altered)": ["Mt. Gelmir"],
         "Scaled Gauntlets": ["Mt. Gelmir"],
         "Scaled Greaves": ["Mt. Gelmir"],
-        # Wiki acquire text claims a Mausoleum Knight at the Weeping Peninsula
-        # Walking Mausoleum. There isn't one; they farm in Liurnia.
-        "Mausoleum Knight Armor": ["Liurnia of the Lakes"],
-        "Mausoleum Knight Armor (Altered)": ["Liurnia of the Lakes"],
-        "Mausoleum Knight Gauntlets": ["Liurnia of the Lakes"],
-        "Mausoleum Knight Greaves": ["Liurnia of the Lakes"],
-        # Gauntlets and greaves only drop from Godrick Foot Soldiers.
-        "Foot Soldier Gauntlets": ["Limgrave"],
-        "Foot Soldier Greaves": ["Limgrave"],
+        # MSB lot-family 301000100 is on a Stormveil knight and includes the
+        # unaltered helm row; the farmable piece is Castle Sol.
+        "Banished Knight Helm": ["Mountaintops of the Giants"],
+    }
+
+    # Wiki acquire text names a Weeping Peninsula Walking Mausoleum; MSB
+    # placements are Liurnia, Deeproot, and Consecrated Snowfield.
+    AREA_DISCARDS = {
+        "Mausoleum Knight Armor": ["Weeping Peninsula"],
+        "Mausoleum Knight Armor (Altered)": ["Weeping Peninsula"],
+        "Mausoleum Knight Gauntlets": ["Weeping Peninsula"],
+        "Mausoleum Knight Greaves": ["Weeping Peninsula"],
     }
 
     # World shops for starting weapons (none of these are class-exclusive)
@@ -744,6 +803,8 @@ def main():
         override = AREA_OVERRIDES.get(a["name"])
         if override is not None:
             areas_by_armor_id[a["id"]] = set(override)
+        for region in AREA_DISCARDS.get(a["name"], ()):
+            areas_by_armor_id[a["id"]].discard(region)
 
     for w in weapons:
         extra = WEAPON_AREA_OVERRIDES.get(w["name"])

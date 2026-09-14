@@ -106,7 +106,10 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
+  "areas": [
+   "Charo's Hidden Grave",
+   "Gravesite Plain"
+  ],
   "icon": "img/talismans/clarifying-horn-charm-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Clarifying_Horn_Charm_%2B2"
  },
@@ -346,7 +349,9 @@
   "weight": 1.3,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "icon": "img/talismans/smithing-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Smithing_Talisman"
  },
@@ -381,7 +386,9 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "icon": "img/talismans/stalwart-horn-charm-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Stalwart_Horn_Charm_%2B2"
  },
@@ -462,7 +469,9 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
+  "areas": [
+   "Scadu Altus"
+  ],
   "icon": "img/talismans/viridian-amber-medallion-3.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion_%2B3"
  },
@@ -938,6 +947,7 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Capital Outskirts",
    "Leyndell, Royal Capital",
    "Mountaintops of the Giants"
   ],
@@ -1097,6 +1107,7 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Ainsel River",
    "Lake of Rot"
   ],
   "icon": "img/talismans/immunizing-horn-charm-1.png",
@@ -1518,7 +1529,11 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
-   "Limgrave"
+   "Caelid",
+   "Crumbling Farum Azula",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "icon": "img/talismans/warrior-jar-shard.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Warrior_Jar_Shard"
@@ -1530,7 +1545,13 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "areas": [
+   "Caelid",
+   "Crumbling Farum Azula",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
+  ],
   "icon": "img/talismans/shard-of-alexander.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Shard_of_Alexander"
  },
@@ -1607,6 +1628,7 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "icon": "img/talismans/lightning-scorpion-charm.png",
@@ -1647,6 +1669,7 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Altus Plateau",
    "Capital Outskirts"
   ],
   "icon": "img/talismans/crucible-feather-talisman.png",
@@ -1774,7 +1797,11 @@
   "weight": 1.6,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "areas": [
+   "Altus Plateau",
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants"
+  ],
   "icon": "img/talismans/millicent-s-prosthesis.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Millicent%27s_Prosthesis"
  },
@@ -1956,7 +1983,9 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "areas": [
+   "Mt. Gelmir"
+  ],
   "icon": "img/talismans/daedicar-s-woe.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Daedicar%27s_Woe"
  },
@@ -1968,9 +1997,15 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Altus Plateau",
+   "Caelid",
+   "Crumbling Farum Azula",
    "Dragonbarrow",
+   "Leyndell, Royal Capital",
    "Limgrave",
    "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Mt. Gelmir",
    "Weeping Peninsula"
   ],
   "icon": "img/talismans/sacrificial-twig.png",

@@ -1,11 +1,21 @@
 """Read Elden Ring regulation .param files exported from Smithbox."""
 from __future__ import annotations
 
+import re
 import struct
+from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PARAM_DIR = ROOT / "test-save-data"
+SMITHBOX_PARAMDEF = (
+    ROOT / "Smithbox_2_2_5_2026_08_29_a" / "Assets" / "PARAM" / "ER" / "Defs"
+)
+
+# NpcParam.itemLotId_enemy / itemLotId_map. Recomputed from Paramdex if present.
+NPC_ITEMLOT_ENEMY = 48
+NPC_ITEMLOT_MAP = 52
+NPC_SLEEP_ITEMLOT_ENEMY = 592
 
 # EquipParamProtector fields we actually use. Offsets checked against
 # wiki-known pieces (Fur Raiment, Gelmir Knight set, Fire Monk, TE armor).
@@ -194,6 +204,179 @@ def _catalog_id(kind: str, item_id: int, game_ids: dict) -> str | None:
     if 100 <= code <= 1200 and code % 100 == 0:
         return table.get(str(stripped - code))
     return None
+
+
+def lot_id_to_map(lot_id: int) -> str | None:
+    """ItemLotParam_map row ID -> mAA_BB_CC_DD. Overworld uses a 10-digit form."""
+    pid = int(lot_id)
+    if pid >= 1_000_000_000:
+        s = f"{pid:010d}"
+        prefix, rest = s[:2], s[2:]
+        aa, bb, cc = rest[0:2], rest[2:4], rest[4:6]
+        if prefix == "10":
+            return f"m60_{aa}_{bb}_{cc}_00"
+        if prefix == "20":
+            return f"m61_{aa}_{bb}_{cc}_00"
+        return None
+    if pid >= 10_000_000:
+        s = f"{pid:08d}"
+        return f"m{s[0:2]}_{s[2:4]}_{s[4:6]}_00"
+    return None
+
+
+def iter_map_lot_items(game_ids: dict):
+    """Yield (catalog_id, kind, map_id) for every map-lot item, named or not."""
+    path = PARAM_DIR / "ItemLotParam_map.param"
+    if not path.exists():
+        return
+    for pid, _name, _off, data in iter_param_rows(path):
+        if len(data) < 64:
+            continue
+        mid = lot_id_to_map(pid)
+        if not mid:
+            continue
+        lot_ids = [i32(data, i * 4) for i in range(8)]
+        cats = [i32(data, 32 + i * 4) for i in range(8)]
+        for item_id, cat in zip(lot_ids, cats):
+            kind = ITEMLOT_KIND.get(cat)
+            if not kind or item_id <= 0:
+                continue
+            cid = _catalog_id(kind, item_id, game_ids)
+            if cid:
+                yield cid, kind, mid
+
+
+_FIELD_DEF = re.compile(
+    r"^(dummy8|u8|s8|u16|s16|u32|s32|f32)\s+(\w+)(?::(\d+))?(?:\[(\d+)\])?"
+)
+
+
+def paramdef_offsets(xml_path: Path) -> dict[str, int]:
+    """Byte offsets from a Smithbox/Paramdex PARAMDEF XML."""
+    text = xml_path.read_text(encoding="utf-8")
+    offsets: dict[str, int] = {}
+    off = 0
+    bit = 0
+    for defn in re.findall(r'<Field Def="([^"]+)"', text):
+        defn = defn.split("=")[0].strip()
+        m = _FIELD_DEF.match(defn)
+        if not m:
+            continue
+        typ, name, bits, arr = m.group(1), m.group(2), m.group(3), m.group(4)
+        count = int(arr) if arr else 1
+        if bits:
+            if name not in offsets:
+                offsets[name] = off
+            bit += int(bits)
+            off += bit // 8
+            bit %= 8
+            continue
+        if bit:
+            off += (bit + 7) // 8
+            bit = 0
+        size = {"u8": 1, "s8": 1, "dummy8": 1, "u16": 2, "s16": 2, "u32": 4, "s32": 4, "f32": 4}[typ]
+        offsets[name] = off
+        off += size * count
+    return offsets
+
+
+def _npc_lot_offsets() -> tuple[int, int, int]:
+    xml = SMITHBOX_PARAMDEF / "NpcParam.xml"
+    if xml.exists():
+        offs = paramdef_offsets(xml)
+        return (
+            offs["itemLotId_enemy"],
+            offs["itemLotId_map"],
+            offs.get("sleepCollectorItemLotId_enemy", NPC_SLEEP_ITEMLOT_ENEMY),
+        )
+    return NPC_ITEMLOT_ENEMY, NPC_ITEMLOT_MAP, NPC_SLEEP_ITEMLOT_ENEMY
+
+
+@lru_cache(maxsize=1)
+def npc_item_lots() -> dict[int, list[int]]:
+    """NpcParam ID -> item-lot IDs that can drop (enemy / map / sleep).
+
+    Elden Ring stores one lot ID on the NPC; armor/weapon siblings live in
+    the same 100-wide lot family (301000000 greatsword, 301000002 helm, ...).
+    """
+    path = PARAM_DIR / "NpcParam.param"
+    if not path.exists():
+        return {}
+    e_off, m_off, s_off = _npc_lot_offsets()
+    existing = set(_all_lot_items())
+    out: dict[int, list[int]] = {}
+    for pid, _name, _off, data in iter_param_rows(path):
+        if len(data) < max(e_off, m_off, s_off) + 4:
+            continue
+        family: list[int] = []
+        seen: set[int] = set()
+        for off in (e_off, m_off, s_off):
+            lot = i32(data, off)
+            if lot <= 0:
+                continue
+            base = lot - (lot % 100)
+            for n in range(base, base + 100):
+                if n in existing and n not in seen:
+                    seen.add(n)
+                    family.append(n)
+        if family:
+            out[pid] = family
+    return out
+
+
+def _lot_items(path: Path) -> dict[int, list[tuple[str, int]]]:
+    """lot id -> [(kind, item_id), ...]"""
+    out: dict[int, list[tuple[str, int]]] = {}
+    if not path.exists():
+        return out
+    for pid, _name, _off, data in iter_param_rows(path):
+        if len(data) < 64:
+            continue
+        items = []
+        lot_ids = [i32(data, i * 4) for i in range(8)]
+        cats = [i32(data, 32 + i * 4) for i in range(8)]
+        for item_id, cat in zip(lot_ids, cats):
+            kind = ITEMLOT_KIND.get(cat)
+            if kind and item_id > 0:
+                items.append((kind, item_id))
+        if items:
+            out[pid] = items
+    return out
+
+
+@lru_cache(maxsize=1)
+def _all_lot_items() -> dict[int, list[tuple[str, int]]]:
+    merged: dict[int, list[tuple[str, int]]] = {}
+    merged.update(_lot_items(PARAM_DIR / "ItemLotParam_map.param"))
+    merged.update(_lot_items(PARAM_DIR / "ItemLotParam_enemy.param"))
+    return merged
+
+
+def iter_msb_enemy_items(game_ids: dict, msb_dir=None):
+    """Yield (catalog_id, kind, map_id) from MSB enemy parts -> NpcParam lots."""
+    try:
+        from msb_io import iter_msb_placements
+    except ImportError:
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from msb_io import iter_msb_placements
+    lots_by_npc = npc_item_lots()
+    lot_items = _all_lot_items()
+    if not lots_by_npc:
+        return
+    for map_id, npc_ids, _treasure in iter_msb_placements(msb_dir):
+        seen = set()
+        for npc in npc_ids:
+            if npc <= 0 or npc == 1_000_000:
+                continue
+            if npc in seen:
+                continue
+            seen.add(npc)
+            for lot_id in lots_by_npc.get(npc, ()):
+                for kind, item_id in lot_items.get(lot_id, ()):
+                    cid = _catalog_id(kind, item_id, game_ids)
+                    if cid:
+                        yield cid, kind, map_id
 
 
 def iter_labeled_item_sources(game_ids: dict):
