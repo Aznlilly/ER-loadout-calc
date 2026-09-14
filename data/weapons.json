@@ -589,7 +589,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Shadow of the Erdtree",
   "icon": "img/weapons/messmer-soldier-s-axe.png",
-  "areas": [],
+  "areas": [
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Messmer_Soldier%27s_Axe"
  },
  {
@@ -769,7 +771,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Shadow of the Erdtree",
   "icon": "img/weapons/messmer-soldier-s-spear.png",
-  "areas": [],
+  "areas": [
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Messmer_Soldier%27s_Spear"
  },
  {
@@ -2550,7 +2554,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Shadow of the Erdtree",
   "icon": "img/weapons/horned-warrior-s-sword.png",
-  "areas": [],
+  "areas": [
+   "Belurat, Tower Settlement"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Horned_Warrior%27s_Sword"
  },
  {
@@ -2641,6 +2647,7 @@
   "source": "Shadow of the Erdtree",
   "icon": "img/weapons/horned-warrior-s-greatsword.png",
   "areas": [
+   "Belurat, Tower Settlement",
    "Enir-Ilim"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Horned_Warrior%27s_Greatsword"
@@ -4466,7 +4473,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/albinauric-staff.png",
-  "areas": [],
+  "areas": [
+   "Mt. Gelmir"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Albinauric_Staff"
  },
  {
@@ -4930,7 +4939,13 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/bastard-sword.png",
-  "areas": [],
+  "areas": [
+   "Deeproot Depths",
+   "Mountaintops of the Giants",
+   "Nokron, Eternal City",
+   "Siofra River",
+   "Weeping Peninsula"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Bastard_Sword"
  },
  {
@@ -5118,7 +5133,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/beast-repellent-torch.png",
-  "areas": [],
+  "areas": [
+   "Dragonbarrow"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Beast-Repellent_Torch"
  },
  {
@@ -5210,7 +5227,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/beastman-s-cleaver.png",
-  "areas": [],
+  "areas": [
+   "Crumbling Farum Azula"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Beastman%27s_Cleaver"
  },
  {
@@ -5255,7 +5274,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/beastman-s-curved-sword.png",
-  "areas": [],
+  "areas": [
+   "Crumbling Farum Azula"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Beastman%27s_Curved_Sword"
  },
  {
@@ -5394,7 +5415,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/blade-of-calling.png",
-  "areas": [],
+  "areas": [
+   "Mountaintops of the Giants"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Blade_of_Calling"
  },
  {
@@ -6423,7 +6446,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/cipher-pata.png",
-  "areas": [],
+  "areas": [
+   "Roundtable Hold"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Cipher_Pata"
  },
  {
@@ -6697,7 +6722,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/clinging-bone.png",
-  "areas": [],
+  "areas": [
+   "Roundtable Hold"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Clinging_Bone"
  },
  {
@@ -6840,7 +6867,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/commander-s-standard.png",
-  "areas": [],
+  "areas": [
+   "Caelid"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Commander%27s_Standard"
  },
  {
@@ -6979,7 +7008,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/crepus-s-black-key-crossbow.png",
-  "areas": [],
+  "areas": [
+   "Roundtable Hold"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Crepus%27s_Black-Key_Crossbow"
  },
  {
@@ -7025,7 +7056,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/crescent-moon-axe.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Crescent_Moon_Axe"
  },
@@ -7165,7 +7197,10 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/crystal-spear.png",
-  "areas": [],
+  "areas": [
+   "Caelid",
+   "Dragonbarrow"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Crystal_Spear"
  },
  {
@@ -7399,7 +7434,13 @@
   "source": "Elden Ring",
   "icon": "img/weapons/dagger.png",
   "areas": [
-   "Limgrave"
+   "Caelid",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Roundtable Hold",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Dagger"
  },
@@ -7492,7 +7533,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/death-ritual-spear.png",
-  "areas": [],
+  "areas": [
+   "Mountaintops of the Giants"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Death_Ritual_Spear"
  },
  {
@@ -7816,6 +7859,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/dragon-greatclaw.png",
   "areas": [
+   "Capital Outskirts",
    "Leyndell, Royal Capital"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Dragon_Greatclaw"
@@ -7862,7 +7906,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/dragon-halberd.png",
-  "areas": [],
+  "areas": [
+   "Siofra River"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Dragon_Halberd"
  },
  {
@@ -8418,6 +8464,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/erdtree-seal.png",
   "areas": [
+   "Leyndell, Royal Capital",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Erdtree_Seal"
@@ -8610,7 +8657,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/fallingstar-beast-jaw.png",
-  "areas": [],
+  "areas": [
+   "Mt. Gelmir"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Fallingstar_Beast_Jaw"
  },
  {
@@ -8755,6 +8804,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/flail.png",
   "areas": [
+   "Altus Plateau",
    "Limgrave"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Flail"
@@ -9130,7 +9180,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/gargoyle-s-black-axe.png",
-  "areas": [],
+  "areas": [
+   "Mountaintops of the Giants"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gargoyle%27s_Black_Axe"
  },
  {
@@ -9175,7 +9227,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/gargoyle-s-black-blades.png",
-  "areas": [],
+  "areas": [
+   "Mountaintops of the Giants"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gargoyle%27s_Black_Blades"
  },
  {
@@ -9361,7 +9415,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/gargoyle-s-greatsword.png",
-  "areas": [],
+  "areas": [
+   "Siofra River"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gargoyle%27s_Greatsword"
  },
  {
@@ -9453,7 +9509,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/gargoyle-s-twinblade.png",
-  "areas": [],
+  "areas": [
+   "Siofra River"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gargoyle%27s_Twinblade"
  },
  {
@@ -9498,7 +9556,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/gelmir-glintstone-staff.png",
-  "areas": [],
+  "areas": [
+   "Mt. Gelmir"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Gelmir_Glintstone_Staff"
  },
  {
@@ -9591,7 +9651,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/ghostflame-torch.png",
   "areas": [
-   "Nokron, Eternal City"
+   "Nokron, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ghostflame_Torch"
  },
@@ -9824,6 +9885,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/glintstone-kris.png",
   "areas": [
+   "Limgrave",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Glintstone_Kris"
@@ -10111,7 +10173,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/golden-epitaph.png",
-  "areas": [],
+  "areas": [
+   "Capital Outskirts"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Golden_Epitaph"
  },
  {
@@ -10912,7 +10976,11 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/greatbow.png",
-  "areas": [],
+  "areas": [
+   "Caelid",
+   "Leyndell, Royal Capital",
+   "Miquella's Haligtree"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Greatbow"
  },
  {
@@ -11467,8 +11535,12 @@
   "source": "Elden Ring",
   "icon": "img/weapons/heavy-crossbow.png",
   "areas": [
+   "Caelid",
+   "Leyndell, Royal Capital",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Heavy_Crossbow"
  },
@@ -11654,6 +11726,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/horn-bow.png",
   "areas": [
+   "Nokron, Eternal City",
    "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Horn_Bow"
@@ -11842,7 +11915,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/inseparable-sword.png",
-  "areas": [],
+  "areas": [
+   "Deeproot Depths"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Inseparable_Sword"
  },
  {
@@ -12258,8 +12333,11 @@
   "source": "Elden Ring",
   "icon": "img/weapons/knight-s-greatsword.png",
   "areas": [
+   "Caelid",
+   "Leyndell, Royal Capital",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Knight%27s_Greatsword"
  },
@@ -12446,7 +12524,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/light-crossbow.png",
-  "areas": [],
+  "areas": [
+   "Weeping Peninsula"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Light_Crossbow"
  },
  {
@@ -12635,6 +12715,10 @@
   "icon": "img/weapons/longsword.png",
   "areas": [
    "Starting Gear",
+   "Ainsel River",
+   "Lake of Rot",
+   "Leyndell, Royal Capital",
+   "Mohgwyn Palace",
    "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Longsword",
@@ -12732,7 +12816,11 @@
   "source": "Elden Ring",
   "icon": "img/weapons/lordsworn-s-straight-sword.png",
   "areas": [
+   "Caelid",
+   "Leyndell, Royal Capital",
    "Limgrave",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree",
    "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Lordsworn%27s_Straight_Sword"
@@ -12779,7 +12867,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/loretta-s-war-sickle.png",
-  "areas": [],
+  "areas": [
+   "Miquella's Haligtree"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Loretta%27s_War_Sickle"
  },
  {
@@ -12918,7 +13008,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/mace.png",
-  "areas": [],
+  "areas": [
+   "Roundtable Hold"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mace"
  },
  {
@@ -13054,6 +13146,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/magma-wyrm-s-scalesword.png",
   "areas": [
+   "Altus Plateau",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Magma_Wyrm%27s_Scalesword"
@@ -13378,7 +13471,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/miquellan-knight-s-sword.png",
-  "areas": [],
+  "areas": [
+   "Miquella's Haligtree"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Miquellan_Knight%27s_Sword"
  },
  {
@@ -13515,7 +13610,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/mohgwyn-s-sacred-spear.png",
-  "areas": [],
+  "areas": [
+   "Mohgwyn Palace"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Mohgwyn%27s_Sacred_Spear"
  },
  {
@@ -14029,7 +14126,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/nox-flowing-hammer.png",
   "areas": [
-   "Nokron, Eternal City"
+   "Nokron, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Nox_Flowing_Hammer"
  },
@@ -14357,8 +14455,10 @@
   "icon": "img/weapons/partisan.png",
   "areas": [
    "Caelid",
+   "Leyndell, Royal Capital",
    "Limgrave",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Partisan"
  },
@@ -14543,7 +14643,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/prelate-s-inferno-crozier.png",
-  "areas": [],
+  "areas": [
+   "Mt. Gelmir"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Prelate%27s_Inferno_Crozier"
  },
  {
@@ -14727,7 +14829,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/rapier.png",
-  "areas": [],
+  "areas": [
+   "Roundtable Hold"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Rapier"
  },
  {
@@ -14773,6 +14877,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/raptor-talons.png",
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Raptor_Talons"
@@ -15377,7 +15482,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/rotten-crystal-sword.png",
-  "areas": [],
+  "areas": [
+   "Miquella's Haligtree"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Rotten_Crystal_Sword"
  },
  {
@@ -15469,7 +15576,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/rotten-staff.png",
-  "areas": [],
+  "areas": [
+   "Miquella's Haligtree"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Rotten_Staff"
  },
  {
@@ -15841,7 +15950,8 @@
   "icon": "img/weapons/scimitar.png",
   "areas": [
    "Starting Gear",
-   "Limgrave"
+   "Limgrave",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Scimitar",
   "startingClasses": [
@@ -15891,6 +16001,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/scorpion-s-stinger.png",
   "areas": [
+   "Ainsel River",
    "Lake of Rot"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Scorpion%27s_Stinger"
@@ -15984,7 +16095,9 @@
   "upgradeMaterial": "Somber Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/sentry-s-torch.png",
-  "areas": [],
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Sentry%27s_Torch"
  },
  {
@@ -16077,6 +16190,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/serpent-god-s-curved-sword.png",
   "areas": [
+   "Altus Plateau",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Serpent-God%27s_Curved_Sword"
@@ -16266,7 +16380,11 @@
   "icon": "img/weapons/short-spear.png",
   "areas": [
    "Starting Gear",
-   "Limgrave"
+   "Caelid",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Roundtable Hold",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Short_Spear",
   "startingClasses": [
@@ -16317,7 +16435,11 @@
   "icon": "img/weapons/short-sword.png",
   "areas": [
    "Starting Gear",
-   "Limgrave"
+   "Caelid",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Shadow Keep"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Short_Sword",
   "startingClasses": [
@@ -16417,7 +16539,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/shotel.png",
-  "areas": [],
+  "areas": [
+   "Siofra River"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Shotel"
  },
  {
@@ -16510,7 +16634,11 @@
   "source": "Elden Ring",
   "icon": "img/weapons/soldier-s-crossbow.png",
   "areas": [
-   "Limgrave"
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Shadow Keep",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Soldier%27s_Crossbow"
  },
@@ -16557,7 +16685,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/spear.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Spear"
  },
@@ -16603,7 +16732,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/spiked-caestus.png",
-  "areas": [],
+  "areas": [
+   "Dragonbarrow"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Spiked_Caestus"
  },
  {
@@ -17118,6 +17249,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/stormhawk-axe.png",
   "areas": [
+   "Leyndell, Royal Capital",
    "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Stormhawk_Axe"
@@ -17303,7 +17435,9 @@
   "upgradeMaterial": "Smithing Stones",
   "source": "Elden Ring",
   "icon": "img/weapons/thorned-whip.png",
-  "areas": [],
+  "areas": [
+   "Mt. Gelmir"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Thorned_Whip"
  },
  {
@@ -17396,7 +17530,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/torchpole.png",
   "areas": [
-   "Limgrave"
+   "Limgrave",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Torchpole"
  },
@@ -17582,6 +17717,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/troll-s-hammer.png",
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Troll%27s_Hammer"
@@ -18238,7 +18374,11 @@
   "source": "Elden Ring",
   "icon": "img/weapons/warpick.png",
   "areas": [
-   "Limgrave"
+   "Caelid",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Warpick"
  },
@@ -18472,7 +18612,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/wing-of-astel.png",
   "areas": [
-   "Ainsel River"
+   "Ainsel River",
+   "Lake of Rot"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Wing_of_Astel"
  },
@@ -19332,7 +19473,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/rift-shield.png",
-  "areas": [],
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Rift_Shield"
  },
  {
@@ -19745,7 +19888,9 @@
   "upgradeMaterial": "",
   "source": "Shadow of the Erdtree",
   "icon": "img/weapons/messmer-soldier-shield.png",
-  "areas": [],
+  "areas": [
+   "Shadow Keep"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Messmer_Soldier_Shield"
  },
  {
@@ -19885,6 +20030,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/candletree-wooden-shield.png",
   "areas": [
+   "Altus Plateau",
    "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Candletree_Wooden_Shield"
@@ -20072,7 +20218,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/round-shield.png",
-  "areas": [],
+  "areas": [
+   "Weeping Peninsula"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Round_Shield"
  },
  {
@@ -20168,7 +20316,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/black-leather-shield.png",
-  "areas": [],
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Black_Leather_Shield"
  },
  {
@@ -20362,7 +20512,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/red-crest-heater-shield.png",
-  "areas": [],
+  "areas": [
+   "Altus Plateau"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Red_Crest_Heater_Shield"
  },
  {
@@ -20455,6 +20607,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/inverted-hawk-heater-shield.png",
   "areas": [
+   "Nokron, Eternal City",
    "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Inverted_Hawk_Heater_Shield"
@@ -20548,7 +20701,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/kite-shield.png",
-  "areas": [],
+  "areas": [
+   "Liurnia of the Lakes"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Kite_Shield"
  },
  {
@@ -20640,7 +20795,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/scorpion-kite-shield.png",
-  "areas": [],
+  "areas": [
+   "Altus Plateau"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Scorpion_Kite_Shield"
  },
  {
@@ -20731,7 +20888,11 @@
   "source": "Elden Ring",
   "icon": "img/weapons/brass-shield.png",
   "areas": [
-   "Limgrave"
+   "Caelid",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Brass_Shield"
  },
@@ -20869,7 +21030,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/beastman-s-jar-shield.png",
-  "areas": [],
+  "areas": [
+   "Crumbling Farum Azula"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Beastman%27s_Jar-Shield"
  },
  {
@@ -21246,7 +21409,11 @@
   "source": "Elden Ring",
   "icon": "img/weapons/lordsworn-s-shield.png",
   "areas": [
-   "Limgrave"
+   "Caelid",
+   "Leyndell, Royal Capital",
+   "Limgrave",
+   "Liurnia of the Lakes",
+   "Miquella's Haligtree"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Lordsworn%27s_Shield"
  },
@@ -21525,7 +21692,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/crossed-tree-towershield.png",
-  "areas": [],
+  "areas": [
+   "Altus Plateau"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Crossed-Tree_Towershield"
  },
  {
@@ -21662,7 +21831,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/distinguished-greatshield.png",
-  "areas": [],
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Distinguished_Greatshield"
  },
  {
@@ -21799,7 +21970,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/redmane-greatshield.png",
-  "areas": [],
+  "areas": [
+   "Caelid"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Redmane_Greatshield"
  },
  {
@@ -21844,7 +22017,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/golden-greatshield.png",
-  "areas": [],
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Golden_Greatshield"
  },
  {
@@ -21889,7 +22064,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/haligtree-crest-greatshield.png",
-  "areas": [],
+  "areas": [
+   "Miquella's Haligtree"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Haligtree_Crest_Greatshield"
  },
  {
@@ -21935,7 +22112,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/crucible-hornshield.png",
   "areas": [
-   "Nokron, Eternal City"
+   "Nokron, Eternal City",
+   "Siofra River"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Hornshield"
  },
@@ -21982,6 +22160,7 @@
   "source": "Elden Ring",
   "icon": "img/weapons/dragonclaw-shield.png",
   "areas": [
+   "Capital Outskirts",
    "Leyndell, Royal Capital"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Dragonclaw_Shield"
@@ -22028,7 +22207,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/fingerprint-stone-shield.png",
-  "areas": [],
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Fingerprint_Stone_Shield"
  },
  {
@@ -22120,6 +22301,7 @@
   "icon": "img/weapons/ant-s-skull-plate.png",
   "areas": [
    "Ainsel River",
+   "Lake of Rot",
    "Nokstella, Eternal City"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Ant%27s_Skull_Plate"
@@ -22166,7 +22348,9 @@
   "upgradeMaterial": "",
   "source": "Elden Ring",
   "icon": "img/weapons/erdtree-greatshield.png",
-  "areas": [],
+  "areas": [
+   "Capital Outskirts"
+  ],
   "wiki": "https://eldenring.wiki.fextralife.com/Erdtree_Greatshield"
  },
  {

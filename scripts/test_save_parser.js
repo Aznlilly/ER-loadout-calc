@@ -44,11 +44,24 @@ assert(ER_SAVE.gaitemRecordSize(0xc0000001) === 8, "gem gaitem is 8 bytes");
 assert(ER_SAVE.weaponLookupId(2000010) === 2000000, "strip +10 upgrade");
 assert(ER_SAVE.weaponLookupId(2000105) === 2000100, "strip upgrade from heavy");
 
+{
+  const heavy10 = ER_SAVE.decodeWeaponId(2000110);
+  assert(heavy10.upgrade === 10, `heavy +10 upgrade ${heavy10.upgrade}`);
+  assert(heavy10.affinity === 100, `heavy affinity ${heavy10.affinity}`);
+  assert(heavy10.baseId === 2000000, `heavy base ${heavy10.baseId}`);
+  const std = ER_SAVE.decodeWeaponId(2000000);
+  assert(std.affinity === 0 && std.upgrade === 0, "standard +0");
+}
+
 const gameIds = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "game_ids.json"), "utf8"));
 assert(ER_SAVE.lookupWeapon(gameIds, 2000000) === "longsword", "longsword base id");
 assert(ER_SAVE.lookupWeapon(gameIds, 2000010) === "longsword", "longsword +10");
 assert(ER_SAVE.lookupWeapon(gameIds, 2000100) === "longsword", "heavy longsword");
 assert(gameIds.armor["40000"] === "helm-iron-helmet", "iron helmet id");
+assert(gameIds.armor["1100200"] === "gauntlets-gauntlets", "chain set gauntlets id");
+assert(gameIds.armor["5350000"] === "helm-silver-grooved-helm", "silver grooved helm id");
+assert(gameIds.weapons["31540000"] === "silver-grooved-shield", "silver grooved shield id");
+assert(gameIds.weapons["1060100"] === "celebrant-s-sickle", "infix affinity sickle");
 assert(gameIds.talismans["1000"] === "crimson-amber-medallion", "crimson amber id");
 
 const mapped = ER_SAVE.mapOwned({
@@ -61,6 +74,18 @@ assert(mapped.owned.armor.has("helm-iron-helmet"), "owned iron helmet");
 assert(mapped.owned.talismans.has("crimson-amber-medallion"), "owned medallion");
 assert(mapped.skipped === 3, `expected 3 skipped, got ${mapped.skipped}`);
 assert(mapped.matched === 3, `expected 3 matched, got ${mapped.matched}`);
+assert(mapped.instances.longsword, "owned instances for longsword");
+assert(mapped.instances.longsword[0].upgrade === 10, "owned longsword +10");
+assert(mapped.instances.longsword[0].affinity === 0, "owned longsword standard");
+
+{
+  const infused = ER_SAVE.mapOwned({ weapons: [2000112, 2000005], armor: [], talismans: [] }, gameIds);
+  const inst = infused.instances.longsword;
+  const heavy = inst.find((x) => x.affinity === 100);
+  const std = inst.find((x) => x.affinity === 0);
+  assert(heavy && heavy.upgrade === 12, "keep heavy +12");
+  assert(std && std.upgrade === 5, "keep standard +5");
+}
 
 {
   const eq = ER_SAVE.mapEquipped({
@@ -71,10 +96,11 @@ assert(mapped.matched === 3, `expected 3 matched, got ${mapped.matched}`);
     r2: { type: "weapons", id: 99999999 },
     l1: null,
   }, gameIds);
-  assert(eq.slots.r1 === "longsword", "map equipped longsword");
-  assert(eq.slots.helm === "helm-iron-helmet", "map equipped iron helmet");
-  assert(eq.slots.chest === "chest-aristocrat-coat", "map equipped aristocrat coat");
-  assert(eq.slots.tal1 === "crimson-amber-medallion", "map equipped medallion");
+  assert(eq.slots.r1 && eq.slots.r1.id === "longsword", "map equipped longsword");
+  assert(eq.slots.r1.affinity === 0 && eq.slots.r1.upgrade === 10, "equipped longsword +10 standard");
+  assert(eq.slots.helm && eq.slots.helm.id === "helm-iron-helmet", "map equipped iron helmet");
+  assert(eq.slots.chest && eq.slots.chest.id === "chest-aristocrat-coat", "map equipped aristocrat coat");
+  assert(eq.slots.tal1 && eq.slots.tal1.id === "crimson-amber-medallion", "map equipped medallion");
   assert(eq.slots.r2 === null, "unknown equipped weapon becomes empty");
   assert(eq.slots.l1 === null, "empty equipped slot stays empty");
   assert(eq.filled === 4, `expected 4 filled, got ${eq.filled}`);

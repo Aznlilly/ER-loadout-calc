@@ -8,6 +8,8 @@ let ARMOR_BY_ID = new Map();
 let WEAPONS_BY_ID = new Map();
 let TALISMANS_BY_ID = new Map();
 let GAME_IDS = { weapons: {}, armor: {}, talismans: {} };
+let WEAPON_VARIANTS = {};
+let OWNED_WEAPON_INSTANCES = {};
 
 const ARMOR_SLOTS = ["helm", "chest", "gauntlets", "legs"];
 const WEAPON_SLOTS_LEFT = ["l1", "l2", "l3"];
@@ -38,7 +40,7 @@ const SLOT_LABELS = {
 };
 
 function emptySlot() {
-  return { id: null, locked: false };
+  return { id: null, locked: false, affinity: 0, upgrade: 0 };
 }
 
 let EQUIPMENT = Object.fromEntries(ALL_SLOTS.map((s) => [s, emptySlot()]));
@@ -122,9 +124,18 @@ function wikiUrl(item) {
   return WIKI_BASE + encodeURIComponent(slug);
 }
 
-function armorDisplayName(item) {
+function armorDisplayName(item, slot) {
   const name = (item && item.name) || "";
   if (item && item.altered && !/\(altered\)/i.test(name)) return `${name} (Altered)`;
+  if (slot && slotKind(slot) === "weapon" && item) {
+    const aff = EQUIPMENT[slot] && EQUIPMENT[slot].affinity;
+    const up = EQUIPMENT[slot] && EQUIPMENT[slot].upgrade;
+    const includeUpgrades = document.getElementById("include-upgrades")?.checked;
+    const includeAffinities = document.getElementById("include-affinities")?.checked;
+    if ((includeAffinities && aff) || (includeUpgrades && up)) {
+      return variantDisplayName(item, includeAffinities ? aff : 0, includeUpgrades ? up : 0, includeUpgrades);
+    }
+  }
   return name;
 }
 
@@ -137,6 +148,32 @@ function slotKind(slot) {
   if (ARMOR_SLOTS.includes(slot)) return "armor";
   if (WEAPON_SLOTS.includes(slot)) return "weapon";
   return "talisman";
+}
+
+function defaultMetaForPicker(id) {
+  if (!pickerSlot || slotKind(pickerSlot) !== "weapon") return undefined;
+  const owned = OWNED_WEAPON_INSTANCES[id] || [];
+  if (!owned.length) return { affinity: 0, upgrade: 0 };
+  let best = owned[0];
+  for (const o of owned) {
+    if ((o.upgrade || 0) > (best.upgrade || 0)) best = o;
+  }
+  return { affinity: best.affinity || 0, upgrade: best.upgrade || 0 };
+}
+
+function weaponRankOpts(extra) {
+  return {
+    includeAffinities: document.getElementById("include-affinities").checked,
+    includeUpgrades: document.getElementById("include-upgrades").checked,
+    variants: WEAPON_VARIANTS,
+    ownedInstances: OWNED_WEAPON_INSTANCES,
+    ...(extra || {}),
+  };
+}
+
+function weaponSuggestKey(row, includeAffinities) {
+  if (!row || !row.weapon) return "";
+  return includeAffinities ? `${row.weapon.id}:${row.affinity || 0}` : row.weapon.id;
 }
 
 function buildIndexes() {
@@ -163,18 +200,20 @@ function isTalismanSlotActive(slot) {
 }
 
 async function loadData() {
-  const [armor, weapons, talismans, equipLoadTable, gameIds] = await Promise.all([
+  const [armor, weapons, talismans, equipLoadTable, gameIds, weaponVariants] = await Promise.all([
     fetch("data/armor.json").then((r) => r.json()),
     fetch("data/weapons.json").then((r) => r.json()),
     fetch("data/talismans.json").then((r) => r.json()),
     fetch("data/equip_load_table.json").then((r) => r.json()),
     fetch("data/game_ids.json").then((r) => r.json()).catch(() => ({ weapons: {}, armor: {}, talismans: {} })),
+    fetch("data/weapon_variants.json").then((r) => r.json()).catch(() => ({})),
   ]);
   ARMOR = armor;
   WEAPONS = weapons;
   TALISMANS = talismans;
   EQUIP_LOAD_TABLE = equipLoadTable;
   GAME_IDS = gameIds;
+  WEAPON_VARIANTS = weaponVariants;
   buildIndexes();
 }
 
@@ -361,6 +400,9 @@ function saveState() {
     onlyMeetable: document.getElementById("weapon-only-meetable").checked,
     weaponCategory: document.getElementById("weapon-category").value,
     includeAltered: document.getElementById("include-altered").checked,
+    includeAffinities: document.getElementById("include-affinities").checked,
+    includeUpgrades: document.getElementById("include-upgrades").checked,
+    ownedWeaponInstances: OWNED_WEAPON_INSTANCES,
     sources: Object.fromEntries(
       Object.entries(SOURCE_CHECKBOX_IDS).map(([source, id]) => {
         const el = document.getElementById(id);
@@ -405,7 +447,12 @@ function loadSavedState() {
       const item = id && (
         ARMOR_BY_ID.get(id) || WEAPONS_BY_ID.get(id) || TALISMANS_BY_ID.get(id)
       );
-      EQUIPMENT[slot] = { id: item ? id : null, locked: !!saved.locked };
+      EQUIPMENT[slot] = {
+        id: item ? id : null,
+        locked: !!saved.locked,
+        affinity: item && saved.affinity ? saved.affinity : 0,
+        upgrade: item && saved.upgrade ? saved.upgrade : 0,
+      };
     }
   }
 
@@ -443,6 +490,15 @@ function loadSavedState() {
   if (typeof data.includeAltered === "boolean") {
     document.getElementById("include-altered").checked = data.includeAltered;
   }
+  if (typeof data.includeAffinities === "boolean") {
+    document.getElementById("include-affinities").checked = data.includeAffinities;
+  }
+  if (typeof data.includeUpgrades === "boolean") {
+    document.getElementById("include-upgrades").checked = data.includeUpgrades;
+  }
+  if (data.ownedWeaponInstances && typeof data.ownedWeaponInstances === "object") {
+    OWNED_WEAPON_INSTANCES = data.ownedWeaponInstances;
+  }
   if (data.sources && typeof data.sources === "object") {
     for (const [source, id] of Object.entries(SOURCE_CHECKBOX_IDS)) {
       if (typeof data.sources[source] === "boolean") {
@@ -462,15 +518,19 @@ function loadSavedState() {
   }
 }
 
-function setSlotItem(slot, id) {
+function setSlotItem(slot, id, meta) {
   if (slotKind(slot) === "talisman" && id) {
     for (const other of activeTalismanSlots()) {
       if (other !== slot && EQUIPMENT[other].id === id) {
         EQUIPMENT[other].id = EQUIPMENT[slot].id;
+        EQUIPMENT[other].affinity = EQUIPMENT[slot].affinity;
+        EQUIPMENT[other].upgrade = EQUIPMENT[slot].upgrade;
       }
     }
   }
   EQUIPMENT[slot].id = id;
+  EQUIPMENT[slot].affinity = (meta && meta.affinity) || 0;
+  EQUIPMENT[slot].upgrade = (meta && meta.upgrade) || 0;
   saveEquipment();
   renderEquipment();
   updateDerivedCharacterInfo();
@@ -492,7 +552,7 @@ function renderSlot(slot, inactive) {
     inactive ? "inactive" : "",
     item ? "filled" : "",
   ].filter(Boolean).join(" ");
-  const name = item ? escapeHtml(armorDisplayName(item)) : "Empty";
+  const name = item ? escapeHtml(armorDisplayName(item, slot)) : "Empty";
   const weight = item ? `${item.weight}` : "";
   return `<div class="${classes}" data-slot="${slot}" role="button" tabindex="0" aria-label="${escapeHtml(SLOT_LABELS[slot])}${item ? ": " + escapeHtml(item.name) : ""}">
     <button type="button" class="lock-btn" data-lock="${slot}" title="${locked ? "Unlock this slot" : "Lock this slot"}" aria-pressed="${locked}" aria-label="${locked ? "Unlock" : "Lock"} ${escapeHtml(SLOT_LABELS[slot])}">${locked ? "Locked" : "Lock"}</button>
@@ -558,7 +618,7 @@ function renderPickerList() {
       : `<span class="eff">${it.weight} wt${it.category ? " · " + escapeHtml(it.category) : ""}</span>`;
     div.innerHTML = `${iconHtml(it)}<span>${escapeHtml(armorDisplayName(it))}${sourceTagHtml(it.source)} (${it.weight})</span>${extra}`;
     div.addEventListener("click", () => {
-      setSlotItem(pickerSlot, it.id);
+      setSlotItem(pickerSlot, it.id, defaultMetaForPicker(it.id));
       closePicker();
     });
     list.appendChild(div);
@@ -587,6 +647,8 @@ function unequipAll() {
   for (const slot of ALL_SLOTS) {
     if (EQUIPMENT[slot].locked) continue;
     EQUIPMENT[slot].id = null;
+    EQUIPMENT[slot].affinity = 0;
+    EQUIPMENT[slot].upgrade = 0;
   }
   saveEquipment();
   renderEquipment();
@@ -612,6 +674,13 @@ function setupEquipmentBoard() {
   document.getElementById("include-altered").addEventListener("change", () => {
     saveState();
     if (pickerSlot) renderPickerList();
+  });
+  ["include-affinities", "include-upgrades"].forEach((id) => {
+    document.getElementById(id).addEventListener("change", () => {
+      saveState();
+      renderEquipment();
+      renderWeaponResults();
+    });
   });
   document.getElementById("picker-search").addEventListener("input", renderPickerList);
   document.getElementById("picker-close").addEventListener("click", closePicker);
@@ -914,7 +983,10 @@ function renderResult(result, objective, talismans, ctx) {
 
   const extras = [];
   if (talismans.length) extras.push(`Talismans: ${talismans.map((t) => t.name).join(", ")}`);
-  if (weapons.length) extras.push(`Weapons: ${weapons.map((w) => w.name).join(", ")}`);
+  if (weapons.length) extras.push(`Weapons: ${weapons.map((w) => {
+    const slot = WEAPON_SLOTS.find((s) => EQUIPMENT[s].id === w.id);
+    return armorDisplayName(w, slot);
+  }).join(", ")}`);
   if (extras.length) html += `<p class="hint">${escapeHtml(extras.join(" · "))} — factored into weight / load / poise.</p>`;
 
   resultsEl.innerHTML = html;
@@ -956,21 +1028,35 @@ function renderSuggestions(resultsEl, objective, ctx) {
   const onlyMeetable = document.getElementById("weapon-only-meetable").checked;
   const rows = [];
 
-  const lockedWeaponIds = new Set(
-    WEAPON_SLOTS.filter((s) => EQUIPMENT[s].locked && EQUIPMENT[s].id).map((s) => EQUIPMENT[s].id)
-  );
+  const lockedWeaponIds = new Set();
+  for (const s of WEAPON_SLOTS) {
+    if (!(EQUIPMENT[s].locked && EQUIPMENT[s].id)) continue;
+    const includeAffinities = document.getElementById("include-affinities").checked;
+    lockedWeaponIds.add(includeAffinities
+      ? `${EQUIPMENT[s].id}:${EQUIPMENT[s].affinity || 0}`
+      : EQUIPMENT[s].id);
+  }
   const usedWeaponIds = new Set(lockedWeaponIds);
   const weaponPool = WEAPONS.filter((w) => isIncluded(w, "weapons"));
-  const ranked = rankWeapons(weaponPool, stats, { twoHanding, onlyMeetable });
+  const ranked = rankWeapons(weaponPool, stats, weaponRankOpts({ twoHanding, onlyMeetable }));
+  const includeAffinities = document.getElementById("include-affinities").checked;
   let wi = 0;
   for (const slot of WEAPON_SLOTS) {
     if (EQUIPMENT[slot].locked) continue;
-    while (wi < ranked.length && usedWeaponIds.has(ranked[wi].weapon.id)) wi += 1;
+    while (wi < ranked.length && usedWeaponIds.has(weaponSuggestKey(ranked[wi], includeAffinities))) wi += 1;
     if (wi >= ranked.length) break;
-    const w = ranked[wi].weapon;
-    usedWeaponIds.add(w.id);
+    const row = ranked[wi];
+    usedWeaponIds.add(weaponSuggestKey(row, includeAffinities));
     wi += 1;
-    rows.push({ slot, item: w, kind: "weapon", why: "scaling payoff for your stats" });
+    rows.push({
+      slot,
+      item: row.weapon,
+      kind: "weapon",
+      why: "scaling payoff for your stats",
+      label: row.label,
+      affinity: row.affinity,
+      upgrade: row.upgrade,
+    });
   }
 
   const preferEquipLoad = !!(ctx && ctx.minWeightMode) || getLoadBudget().budgetForArmor < 20;
@@ -1010,10 +1096,10 @@ function renderSuggestions(resultsEl, objective, ctx) {
     div.innerHTML = `${iconHtml(row.item)}
       <div class="sug-body">
         <div class="sug-slot">${escapeHtml(SLOT_LABELS[row.slot])}</div>
-        <div>${escapeHtml(row.item.name)}${sourceTagHtml(row.item.source)} <span class="hint">(${row.item.weight} wt)</span></div>
+        <div>${escapeHtml(row.label || row.item.name)}${sourceTagHtml(row.item.source)} <span class="hint">(${row.item.weight} wt)</span></div>
         <div class="hint">${escapeHtml(row.why)}</div>
       </div>
-      <button type="button" class="preset-btn" data-apply-slot="${row.slot}" data-apply-id="${escapeHtml(row.item.id)}">Apply</button>`;
+      <button type="button" class="preset-btn" data-apply-slot="${row.slot}" data-apply-id="${escapeHtml(row.item.id)}" data-apply-affinity="${row.affinity || 0}" data-apply-upgrade="${row.upgrade || 0}">Apply</button>`;
     list.appendChild(div);
   }
   list.addEventListener("click", (e) => {
@@ -1021,12 +1107,14 @@ function renderSuggestions(resultsEl, objective, ctx) {
     if (!btn) return;
     const slot = btn.getAttribute("data-apply-slot");
     const id = btn.getAttribute("data-apply-id");
+    const affinity = Number(btn.getAttribute("data-apply-affinity") || 0);
+    const upgrade = Number(btn.getAttribute("data-apply-upgrade") || 0);
     if (slotKind(slot) === "talisman") {
       if (!isTalismanSlotActive(slot)) return;
       if (EQUIPMENT[slot].locked) return;
     }
     if (EQUIPMENT[slot].locked) return;
-    setSlotItem(slot, id);
+    setSlotItem(slot, id, slotKind(slot) === "weapon" ? { affinity, upgrade } : undefined);
   });
   resultsEl.appendChild(wrap);
 }
@@ -1052,17 +1140,17 @@ function renderWeaponResults() {
   const category = document.getElementById("weapon-category").value || null;
 
   const pool = WEAPONS.filter((w) => isIncluded(w, "weapons"));
-  const ranked = rankWeapons(pool, stats, { twoHanding, onlyMeetable, category }).slice(0, 25);
+  const ranked = rankWeapons(pool, stats, weaponRankOpts({ twoHanding, onlyMeetable, category })).slice(0, 25);
 
   let html = `<table class="result-table"><thead><tr>
     <th></th><th>Weapon</th><th>Type</th><th>Scaling (Str/Dex/Int/Fai/Arc)</th><th>Ref. Phy AR</th><th>Weight</th><th>Source</th><th>DLC</th>
   </tr></thead><tbody>`;
   for (const r of ranked) {
     const w = r.weapon;
-    const sc = w.scaling;
+    const sc = r.scaling || w.scaling || {};
     html += `<tr>
       <td>${iconHtml(w, "result-icon")}</td>
-      <td>${escapeHtml(w.name)}</td>
+      <td>${escapeHtml(r.label || w.name)}</td>
       <td>${escapeHtml(w.category)}</td>
       <td>${sc.str || "-"}/${sc.dex || "-"}/${sc.int || "-"}/${sc.fai || "-"}/${sc.arc || "-"}</td>
       <td>${w.attack.phy ?? "-"}</td>
@@ -1422,8 +1510,11 @@ function applySaveEquipped(equipped) {
       lockedSkip++;
       continue;
     }
-    const id = itemFitsImportedSlot(slot, slots[slot]) ? slots[slot] : null;
+    const rec = slots[slot];
+    const id = rec && rec.id && itemFitsImportedSlot(slot, rec.id) ? rec.id : null;
     EQUIPMENT[slot].id = id;
+    EQUIPMENT[slot].affinity = (id && rec && rec.affinity) || 0;
+    EQUIPMENT[slot].upgrade = (id && rec && rec.upgrade) || 0;
     if (id) applied++;
   }
   saveState();
@@ -1440,8 +1531,8 @@ function applySaveCharacter(character, opts) {
     if (opts.inventory) bags.push(character.inventory);
     if (opts.chest) bags.push(character.chest);
     const raw = ER_SAVE.mergeOwnedBags(...bags);
-    const { owned, matched, skipped } = ER_SAVE.mapOwned(raw, GAME_IDS);
-    applyOwnedFromSave(owned);
+    const { owned, matched, skipped, instances } = ER_SAVE.mapOwned(raw, GAME_IDS);
+    applyOwnedFromSave(owned, instances);
     const extra = skipped ? `, skipped ${skipped} unknown` : "";
     parts.push(`${matched} known items${extra}`);
     const drawer = document.getElementById("item-pool-drawer");
@@ -1467,7 +1558,8 @@ function applySaveCharacter(character, opts) {
   setSaveImportStatus(`Imported ${character.name}: ${parts.join("; ")}.`, "save-import-ok");
 }
 
-function applyOwnedFromSave(owned) {
+function applyOwnedFromSave(owned, instances) {
+  OWNED_WEAPON_INSTANCES = instances || {};
   for (const type of ["armor", "weapons", "talismans"]) {
     const ids = owned[type] || new Set();
     for (const it of poolItemsForType(type)) {
@@ -1475,6 +1567,7 @@ function applyOwnedFromSave(owned) {
     }
   }
   onExclusionsChanged(poolActiveTab);
+  saveState();
 }
 
 function setupItemPoolDrawer() {

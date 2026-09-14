@@ -697,7 +697,9 @@
   "weight": 1.5,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
   "icon": "img/talismans/erdtree-s-favor-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Erdtree%27s_Favor_%2B1"
  },
@@ -750,6 +752,7 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Nokron, Eternal City",
    "Siofra River"
   ],
   "icon": "img/talismans/marika-s-scarseal.png",
@@ -907,7 +910,8 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
-   "Miquella's Haligtree"
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants"
   ],
   "icon": "img/talismans/spelldrake-talisman-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman%2B2"
@@ -934,7 +938,8 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
-   "Leyndell, Royal Capital"
+   "Leyndell, Royal Capital",
+   "Mountaintops of the Giants"
   ],
   "icon": "img/talismans/flamedrake-talisman-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman_%2B1"
@@ -1038,7 +1043,9 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "areas": [
+   "Crumbling Farum Azula"
+  ],
   "icon": "img/talismans/pearldrake-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman"
  },
@@ -1076,7 +1083,8 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
-   "Ainsel River"
+   "Ainsel River",
+   "Lake of Rot"
   ],
   "icon": "img/talismans/immunizing-horn-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Immunizing_Horn_Charm"
@@ -1128,6 +1136,7 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Nokron, Eternal City",
    "Siofra River"
   ],
   "icon": "img/talismans/clarifying-horn-charm.png",
@@ -1155,7 +1164,8 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
-   "Nokron, Eternal City"
+   "Nokron, Eternal City",
+   "Siofra River"
   ],
   "icon": "img/talismans/mottled-necklace.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace"
@@ -1168,7 +1178,8 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
-   "Nokron, Eternal City"
+   "Nokron, Eternal City",
+   "Siofra River"
   ],
   "icon": "img/talismans/mottled-necklace-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace_%2B1"
@@ -1387,7 +1398,9 @@
   "weight": 1.0,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "areas": [
+   "Caelid"
+  ],
   "icon": "img/talismans/flock-s-canvas-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Flock%27s_Canvas_Talisman"
  },
@@ -1412,6 +1425,8 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
+   "Ainsel River",
+   "Lake of Rot",
    "Nokstella, Eternal City"
   ],
   "icon": "img/talismans/moon-of-nokstella.png",
@@ -1631,7 +1646,9 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "areas": [
+   "Capital Outskirts"
+  ],
   "icon": "img/talismans/crucible-feather-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Feather_Talisman"
  },
@@ -1848,7 +1865,8 @@
   "source": "Elden Ring",
   "dlc": false,
   "areas": [
-   "Miquella's Haligtree"
+   "Miquella's Haligtree",
+   "Mountaintops of the Giants"
   ],
   "icon": "img/talismans/silver-scarab.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Silver_Scarab"

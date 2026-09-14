@@ -101,6 +101,14 @@
       <input type="checkbox" id="include-altered" checked>
       Include "Altered" armor variants
     </label>
+    <label class="checkbox-row">
+      <input type="checkbox" id="include-affinities" checked>
+      Use weapon affinities (Heavy, Keen, Occult…)
+    </label>
+    <label class="checkbox-row">
+      <input type="checkbox" id="include-upgrades" checked>
+      Use weapon upgrade levels from the save
+    </label>
 
     <div class="save-import-row">
       <button type="button" class="preset-btn" id="load-save-btn">Load Save…</button>
@@ -208,7 +216,7 @@
 
   <section class="panel" id="panel-weapons">
     <h2>Weapon &amp; Shield Recommendations</h2>
-    <p class="hint">Ranked by how well your current stats pay off the weapon's scaling. Filter to Small / Medium / Greatshields / Thrusting Shields when you want a shield. Attack values shown are wiki reference values (fixed high stat investment), not computed from your exact stats — treat them as a rough guide.</p>
+    <p class="hint">Ranked by how well your current stats pay off each weapon's scaling, including Heavy/Keen/… when affinities are on. If you imported a save, only infusions you actually own are ranked, and upgrade levels come from that save. Attack values shown are still wiki reference numbers at a fixed high stat investment, not live Attack Rating for your exact stats and upgrade — treat them as a rough guide.</p>
     <div class="goal-row">
       <label><input type="checkbox" id="weapon-two-hand"> Two-handing (Strength × 1.5)</label>
       <label>Category:

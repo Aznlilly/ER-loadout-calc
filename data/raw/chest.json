@@ -84,6 +84,27 @@
   "available": "Elden Ring Tarnished Edition"
  },
  {
+  "name": "Silver Grooved Armor (Altered)",
+  "phy": "9.7",
+  "strike": "9.0",
+  "slash": "9.6",
+  "pierce": "9.3",
+  "magic": "6.3",
+  "fire": "7.0",
+  "lightning": "5.2",
+  "holy": "7.1",
+  "immunity": "21",
+  "robustness": "35",
+  "focus": "12",
+  "vitality": "12",
+  "poise": "12",
+  "weight": "6.5",
+  "special": "-",
+  "acquire": "After completing Boc's Questline, you (or Boc) can alter Silver Grooved Armor into Silver Grooved Armor (Altered).",
+  "section": "",
+  "available": "Elden Ring Tarnished Edition"
+ },
+ {
   "name": "Dryleaf Robe",
   "phy": "5.3",
   "strike": "6.7",

@@ -42,6 +42,27 @@
   "available": "Elden Ring Tarnished Edition"
  },
  {
+  "name": "Leontiel's Hat (Altered)",
+  "phy": "3.2",
+  "strike": "3.4",
+  "slash": "2.9",
+  "pierce": "3.6",
+  "magic": "2.4",
+  "fire": "3.2",
+  "lightning": "2.3",
+  "holy": "3.2",
+  "immunity": "13",
+  "robustness": "18",
+  "focus": "8",
+  "vitality": "8",
+  "poise": "3",
+  "weight": "3.0",
+  "special": "",
+  "acquire": "After completing Boc's Questline, you (or Boc) can alter Leontiel's Hat into Leontiel's Hat (Altered).",
+  "section": "",
+  "available": "Elden Ring Tarnished Edition"
+ },
+ {
   "name": "Silver Grooved Helm",
   "phy": "3.7",
   "strike": "3.1",

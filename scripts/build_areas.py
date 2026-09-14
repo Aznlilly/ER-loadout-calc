@@ -9,9 +9,14 @@ unique/quest/shop items. Wiki per-region item lists fill in generic world
 drops and anything with no obtain region yet. Also writes a "wiki" URL.
 
 Existing fields such as "icon" are preserved.
+
+Lot and shop labels from the game's ItemLotParam / ShopLineupParam tables
+are merged in when those names mention a place, merchant, or region-coded
+enemy. Wiki text still covers unnamed world drops and quests.
 """
 import json
 import re
+import sys
 import urllib.parse
 from collections import defaultdict
 from pathlib import Path
@@ -153,7 +158,59 @@ LOCATION_HINTS = [
     ("knight leontiel", "Caelid"),
     ("radahn's arena", "Caelid"),
     ("radahn arena", "Caelid"),
+    ("subterranean shunning-grounds", "Leyndell, Royal Capital"),
+    ("shunning-grounds", "Leyndell, Royal Capital"),
+    ("ruin-strewn precipice", "Altus Plateau"),
+    ("stranded graveyard", "Limgrave"),
+    ("castle exile", "Weeping Peninsula"),
+    ("prince of death's throne", "Deeproot Depths"),
+    ("ashen leyndell", "Leyndell, Ashen Capital"),
 ]
+
+# Param lot/shop labels only. Not applied to wiki prose (NPC names are too noisy there).
+PARAM_LOCATION_HINTS = [
+    ("merchant kale", "Limgrave"),
+    ("gatekeeper gostoc", "Limgrave"),
+    ("pidia", "Liurnia of the Lakes"),
+    ("sorceress sellen", "Limgrave"),
+    ("brother corhyn", "Altus Plateau"),
+    ("war counselor iji", "Liurnia of the Lakes"),
+    ("miriel", "Liurnia of the Lakes"),
+    ("gowry", "Caelid"),
+    ("blackguard", "Liurnia of the Lakes"),
+    ("sorcerer rogier", "Limgrave"),
+    ("sorcerer thops", "Liurnia of the Lakes"),
+    ("finger reader enia", "Roundtable Hold"),
+    ("[enia", "Roundtable Hold"),
+    ("twin maiden", "Roundtable Hold"),
+    ("tanith", "Mt. Gelmir"),
+    ("preceptor seluvis", "Liurnia of the Lakes"),
+    ("seluvis", "Liurnia of the Lakes"),
+    ("ranni the witch", "Liurnia of the Lakes"),
+    ("latenna", "Liurnia of the Lakes"),
+    ("godrick knight", "Limgrave"),
+    ("godrick foot soldier", "Limgrave"),
+    ("godrick soldier", "Limgrave"),
+    ("radahn foot soldier", "Caelid"),
+    ("radahn soldier", "Caelid"),
+    ("redmane knight", "Caelid"),
+    ("leyndell soldier", "Leyndell, Royal Capital"),
+    ("messmer foot soldier", "Shadow Keep"),
+    ("messmer soldier", "Shadow Keep"),
+    ("fire prelate", "Mt. Gelmir"),
+    ("azula beastman", "Crumbling Farum Azula"),
+    ("horned warrior", "Belurat, Tower Settlement"),
+]
+
+PARAM_SKIP_LABELS = (
+    "[alteration]",
+    "[reversion]",
+    "[sorcery]",
+    "[incantation]",
+    "[info item]",
+    "[unknown]",
+    "[corpse - unknown]",
+)
 
 NAME_ALIASES = {
     "golden scarab": ["gold scarab"],
@@ -378,6 +435,54 @@ def infer_areas_from_text(text):
         if needle in hay:
             found.add(region)
     return found
+
+
+def infer_areas_from_param_name(name):
+    if not name:
+        return set()
+    lower = name.lower()
+    if any(lower.startswith(skip) for skip in PARAM_SKIP_LABELS):
+        return set()
+    found = infer_areas_from_text(name)
+    hay = " " + lower + " "
+    for needle, region in PARAM_LOCATION_HINTS:
+        if needle in hay or needle in lower:
+            found.add(region)
+    found.discard(STARTING_GEAR)
+    if "Leyndell, Ashen Capital" in found:
+        found.discard("Leyndell, Royal Capital")
+    return found
+
+
+def overlay_param_areas(areas_by_armor_id, areas_by_weapon_id, areas_by_talisman_id):
+    """Union regions parsed from ItemLotParam / ShopLineupParam row names."""
+    try:
+        from param_io import PARAM_DIR, iter_labeled_item_sources
+    except ImportError:
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from param_io import PARAM_DIR, iter_labeled_item_sources
+    if not (PARAM_DIR / "ItemLotParam_map.param").exists():
+        print("skip param location overlay (no ItemLotParam_map.param)")
+        return
+    game_ids = load_json("data/game_ids.json")
+    buckets = {
+        "armor": areas_by_armor_id,
+        "weapons": areas_by_weapon_id,
+        "talismans": areas_by_talisman_id,
+    }
+    tagged = 0
+    for cid, kind, name, _origin in iter_labeled_item_sources(game_ids):
+        inferred = infer_areas_from_param_name(name)
+        if not inferred:
+            continue
+        bucket = buckets.get(kind)
+        if bucket is None:
+            continue
+        before = len(bucket[cid])
+        bucket[cid].update(inferred)
+        if len(bucket[cid]) > before:
+            tagged += 1
+    print(f"param lots/shops added regions on {tagged} catalog items")
 
 
 def sort_areas(areas):
@@ -632,6 +737,8 @@ def main():
         sibling = unaltered_by_key.get((a["slot"], norm(unaltered_name(a["name"]))))
         if sibling:
             areas_by_armor_id[a["id"]].update(areas_by_armor_id.get(sibling["id"], set()))
+
+    overlay_param_areas(areas_by_armor_id, areas_by_weapon_id, areas_by_talisman_id)
 
     for a in armor:
         override = AREA_OVERRIDES.get(a["name"])

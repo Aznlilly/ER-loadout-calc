@@ -51,6 +51,21 @@ with sync_playwright() as p:
     print("Game ID table loaded:", ids_ok)
     if not ids_ok:
         raise SystemExit("game_ids.json should map Longsword")
+    variants_ok = page.evaluate(
+        """() => WEAPON_VARIANTS && WEAPON_VARIANTS.longsword && WEAPON_VARIANTS.longsword['100']"""
+    )
+    print("Weapon variants loaded:", bool(variants_ok))
+    if not variants_ok:
+        raise SystemExit("weapon_variants.json should include Heavy Longsword")
+    for cid, label in (
+        ("include-affinities", "weapon affinities"),
+        ("include-upgrades", "weapon upgrade levels"),
+    ):
+        el = page.locator(f"#{cid}")
+        if el.count() != 1:
+            raise SystemExit(f"item pool should have a {label} checkbox")
+        if not page.evaluate(f"() => document.getElementById('{cid}').checked"):
+            raise SystemExit(f"{cid} should be on by default")
     maus_w = page.evaluate(
         """() => {
       const un = ARMOR.find(a => a.name === "Mausoleum Knight Armor");
@@ -105,6 +120,30 @@ with sync_playwright() as p:
         raise SystemExit("stats should persist across reloads")
     page.fill("#stat-str", "10")
     page.wait_for_timeout(100)
+
+    heavy_rank = page.evaluate(
+        """() => {
+      const stats = { str: 80, dex: 12, int: 9, fai: 9, arc: 7 };
+      const ls = WEAPONS.filter(w => w.id === "longsword");
+      const ranked = rankWeapons(ls, stats, {
+        onlyMeetable: true,
+        includeAffinities: true,
+        variants: WEAPON_VARIANTS,
+      });
+      const heavy = ranked.find(r => r.affinity === 100);
+      const keen = ranked.find(r => r.affinity === 200);
+      return {
+        heavy: heavy && heavy.payoff,
+        keen: keen && keen.payoff,
+        labels: ranked.slice(0, 3).map(r => r.label),
+      };
+    }"""
+    )
+    print("Longsword infusion payoffs at 80 STR:", heavy_rank)
+    if not heavy_rank or heavy_rank["heavy"] is None or heavy_rank["keen"] is None:
+        raise SystemExit("should rank Heavy and Keen Longsword when affinities are on")
+    if not (heavy_rank["heavy"] > heavy_rank["keen"]):
+        raise SystemExit("80 STR should prefer Heavy Longsword over Keen")
 
     # Talisman pouches: 2 active slots
     page.select_option("#talisman-slot-count", "2")
@@ -324,7 +363,7 @@ with sync_playwright() as p:
           helm: { type: "armor", id: 40000 },
           chest: { type: "armor", id: 380100 },
           r1: { type: "weapons", id: 2000000 },
-          l1: { type: "weapons", id: 2000000 },
+          l1: { type: "weapons", id: 2000110 },
           tal1: { type: "talismans", id: 1000 },
         },
       }, { equipped: true });
@@ -336,6 +375,8 @@ with sync_playwright() as p:
         r1Before,
         chest: EQUIPMENT.chest.id,
         l1: EQUIPMENT.l1.id,
+        l1Affinity: EQUIPMENT.l1.affinity,
+        l1Upgrade: EQUIPMENT.l1.upgrade,
         tal1: EQUIPMENT.tal1.id,
       };
       for (const slot of ALL_SLOTS) {
@@ -356,6 +397,8 @@ with sync_playwright() as p:
         raise SystemExit("equipped import should fill unlocked chest from the save")
     if equipped_import["l1"] != "longsword":
         raise SystemExit("equipped import should fill unlocked L1 from the save")
+    if equipped_import["l1Affinity"] != 100 or equipped_import["l1Upgrade"] != 10:
+        raise SystemExit("equipped import should read Heavy +10 from the weapon id")
     if equipped_import["tal1"] != "crimson-amber-medallion":
         raise SystemExit("equipped import should fill unlocked talisman from the save")
 

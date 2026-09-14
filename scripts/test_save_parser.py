@@ -42,17 +42,33 @@ def main() -> None:
     assert game_ids["weapons"]["2000000"] == "longsword"
     assert game_ids["weapons"]["2000100"] == "longsword"
     assert game_ids["armor"]["40000"] == "helm-iron-helmet"
+    assert game_ids["armor"]["1100200"] == "gauntlets-gauntlets"
+    assert game_ids["armor"]["5350000"] == "helm-silver-grooved-helm"
+    assert game_ids["armor"]["5370000"] == "helm-steel-helm"
+    assert game_ids["weapons"]["31540000"] == "silver-grooved-shield"
+    assert game_ids["weapons"]["67530000"] == "idus-sword"
     assert game_ids["talismans"]["1000"] == "crimson-amber-medallion"
     assert game_ids["talismans"]["6110"] == "ancestral-spirit-s-horn"
 
     weapons = json.loads((ROOT / "data" / "weapons.json").read_text(encoding="utf-8"))
+    armor = json.loads((ROOT / "data" / "armor.json").read_text(encoding="utf-8"))
     talismans = json.loads((ROOT / "data" / "talismans.json").read_text(encoding="utf-8"))
     mapped_w = set(game_ids["weapons"].values())
+    mapped_a = set(game_ids["armor"].values())
     mapped_t = set(game_ids["talismans"].values())
-    missing_w = [w["name"] for w in weapons if w["id"] not in mapped_w and w.get("source") != "Tarnished Edition"]
+    missing_w = [w["name"] for w in weapons if w["id"] not in mapped_w]
+    missing_a = [a["name"] for a in armor if a["id"] not in mapped_a]
     missing_t = [t["name"] for t in talismans if t["id"] not in mapped_t]
     assert not missing_w, missing_w
+    assert not missing_a, missing_a
     assert not missing_t, missing_t
+    assert game_ids["weapons"]["1060100"] == "celebrant-s-sickle"
+    assert game_ids["weapons"]["14060500"] == "celebrant-s-cleaver"
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import validate_game_ids
+
+    validate_game_ids.main()
     print("save parser data tests ok")
 
     save_path = ROOT / "test-save-data" / "ER0000.co2"
@@ -60,7 +76,6 @@ def main() -> None:
         print("skip real save (test-save-data/ER0000.co2 not present)")
         return
 
-    sys.path.insert(0, str(ROOT / "scripts"))
     import inspect_save
 
     buf = save_path.read_bytes()
@@ -116,6 +131,17 @@ def main() -> None:
     assert map_eq(lilly, "tal1") == "assassin-s-crimson-dagger"
     assert map_eq(lilly, "helm") is None
     assert map_eq(lilly, "r2") is None
+
+    nymera = None
+    for slot in range(10):
+        parsed = inspect_save.parse_slot(buf, slot, "compact")
+        if parsed and parsed["name"] == "Nymera":
+            nymera = parsed
+            break
+    assert nymera, "Nymera character missing from test save"
+    assert map_eq(nymera, "gauntlets") == "gauntlets-gauntlets"
+    assert map_eq(nymera, "helm") == "helm-godrick-soldier-helm"
+    assert map_eq(nymera, "chest") == "chest-kaiden-armor"
     print("real save tests ok", names)
 
 

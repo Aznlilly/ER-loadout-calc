@@ -9,8 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw"
 OUT = ROOT / "data" / "game_ids.json"
 
-AFFINITY_PREFIXES = (
-    "Flame Art",
+AFFINITY_WORDS = (
     "Heavy",
     "Keen",
     "Quality",
@@ -27,6 +26,10 @@ AFFINITY_PREFIXES = (
 
 NAME_OVERRIDES = {
     "ancestral spirit s horne": "ancestral spirit s horn",
+    # In-game / wiki name is just "Gauntlets"; Paramdex calls them Chain Gauntlets.
+    "chain gauntlets": "gauntlets",
+    # Paramdex extra word on this one affinity row.
+    "celebrant s flame art cleaver blades": "celebrant s cleaver",
 }
 
 PARAM_ID_OVERRIDES = {
@@ -71,25 +74,51 @@ def index_catalog(items: list[dict]) -> dict[str, str]:
     return out
 
 
-def strip_affinity(name: str) -> str | None:
-    for prefix in AFFINITY_PREFIXES:
-        if name.startswith(prefix + " "):
-            return name[len(prefix) + 1 :]
+def exact_catalog_id(name: str, catalog: dict[str, str]) -> str | None:
+    key = NAME_OVERRIDES.get(norm(name), norm(name))
+    return catalog.get(key)
+
+
+def affinity_catalog_id(name: str, catalog: dict[str, str]) -> str | None:
+    parts = name.split()
+    for i in range(len(parts) - 1):
+        if parts[i] == "Flame" and parts[i + 1] == "Art":
+            hit = catalog.get(norm(" ".join(parts[:i] + parts[i + 2 :])))
+            if hit:
+                return hit
+    for i, part in enumerate(parts):
+        if part in AFFINITY_WORDS:
+            hit = catalog.get(norm(" ".join(parts[:i] + parts[i + 1 :])))
+            if hit:
+                return hit
     return None
+
+
+def catalog_id_for_name(name: str, catalog: dict[str, str]) -> str | None:
+    return exact_catalog_id(name, catalog) or affinity_catalog_id(name, catalog)
+
+
+AFFINITY_OFFSETS = tuple(range(0, 1300, 100))
 
 
 def match_rows(rows: list[tuple[int, str]], catalog: dict[str, str], kind: str) -> dict[str, str]:
     mapping: dict[str, str] = dict(PARAM_ID_OVERRIDES.get(kind, {}))
+    unmatched: list[tuple[int, str]] = []
     for param_id, name in rows:
-        key = NAME_OVERRIDES.get(norm(name), norm(name))
-        catalog_id = catalog.get(key)
-        if catalog_id is None:
-            stripped = strip_affinity(name)
-            if stripped:
-                catalog_id = catalog.get(norm(stripped))
-        if catalog_id is None:
+        catalog_id = exact_catalog_id(name, catalog)
+        if catalog_id:
+            mapping[str(param_id)] = catalog_id
+        else:
+            unmatched.append((param_id, name))
+    if kind != "weapons":
+        return mapping
+    for param_id, name in unmatched:
+        catalog_id = affinity_catalog_id(name, catalog)
+        if not catalog_id:
             continue
-        mapping[str(param_id)] = catalog_id
+        family = param_id - (param_id % 10000)
+        if any(mapping.get(str(family + off)) == catalog_id for off in AFFINITY_OFFSETS):
+            mapping[str(param_id)] = catalog_id
     return mapping
 
 

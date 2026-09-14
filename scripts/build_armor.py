@@ -7,6 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from icon_map import apply_icons
+from param_io import PARAM_DIR, load_protectors
 
 SLOTS = {
     "helms.json": "helm",
@@ -52,6 +53,55 @@ def classify_source(available_text):
 WEIGHT_OVERRIDES = {
     "Mausoleum Knight Armor": 11.8,
 }
+
+
+def overlay_param_stats(items):
+    """Replace wiki numbers with EquipParamProtector values when the dump is present."""
+    path = PARAM_DIR / "EquipParamProtector.param"
+    if not path.exists():
+        print("skip param overlay (EquipParamProtector.param not found)")
+        return
+    from build_game_ids import NAME_OVERRIDES, index_catalog, norm
+
+    protectors = load_protectors(path)
+    catalog = index_catalog(items)
+    by_id = {it["id"]: it for it in items}
+    applied = 0
+    changed = 0
+    for stats in protectors.values():
+        key = NAME_OVERRIDES.get(norm(stats["name"]), norm(stats["name"]))
+        cid = catalog.get(key)
+        if not cid:
+            continue
+        item = by_id[cid]
+        new_neg = {
+            "phy": stats["phy"],
+            "strike": stats["strike"],
+            "slash": stats["slash"],
+            "pierce": stats["pierce"],
+            "magic": stats["magic"],
+            "fire": stats["fire"],
+            "lightning": stats["lightning"],
+            "holy": stats["holy"],
+        }
+        new_res = {
+            "immunity": stats["immunity"],
+            "robustness": stats["robustness"],
+            "focus": stats["focus"],
+            "vitality": stats["vitality"],
+            "poise": stats["poise"],
+        }
+        if (
+            item["weight"] != stats["weight"]
+            or item["negation"] != new_neg
+            or item["resistance"] != new_res
+        ):
+            changed += 1
+        item["weight"] = stats["weight"]
+        item["negation"] = new_neg
+        item["resistance"] = new_res
+        applied += 1
+    print(f"param overlay: {applied}/{len(items)} pieces, {changed} differed from wiki scrape")
 
 
 def main():
@@ -103,6 +153,7 @@ def main():
                 item["weight"] = WEIGHT_OVERRIDES[name]
             out.append(item)
 
+    overlay_param_stats(out)
     apply_icons(out)
     with open("data/armor.json", "w") as f:
         json.dump(out, f, indent=1)

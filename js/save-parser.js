@@ -462,6 +462,36 @@ const ER_SAVE = (() => {
     return id;
   }
 
+  const AFFINITY_NAMES = {
+    0: "Standard",
+    100: "Heavy",
+    200: "Keen",
+    300: "Quality",
+    400: "Fire",
+    500: "Flame Art",
+    600: "Lightning",
+    700: "Sacred",
+    800: "Magic",
+    900: "Cold",
+    1000: "Poison",
+    1100: "Blood",
+    1200: "Occult",
+  };
+
+  function decodeWeaponId(itemId) {
+    const raw = itemId >>> 0;
+    const upgrade = raw % 100;
+    const stripped = raw - upgrade;
+    const code = stripped % 10000;
+    let affinity = 0;
+    let baseId = stripped;
+    if (code >= 100 && code <= 1200 && code % 100 === 0) {
+      affinity = code;
+      baseId = stripped - code;
+    }
+    return { baseId, lookupId: stripped, affinity, upgrade };
+  }
+
   function lookupWeapon(gameIds, itemId) {
     const weapons = gameIds.weapons || {};
     let id = weaponLookupId(itemId);
@@ -476,6 +506,7 @@ const ER_SAVE = (() => {
 
   function mapOwned(ownedRaw, gameIds) {
     const owned = { armor: new Set(), weapons: new Set(), talismans: new Set() };
+    const instances = {};
     let matched = 0;
     let skipped = 0;
 
@@ -484,6 +515,11 @@ const ER_SAVE = (() => {
       if (catalogId) {
         if (!owned.weapons.has(catalogId)) matched++;
         owned.weapons.add(catalogId);
+        const dec = decodeWeaponId(id);
+        const list = instances[catalogId] || (instances[catalogId] = []);
+        const hit = list.find((x) => x.affinity === dec.affinity);
+        if (hit) hit.upgrade = Math.max(hit.upgrade, dec.upgrade);
+        else list.push({ affinity: dec.affinity, upgrade: dec.upgrade });
       } else skipped++;
     }
     for (const id of ownedRaw.armor || []) {
@@ -500,7 +536,7 @@ const ER_SAVE = (() => {
         owned.talismans.add(catalogId);
       } else skipped++;
     }
-    return { owned, matched, skipped };
+    return { owned, matched, skipped, instances };
   }
 
   function catalogIdFor(rec, gameIds) {
@@ -522,7 +558,12 @@ const ER_SAVE = (() => {
       }
       const catalogId = catalogIdFor(rec, gameIds);
       if (catalogId) {
-        slots[slot] = catalogId;
+        const extra = rec.type === "weapons" ? decodeWeaponId(rec.id) : { affinity: 0, upgrade: 0 };
+        slots[slot] = {
+          id: catalogId,
+          affinity: extra.affinity || 0,
+          upgrade: extra.upgrade || 0,
+        };
         filled++;
       } else {
         slots[slot] = null;
@@ -541,6 +582,7 @@ const ER_SAVE = (() => {
     parseProfiles,
     parseSave,
     weaponLookupId,
+    decodeWeaponId,
     lookupWeapon,
     mapOwned,
     mapEquipped,
