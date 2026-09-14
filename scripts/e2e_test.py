@@ -39,6 +39,22 @@ with sync_playwright() as p:
     if maus_w["al"] != 10.8:
         raise SystemExit("Mausoleum Knight Armor (Altered) should weigh 10.8")
 
+    foot_g = page.evaluate(
+        """() => {
+      const g = ARMOR.find(a => a.name === "Foot Soldier Greaves");
+      return g && { weight: g.weight, poise: g.resistance && g.resistance.poise, areas: g.areas, slot: g.slot };
+    }"""
+    )
+    print("Foot Soldier Greaves:", foot_g)
+    if not foot_g:
+        raise SystemExit("Foot Soldier Greaves should be in the armor pool")
+    if foot_g["slot"] != "legs" or foot_g["weight"] != 5.1:
+        raise SystemExit("Foot Soldier Greaves should be 5.1 weight legs")
+    if foot_g["poise"] != 10:
+        raise SystemExit("Foot Soldier Greaves poise should be 10")
+    if "Limgrave" not in foot_g["areas"]:
+        raise SystemExit("Foot Soldier Greaves should drop in Limgrave")
+
     exclusive_start = page.evaluate(
         """() => {
       const out = [];

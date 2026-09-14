@@ -17026,7 +17026,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
-  "areas": [],
+  "areas": [
+   "Limgrave"
+  ],
   "icon": "img/armor/gauntlets-foot-soldier-gauntlets.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Gauntlets"
  },
@@ -22590,6 +22592,38 @@
   ],
   "icon": "img/armor/legs-fire-prelate-greaves.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Fire_Prelate_Greaves"
+ },
+ {
+  "id": "legs-foot-soldier-greaves",
+  "name": "Foot Soldier Greaves",
+  "slot": "legs",
+  "weight": 5.1,
+  "negation": {
+   "phy": 5.4,
+   "strike": 5.8,
+   "slash": 5.4,
+   "pierce": 5.4,
+   "magic": 6.2,
+   "fire": 6.5,
+   "lightning": 6.8,
+   "holy": 6.2
+  },
+  "resistance": {
+   "immunity": 39.0,
+   "robustness": 26.0,
+   "focus": 34.0,
+   "vitality": 34.0,
+   "poise": 10.0
+  },
+  "effect": "",
+  "source": "Elden Ring",
+  "dlc": false,
+  "altered": false,
+  "areas": [
+   "Limgrave"
+  ],
+  "icon": "img/armor/legs-foot-soldier-greaves.png",
+  "wiki": "https://eldenring.wiki.fextralife.com/Foot_Soldier_Greaves"
  },
  {
   "id": "legs-aristocrat-boots",

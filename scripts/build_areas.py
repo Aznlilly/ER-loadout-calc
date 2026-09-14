@@ -590,6 +590,9 @@ def main():
         "Mausoleum Knight Armor (Altered)": ["Liurnia of the Lakes"],
         "Mausoleum Knight Gauntlets": ["Liurnia of the Lakes"],
         "Mausoleum Knight Greaves": ["Liurnia of the Lakes"],
+        # Gauntlets and greaves only drop from Godrick Foot Soldiers.
+        "Foot Soldier Gauntlets": ["Limgrave"],
+        "Foot Soldier Greaves": ["Limgrave"],
     }
 
     # World shops for starting weapons (none of these are class-exclusive)

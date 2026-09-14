@@ -2331,6 +2331,27 @@
   "available": "Base game"
  },
  {
+  "name": "Foot Soldier Greaves",
+  "phy": "5.4",
+  "strike": "5.8",
+  "slash": "5.4",
+  "pierce": "5.4",
+  "magic": "6.2",
+  "fire": "6.5",
+  "lightning": "6.8",
+  "holy": "6.2",
+  "immunity": "39",
+  "robustness": "26",
+  "focus": "34",
+  "vitality": "34",
+  "poise": "10",
+  "weight": "5.1",
+  "special": "",
+  "acquire": "Dropped by only Godrick Foot Soldiers. Godrick Foot Soldiers can be found throughout Limgrave. Easily farmed south of the Agheel Lake South Site of Grace.",
+  "section": "5",
+  "available": "Base game"
+ },
+ {
   "name": "Aristocrat Boots",
   "phy": "4.3",
   "strike": "4.8",
