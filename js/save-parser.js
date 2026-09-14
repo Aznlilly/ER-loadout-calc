@@ -6,7 +6,12 @@ const ER_SAVE = (() => {
   const SLOT0_OFFSET = 0x300;
   const SLOT_STRIDE = 0x280010; // MD5 + 0x280000 data
   const SLOT_DATA_SIZE = 0x280000;
-  const UD10_OFFSET = 0x19003A0;
+  const UD10_OFFSET = 0x19003A0; // PC BND4: MD5 of UserData10
+  const UD10_ACTIVE_SLOTS = 0x1954; // from UD10 data, after MenuSystemSaveLoad
+  const UD10_PROFILE_BASE = 0x195E;
+  const PROFILE_NAME_BYTES = 0x20;
+  const PROFILE_LEVEL = 0x22;
+  const PROFILE_SECONDS = 0x26;
   const PROFILE_SIZE = 0x24C;
   const GAITEM_OLD = 5118;
   const GAITEM_NEW = 5120;
@@ -391,16 +396,17 @@ const ER_SAVE = (() => {
   }
 
   function parseProfiles(bytes) {
-    if (bytes.length < UD10_OFFSET + 0x18 + PROFILE_SIZE) return [];
+    const dataStart = UD10_OFFSET + 0x10;
+    const activeOff = dataStart + UD10_ACTIVE_SLOTS;
+    const base = dataStart + UD10_PROFILE_BASE;
+    if (bytes.length < base + SLOT_COUNT * PROFILE_SIZE) return [];
     const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
     const profiles = [];
-    const base = UD10_OFFSET + 0x18;
-    const activeOff = base + SLOT_COUNT * PROFILE_SIZE;
     for (let i = 0; i < SLOT_COUNT; i++) {
       const off = base + i * PROFILE_SIZE;
-      const name = readUtf16(view, off, 32);
-      const level = view.getUint32(off + 0x20, true);
-      const seconds = view.getUint32(off + 0x24, true);
+      const name = readUtf16(view, off, PROFILE_NAME_BYTES);
+      const level = view.getUint32(off + PROFILE_LEVEL, true);
+      const seconds = view.getUint32(off + PROFILE_SECONDS, true);
       const active = activeOff + i < bytes.length ? bytes[activeOff + i] : 0;
       profiles.push({ index: i, name, level, seconds, active: active !== 0 });
     }

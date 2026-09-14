@@ -86,6 +86,11 @@ def main() -> None:
     assert stats["level"] == 104
     assert stats["gender"] == 0
     assert (stats["vig"], stats["end"], stats["str"]) == (16, 26, 22)
+    profile0 = 0x19003A0 + 0x10 + 0x195E
+    assert buf[profile0 : profile0 + 16].decode("utf-16le").rstrip("\x00") == "Morrigan"
+    assert int.from_bytes(buf[profile0 + 0x22 : profile0 + 0x26], "little") == 104
+    morr_seconds = int.from_bytes(buf[profile0 + 0x26 : profile0 + 0x2A], "little")
+    assert 6 * 3600 < morr_seconds < 8 * 3600, morr_seconds
     held = inspect_save.summarize(chosen["held"])
     assert held["talismans"] >= 1, held
     assert held["weapons"] >= 1 and held["armor"] >= 1
