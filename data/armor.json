@@ -2533,6 +2533,7 @@
   "dlc": false,
   "altered": false,
   "icon": "img/armor/helm-chain-coif.png",
+  "iconFemale": "img/armor/helm-chain-coif-f.png",
   "areas": [
    "Limgrave"
   ],
@@ -9250,6 +9251,7 @@
   "dlc": false,
   "altered": false,
   "icon": "img/armor/chest-chain-armor.png",
+  "iconFemale": "img/armor/chest-chain-armor-f.png",
   "areas": [
    "Limgrave",
    "Roundtable Hold"
@@ -17616,6 +17618,7 @@
   "dlc": false,
   "altered": false,
   "icon": "img/armor/gauntlets-gauntlets.png",
+  "iconFemale": "img/armor/gauntlets-gauntlets-f.png",
   "areas": [
    "Limgrave"
   ],

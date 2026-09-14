@@ -84,6 +84,7 @@ def main() -> None:
     assert chosen and chosen["name"] == "Morrigan", chosen and chosen["name"]
     stats = chosen["stats"]
     assert stats["level"] == 104
+    assert stats["gender"] == 0
     assert (stats["vig"], stats["end"], stats["str"]) == (16, 26, 22)
     held = inspect_save.summarize(chosen["held"])
     assert held["talismans"] >= 1, held
@@ -139,6 +140,7 @@ def main() -> None:
             nymera = parsed
             break
     assert nymera, "Nymera character missing from test save"
+    assert nymera["stats"]["gender"] == 0
     assert map_eq(nymera, "gauntlets") == "gauntlets-gauntlets"
     assert map_eq(nymera, "helm") == "helm-godrick-soldier-helm"
     assert map_eq(nymera, "chest") == "chest-kaiden-armor"

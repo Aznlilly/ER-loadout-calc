@@ -47,6 +47,7 @@ let EQUIPMENT = Object.fromEntries(ALL_SLOTS.map((s) => [s, emptySlot()]));
 let talismanSlotCount = 4;
 let loadRatio = 0.699;
 let pickerSlot = null;
+let characterGender = "male";
 
 const EXCLUDED = {
   armor: new Set(),
@@ -108,12 +109,37 @@ function escapeHtml(s) {
   }[c]));
 }
 
+function itemIconSrc(item) {
+  if (!item) return "";
+  if (characterGender === "female" && item.iconFemale) return item.iconFemale;
+  return item.icon || "";
+}
+
 function iconHtml(item, extraClass) {
   const cls = extraClass || "slot-icon";
-  if (item && item.icon) {
-    return `<img class="${cls}" src="${escapeHtml(item.icon)}" alt="" onerror="this.outerHTML='<span class=&quot;slot-placeholder&quot;></span>'">`;
+  const src = itemIconSrc(item);
+  if (src) {
+    const idAttr = item.id ? ` data-item-id="${escapeHtml(item.id)}"` : "";
+    return `<img class="${cls}"${idAttr} src="${escapeHtml(src)}" alt="" onerror="this.outerHTML='<span class=&quot;slot-placeholder&quot;></span>'">`;
   }
   return `<span class="slot-placeholder"></span>`;
+}
+
+function setCharacterGender(gender) {
+  characterGender = gender === "female" ? "female" : "male";
+  const sel = document.getElementById("character-gender");
+  if (sel && sel.value !== characterGender) sel.value = characterGender;
+  saveState();
+  renderEquipment();
+  renderWeaponResults();
+  if (pickerSlot) renderPickerList();
+  document.querySelectorAll("img[data-item-id]").forEach((img) => {
+    const item = ARMOR_BY_ID.get(img.dataset.itemId)
+      || WEAPONS_BY_ID.get(img.dataset.itemId)
+      || TALISMANS_BY_ID.get(img.dataset.itemId);
+    const src = itemIconSrc(item);
+    if (src) img.src = src;
+  });
 }
 
 const WIKI_BASE = "https://eldenring.wiki.fextralife.com/";
@@ -396,6 +422,7 @@ function saveState() {
     resistanceStat: document.getElementById("resistance-stat").value,
     minweightMetric: document.getElementById("minweight-metric").value,
     minweightTarget: document.getElementById("minweight-target").value,
+    gender: characterGender,
     twoHanding: document.getElementById("weapon-two-hand").checked,
     onlyMeetable: document.getElementById("weapon-only-meetable").checked,
     weaponCategory: document.getElementById("weapon-category").value,
@@ -479,6 +506,12 @@ function loadSavedState() {
   }
   if (data.minweightTarget != null && data.minweightTarget !== "") {
     document.getElementById("minweight-target").value = String(data.minweightTarget);
+  }
+
+  if (data.gender === "female" || data.gender === "male") {
+    characterGender = data.gender;
+    const sel = document.getElementById("character-gender");
+    if (sel) sel.value = characterGender;
   }
 
   if (typeof data.twoHanding === "boolean") {
@@ -1525,6 +1558,9 @@ function applySaveEquipped(equipped) {
 }
 
 function applySaveCharacter(character, opts) {
+  if (character.gender === "female" || character.gender === "male") {
+    setCharacterGender(character.gender);
+  }
   const parts = [];
   if (opts.inventory || opts.chest) {
     const bags = [];
@@ -1660,6 +1696,9 @@ async function init() {
       updateDerivedCharacterInfo();
       renderWeaponResults();
     }));
+  document.getElementById("character-gender").addEventListener("change", (e) => {
+    setCharacterGender(e.target.value);
+  });
 
   document.getElementById("load-ratio").addEventListener("input", (e) => {
     applyLoadRatio(ratioFromSliderUnits(e.target.value));

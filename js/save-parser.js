@@ -220,6 +220,8 @@ const ER_SAVE = (() => {
 
   function readStats(view, pgdOffset) {
     const extra = view.getUint8(pgdOffset + 0xBE);
+    // PlayerGameData +0xB6: 0 = female, 1 = male (same as other From saves).
+    const gender = view.getUint8(pgdOffset + 0xB6) === 0 ? "female" : "male";
     return {
       vig: view.getUint32(pgdOffset + 0x34, true),
       mind: view.getUint32(pgdOffset + 0x38, true),
@@ -231,6 +233,7 @@ const ER_SAVE = (() => {
       arc: view.getUint32(pgdOffset + 0x50, true),
       level: view.getUint32(pgdOffset + 0x60, true),
       talismanSlotCount: Math.max(1, Math.min(4, 1 + extra)),
+      gender,
     };
   }
 
@@ -445,6 +448,7 @@ const ER_SAVE = (() => {
         level: stats.level || profile.level || 0,
         seconds: profile.seconds || 0,
         playtime: formatPlaytime(profile.seconds || 0),
+        gender: stats.gender || "male",
         stats,
         inventory: bags.inventory,
         chest: bags.chest,

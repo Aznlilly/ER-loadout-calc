@@ -127,6 +127,10 @@ assert(mapped.instances.longsword[0].affinity === 0, "owned longsword standard")
   const parsed = ER_SAVE.parseGaItems(view, 0);
   assert(parsed && parsed.name === "TestHero", `name ${parsed && parsed.name}`);
   assert(parsed.stats && parsed.stats.level === 12, `level ${parsed && parsed.stats && parsed.stats.level}`);
+  assert(parsed.stats.gender === "female", `default gender ${parsed.stats.gender}`);
+  view.setUint8(off + 0xB6, 1);
+  const male = ER_SAVE.parseGaItems(view, 0);
+  assert(male && male.stats.gender === "male", `male gender ${male && male.stats && male.stats.gender}`);
   const recs = [...parsed.handleMap.values()];
   assert(recs.some((r) => r.type === "weapons" && r.id === 2000000), "mini slot weapon id");
 }

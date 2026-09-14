@@ -111,6 +111,7 @@ def collect(buf: bytes, data_off: int, mode: str):
         "arc": u32(buf, off + 0x50),
         "level": u32(buf, off + 0x60),
         "talismanExtra": buf[off + 0xBE],
+        "gender": buf[off + 0xB6],
     }
     return {"version": version, "owned": owned, "handles": handles, "name": name, "stats": stats, "pgd": off}
 
