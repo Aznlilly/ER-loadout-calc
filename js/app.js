@@ -694,6 +694,17 @@ function unequipAll() {
   renderWeaponResults();
 }
 
+function resetTool() {
+  const ok = window.confirm(
+    "Reset the tool to a blank character?\n\nThis clears equipped items, stats, gender, imported save data (including owned affinities and upgrade levels), item-pool excludes, and all other settings saved in this browser."
+  );
+  if (!ok) return;
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (_) { /* ignore quota / private mode */ }
+  window.location.reload();
+}
+
 function setupEquipmentBoard() {
   document.getElementById("equip-board").addEventListener("click", onEquipClick);
   document.getElementById("equip-talismans").addEventListener("click", onEquipClick);
@@ -709,6 +720,7 @@ function setupEquipmentBoard() {
   });
 
   document.getElementById("unequip-all").addEventListener("click", unequipAll);
+  document.getElementById("reset-tool").addEventListener("click", resetTool);
   document.getElementById("include-altered").addEventListener("change", () => {
     saveState();
     if (pickerSlot) renderPickerList();

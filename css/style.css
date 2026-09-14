@@ -499,7 +499,20 @@ a.wiki-link:hover { text-decoration: underline; }
 }
 
 .equip-hint { margin-bottom: 8px; }
-.equip-actions { margin: 0 0 12px; }
+.equip-actions {
+  margin: 0 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.danger-btn {
+  border-color: var(--danger);
+  color: #e07070;
+}
+.danger-btn:hover {
+  border-color: #e07070;
+  background: #2a1616;
+}
 #equip-load-readout { margin-top: 14px; }
 
 .item-picker-overlay {
