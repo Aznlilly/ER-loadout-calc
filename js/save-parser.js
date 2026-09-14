@@ -172,6 +172,22 @@ const ER_SAVE = (() => {
   const CHEST_COMMON = 0x780;
   const CHEST_KEY = 0x80;
   const MAX_PROJECTILES = 20000;
+  const EQUIPPED_SLOT_OFFSETS = {
+    l1: 0x00,
+    r1: 0x04,
+    l2: 0x08,
+    r2: 0x0C,
+    l3: 0x10,
+    r3: 0x14,
+    helm: 0x30,
+    chest: 0x34,
+    gauntlets: 0x38,
+    legs: 0x3C,
+    tal1: 0x44,
+    tal2: 0x48,
+    tal3: 0x4C,
+    tal4: 0x50,
+  };
 
   function emptyOwned() {
     return { weapons: [], armor: [], talismans: [] };
@@ -290,20 +306,63 @@ const ER_SAVE = (() => {
     return owned;
   }
 
+  function isEmptyEquip(handle, itemId) {
+    const h = handle >>> 0;
+    const iid = itemId >>> 0;
+    return (!h || h === 0xFFFFFFFF) && (iid === 0 || iid === 0xFFFFFFFF);
+  }
+
+  function resolveEquipped(handle, itemId, handleMap) {
+    const h = handle >>> 0;
+    const iid = itemId >>> 0;
+    if (isEmptyEquip(h, iid)) return null;
+    const rec = handleMap.get(h) || decodeLooseHandle(h);
+    if (rec) return rec;
+    if (iid && iid !== 0xFFFFFFFF) {
+      if (iid & ITEM_ARMOR_PREFIX) return { type: "armor", id: (iid ^ ITEM_ARMOR_PREFIX) >>> 0 };
+      if (iid & ITEM_ACCESSORY_PREFIX) return { type: "talismans", id: (iid ^ ITEM_ACCESSORY_PREFIX) >>> 0 };
+      return { type: "weapons", id: iid };
+    }
+    return null;
+  }
+
+  function equippedItemIdsOffset(pgdOffset) {
+    return pgdOffset + 0x1B0 + 0xD0 + 0x58 + 0x1C;
+  }
+
+  function readEquipped(view, pgdOffset, handleMap) {
+    const idsOff = equippedItemIdsOffset(pgdOffset);
+    const handlesOff = idsOff + 0x58;
+    const equipped = {};
+    if (handlesOff + 0x58 > view.byteLength) {
+      for (const slot of Object.keys(EQUIPPED_SLOT_OFFSETS)) equipped[slot] = null;
+      return equipped;
+    }
+    for (const [slot, off] of Object.entries(EQUIPPED_SLOT_OFFSETS)) {
+      equipped[slot] = resolveEquipped(
+        view.getUint32(handlesOff + off, true),
+        view.getUint32(idsOff + off, true),
+        handleMap
+      );
+    }
+    return equipped;
+  }
+
   function parseSlotBags(view, parsed) {
-    let off = parsed.pgdOffset + 0x1B0 + 0xD0 + 0x58 + 0x1C + 0x58 + 0x58;
+    const equipped = readEquipped(view, parsed.pgdOffset, parsed.handleMap);
+    let off = equippedItemIdsOffset(parsed.pgdOffset) + 0x58 + 0x58;
     const held = readInventory(view, off, HELD_COMMON, HELD_KEY, parsed.handleMap);
     let inventory = held ? held.owned : ownedFromHandleMap(parsed.handleMap);
     let chest = emptyOwned();
-    if (!held) return { inventory, chest };
+    if (!held) return { inventory, chest, equipped };
     off = held.off + 0x74 + 0x8C + 0x18;
-    if (off + 4 > view.byteLength) return { inventory, chest };
+    if (off + 4 > view.byteLength) return { inventory, chest, equipped };
     const proj = view.getUint32(off, true);
-    if (proj > MAX_PROJECTILES) return { inventory, chest };
+    if (proj > MAX_PROJECTILES) return { inventory, chest, equipped };
     off += 4 + proj * 8 + 0x9C + 0xC + 0x12F;
     const stored = readInventory(view, off, CHEST_COMMON, CHEST_KEY, parsed.handleMap);
     if (stored) chest = stored.owned;
-    return { inventory, chest };
+    return { inventory, chest, equipped };
   }
 
   function readUtf16(view, offset, maxBytes) {
@@ -389,6 +448,7 @@ const ER_SAVE = (() => {
         stats,
         inventory: bags.inventory,
         chest: bags.chest,
+        equipped: bags.equipped,
       });
     }
     if (!characters.length) {
@@ -443,6 +503,35 @@ const ER_SAVE = (() => {
     return { owned, matched, skipped };
   }
 
+  function catalogIdFor(rec, gameIds) {
+    if (!rec) return null;
+    if (rec.type === "weapons") return lookupWeapon(gameIds, rec.id);
+    const table = gameIds[rec.type] || {};
+    return table[rec.id] || table[String(rec.id)] || null;
+  }
+
+  function mapEquipped(equipped, gameIds) {
+    const slots = {};
+    let filled = 0;
+    let skipped = 0;
+    for (const slot of Object.keys(EQUIPPED_SLOT_OFFSETS)) {
+      const rec = equipped && equipped[slot];
+      if (!rec) {
+        slots[slot] = null;
+        continue;
+      }
+      const catalogId = catalogIdFor(rec, gameIds);
+      if (catalogId) {
+        slots[slot] = catalogId;
+        filled++;
+      } else {
+        slots[slot] = null;
+        skipped++;
+      }
+    }
+    return { slots, filled, skipped };
+  }
+
   return {
     AES_KEY,
     unwrapSave,
@@ -454,6 +543,7 @@ const ER_SAVE = (() => {
     weaponLookupId,
     lookupWeapon,
     mapOwned,
+    mapEquipped,
     mergeOwnedBags: (...bags) => {
       const out = emptyOwned();
       for (const bag of bags) {

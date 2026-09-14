@@ -62,6 +62,25 @@ assert(mapped.owned.talismans.has("crimson-amber-medallion"), "owned medallion")
 assert(mapped.skipped === 3, `expected 3 skipped, got ${mapped.skipped}`);
 assert(mapped.matched === 3, `expected 3 matched, got ${mapped.matched}`);
 
+{
+  const eq = ER_SAVE.mapEquipped({
+    r1: { type: "weapons", id: 2000010 },
+    helm: { type: "armor", id: 40000 },
+    chest: { type: "armor", id: 380100 },
+    tal1: { type: "talismans", id: 1000 },
+    r2: { type: "weapons", id: 99999999 },
+    l1: null,
+  }, gameIds);
+  assert(eq.slots.r1 === "longsword", "map equipped longsword");
+  assert(eq.slots.helm === "helm-iron-helmet", "map equipped iron helmet");
+  assert(eq.slots.chest === "chest-aristocrat-coat", "map equipped aristocrat coat");
+  assert(eq.slots.tal1 === "crimson-amber-medallion", "map equipped medallion");
+  assert(eq.slots.r2 === null, "unknown equipped weapon becomes empty");
+  assert(eq.slots.l1 === null, "empty equipped slot stays empty");
+  assert(eq.filled === 4, `expected 4 filled, got ${eq.filled}`);
+  assert(eq.skipped === 1, `expected 1 skipped, got ${eq.skipped}`);
+}
+
 // Mini slot: version 1, one weapon, remaining empty gaitems, then PlayerGameData name/level.
 {
   const count = 5118;

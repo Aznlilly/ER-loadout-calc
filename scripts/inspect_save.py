@@ -15,6 +15,22 @@ ITEM_ARMOR = 0x10000000
 ITEM_ACCESSORY = 0x20000000
 HELD_COMMON, HELD_KEY = 0xA80, 0x180
 CHEST_COMMON, CHEST_KEY = 0x780, 0x80
+EQUIPPED_OFFSETS = [
+    ("l1", 0x00),
+    ("r1", 0x04),
+    ("l2", 0x08),
+    ("r2", 0x0C),
+    ("l3", 0x10),
+    ("r3", 0x14),
+    ("helm", 0x30),
+    ("chest", 0x34),
+    ("gauntlets", 0x38),
+    ("legs", 0x3C),
+    ("tal1", 0x44),
+    ("tal2", 0x48),
+    ("tal3", 0x4C),
+    ("tal4", 0x50),
+]
 
 
 def gaitem_size(handle: int, mode: str) -> int:
@@ -106,6 +122,33 @@ def take_inv_item(handle, handles, items):
         items.append(("talismans", handle ^ HANDLE_ACCESSORY))
 
 
+def resolve_equipped(handle, item_id, handles):
+    h = handle & 0xFFFFFFFF
+    iid = item_id & 0xFFFFFFFF
+    if h in (0, 0xFFFFFFFF) and iid in (0, 0xFFFFFFFF):
+        return None
+    if h in handles:
+        return handles[h]
+    if (h & 0xF0000000) == HANDLE_ACCESSORY:
+        return ("talismans", h ^ HANDLE_ACCESSORY)
+    if iid not in (0, 0xFFFFFFFF):
+        if iid & ITEM_ARMOR:
+            return ("armor", iid ^ ITEM_ARMOR)
+        if iid & ITEM_ACCESSORY:
+            return ("talismans", iid ^ ITEM_ACCESSORY)
+        return ("weapons", iid)
+    return None
+
+
+def read_equipped(buf: bytes, pgd: int, handles: dict):
+    ids = pgd + 0x1B0 + 0xD0 + 0x58 + 0x1C
+    hs = ids + 0x58
+    out = {}
+    for name, off in EQUIPPED_OFFSETS:
+        out[name] = resolve_equipped(u32(buf, hs + off), u32(buf, ids + off), handles)
+    return out
+
+
 def read_inv(buf: bytes, off: int, common_cap: int, key_cap: int, handles: dict):
     common_count = u32(buf, off)
     off += 4
@@ -129,6 +172,7 @@ def parse_slot(buf: bytes, slot: int, mode: str):
     parsed = collect(buf, data_off, mode)
     if not parsed:
         return None
+    parsed["equipped"] = read_equipped(buf, parsed["pgd"], parsed["handles"])
     off = parsed["pgd"] + 0x1B0
     off += 0xD0 + 0x58 + 0x1C + 0x58 + 0x58
     off, held, held_c, held_k = read_inv(buf, off, HELD_COMMON, HELD_KEY, parsed["handles"])
@@ -168,7 +212,10 @@ def main() -> None:
         table = game_ids[kind]
         if kind == "weapons":
             base = pid - (pid % 100)
-            return table.get(str(base)) or table.get(str(base - (base % 10000)))
+            aff = base % 10000
+            if 100 <= aff <= 1200 and aff % 100 == 0:
+                base -= aff
+            return table.get(str(base))
         return table.get(str(pid))
 
     for slot in range(10):
@@ -186,6 +233,14 @@ def main() -> None:
         print(f"\nslot {slot} {chosen['name']!r} RL {s['level']} stats { {k: s[k] for k in ('vig','mind','end','str','dex','int','fai','arc')} }")
         print("  gaitem", {k: len(v) for k, v in chosen["owned"].items()}, "name_ok", looks_like_name(chosen["name"]))
         print("  held", chosen.get("held_counts"), summarize(chosen.get("held", [])), "chest", chosen.get("chest_counts"), summarize(chosen.get("chest", [])), "proj", chosen.get("proj"), "proj_bad", chosen.get("proj_bad"))
+        eq_names = []
+        for slot, rec in (chosen.get("equipped") or {}).items():
+            if not rec:
+                continue
+            kind, pid = rec
+            n = named(kind, pid)
+            eq_names.append(f"{slot}={n or hex(pid)}")
+        print("  equipped", eq_names or "empty")
         for label, bag in (("held", chosen.get("held", [])), ("chest", chosen.get("chest", []))):
             names = []
             for kind, pid in bag:

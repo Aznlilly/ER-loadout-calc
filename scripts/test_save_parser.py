@@ -79,6 +79,43 @@ def main() -> None:
         if parsed:
             names.append(parsed["name"])
     assert "Lilly" in names and "Sablethorn" in names
+
+    def map_eq(parsed, slot):
+        rec = (parsed.get("equipped") or {}).get(slot)
+        if not rec:
+            return None
+        kind, pid = rec
+        table = game_ids[kind]
+        if kind == "weapons":
+            base = pid - (pid % 100)
+            aff = base % 10000
+            if 100 <= aff <= 1200 and aff % 100 == 0:
+                base -= aff
+            return table.get(str(base))
+        return table.get(str(pid))
+
+    assert map_eq(chosen, "r1") == "claymore"
+    assert map_eq(chosen, "l1") == "brass-shield"
+    assert map_eq(chosen, "chest") == "chest-old-aristocrat-gown"
+    assert map_eq(chosen, "tal1") == "assassin-s-crimson-dagger"
+    assert map_eq(chosen, "helm") is None
+    assert map_eq(chosen, "tal2") is None
+
+    lilly = None
+    for slot in range(10):
+        parsed = inspect_save.parse_slot(buf, slot, "compact")
+        if parsed and parsed["name"] == "Lilly":
+            lilly = parsed
+            break
+    assert lilly, "Lilly character missing from test save"
+    assert map_eq(lilly, "r1") == "lordsworn-s-greatsword"
+    assert map_eq(lilly, "l1") == "brass-shield"
+    assert map_eq(lilly, "l2") == "longbow"
+    assert map_eq(lilly, "l3") == "torch"
+    assert map_eq(lilly, "chest") == "chest-aristocrat-coat"
+    assert map_eq(lilly, "tal1") == "assassin-s-crimson-dagger"
+    assert map_eq(lilly, "helm") is None
+    assert map_eq(lilly, "r2") is None
     print("real save tests ok", names)
 
 

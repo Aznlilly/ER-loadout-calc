@@ -19,7 +19,7 @@ with sync_playwright() as p:
     # Sanity: derived level shown
     level = page.text_content("#derived-level")
     print("Derived level:", level)
-    if (level.strip() != "1":
+    if level.strip() != "1":
         raise SystemExit("default stats of 10 should be character level 1")
 
     footer_html = page.inner_html(".site-footer")
@@ -37,7 +37,7 @@ with sync_playwright() as p:
     overlay_hidden = page.evaluate("() => document.getElementById('save-character-overlay').classList.contains('hidden')")
     if not overlay_hidden:
         raise SystemExit("character picker should start hidden")
-    for cid in ("save-import-inventory", "save-import-chest", "save-import-stats", "save-import-confirm"):
+    for cid in ("save-import-inventory", "save-import-chest", "save-import-stats", "save-import-equipped", "save-import-confirm"):
         if page.locator(f"#{cid}").count() != 1:
             raise SystemExit(f"save import dialog should include {cid}")
     ids_ok = page.evaluate("() => GAME_IDS && GAME_IDS.weapons && GAME_IDS.weapons['2000000'] === 'longsword'")
@@ -305,6 +305,52 @@ with sync_playwright() as p:
         raise SystemExit("Unequip All should leave locked R1 equipped")
     if l1_cleared.strip() != "Empty":
         raise SystemExit("Unequip All should empty unlocked slots")
+
+    equipped_import = page.evaluate(
+        """() => {
+      const helmBefore = EQUIPMENT.helm.id;
+      const r1Before = EQUIPMENT.r1.id;
+      applySaveCharacter({
+        name: "Importer",
+        level: 12,
+        equipped: {
+          helm: { type: "armor", id: 40000 },
+          chest: { type: "armor", id: 380100 },
+          r1: { type: "weapons", id: 2000000 },
+          l1: { type: "weapons", id: 2000000 },
+          tal1: { type: "talismans", id: 1000 },
+        },
+      }, { equipped: true });
+      const out = {
+        helm: EQUIPMENT.helm.id,
+        helmBefore,
+        helmLocked: EQUIPMENT.helm.locked,
+        r1: EQUIPMENT.r1.id,
+        r1Before,
+        chest: EQUIPMENT.chest.id,
+        l1: EQUIPMENT.l1.id,
+        tal1: EQUIPMENT.tal1.id,
+      };
+      for (const slot of ALL_SLOTS) {
+        if (!EQUIPMENT[slot].locked) EQUIPMENT[slot].id = null;
+      }
+      saveState();
+      renderEquipment();
+      updateDerivedCharacterInfo();
+      return out;
+    }"""
+    )
+    print("Equipped import:", equipped_import)
+    if not equipped_import["helmLocked"] or equipped_import["helm"] != equipped_import["helmBefore"]:
+        raise SystemExit("equipped import should leave locked helm unchanged")
+    if equipped_import["r1"] != equipped_import["r1Before"]:
+        raise SystemExit("equipped import should leave locked R1 unchanged")
+    if equipped_import["chest"] != "chest-aristocrat-coat":
+        raise SystemExit("equipped import should fill unlocked chest from the save")
+    if equipped_import["l1"] != "longsword":
+        raise SystemExit("equipped import should fill unlocked L1 from the save")
+    if equipped_import["tal1"] != "crimson-amber-medallion":
+        raise SystemExit("equipped import should fill unlocked talisman from the save")
 
     # --- Item Pool drawer ---
     print("\n--- item pool drawer ---")

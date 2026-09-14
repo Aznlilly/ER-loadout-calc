@@ -1293,6 +1293,7 @@ function openSaveCharacterPicker(characters) {
   document.getElementById("save-import-inventory").checked = true;
   document.getElementById("save-import-chest").checked = true;
   document.getElementById("save-import-stats").checked = true;
+  document.getElementById("save-import-equipped").checked = true;
   document.getElementById("save-character-overlay").classList.remove("hidden");
 }
 
@@ -1331,11 +1332,17 @@ function confirmSaveImport() {
   const wantInventory = document.getElementById("save-import-inventory").checked;
   const wantChest = document.getElementById("save-import-chest").checked;
   const wantStats = document.getElementById("save-import-stats").checked;
-  if (!wantInventory && !wantChest && !wantStats) {
+  const wantEquipped = document.getElementById("save-import-equipped").checked;
+  if (!wantInventory && !wantChest && !wantStats && !wantEquipped) {
     setSaveImportStatus("Choose at least one thing to import.", "save-import-err");
     return;
   }
-  applySaveCharacter(character, { inventory: wantInventory, chest: wantChest, stats: wantStats });
+  applySaveCharacter(character, {
+    inventory: wantInventory,
+    chest: wantChest,
+    stats: wantStats,
+    equipped: wantEquipped,
+  });
   closeSaveCharacterPicker();
 }
 
@@ -1355,6 +1362,48 @@ function applySaveStats(stats) {
   renderEquipment();
   updateDerivedCharacterInfo();
   renderWeaponResults();
+}
+
+function itemFitsImportedSlot(slot, id) {
+  if (!id) return true;
+  const kind = slotKind(slot);
+  if (kind === "armor") {
+    const it = ARMOR_BY_ID.get(id);
+    return !!(it && it.slot === slot);
+  }
+  if (kind === "weapon") return WEAPONS_BY_ID.has(id);
+  return TALISMANS_BY_ID.has(id);
+}
+
+function applySaveEquipped(equipped) {
+  const { slots, filled, skipped } = ER_SAVE.mapEquipped(equipped, GAME_IDS);
+  let neededPouches = talismanSlotCount;
+  TALISMAN_SLOTS.forEach((slot, i) => {
+    if (slots[slot]) neededPouches = Math.max(neededPouches, i + 1);
+  });
+  if (neededPouches !== talismanSlotCount) {
+    talismanSlotCount = Math.max(1, Math.min(4, neededPouches));
+    const sel = document.getElementById("talisman-slot-count");
+    if (sel) sel.value = String(talismanSlotCount);
+  }
+
+  let applied = 0;
+  let lockedSkip = 0;
+  for (const slot of ALL_SLOTS) {
+    if (!(slot in slots)) continue;
+    if (EQUIPMENT[slot].locked) {
+      lockedSkip++;
+      continue;
+    }
+    const id = itemFitsImportedSlot(slot, slots[slot]) ? slots[slot] : null;
+    EQUIPMENT[slot].id = id;
+    if (id) applied++;
+  }
+  saveState();
+  renderEquipment();
+  updateDerivedCharacterInfo();
+  renderWeaponResults();
+  return { applied, filled, skipped, lockedSkip };
 }
 
 function applySaveCharacter(character, opts) {
@@ -1382,6 +1431,11 @@ function applySaveCharacter(character, opts) {
   if (opts.stats) {
     applySaveStats(character.stats);
     parts.push(`RL ${character.level} stats`);
+  }
+  if (opts.equipped) {
+    const result = applySaveEquipped(character.equipped);
+    const extra = result.lockedSkip ? `, left ${result.lockedSkip} locked` : "";
+    parts.push(`${result.applied} equipped items${extra}`);
   }
   setSaveImportStatus(`Imported ${character.name}: ${parts.join("; ")}.`, "save-import-ok");
 }
