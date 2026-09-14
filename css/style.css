@@ -283,10 +283,6 @@ a.wiki-link:hover { text-decoration: underline; }
   opacity: 0.5;
   text-decoration: line-through;
 }
-.pool-checklist-item.region-filtered {
-  opacity: 0.4;
-  text-decoration: none;
-}
 .pool-checklist-item:hover { background: #2a251c; }
 
 #pool-count-label { margin-left: auto; }

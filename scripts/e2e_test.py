@@ -381,6 +381,21 @@ with sync_playwright() as p:
     print("Untagged TE helm unchecked:", not broken.locator("input").is_checked())
     redmane = page.locator("#pool-checklist .pool-checklist-item", has_text="Redmane").first
     print("Caelid-only Redmane unchecked:", not redmane.locator("input").is_checked())
+    if redmane.locator("input").is_disabled():
+        raise SystemExit("region chips should not disable item checkboxes")
+    redmane.locator("input").check()
+    page.wait_for_timeout(150)
+    redmane_over = page.evaluate(
+        """() => {
+      const a = ARMOR.find(x => x.slot === "helm" && x.name.includes("Redmane"));
+      return { name: a && a.name, inPool: a && isIncluded(a, "armor") };
+    }"""
+    )
+    print("Override-included Caelid helm:", redmane_over)
+    if not redmane_over["inPool"]:
+        raise SystemExit("checking a Caelid item should include it even when Caelid is off")
+    redmane.locator("input").uncheck()
+    page.wait_for_timeout(100)
 
     champ = page.evaluate(
         """() => {
@@ -476,8 +491,8 @@ with sync_playwright() as p:
     if "Limgrave" not in bk["helmAlAreas"]:
         raise SystemExit("Banished Knight Helm (Altered) should be obtainable in Limgrave")
 
-    # Uncheck one Limgrave helm by hand -> Limgrave chip stays on (access
-    # filter, not a bulk checkbox). The helm leaves the pool.
+    # Uncheck one Limgrave helm by hand -> Limgrave chip stays on (bulk helper,
+    # not a lock). The helm leaves the pool until you check it again.
     kaiden.locator("input").uncheck()
     page.wait_for_timeout(150)
     limgrave_btn = page.locator(".area-btn", has_text="Limgrave").first

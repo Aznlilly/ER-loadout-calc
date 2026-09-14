@@ -51,6 +51,15 @@ const EXCLUDED = {
   talismans: new Set(),
 };
 
+function emptyForced() {
+  return {
+    armor: { include: new Set(), exclude: new Set() },
+    weapons: { include: new Set(), exclude: new Set() },
+    talismans: { include: new Set(), exclude: new Set() },
+  };
+}
+let FORCED = emptyForced();
+
 let poolActiveTab = "armor";
 
 const DLC_REGIONS = new Set([
@@ -220,13 +229,47 @@ function matchesRegionFilter(item) {
 }
 
 function isIncluded(item, type) {
-  return sourceEnabled(item.source) && !EXCLUDED[type].has(item.id) && matchesRegionFilter(item);
+  return sourceEnabled(item.source) && !EXCLUDED[type].has(item.id);
+}
+
+function setPoolItemIncluded(type, item, included) {
+  const forced = FORCED[type];
+  if (included) {
+    EXCLUDED[type].delete(item.id);
+    forced.exclude.delete(item.id);
+    if (!matchesRegionFilter(item)) forced.include.add(item.id);
+    else forced.include.delete(item.id);
+  } else {
+    EXCLUDED[type].add(item.id);
+    forced.include.delete(item.id);
+    if (matchesRegionFilter(item)) forced.exclude.add(item.id);
+    else forced.exclude.delete(item.id);
+  }
+}
+
+function applyRegionExclusions() {
+  for (const type of ["armor", "weapons", "talismans"]) {
+    const forced = FORCED[type];
+    for (const it of poolItemsForType(type)) {
+      if (forced.include.has(it.id)) {
+        EXCLUDED[type].delete(it.id);
+        continue;
+      }
+      if (forced.exclude.has(it.id)) {
+        EXCLUDED[type].add(it.id);
+        continue;
+      }
+      if (matchesRegionFilter(it)) EXCLUDED[type].delete(it.id);
+      else EXCLUDED[type].add(it.id);
+    }
+  }
 }
 
 function includeAllPoolItems() {
   EXCLUDED.armor.clear();
   EXCLUDED.weapons.clear();
   EXCLUDED.talismans.clear();
+  FORCED = emptyForced();
 }
 
 function selectAllRegions() {
@@ -1057,23 +1100,14 @@ function renderPoolChecklist() {
 
   container.innerHTML = "";
   for (const it of items) {
-    const regionOk = matchesRegionFilter(it);
-    const excluded = EXCLUDED[type].has(it.id);
-    const inPool = regionOk && !excluded;
+    const inPool = !EXCLUDED[type].has(it.id);
     const row = document.createElement("label");
-    row.className = "pick-item pool-checklist-item"
-      + (inPool ? "" : " excluded")
-      + (regionOk ? "" : " region-filtered");
+    row.className = "pick-item pool-checklist-item" + (inPool ? "" : " excluded");
     const areaHint = (it.areas && it.areas.length) ? ` <span class="hint">(${it.areas.join(", ")})</span>` : "";
-    row.innerHTML = `<span><input type="checkbox" ${inPool ? "checked" : ""} ${regionOk ? "" : "disabled"}> ${escapeHtml(armorDisplayName(it))}${sourceTagHtml(it.source)}${areaHint}</span>`;
+    row.innerHTML = `<span><input type="checkbox" ${inPool ? "checked" : ""}> ${escapeHtml(armorDisplayName(it))}${sourceTagHtml(it.source)}${areaHint}</span>`;
     const checkbox = row.querySelector("input");
     checkbox.addEventListener("change", () => {
-      if (!regionOk) return;
-      if (checkbox.checked) {
-        EXCLUDED[type].delete(it.id);
-      } else {
-        EXCLUDED[type].add(it.id);
-      }
+      setPoolItemIncluded(type, it, checkbox.checked);
       row.classList.toggle("excluded", !checkbox.checked);
       updatePoolCountLabel();
       renderAreaFilters();
@@ -1094,7 +1128,7 @@ function renderAreaFilters() {
 
   const label = document.createElement("div");
   label.className = "hint area-filters-label";
-  label.textContent = "An item is in the pool if you have access to any place it can be obtained. None, then Limgrave, for a Limgrave-only run. Starting Gear is class kits; pick your class next to All / None to keep only that kit.";
+  label.textContent = "Region chips quickly check or uncheck items you can obtain there. They do not lock the list — use the checkboxes (or Check all / Uncheck all) to include or exclude anything. None, then Limgrave, for a Limgrave-only run. Starting Gear is class kits; pick your class next to All / None to start from that kit.";
   container.appendChild(label);
 
   const actions = document.createElement("div");
@@ -1159,8 +1193,8 @@ function renderAreaFilters() {
       + (META_REGIONS.has(region) ? " area-btn-meta" : "");
     btn.textContent = region;
     btn.title = on
-      ? `${items.length} item(s) obtainable here. Click to turn this location off.`
-      : `${items.length} item(s) obtainable here. Click to include them.`;
+      ? `${items.length} item(s) obtainable here. Click to uncheck them (you can still check any item by hand).`
+      : `${items.length} item(s) obtainable here. Click to check them.`;
     btn.addEventListener("click", () => toggleAreaFilter(region));
     row.appendChild(btn);
   }
@@ -1174,6 +1208,7 @@ function toggleAreaFilter(region) {
 }
 
 function onPoolExclusionsChanged() {
+  applyRegionExclusions();
   renderPoolChecklist();
   onExclusionsChanged(poolActiveTab);
   saveState();
@@ -1226,14 +1261,14 @@ function setupItemPoolDrawer() {
 
   document.getElementById("pool-select-all").addEventListener("click", () => {
     const type = poolActiveTab;
-    for (const it of poolVisibleItems()) EXCLUDED[type].delete(it.id);
+    for (const it of poolVisibleItems()) setPoolItemIncluded(type, it, true);
     renderPoolChecklist();
     onExclusionsChanged(type);
   });
 
   document.getElementById("pool-select-none").addEventListener("click", () => {
     const type = poolActiveTab;
-    for (const it of poolVisibleItems()) EXCLUDED[type].add(it.id);
+    for (const it of poolVisibleItems()) setPoolItemIncluded(type, it, false);
     renderPoolChecklist();
     onExclusionsChanged(type);
   });
@@ -1253,6 +1288,7 @@ function setupItemPoolDrawer() {
     });
   });
 
+  applyRegionExclusions();
   renderAreaFilters();
 }
 
