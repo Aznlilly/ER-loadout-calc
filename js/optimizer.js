@@ -9,6 +9,14 @@
 const SLOT_ORDER = ["helm", "chest", "gauntlets", "legs"];
 const WEIGHT_RESOLUTION = 10; // discretize weight into 1/10ths of a unit
 const WEIGHT_EPS = 1e-9;
+const NEGATION_TYPES = ["phy", "strike", "slash", "pierce", "magic", "fire", "lightning", "holy"];
+
+function negationObjective(stat) {
+  const weights = {};
+  for (const dt of NEGATION_TYPES) weights[dt] = 0;
+  if (stat && Object.prototype.hasOwnProperty.call(weights, stat)) weights[stat] = 1;
+  return { type: "negation", stat, weights };
+}
 
 function toCapacityUnits(weight) {
   return Math.max(0, Math.floor(weight * WEIGHT_RESOLUTION + WEIGHT_EPS));
@@ -30,7 +38,7 @@ function selectionWeight(selection) {
 /**
  * Scores one armor piece for a given objective.
  *   objective: {type: "poise"} |
- *              {type: "negation", weights: {phy:1, strike:1, ...}} |
+ *              {type: "negation", weights?: {phy:1, strike:0, ...}, stat?: "fire"} |
  *              {type: "resistance", stat: "immunity"|"robustness"|"focus"|"vitality"}
  */
 function scoreItem(item, objective) {
@@ -201,5 +209,5 @@ function minimizeWeightForTarget(itemsBySlot, objective, targetScore, requiredSl
 }
 
 if (typeof module !== "undefined") {
-  module.exports = { SLOT_ORDER, scoreItem, optimizeArmor, minimizeWeightForTarget };
+  module.exports = { SLOT_ORDER, NEGATION_TYPES, negationObjective, scoreItem, optimizeArmor, minimizeWeightForTarget };
 }

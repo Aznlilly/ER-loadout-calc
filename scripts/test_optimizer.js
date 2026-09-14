@@ -4,7 +4,7 @@ const path = require("path");
 
 const { computeMaxEquipLoad, totalWeight, loadClass, allowedLoadClass, isHeavierLoadClass } =
   require("../js/calc.js");
-const { optimizeArmor, minimizeWeightForTarget } = require("../js/optimizer.js");
+const { optimizeArmor, minimizeWeightForTarget, negationObjective, scoreItem } = require("../js/optimizer.js");
 
 const dataDir = path.join(__dirname, "..", "data");
 const armor = JSON.parse(fs.readFileSync(path.join(dataDir, "armor.json")));
@@ -161,5 +161,32 @@ for (const ratio of [0.299, 0.30, 0.45, 0.699, 0.70, 0.999, 1.0]) {
     (totalWeight(Object.values(custom.selection)) / maxLoad * 100).toFixed(1) + "%",
     loadClass(totalWeight(Object.values(custom.selection)) / maxLoad)
   );
+}
+
+// --- Test 9: specific fire negation uses only fire, and beats total-negation's fire ---
+{
+  const fireObj = negationObjective("fire");
+  const dummy = { negation: { phy: 10, strike: 1, slash: 1, pierce: 1, magic: 1, fire: 4, lightning: 1, holy: 1 } };
+  if (Math.abs(scoreItem(dummy, fireObj) - 4) > 1e-9) fail("fire objective should score only fire negation");
+  if (Math.abs(scoreItem(dummy, { type: "negation" }) - 20) > 1e-9) fail("unweighted negation should sum all types");
+
+  const fireResult = optimizeArmor(pool, fireObj, budget2);
+  if (!fireResult) fail("fire optimizeArmor returned null");
+  const fireSum = ["helm", "chest", "gauntlets", "legs"].reduce(
+    (s, slot) => s + ((fireResult.selection[slot].negation && fireResult.selection[slot].negation.fire) || 0),
+    0
+  );
+  if (Math.abs(fireResult.totalScore - fireSum) > 1e-6) {
+    fail(`fire score ${fireResult.totalScore} should equal summed fire ${fireSum}`);
+  }
+  const totalNegFire = ["helm", "chest", "gauntlets", "legs"].reduce(
+    (s, slot) => s + ((result2.selection[slot].negation && result2.selection[slot].negation.fire) || 0),
+    0
+  );
+  if (fireSum + 1e-9 < totalNegFire) {
+    fail(`fire-focused combo fire ${fireSum} should be >= total-negation combo fire ${totalNegFire}`);
+  }
+  assertWithinCap(fireResult, maxLoad, 0.999, "heavy fire");
+  console.log("\nmax fire negation @ heavy load:", fireSum.toFixed(1), "vs total-negation fire", totalNegFire.toFixed(1));
 }
 

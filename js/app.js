@@ -420,6 +420,7 @@ function saveState() {
     loadRatio,
     goal: document.querySelector('input[name="goal"]:checked')?.value,
     resistanceStat: document.getElementById("resistance-stat").value,
+    damageType: document.getElementById("damage-type").value,
     minweightMetric: document.getElementById("minweight-metric").value,
     minweightTarget: document.getElementById("minweight-target").value,
     gender: characterGender,
@@ -492,13 +493,17 @@ function loadSavedState() {
 
   if (data.loadRatio != null) applyLoadRatio(data.loadRatio);
 
-  if (["poise", "negation", "resistance", "minweight"].includes(data.goal)) {
+  if (["poise", "negation", "damage", "resistance", "minweight"].includes(data.goal)) {
     const radio = document.querySelector(`input[name="goal"][value="${data.goal}"]`);
     if (radio) radio.checked = true;
   }
   if (data.resistanceStat) {
     const sel = document.getElementById("resistance-stat");
     if ([...sel.options].some((o) => o.value === data.resistanceStat)) sel.value = data.resistanceStat;
+  }
+  if (data.damageType) {
+    const sel = document.getElementById("damage-type");
+    if ([...sel.options].some((o) => o.value === data.damageType)) sel.value = data.damageType;
   }
   if (data.minweightMetric) {
     const sel = document.getElementById("minweight-metric");
@@ -874,17 +879,33 @@ function getRequiredArmorSlots() {
   });
 }
 
+const DAMAGE_TYPE_LABELS = {
+  phy: "Physical (standard)",
+  strike: "Strike",
+  slash: "Slash",
+  pierce: "Pierce",
+  magic: "Magic",
+  fire: "Fire",
+  lightning: "Lightning",
+  holy: "Holy",
+};
+
 function currentObjective() {
   const goal = document.querySelector('input[name="goal"]:checked').value;
   if (goal === "resistance") {
     return { type: "resistance", stat: document.getElementById("resistance-stat").value };
+  }
+  if (goal === "damage") {
+    return negationObjective(document.getElementById("damage-type").value);
   }
   if (goal === "negation" || goal === "minweight_negation") {
     return { type: "negation" };
   }
   if (goal === "minweight") {
     const metric = document.getElementById("minweight-metric").value;
-    return metric === "negation" ? { type: "negation" } : { type: "poise" };
+    if (metric === "negation") return { type: "negation" };
+    if (NEGATION_TYPES.includes(metric)) return negationObjective(metric);
+    return { type: "poise" };
   }
   return { type: "poise" };
 }
@@ -949,9 +970,31 @@ function runOptimizer() {
 
 function objectiveLabel(objective) {
   if (objective.type === "poise") return "Poise";
-  if (objective.type === "negation") return "Total Negation";
+  if (objective.type === "negation") {
+    if (objective.stat && DAMAGE_TYPE_LABELS[objective.stat]) {
+      return `${DAMAGE_TYPE_LABELS[objective.stat]} Negation`;
+    }
+    return "Total Negation";
+  }
   if (objective.type === "resistance") return objective.stat[0].toUpperCase() + objective.stat.slice(1);
   return "Score";
+}
+
+function negationResultColumn(objective) {
+  const key = (objective.type === "negation" && objective.stat && DAMAGE_TYPES.includes(objective.stat))
+    ? objective.stat
+    : "phy";
+  const short = {
+    phy: "Phy",
+    strike: "Strike",
+    slash: "Slash",
+    pierce: "Pierce",
+    magic: "Magic",
+    fire: "Fire",
+    lightning: "Ltng",
+    holy: "Holy",
+  };
+  return { key, header: `${short[key]} Neg` };
 }
 
 function renderResult(result, objective, talismans, ctx) {
@@ -984,6 +1027,7 @@ function renderResult(result, objective, talismans, ctx) {
   const neg = computeNegation(armorPieces);
   const res = computeResistances(armorPieces);
   const negTotal = Object.values(neg).reduce((s, v) => s + v, 0);
+  const negCol = negationResultColumn(objective);
 
   html += `<div class="summary-row">
     <div class="summary-item"><span class="label">Poise</span><span class="value">${poise.toFixed(1)}</span></div>
@@ -995,7 +1039,7 @@ function renderResult(result, objective, talismans, ctx) {
   </div>`;
 
   html += `<table class="result-table"><thead><tr>
-    <th></th><th>Slot</th><th>Item</th><th>Weight</th><th>Poise</th><th>Phy Neg</th><th>Source</th><th>DLC</th>
+    <th></th><th>Slot</th><th>Item</th><th>Weight</th><th>Poise</th><th>${escapeHtml(negCol.header)}</th><th>Source</th><th>DLC</th>
   </tr></thead><tbody>`;
   for (const s of ARMOR_SLOTS) {
     const it = result.selection[s];
@@ -1007,7 +1051,7 @@ function renderResult(result, objective, talismans, ctx) {
       <td>${escapeHtml(armorDisplayName(it))}</td>
       <td>${it.weight}</td>
       <td>${it.resistance.poise}</td>
-      <td>${it.negation.phy}</td>
+      <td>${it.negation[negCol.key]}</td>
       <td>${sourceCellHtml(it)}</td>
       <td>${escapeHtml(it.source)}</td>
     </tr>`;
@@ -1037,7 +1081,20 @@ function scoreTalismanSuggestion(t, objective, preferEquipLoad) {
     if (effect.includes("poise")) score += 40;
   }
   if (objective.type === "negation") {
-    if (/damage negation|physical damage|non-physical|dragoncrest|spelldrake|flamedrake|boltdrake|haligdrake|pearldrake/.test(effect)) {
+    const typeHints = {
+      phy: /dragoncrest|physical damage/,
+      strike: /strike/,
+      slash: /slash/,
+      pierce: /pierce/,
+      magic: /spelldrake|magic damage|magic negation/,
+      fire: /flamedrake|fire damage|fire negation/,
+      lightning: /boltdrake|lightning/,
+      holy: /haligdrake|holy/,
+    };
+    if (objective.stat && typeHints[objective.stat]) {
+      if (typeHints[objective.stat].test(effect)) score += 90;
+      if (objective.stat !== "phy" && /pearldrake|non-physical/.test(effect)) score += 50;
+    } else if (/damage negation|physical damage|non-physical|dragoncrest|spelldrake|flamedrake|boltdrake|haligdrake|pearldrake/.test(effect)) {
       score += 80;
     }
   }
@@ -1664,7 +1721,7 @@ function setupGoalToggles() {
     updateGoalVisibility();
     saveState();
   }));
-  ["resistance-stat", "minweight-metric", "minweight-target"].forEach((id) => {
+  ["resistance-stat", "damage-type", "minweight-metric", "minweight-target"].forEach((id) => {
     document.getElementById(id).addEventListener("change", saveState);
     document.getElementById(id).addEventListener("input", saveState);
   });
@@ -1674,6 +1731,7 @@ function setupGoalToggles() {
 function updateGoalVisibility() {
   const goal = document.querySelector('input[name="goal"]:checked').value;
   document.getElementById("goal-resistance-options").classList.toggle("hidden", goal !== "resistance");
+  document.getElementById("goal-damage-options").classList.toggle("hidden", goal !== "damage");
   document.getElementById("goal-minweight-options").classList.toggle("hidden", goal !== "minweight");
   document.getElementById("load-budget-section").classList.toggle("hidden", goal === "minweight");
 }

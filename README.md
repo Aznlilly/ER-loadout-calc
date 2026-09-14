@@ -1,6 +1,6 @@
 # Elden Ring Loadout Optimizer
 
-A fan-made calculator for Elden Ring. Enter your stats, equip what you already want to keep, and it will fill the remaining armor slots for a goal you pick — most poise, most defense, a resistance, or the lightest set that still hits a target. It also ranks weapons and shields against your stats.
+A fan-made calculator for Elden Ring. Enter your stats, equip what you already want to keep, and it will fill the remaining armor slots for a goal you pick — most poise, most defense, a damage type, a resistance, or the lightest set that still hits a target. It also ranks weapons and shields against your stats.
 
 Covers the base game, Shadow of the Erdtree, and the Tarnished Pack / Tarnished Edition extras. That extra gear is normal obtainable equipment if you own the pack, not cut or hidden content.
 

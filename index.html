@@ -175,8 +175,24 @@
     <div class="goal-row">
       <label><input type="radio" name="goal" value="poise" checked> Maximize Poise</label>
       <label><input type="radio" name="goal" value="negation"> Maximize Total Damage Negation</label>
+      <label><input type="radio" name="goal" value="damage"> Maximize a Specific Damage Type</label>
       <label><input type="radio" name="goal" value="resistance"> Maximize a Specific Resistance</label>
       <label><input type="radio" name="goal" value="minweight"> Minimize Weight for a Target</label>
+    </div>
+
+    <div id="goal-damage-options" class="goal-sub hidden">
+      <label>Damage type:
+        <select id="damage-type">
+          <option value="phy">Physical (standard)</option>
+          <option value="strike">Strike</option>
+          <option value="slash">Slash</option>
+          <option value="pierce">Pierce</option>
+          <option value="magic">Magic</option>
+          <option value="fire">Fire</option>
+          <option value="lightning">Lightning</option>
+          <option value="holy">Holy</option>
+        </select>
+      </label>
     </div>
 
     <div id="goal-resistance-options" class="goal-sub hidden">
@@ -195,6 +211,14 @@
         <select id="minweight-metric">
           <option value="poise">Poise</option>
           <option value="negation">Total Negation</option>
+          <option value="phy">Physical (standard) Negation</option>
+          <option value="strike">Strike Negation</option>
+          <option value="slash">Slash Negation</option>
+          <option value="pierce">Pierce Negation</option>
+          <option value="magic">Magic Negation</option>
+          <option value="fire">Fire Negation</option>
+          <option value="lightning">Lightning Negation</option>
+          <option value="holy">Holy Negation</option>
         </select>
       </label>
       <label>Target value: <input type="number" id="minweight-target" value="60" min="0"></label>
