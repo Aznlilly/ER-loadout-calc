@@ -39,6 +39,21 @@ with sync_playwright() as p:
     if maus_w["al"] != 10.8:
         raise SystemExit("Mausoleum Knight Armor (Altered) should weigh 10.8")
 
+    exclusive_start = page.evaluate(
+        """() => {
+      const out = [];
+      for (const it of [...ARMOR, ...WEAPONS]) {
+        if (!(it.startingClasses && it.startingClasses.length)) continue;
+        const world = (it.areas || []).filter(a => a !== "Starting Gear");
+        if (!world.length) out.push(it.name);
+      }
+      return out;
+    }"""
+    )
+    print("Starting gear missing a world location:", exclusive_start)
+    if exclusive_start:
+        raise SystemExit(f"starting gear should also have a world location: {exclusive_start}")
+
     page.fill("#stat-str", "25")
     page.wait_for_timeout(150)
     page.reload(wait_until="networkidle")
@@ -491,10 +506,12 @@ with sync_playwright() as p:
       }));
       const axe = WEAPONS.find(w => w.name === "Battle Axe");
       const seal = WEAPONS.find(w => w.name === "Finger Seal");
+      const longbow = WEAPONS.find(w => w.name === "Longbow");
       return {
         armor,
         axe: { inPool: isIncluded(axe, "weapons"), classes: axe.startingClasses || [] },
         seal: { inPool: isIncluded(seal, "weapons"), classes: seal.startingClasses || [] },
+        longbow: { inPool: isIncluded(longbow, "weapons"), classes: longbow.startingClasses || [], areas: longbow.areas },
       };
     }"""
     )
@@ -519,7 +536,20 @@ with sync_playwright() as p:
         raise SystemExit("Hero + Starting Gear should include Battle Axe")
     if class_pool["seal"]["inPool"]:
         raise SystemExit("Hero + Starting Gear should exclude Finger Seal")
+    if "Limgrave" not in class_pool["longbow"]["areas"]:
+        raise SystemExit("Longbow should also be obtainable in Limgrave")
+    if class_pool["longbow"]["inPool"]:
+        raise SystemExit("Hero + Starting Gear only should exclude Longbow")
 
+    page.locator("#area-select-all").click()
+    page.wait_for_timeout(150)
+    longbow_all = page.evaluate("() => isIncluded(WEAPONS.find(w => w.name === 'Longbow'), 'weapons')")
+    print("Longbow in pool with Hero + all regions:", longbow_all)
+    if not longbow_all:
+        raise SystemExit("Hero + all regions should include Longbow (Limgrave merchant)")
+
+    page.locator("#area-select-none").click()
+    page.wait_for_timeout(150)
     page.select_option("#starting-class", "Heavy Knight")
     page.wait_for_timeout(150)
     heavy = page.evaluate(

@@ -592,11 +592,20 @@ def main():
         "Mausoleum Knight Greaves": ["Liurnia of the Lakes"],
     }
 
-    # Tarnished Pack weapons are not on the per-region wiki item lists.
+    # World shops for starting weapons (none of these are class-exclusive)
+    # plus Tarnished Pack weapons that are missing from per-region wiki lists.
     WEAPON_AREA_OVERRIDES = {
         "Idus Sword": ["Liurnia of the Lakes"],
         "Silver Grooved Shield": ["Liurnia of the Lakes"],
         "Hefty Scimitar": ["Limgrave"],
+        "Great Knife": ["Liurnia of the Lakes", "Mt. Gelmir"],
+        "Longbow": ["Limgrave", "Roundtable Hold"],
+        "Longsword": ["Roundtable Hold"],
+        "Heater Shield": ["Roundtable Hold"],
+        "Battle Axe": ["Roundtable Hold"],
+        "Finger Seal": ["Roundtable Hold"],
+        "Blue Crest Heater Shield": ["Liurnia of the Lakes"],
+        "Red Thorn Roundshield": ["Weeping Peninsula"],
         "Leontiel's Greatsword": ["Caelid"],
         "Golden Order Flail": ["Leyndell, Royal Capital"],
         "Reverse-Bladed Sword": ["Roundtable Hold"],
@@ -627,9 +636,9 @@ def main():
             areas_by_armor_id[a["id"]] = set(override)
 
     for w in weapons:
-        override = WEAPON_AREA_OVERRIDES.get(w["name"])
-        if override is not None:
-            areas_by_weapon_id[w["id"]] = set(override)
+        extra = WEAPON_AREA_OVERRIDES.get(w["name"])
+        if extra:
+            areas_by_weapon_id[w["id"]].update(extra)
 
     for a in armor:
         if a["name"] in STARTING_GEAR_EXTRA:

@@ -5021,7 +5021,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/battle-axe.png",
   "areas": [
-   "Starting Gear"
+   "Starting Gear",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Battle_Axe",
   "startingClasses": [
@@ -8702,7 +8703,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/finger-seal.png",
   "areas": [
-   "Starting Gear"
+   "Starting Gear",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Finger_Seal",
   "startingClasses": [
@@ -10627,7 +10629,8 @@
   "icon": "img/weapons/great-knife.png",
   "areas": [
    "Starting Gear",
-   "Liurnia of the Lakes"
+   "Liurnia of the Lakes",
+   "Mt. Gelmir"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Great_Knife",
   "startingClasses": [
@@ -12534,7 +12537,9 @@
   "source": "Elden Ring",
   "icon": "img/weapons/longbow.png",
   "areas": [
-   "Starting Gear"
+   "Starting Gear",
+   "Limgrave",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Longbow",
   "startingClasses": [
@@ -12629,7 +12634,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/longsword.png",
   "areas": [
-   "Starting Gear"
+   "Starting Gear",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Longsword",
   "startingClasses": [
@@ -18990,7 +18996,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/red-thorn-roundshield.png",
   "areas": [
-   "Starting Gear"
+   "Starting Gear",
+   "Weeping Peninsula"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Red_Thorn_Roundshield",
   "startingClasses": [
@@ -20254,7 +20261,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/heater-shield.png",
   "areas": [
-   "Starting Gear"
+   "Starting Gear",
+   "Roundtable Hold"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Heater_Shield",
   "startingClasses": [
@@ -20304,7 +20312,8 @@
   "source": "Elden Ring",
   "icon": "img/weapons/blue-crest-heater-shield.png",
   "areas": [
-   "Starting Gear"
+   "Starting Gear",
+   "Liurnia of the Lakes"
   ],
   "wiki": "https://eldenring.wiki.fextralife.com/Blue_Crest_Heater_Shield",
   "startingClasses": [
