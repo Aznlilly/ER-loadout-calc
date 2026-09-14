@@ -158,6 +158,12 @@ input[type="number"], input[type="text"], select {
   gap: 10px;
   margin: 10px 0 4px;
 }
+.save-import-safe {
+  color: #e07070;
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
 .save-import-hint { margin: 0 0 12px; }
 .save-import-hint p { margin: 0 0 8px; }
 .save-import-hint p:last-child { margin-bottom: 0; }

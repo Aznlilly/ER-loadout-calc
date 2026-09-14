@@ -38,6 +38,9 @@ with sync_playwright() as p:
         raise SystemExit("save import hint should tell you to paste %APPDATA%\\EldenRing and open your Steam ID folder")
     if page.locator("#copy-save-path-btn").count() != 1:
         raise SystemExit("save import hint should have a Copy button for the path")
+    safe = page.inner_text(".save-import-safe")
+    if "does not modify your save" not in safe.lower() or "only reads" not in safe.lower():
+        raise SystemExit("save import should warn in red that the save file is read-only")
     overlay_hidden = page.evaluate("() => document.getElementById('save-character-overlay').classList.contains('hidden')")
     if not overlay_hidden:
         raise SystemExit("character picker should start hidden")
