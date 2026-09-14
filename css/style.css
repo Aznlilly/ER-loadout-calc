@@ -151,6 +151,29 @@ input[type="number"], input[type="text"], select {
 }
 .preset-btn:hover { border-color: var(--accent); }
 
+.save-import-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 4px;
+}
+.save-import-hint { margin: 0 0 12px; }
+.save-import-hint code {
+  font-size: 0.85em;
+  color: var(--text);
+}
+#save-import-status.save-import-ok { color: var(--ok); }
+#save-import-status.save-import-err { color: #e07070; }
+.save-character-row.selected { background: var(--accent-dim); color: #1a1610; }
+.save-character-row.selected .hint { color: #3a2f14; }
+.save-import-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+
 input[type="range"] { width: 220px; vertical-align: middle; margin: 0 8px; }
 
 .primary-btn {

@@ -7,6 +7,7 @@ let EQUIP_LOAD_TABLE = {};
 let ARMOR_BY_ID = new Map();
 let WEAPONS_BY_ID = new Map();
 let TALISMANS_BY_ID = new Map();
+let GAME_IDS = { weapons: {}, armor: {}, talismans: {} };
 
 const ARMOR_SLOTS = ["helm", "chest", "gauntlets", "legs"];
 const WEAPON_SLOTS_LEFT = ["l1", "l2", "l3"];
@@ -162,16 +163,18 @@ function isTalismanSlotActive(slot) {
 }
 
 async function loadData() {
-  const [armor, weapons, talismans, equipLoadTable] = await Promise.all([
+  const [armor, weapons, talismans, equipLoadTable, gameIds] = await Promise.all([
     fetch("data/armor.json").then((r) => r.json()),
     fetch("data/weapons.json").then((r) => r.json()),
     fetch("data/talismans.json").then((r) => r.json()),
     fetch("data/equip_load_table.json").then((r) => r.json()),
+    fetch("data/game_ids.json").then((r) => r.json()).catch(() => ({ weapons: {}, armor: {}, talismans: {} })),
   ]);
   ARMOR = armor;
   WEAPONS = weapons;
   TALISMANS = talismans;
   EQUIP_LOAD_TABLE = equipLoadTable;
+  GAME_IDS = gameIds;
   buildIndexes();
 }
 
@@ -1240,6 +1243,156 @@ function setPoolTab(tab) {
   renderPoolChecklist();
 }
 
+function setupSaveImport() {
+  const btn = document.getElementById("load-save-btn");
+  const input = document.getElementById("save-file-input");
+  const overlay = document.getElementById("save-character-overlay");
+  const cancel = document.getElementById("save-character-cancel");
+  const confirm = document.getElementById("save-import-confirm");
+  if (!btn || !input || !overlay) return;
+
+  btn.addEventListener("click", () => {
+    input.value = "";
+    input.click();
+  });
+  input.addEventListener("change", () => {
+    const file = input.files && input.files[0];
+    if (file) loadSaveFile(file);
+  });
+  cancel.addEventListener("click", closeSaveCharacterPicker);
+  confirm.addEventListener("click", confirmSaveImport);
+  overlay.addEventListener("click", (e) => {
+    if (e.target.id === "save-character-overlay") closeSaveCharacterPicker();
+  });
+}
+
+let pendingSaveCharacters = [];
+let selectedSaveCharacterIndex = 0;
+
+function setSaveImportStatus(message, kind) {
+  const el = document.getElementById("save-import-status");
+  if (!el) return;
+  el.textContent = message || "";
+  el.classList.remove("save-import-ok", "save-import-err");
+  if (kind) el.classList.add(kind);
+}
+
+function closeSaveCharacterPicker() {
+  const overlay = document.getElementById("save-character-overlay");
+  if (overlay) overlay.classList.add("hidden");
+  pendingSaveCharacters = [];
+}
+
+function openSaveCharacterPicker(characters) {
+  pendingSaveCharacters = characters;
+  selectedSaveCharacterIndex = 0;
+  renderSaveCharacterList();
+  document.getElementById("save-import-inventory").checked = true;
+  document.getElementById("save-import-chest").checked = true;
+  document.getElementById("save-import-stats").checked = true;
+  document.getElementById("save-character-overlay").classList.remove("hidden");
+}
+
+function renderSaveCharacterList() {
+  const list = document.getElementById("save-character-list");
+  list.innerHTML = "";
+  pendingSaveCharacters.forEach((ch, i) => {
+    const row = document.createElement("button");
+    row.type = "button";
+    row.className = "pick-item save-character-row" + (i === selectedSaveCharacterIndex ? " selected" : "");
+    const extra = ch.playtime ? ` · ${ch.playtime}` : "";
+    row.innerHTML = `<span>${escapeHtml(ch.name)}</span><span class="hint">RL ${ch.level}${extra}</span>`;
+    row.addEventListener("click", () => {
+      selectedSaveCharacterIndex = i;
+      renderSaveCharacterList();
+    });
+    list.appendChild(row);
+  });
+}
+
+async function loadSaveFile(file) {
+  setSaveImportStatus("Reading save…");
+  try {
+    const buf = await file.arrayBuffer();
+    const parsed = ER_SAVE.parseSave(buf);
+    setSaveImportStatus(`Loaded ${parsed.characters.length} character${parsed.characters.length === 1 ? "" : "s"} — choose what to import.`);
+    openSaveCharacterPicker(parsed.characters);
+  } catch (err) {
+    setSaveImportStatus(err.message || "Could not read that save", "save-import-err");
+  }
+}
+
+function confirmSaveImport() {
+  const character = pendingSaveCharacters[selectedSaveCharacterIndex];
+  if (!character) return;
+  const wantInventory = document.getElementById("save-import-inventory").checked;
+  const wantChest = document.getElementById("save-import-chest").checked;
+  const wantStats = document.getElementById("save-import-stats").checked;
+  if (!wantInventory && !wantChest && !wantStats) {
+    setSaveImportStatus("Choose at least one thing to import.", "save-import-err");
+    return;
+  }
+  applySaveCharacter(character, { inventory: wantInventory, chest: wantChest, stats: wantStats });
+  closeSaveCharacterPicker();
+}
+
+function applySaveStats(stats) {
+  if (!stats) return;
+  for (const [key, id] of Object.entries(STAT_INPUT_IDS)) {
+    const v = clampInt(stats[key], 1, 99);
+    if (v != null) document.getElementById(id).value = String(v);
+  }
+  if (stats.talismanSlotCount) {
+    const n = Math.max(1, Math.min(4, stats.talismanSlotCount));
+    talismanSlotCount = n;
+    const sel = document.getElementById("talisman-slot-count");
+    if (sel) sel.value = String(n);
+  }
+  saveState();
+  renderEquipment();
+  updateDerivedCharacterInfo();
+  renderWeaponResults();
+}
+
+function applySaveCharacter(character, opts) {
+  const parts = [];
+  if (opts.inventory || opts.chest) {
+    const bags = [];
+    if (opts.inventory) bags.push(character.inventory);
+    if (opts.chest) bags.push(character.chest);
+    const raw = ER_SAVE.mergeOwnedBags(...bags);
+    const { owned, matched, skipped } = ER_SAVE.mapOwned(raw, GAME_IDS);
+    applyOwnedFromSave(owned);
+    const extra = skipped ? `, skipped ${skipped} unknown` : "";
+    parts.push(`${matched} known items${extra}`);
+    const drawer = document.getElementById("item-pool-drawer");
+    const toggleBtn = document.getElementById("toggle-item-pool-drawer");
+    if (drawer && drawer.classList.contains("hidden")) {
+      drawer.classList.remove("hidden");
+      if (toggleBtn) {
+        toggleBtn.setAttribute("aria-expanded", "true");
+        toggleBtn.textContent = "Customize Item Pool ▴";
+      }
+    }
+    renderPoolChecklist();
+  }
+  if (opts.stats) {
+    applySaveStats(character.stats);
+    parts.push(`RL ${character.level} stats`);
+  }
+  setSaveImportStatus(`Imported ${character.name}: ${parts.join("; ")}.`, "save-import-ok");
+}
+
+function applyOwnedFromSave(owned) {
+  for (const type of ["armor", "weapons", "talismans"]) {
+    const ids = owned[type] || new Set();
+    for (const it of poolItemsForType(type)) {
+      setPoolItemIncluded(type, it, ids.has(it.id));
+    }
+  }
+  onExclusionsChanged(poolActiveTab);
+}
+
 function setupItemPoolDrawer() {
   const toggleBtn = document.getElementById("toggle-item-pool-drawer");
   const drawer = document.getElementById("item-pool-drawer");
@@ -1320,6 +1473,7 @@ async function init() {
   setupEquipmentBoard();
   setupGoalToggles();
   setupItemPoolDrawer();
+  setupSaveImport();
   renderEquipment();
   updateDerivedCharacterInfo();
 

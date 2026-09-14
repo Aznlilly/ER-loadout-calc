@@ -26,6 +26,24 @@ with sync_playwright() as p:
     print("Issues footer present:", "github.com/Aznlilly/ER-loadout-calc/issues" in footer_html)
     if "github.com/Aznlilly/ER-loadout-calc/issues" not in footer_html:
         raise SystemExit("footer should link to the GitHub issues page")
+
+    load_save = page.locator("#load-save-btn")
+    print("Load Save button:", load_save.count())
+    if load_save.count() != 1:
+        raise SystemExit("item pool should have a Load Save button")
+    hint = page.inner_text(".save-import-hint")
+    if "ER0000.sl2" not in hint or "ER0000.co2" not in hint:
+        raise SystemExit("save import hint should mention .sl2 and Seamless .co2")
+    overlay_hidden = page.evaluate("() => document.getElementById('save-character-overlay').classList.contains('hidden')")
+    if not overlay_hidden:
+        raise SystemExit("character picker should start hidden")
+    for cid in ("save-import-inventory", "save-import-chest", "save-import-stats", "save-import-confirm"):
+        if page.locator(f"#{cid}").count() != 1:
+            raise SystemExit(f"save import dialog should include {cid}")
+    ids_ok = page.evaluate("() => GAME_IDS && GAME_IDS.weapons && GAME_IDS.weapons['2000000'] === 'longsword'")
+    print("Game ID table loaded:", ids_ok)
+    if not ids_ok:
+        raise SystemExit("game_ids.json should map Longsword")
     maus_w = page.evaluate(
         """() => {
       const un = ARMOR.find(a => a.name === "Mausoleum Knight Armor");
