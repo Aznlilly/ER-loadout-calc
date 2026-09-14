@@ -1252,6 +1252,7 @@ function setupSaveImport() {
   const overlay = document.getElementById("save-character-overlay");
   const cancel = document.getElementById("save-character-cancel");
   const confirm = document.getElementById("save-import-confirm");
+  const copyPath = document.getElementById("copy-save-path-btn");
   if (!btn || !input || !overlay) return;
 
   btn.addEventListener("click", () => {
@@ -1267,6 +1268,32 @@ function setupSaveImport() {
   overlay.addEventListener("click", (e) => {
     if (e.target.id === "save-character-overlay") closeSaveCharacterPicker();
   });
+  if (copyPath) {
+    copyPath.addEventListener("click", copySaveImportPath);
+  }
+}
+
+async function copySaveImportPath() {
+  const pathEl = document.getElementById("save-import-path");
+  const btn = document.getElementById("copy-save-path-btn");
+  const text = pathEl ? pathEl.textContent.trim() : "%APPDATA%\\EldenRing";
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (_) {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
+  }
+  if (!btn) return;
+  const prev = btn.textContent;
+  btn.textContent = "Copied";
+  setTimeout(() => { btn.textContent = prev; }, 1500);
 }
 
 let pendingSaveCharacters = [];

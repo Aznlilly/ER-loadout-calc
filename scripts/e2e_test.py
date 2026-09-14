@@ -34,6 +34,10 @@ with sync_playwright() as p:
     hint = page.inner_text(".save-import-hint")
     if "ER0000.sl2" not in hint or "ER0000.co2" not in hint:
         raise SystemExit("save import hint should mention .sl2 and Seamless .co2")
+    if "paste" not in hint.lower() or "Steam ID" not in hint or "%APPDATA%\\EldenRing" not in hint:
+        raise SystemExit("save import hint should tell you to paste %APPDATA%\\EldenRing and open your Steam ID folder")
+    if page.locator("#copy-save-path-btn").count() != 1:
+        raise SystemExit("save import hint should have a Copy button for the path")
     overlay_hidden = page.evaluate("() => document.getElementById('save-character-overlay').classList.contains('hidden')")
     if not overlay_hidden:
         raise SystemExit("character picker should start hidden")

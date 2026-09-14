@@ -65,7 +65,7 @@
         <label><input type="checkbox" id="save-import-inventory" checked> Inventory (item pool)</label>
         <label><input type="checkbox" id="save-import-chest" checked> Chest (item pool)</label>
         <label><input type="checkbox" id="save-import-stats" checked> Stats (and talisman pouches)</label>
-        <label><input type="checkbox" id="save-import-equipped" checked> Currently equipped (overwrites unlocked slots)</label>
+        <label><input type="checkbox" id="save-import-equipped" checked> Currently equipped (imports onto unlocked slots only)</label>
       </div>
       <div class="picker-actions">
         <button type="button" class="primary-btn" id="save-import-confirm">Import</button>
@@ -107,7 +107,14 @@
       <input type="file" id="save-file-input" accept=".sl2,.co2,.bak,application/octet-stream" hidden>
       <span class="hint" id="save-import-status"></span>
     </div>
-    <p class="hint save-import-hint">Choose <code>ER0000.sl2</code> (vanilla) or <code>ER0000.co2</code> (Seamless Co-op) from <code>%APPDATA%\EldenRing\&lt;SteamID&gt;</code>. Other same-format mod saves work too; unknown/mod items are skipped. The file stays on your computer.</p>
+    <div class="save-import-hint">
+      <p class="hint">Click <strong>Load Save…</strong>, then copy this path and paste it into the file picker address bar:</p>
+      <div class="save-import-path-row">
+        <code id="save-import-path">%APPDATA%\EldenRing</code>
+        <button type="button" class="preset-btn" id="copy-save-path-btn">Copy</button>
+      </div>
+      <p class="hint">Open your Steam ID folder and choose <code>ER0000.sl2</code> (vanilla) or <code>ER0000.co2</code> (Seamless Co-op). Other same-format mod saves work too; unknown/mod items are skipped. The file stays on your computer.</p>
+    </div>
 
     <button type="button" id="toggle-item-pool-drawer" class="preset-btn" aria-expanded="false">Customize Item Pool ▾</button>
 

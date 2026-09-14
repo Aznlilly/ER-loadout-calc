@@ -159,10 +159,21 @@ input[type="number"], input[type="text"], select {
   margin: 10px 0 4px;
 }
 .save-import-hint { margin: 0 0 12px; }
+.save-import-hint p { margin: 0 0 8px; }
+.save-import-hint p:last-child { margin-bottom: 0; }
+.save-import-path-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+}
+.save-import-path-row code,
 .save-import-hint code {
   font-size: 0.85em;
   color: var(--text);
 }
+.save-import-path-row code { user-select: all; }
 #save-import-status.save-import-ok { color: var(--ok); }
 #save-import-status.save-import-err { color: #e07070; }
 .save-character-row.selected { background: var(--accent-dim); color: #1a1610; }
