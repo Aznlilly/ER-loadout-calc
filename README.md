@@ -4,11 +4,13 @@ A fan-made calculator for Elden Ring. Enter your stats, equip what you already w
 
 Covers the base game, Shadow of the Erdtree, and the Tarnished Pack / Tarnished Edition extras. That extra gear is normal obtainable equipment if you own the pack, not cut or hidden content.
 
-**Not affiliated with FromSoftware or Bandai Namco.** Elden Ring is their game.
+**Not affiliated with FromSoftware or Bandai Namco.**
 
 ## How to open it
 
-This is a web page, but it needs a tiny local server so the browser can load the item data.
+Use it at **[https://er-tools.pixelhumble.com/](https://er-tools.pixelhumble.com/)**. That is the hosted tool.
+
+To run this repo locally (for development), you still need a tiny server so the browser can load the item data:
 
 1. Install [Python 3](https://www.python.org/downloads/) if you do not already have it.
 2. Double-click `run-local.bat` (Windows) or run `./run-local.sh` (macOS / Linux).
@@ -33,5 +35,5 @@ If a number, location, or item looks wrong, [open a GitHub issue](https://github
 - **Armor weight, absorption, resistances, and poise** come from Elden Ring’s own game data (`EquipParamProtector`).
 - **Weapon affinity scaling** (Heavy, Keen, Occult, and the rest) comes from `EquipParamWeapon`. Upgrade level is read from your save when you import one; this build does not compute live Attack Rating at +N (that needs the game’s reinforce graphs).
 - **Where to find things** is merged from game data and the wiki. Map pickups use `ItemLotParam_map` row IDs (which encode `m10_00` Stormveil, `m60_42_36` Church of Elleh, and so on) plus the Smithbox map list. Enemy farms use MSB placements joined to `NpcParam` item lots. Shops and named lots still use their param labels. The wiki fills in quest-only items and anything the params do not name.
-- **Item icons, weapon reference attack, and talisman effect text** still come from that wiki.
+- **Weapon reference attack, and talisman effect text** still come from that wiki.
 - **Save import** matches items using IDs from those same game data tables, including the affinity and upgrade encoded in a weapon ID, so a Heavy Longsword +12 in the save is that same Heavy Longsword +12 here.
