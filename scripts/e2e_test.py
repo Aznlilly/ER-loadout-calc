@@ -294,14 +294,17 @@ with sync_playwright() as p:
     page.wait_for_timeout(200)
     helm_cleared = page.text_content('[data-slot="helm"] .slot-name')
     r1_cleared = page.text_content('[data-slot="r1"] .slot-name')
-    helm_unlocked = "locked" not in (page.get_attribute('[data-slot="helm"]', "class") or "")
-    print("Unequip All cleared helm:", helm_cleared)
-    print("Unequip All cleared R1:", r1_cleared)
-    print("Unequip All unlocked helm:", helm_unlocked)
-    if helm_cleared.strip() != "Empty" or r1_cleared.strip() != "Empty":
-        raise SystemExit("Unequip All should empty every slot")
-    if not helm_unlocked:
-        raise SystemExit("Unequip All should unlock slots")
+    l1_cleared = page.text_content('[data-slot="l1"] .slot-name')
+    helm_still_locked = "locked" in (page.get_attribute('[data-slot="helm"]', "class") or "")
+    print("Unequip All helm (locked, should keep):", helm_cleared)
+    print("Unequip All R1 (locked, should keep):", r1_cleared)
+    print("Unequip All L1 (unlocked, should clear):", l1_cleared)
+    if helm_cleared.strip() != helm_before.strip() or not helm_still_locked:
+        raise SystemExit("Unequip All should leave locked helm equipped")
+    if r1_cleared.strip() != r1_before.strip():
+        raise SystemExit("Unequip All should leave locked R1 equipped")
+    if l1_cleared.strip() != "Empty":
+        raise SystemExit("Unequip All should empty unlocked slots")
 
     # --- Item Pool drawer ---
     print("\n--- item pool drawer ---")

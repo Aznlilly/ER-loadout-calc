@@ -584,7 +584,10 @@ function closePicker() {
 }
 
 function unequipAll() {
-  for (const slot of ALL_SLOTS) EQUIPMENT[slot] = emptySlot();
+  for (const slot of ALL_SLOTS) {
+    if (EQUIPMENT[slot].locked) continue;
+    EQUIPMENT[slot].id = null;
+  }
   saveEquipment();
   renderEquipment();
   updateDerivedCharacterInfo();
