@@ -682,7 +682,7 @@ function closePicker() {
 }
 
 function unequipAll() {
-  trackUsage("unequip-all");
+  trackEvent("unequip-all");
   for (const slot of ALL_SLOTS) {
     if (EQUIPMENT[slot].locked) continue;
     EQUIPMENT[slot].id = null;
@@ -934,18 +934,18 @@ function lockedHint() {
 
 function trackOptimize(ok) {
   const goal = document.querySelector('input[name="goal"]:checked')?.value || "";
-  trackUsage("optimize");
+  trackEvent("optimize");
   if (goal === "poise" || goal === "negation" || goal === "damage" || goal === "resistance" || goal === "minweight") {
-    trackUsage(`optimize-${goal}`);
+    trackEvent(`optimize-${goal}`);
   }
   if (goal === "damage") {
-    trackUsage(`optimize-damage-${document.getElementById("damage-type").value}`);
+    trackEvent(`optimize-damage-${document.getElementById("damage-type").value}`);
   } else if (goal === "resistance") {
-    trackUsage(`optimize-resistance-${document.getElementById("resistance-stat").value}`);
+    trackEvent(`optimize-resistance-${document.getElementById("resistance-stat").value}`);
   } else if (goal === "minweight") {
-    trackUsage(`optimize-minweight-${document.getElementById("minweight-metric").value}`);
+    trackEvent(`optimize-minweight-${document.getElementById("minweight-metric").value}`);
   }
-  trackUsage(ok ? "optimize-ok" : "optimize-fail");
+  trackEvent(ok ? "optimize-ok" : "optimize-fail");
 }
 
 function runOptimizer() {
@@ -1456,7 +1456,7 @@ function setupSaveImport() {
   if (!btn || !input || !overlay) return;
 
   btn.addEventListener("click", () => {
-    trackUsage("save-open");
+    trackEvent("save-open");
     input.value = "";
     input.click();
   });
@@ -1548,10 +1548,10 @@ async function loadSaveFile(file) {
     const buf = await file.arrayBuffer();
     const parsed = ER_SAVE.parseSave(buf);
     setSaveImportStatus(`Loaded ${parsed.characters.length} character${parsed.characters.length === 1 ? "" : "s"} — choose what to import.`);
-    trackUsage("save-parsed");
+    trackEvent("save-parsed");
     openSaveCharacterPicker(parsed.characters);
   } catch (err) {
-    trackUsage("save-parse-error");
+    trackEvent("save-parse-error");
     setSaveImportStatus(err.message || "Could not read that save", "save-import-err");
   }
 }
@@ -1573,7 +1573,7 @@ function confirmSaveImport() {
     stats: wantStats,
     equipped: wantEquipped,
   });
-  trackUsage("save-import");
+  trackEvent("save-import");
   closeSaveCharacterPicker();
 }
 
@@ -1699,7 +1699,7 @@ function setupItemPoolDrawer() {
     toggleBtn.textContent = isHidden ? "Customize Item Pool ▾" : "Customize Item Pool ▴";
     if (!isHidden) {
       renderPoolChecklist();
-      trackUsage("pool-open");
+      trackEvent("pool-open");
     }
   });
 
@@ -1801,7 +1801,7 @@ async function init() {
       updateLoadBudgetDisplay();
       saveState();
       const eventName = LOAD_PRESET_EVENTS[preset];
-      if (eventName) trackUsage(eventName);
+      if (eventName) trackEvent(eventName);
     });
   });
 

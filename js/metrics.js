@@ -1,5 +1,7 @@
 // Privacy-friendly GoatCounter events. Never send character names, save
 // contents, item ids, or exact stats — only allowlisted event names.
+// Paths are scoped under /project/er-tools/ so this site is distinct on the
+// shared in-a.elsewhere.moe instance.
 const ER_METRICS = (() => {
   const DAMAGE = ["phy", "strike", "slash", "pierce", "magic", "fire", "lightning", "holy"];
   const RESISTS = ["immunity", "robustness", "focus", "vitality"];
@@ -27,10 +29,25 @@ const ER_METRICS = (() => {
     "load-medium",
     "load-heavy",
     "pool-open",
+    "github-issue",
   ]);
 
   const pending = [];
   let waiting = false;
+
+  function project() {
+    return typeof GOATCOUNTER_PROJECT === "string" && GOATCOUNTER_PROJECT
+      ? GOATCOUNTER_PROJECT
+      : "er-tools";
+  }
+
+  function eventPath(eventName) {
+    return `/project/${project()}/event/${eventName}`;
+  }
+
+  function eventTitle(title) {
+    return `${project()}: ${title}`;
+  }
 
   function flush() {
     const gc = window.goatcounter;
@@ -52,16 +69,24 @@ const ER_METRICS = (() => {
     }, 200);
   }
 
-  function trackUsage(name) {
-    if (!ALLOWED.has(name)) return;
-    const vars = { path: name, title: name, event: true, no_session: true };
-    pending.push(vars);
+  function trackEvent(eventName, title) {
+    if (!ALLOWED.has(eventName)) return;
+    pending.push({
+      path: eventPath(eventName),
+      title: eventTitle(title || eventName),
+      event: true,
+    });
     waitForGoat();
   }
 
-  return { trackUsage, ALLOWED };
+  return { trackEvent, ALLOWED };
 })();
 
-function trackUsage(name) {
-  ER_METRICS.trackUsage(name);
+function trackEvent(eventName, title) {
+  ER_METRICS.trackEvent(eventName, title);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const link = document.getElementById("github-issue-link");
+  if (link) link.addEventListener("click", () => trackEvent("github-issue"));
+});
