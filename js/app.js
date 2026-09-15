@@ -682,6 +682,7 @@ function closePicker() {
 }
 
 function unequipAll() {
+  trackUsage("unequip-all");
   for (const slot of ALL_SLOTS) {
     if (EQUIPMENT[slot].locked) continue;
     EQUIPMENT[slot].id = null;
@@ -931,6 +932,22 @@ function lockedHint() {
   return bits.length ? ` Locked: ${bits.join("; ")}.` : "";
 }
 
+function trackOptimize(ok) {
+  const goal = document.querySelector('input[name="goal"]:checked')?.value || "";
+  trackUsage("optimize");
+  if (goal === "poise" || goal === "negation" || goal === "damage" || goal === "resistance" || goal === "minweight") {
+    trackUsage(`optimize-${goal}`);
+  }
+  if (goal === "damage") {
+    trackUsage(`optimize-damage-${document.getElementById("damage-type").value}`);
+  } else if (goal === "resistance") {
+    trackUsage(`optimize-resistance-${document.getElementById("resistance-stat").value}`);
+  } else if (goal === "minweight") {
+    trackUsage(`optimize-minweight-${document.getElementById("minweight-metric").value}`);
+  }
+  trackUsage(ok ? "optimize-ok" : "optimize-fail");
+}
+
 function runOptimizer() {
   const goal = document.querySelector('input[name="goal"]:checked').value;
   const pool = getArmorPool();
@@ -942,6 +959,7 @@ function runOptimizer() {
   if (!requiredSlots.length) {
     resultsEl.innerHTML = `<p class="hint">All armor slots are locked empty, so there is nothing for the armor optimizer to fill.${escapeHtml(hint)}</p>`;
     renderSuggestions(resultsEl, currentObjective(), { minWeightMode: goal === "minweight" });
+    trackOptimize(false);
     return;
   }
 
@@ -951,10 +969,12 @@ function runOptimizer() {
     const result = minimizeWeightForTarget(pool, objective, target, requiredSlots);
     if (!result) {
       resultsEl.innerHTML = `<p class="hint">No combination reaches that target with the current locks and item pool.${escapeHtml(hint)} Try a lower value, unlock a slot, or check the Item Pool.</p>`;
+      trackOptimize(false);
       return;
     }
     applyArmorResult(result);
     renderResult(result, objective, talismans, { minWeightMode: true, target });
+    trackOptimize(true);
     return;
   }
 
@@ -962,10 +982,12 @@ function runOptimizer() {
   const { result, maxLoad, budgetForArmor } = optimizeArmorForLoad(pool, objective, requiredSlots);
   if (!result) {
     resultsEl.innerHTML = `<p class="hint">No armor combination fits that weight budget with the current locks, weapons, and talismans.${escapeHtml(hint)} Try a lighter load class, unlock a heavy piece, or check the Item Pool.</p>`;
+    trackOptimize(false);
     return;
   }
   applyArmorResult(result);
   renderResult(result, objective, talismans, { maxLoad, budgetForArmor });
+  trackOptimize(true);
 }
 
 function objectiveLabel(objective) {
@@ -1434,6 +1456,7 @@ function setupSaveImport() {
   if (!btn || !input || !overlay) return;
 
   btn.addEventListener("click", () => {
+    trackUsage("save-open");
     input.value = "";
     input.click();
   });
@@ -1525,8 +1548,10 @@ async function loadSaveFile(file) {
     const buf = await file.arrayBuffer();
     const parsed = ER_SAVE.parseSave(buf);
     setSaveImportStatus(`Loaded ${parsed.characters.length} character${parsed.characters.length === 1 ? "" : "s"} — choose what to import.`);
+    trackUsage("save-parsed");
     openSaveCharacterPicker(parsed.characters);
   } catch (err) {
+    trackUsage("save-parse-error");
     setSaveImportStatus(err.message || "Could not read that save", "save-import-err");
   }
 }
@@ -1548,6 +1573,7 @@ function confirmSaveImport() {
     stats: wantStats,
     equipped: wantEquipped,
   });
+  trackUsage("save-import");
   closeSaveCharacterPicker();
 }
 
@@ -1671,7 +1697,10 @@ function setupItemPoolDrawer() {
     const isHidden = drawer.classList.toggle("hidden");
     toggleBtn.setAttribute("aria-expanded", String(!isHidden));
     toggleBtn.textContent = isHidden ? "Customize Item Pool ▾" : "Customize Item Pool ▴";
-    if (!isHidden) renderPoolChecklist();
+    if (!isHidden) {
+      renderPoolChecklist();
+      trackUsage("pool-open");
+    }
   });
 
   document.querySelectorAll(".tab-btn").forEach((btn) => {
@@ -1764,11 +1793,15 @@ async function init() {
     saveState();
   });
 
+  const LOAD_PRESET_EVENTS = { "0.299": "load-light", "0.699": "load-medium", "0.999": "load-heavy" };
   document.querySelectorAll(".preset-btn[data-preset]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      applyLoadRatio(btn.getAttribute("data-preset"));
+      const preset = btn.getAttribute("data-preset");
+      applyLoadRatio(preset);
       updateLoadBudgetDisplay();
       saveState();
+      const eventName = LOAD_PRESET_EVENTS[preset];
+      if (eventName) trackUsage(eventName);
     });
   });
 
