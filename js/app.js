@@ -315,30 +315,109 @@ function statusChangedHtml(from, to, digits) {
   return `<span class="status-base">${fmt(from)}</span> → <span class="${klass}">${fmt(to)}</span>`;
 }
 
+function statusTipHtml(innerHtml, title, rows, id) {
+  const idAttr = id ? ` id="${id}"` : "";
+  if (!rows || !rows.length) return `<span${idAttr}>${innerHtml}</span>`;
+  const body = rows.map((row) =>
+    `<span class="status-tip-row"><span class="status-tip-name">${escapeHtml(row.name)}</span><span class="status-tip-val">${escapeHtml(row.value)}</span></span>`
+  ).join("");
+  const aria = `${title}. ${rows.map((row) => `${row.name} ${row.value}`).join(", ")}`;
+  return `<span class="status-tip-host"${idAttr} tabindex="0" aria-label="${escapeHtml(aria)}">${innerHtml}<span class="status-tip" role="tooltip"><span class="status-tip-title">${escapeHtml(title)}</span>${body}</span></span>`;
+}
+
+let statusFloatTip = null;
+
+function statusFloatTipEl() {
+  if (!statusFloatTip) {
+    statusFloatTip = document.createElement("div");
+    statusFloatTip.className = "status-float-tip hidden";
+    statusFloatTip.setAttribute("role", "tooltip");
+    document.body.appendChild(statusFloatTip);
+  }
+  return statusFloatTip;
+}
+
+function showStatusFloatTip(host) {
+  const source = host.querySelector(".status-tip");
+  if (!source) return;
+  const box = statusFloatTipEl();
+  box.innerHTML = source.innerHTML;
+  box.style.visibility = "hidden";
+  box.classList.remove("hidden");
+  const rect = host.getBoundingClientRect();
+  const width = Math.max(box.offsetWidth, 230);
+  const preferRight = rect.left < window.innerWidth * 0.45;
+  let left = preferRight ? rect.right + 8 : rect.left - width - 8;
+  if (left < 8) left = 8;
+  if (left + width > window.innerWidth - 8) left = Math.max(8, window.innerWidth - width - 8);
+  box.style.left = `${left}px`;
+  box.style.top = `${rect.bottom + 8}px`;
+  const shown = box.getBoundingClientRect();
+  if (shown.bottom > window.innerHeight - 8) {
+    box.style.top = `${Math.max(8, rect.top - shown.height - 8)}px`;
+  }
+  box.style.visibility = "visible";
+}
+
+function hideStatusFloatTip() {
+  if (statusFloatTip) statusFloatTip.classList.add("hidden");
+}
+
+function setupStatusTooltips() {
+  const panel = document.getElementById("panel-status");
+  if (!panel || panel.dataset.tipsBound) return;
+  panel.dataset.tipsBound = "1";
+  panel.addEventListener("mouseover", (e) => {
+    const host = e.target.closest(".status-tip-host");
+    if (host) showStatusFloatTip(host);
+  });
+  panel.addEventListener("mouseout", (e) => {
+    const host = e.target.closest(".status-tip-host");
+    if (!host) return;
+    const next = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(".status-tip-host");
+    if (next === host) return;
+    hideStatusFloatTip();
+  });
+  panel.addEventListener("focusin", (e) => {
+    const host = e.target.closest(".status-tip-host");
+    if (host) showStatusFloatTip(host);
+  });
+  panel.addEventListener("focusout", () => hideStatusFloatTip());
+  window.addEventListener("scroll", hideStatusFloatTip, true);
+  window.addEventListener("resize", hideStatusFloatTip);
+}
+
 function renderStatusPanel(status) {
+  hideStatusFloatTip();
   const attrEl = document.getElementById("status-attributes");
   const bodyEl = document.getElementById("status-body");
   const absEl = document.getElementById("status-absorption");
   const resEl = document.getElementById("status-resistances");
   const atkEl = document.getElementById("status-attack");
   if (!attrEl || !status) return;
+  const tips = status.breakdown || {};
 
   let attrHtml = "";
   for (const key of STAT_KEYS) {
-    attrHtml += `<tr><th>${STAT_LABELS[key]}</th><td id="status-attr-${key}">${statusChangedHtml(status.invested[key], status.effective[key])}</td></tr>`;
+    attrHtml += `<tr><th>${STAT_LABELS[key]}</th><td>${statusTipHtml(
+      statusChangedHtml(status.invested[key], status.effective[key]),
+      STAT_LABELS[key],
+      (tips.attributes && tips.attributes[key]) || [],
+      `status-attr-${key}`
+    )}</td></tr>`;
   }
   attrEl.innerHTML = attrHtml;
 
   const cls = status.loadClass;
   bodyEl.innerHTML = `
-    <tr><th>HP</th><td id="status-hp">${statusChangedHtml(hpFromVigor(status.invested.vig), status.hp)}</td></tr>
-    <tr><th>FP</th><td id="status-fp">${statusChangedHtml(fpFromMind(status.invested.mind), status.fp)}</td></tr>
-    <tr><th>Stamina</th><td id="status-stamina">${statusChangedHtml(staminaFromEndurance(status.invested.end), status.stamina)}</td></tr>
-    <tr><th>Max Equip Load</th><td id="status-max-load">${statusChangedHtml(baseEquipLoadForEndurance(status.invested.end, EQUIP_LOAD_TABLE), status.maxLoad, 1)}</td></tr>
+    <tr><th>HP</th><td>${statusTipHtml(statusChangedHtml(hpFromVigor(status.invested.vig), status.hp), "HP", tips.hp, "status-hp")}</td></tr>
+    <tr><th>FP</th><td>${statusTipHtml(statusChangedHtml(fpFromMind(status.invested.mind), status.fp), "FP", tips.fp, "status-fp")}</td></tr>
+    <tr><th>Stamina</th><td>${statusTipHtml(statusChangedHtml(staminaFromEndurance(status.invested.end), status.stamina), "Stamina", tips.stamina, "status-stamina")}</td></tr>
+    <tr><th>Max Equip Load</th><td>${statusTipHtml(statusChangedHtml(baseEquipLoadForEndurance(status.invested.end, EQUIP_LOAD_TABLE), status.maxLoad, 1), "Max Equip Load", tips.maxLoad, "status-max-load")}</td></tr>
     <tr><th>Current Load</th><td>${status.weight.toFixed(1)} / ${status.maxLoad.toFixed(1)} <span class="badge ${cls}">${(status.ratio * 100).toFixed(1)}% ${cls}</span></td></tr>
-    <tr><th>Poise</th><td id="status-poise">${status.poise.toFixed(1)}</td></tr>
-    <tr><th>Discovery</th><td id="status-discovery">${status.discovery}</td></tr>
-    <tr><th>Memory Slots</th><td id="status-memory">${status.memorySlots}</td></tr>`;
+    <tr><th>Poise</th><td>${statusTipHtml(status.poise.toFixed(1), "Poise", tips.poise, "status-poise")}</td></tr>
+    <tr><th>Discovery</th><td>${statusTipHtml(String(status.discovery), "Discovery", tips.discovery, "status-discovery")}</td></tr>
+    <tr><th>Memory Slots</th><td>${statusTipHtml(String(status.memorySlots), "Memory Slots", tips.memory, "status-memory")}</td></tr>`;
 
   const absorbLabels = {
     phy: "Physical",
@@ -352,15 +431,20 @@ function renderStatusPanel(status) {
   };
   let absHtml = "";
   for (const dt of DAMAGE_TYPES) {
-    absHtml += `<tr><th>${absorbLabels[dt]}</th><td>${statusChangedHtml(status.armorNeg[dt] || 0, status.absorption[dt] || 0, 1)}</td></tr>`;
+    absHtml += `<tr><th>${absorbLabels[dt]}</th><td>${statusTipHtml(
+      statusChangedHtml(status.armorNeg[dt] || 0, status.absorption[dt] || 0, 1),
+      absorbLabels[dt],
+      (tips.absorption && tips.absorption[dt]) || [],
+      `status-abs-${dt}`
+    )}</td></tr>`;
   }
   absEl.innerHTML = absHtml;
 
   resEl.innerHTML = `
-    <tr><th>Immunity</th><td id="status-immunity">${status.resistances.immunity}</td></tr>
-    <tr><th>Robustness</th><td id="status-robustness">${status.resistances.robustness}</td></tr>
-    <tr><th>Focus</th><td id="status-focus">${status.resistances.focus}</td></tr>
-    <tr><th>Vitality</th><td id="status-vitality">${status.resistances.vitality}</td></tr>`;
+    <tr><th>Immunity</th><td>${statusTipHtml(String(status.resistances.immunity), "Immunity", tips.resist && tips.resist.immunity, "status-immunity")}</td></tr>
+    <tr><th>Robustness</th><td>${statusTipHtml(String(status.resistances.robustness), "Robustness", tips.resist && tips.resist.robustness, "status-robustness")}</td></tr>
+    <tr><th>Focus</th><td>${statusTipHtml(String(status.resistances.focus), "Focus", tips.resist && tips.resist.focus, "status-focus")}</td></tr>
+    <tr><th>Vitality</th><td>${statusTipHtml(String(status.resistances.vitality), "Vitality", tips.resist && tips.resist.vitality, "status-vitality")}</td></tr>`;
 
   const twoHanding = !!(document.getElementById("weapon-two-hand") && document.getElementById("weapon-two-hand").checked);
   const rows = [];
@@ -1988,6 +2072,7 @@ async function init() {
   setupSaveImport();
   renderEquipment();
   updateDerivedCharacterInfo();
+  setupStatusTooltips();
 
   document.querySelectorAll("#panel-character input")
     .forEach((el) => el.addEventListener("input", () => {

@@ -290,8 +290,8 @@ for (const ratio of [0.299, 0.30, 0.45, 0.699, 0.70, 0.999, 1.0]) {
   const status = computeCharacterStatus({
     invested: base,
     armor: [],
-    talismans: [{ effect: "Raises Vigor, Endurance, Strength, and Dexterity by 5, but increases all damage taken by 15%.", weight: 0.8 }],
-    rune: { effect: "Raises all attributes by +5", statBonus: 5 },
+    talismans: [{ name: "Radagon's Soreseal", effect: "Raises Vigor, Endurance, Strength, and Dexterity by 5, but increases all damage taken by 15%.", weight: 0.8 }],
+    rune: { name: "Godrick's Great Rune", effect: "Raises all attributes by +5", statBonus: 5 },
     runeActive: true,
     weapons: [],
     equipLoadTable,
@@ -300,6 +300,29 @@ for (const ratio of [0.299, 0.30, 0.45, 0.699, 0.70, 0.999, 1.0]) {
   if (status.effective.end !== 20 || status.effective.mind !== 15) fail("status effective stats should stack Soreseal + Godrick");
   if (status.hp <= hpFromVigor(10)) fail("Godrick vigor should raise HP above invested vigor");
   if (status.absorption.phy >= 0) fail("Soreseal 15% more damage taken should make naked physical absorption negative");
+  const faithTip = (status.breakdown.attributes.fai || []).map((row) => row.name);
+  if (!faithTip.some((name) => /godrick/i.test(name))) fail("faith breakdown should include Godrick's Great Rune");
+  const hpTip = (status.breakdown.hp || []).map((row) => `${row.name} ${row.value}`).join("; ");
+  if (!/godrick/i.test(hpTip) || !/soreseal/i.test(hpTip)) fail(`HP breakdown should list Vigor sources: ${hpTip}`);
+  const absTip = (status.breakdown.absorption.phy || []).map((row) => `${row.name} ${row.value}`).join("; ");
+  if (!/damage taken/i.test(absTip)) fail(`physical absorption breakdown should mention Soreseal damage taken: ${absTip}`);
+
+  const faithMix = computeCharacterStatus({
+    invested: base,
+    armor: [armor.find((a) => a.id === "chest-commoner-s-simple-garb")],
+    talismans: [talismans.find((t) => t.id === "two-fingers-heirloom")],
+    rune: { name: "Godrick's Great Rune", effect: "Raises all attributes by +5", statBonus: 5 },
+    runeActive: true,
+    weapons: [],
+    equipLoadTable,
+    level: 1,
+  });
+  const mixNames = (faithMix.breakdown.attributes.fai || []).map((row) => `${row.name} ${row.value}`).join("; ");
+  if (!/godrick/i.test(mixNames) || !/commoner/i.test(mixNames) || !/two fingers/i.test(mixNames)) {
+    fail(`faith mix breakdown missing a contributor: ${mixNames}`);
+  }
+  if (!/\+5/.test(mixNames) || !/\+1/.test(mixNames)) fail(`faith mix breakdown should include amounts: ${mixNames}`);
+  if (faithMix.effective.fai !== 21) fail("Godrick + Commoner's Simple Garb + Two Fingers Heirloom should be Faith 21");
 
   const armorById = Object.fromEntries(armor.map((a) => [a.id, a]));
   const hidden = {

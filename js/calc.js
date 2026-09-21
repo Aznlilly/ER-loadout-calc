@@ -126,12 +126,25 @@ function addAttributeBonuses(into, extra) {
   return into;
 }
 
+function singleAttributeBonuses(item) {
+  if (!item) return emptyAttributeBonuses();
+  if (typeof item.statBonus === "number" && item.statBonus) {
+    const out = emptyAttributeBonuses();
+    for (const key of STAT_KEYS) out[key] = item.statBonus;
+    return out;
+  }
+  if (item.statBonus && typeof item.statBonus === "object") {
+    const out = emptyAttributeBonuses();
+    addAttributeBonuses(out, item.statBonus);
+    return out;
+  }
+  return parseAttributeBonuses(item.effect);
+}
+
 function itemAttributeBonuses(items) {
   const out = emptyAttributeBonuses();
   for (const item of items || []) {
-    if (!item) continue;
-    if (item.statBonus) addAttributeBonuses(out, item.statBonus);
-    else addAttributeBonuses(out, parseAttributeBonuses(item.effect));
+    addAttributeBonuses(out, singleAttributeBonuses(item));
   }
   return out;
 }
@@ -560,6 +573,160 @@ function computeCharacterStatus(opts) {
     absorption,
     resistances,
     resources: effects.resources,
+    breakdown: buildStatusBreakdown({
+      invested,
+      effective,
+      armor,
+      talismans,
+      rune,
+      runeActive,
+      effectItems,
+      equipLoadTable,
+      level,
+    }),
+  };
+}
+
+function signedInt(n) {
+  const r = Math.round(n);
+  return (r > 0 ? "+" : "") + r;
+}
+
+function signedPct(frac) {
+  const pct = Math.round(frac * 1000) / 10;
+  const text = Number.isInteger(pct) ? String(pct) : pct.toFixed(1);
+  return (pct > 0 ? "+" : "") + text + "%";
+}
+
+function signedDecimal(n, digits) {
+  const v = Number(n.toFixed(digits));
+  return (v > 0 ? "+" : "") + v.toFixed(digits);
+}
+
+function pushBreakdown(rows, name, value) {
+  if (!name || value == null || value === "") return;
+  rows.push({ name, value });
+}
+
+function buildStatusBreakdown(opts) {
+  const invested = opts.invested;
+  const effective = opts.effective;
+  const armor = opts.armor || [];
+  const talismans = opts.talismans || [];
+  const rune = opts.rune;
+  const runeActive = opts.runeActive;
+  const effectItems = opts.effectItems || [];
+  const equipLoadTable = opts.equipLoadTable || {};
+  const level = opts.level;
+
+  const attrGear = [...armor, ...talismans];
+  if (runeActive && rune) attrGear.push(rune);
+
+  const attributes = {};
+  for (const key of STAT_KEYS) {
+    const rows = [];
+    pushBreakdown(rows, "Invested", String(invested[key]));
+    for (const item of attrGear) {
+      const n = singleAttributeBonuses(item)[key];
+      if (n) pushBreakdown(rows, item.name, signedInt(n));
+    }
+    attributes[key] = rows.length > 1 ? rows : [];
+  }
+
+  function resourceRows(statKey, investedStat, curveFn, resourceKey, unitLabel) {
+    const rows = [];
+    const investedBase = curveFn(invested[investedStat], equipLoadTable);
+    const effectiveBase = curveFn(effective[investedStat], equipLoadTable);
+    const investedLabel = statKey === "maxLoad" ? investedBase.toFixed(1) : String(investedBase);
+    pushBreakdown(rows, `Invested (${STAT_LABELS[investedStat]} ${invested[investedStat]})`, investedLabel);
+    for (const item of attrGear) {
+      const n = singleAttributeBonuses(item)[investedStat];
+      if (n) pushBreakdown(rows, item.name, `${signedInt(n)} ${STAT_LABELS[investedStat]}`);
+    }
+    if (effective[investedStat] !== invested[investedStat]) {
+      const mid = statKey === "maxLoad" ? effectiveBase.toFixed(1) : String(effectiveBase);
+      pushBreakdown(rows, `From ${STAT_LABELS[investedStat]} ${effective[investedStat]}`, mid);
+    }
+    for (const item of effectItems) {
+      const n = itemResourceBonuses(item)[resourceKey];
+      if (n) pushBreakdown(rows, item.name, `${signedPct(n)} ${unitLabel}`);
+    }
+    return rows.length > 1 ? rows : [];
+  }
+
+  const hpFn = (vig) => hpFromVigor(vig);
+  const fpFn = (mind) => fpFromMind(mind);
+  const stamFn = (end) => staminaFromEndurance(end);
+  const loadFn = (end, table) => baseEquipLoadForEndurance(end, table);
+
+  const absorption = {};
+  for (const dt of DAMAGE_TYPES) {
+    const rows = [];
+    for (const piece of armor) {
+      const n = piece && piece.negation && piece.negation[dt];
+      if (n) pushBreakdown(rows, piece.name, signedDecimal(n, 1));
+    }
+    for (const item of effectItems) {
+      const rem = parseDamageRemaining(item && item.effect)[dt];
+      if (!rem || Math.abs(rem - 1) < 1e-6) continue;
+      if (rem > 1) pushBreakdown(rows, item.name, `${signedPct(rem - 1)} damage taken`);
+      else pushBreakdown(rows, item.name, `${signedPct(1 - rem)} negation`);
+    }
+    absorption[dt] = rows;
+  }
+
+  const armorRes = computeResistances(armor);
+  const baseRes = baseResistances(level, effective);
+  const resist = {};
+  for (const key of ["immunity", "robustness", "focus", "vitality"]) {
+    const rows = [];
+    pushBreakdown(rows, "Level / attributes", String(Math.floor(baseRes[key])));
+    for (const piece of armor) {
+      const n = piece && piece.resistance && piece.resistance[key];
+      if (n) pushBreakdown(rows, piece.name, signedInt(n));
+    }
+    for (const item of effectItems) {
+      const n = parseResistanceBonuses(item && item.effect)[key];
+      if (n) pushBreakdown(rows, item.name, signedInt(n));
+    }
+    resist[key] = rows;
+  }
+
+  const poise = [];
+  for (const piece of armor) {
+    const n = piece && piece.resistance && piece.resistance.poise;
+    if (n) pushBreakdown(poise, piece.name, signedDecimal(n, 1));
+  }
+  for (const item of talismans) {
+    const n = talismanPoiseBonus(item && item.effect);
+    if (n) pushBreakdown(poise, item.name, `${signedPct(n)} poise`);
+  }
+
+  const discovery = [];
+  pushBreakdown(discovery, `Arcane ${effective.arc}`, String(100 + (effective.arc - 1)));
+  for (const item of effectItems) {
+    const n = parseDiscoveryBonus(item && item.effect);
+    if (n) pushBreakdown(discovery, item.name, signedInt(n));
+  }
+
+  const memory = [];
+  pushBreakdown(memory, "Base", "2");
+  for (const item of effectItems) {
+    const n = parseMemorySlotBonus(item && item.effect);
+    if (n) pushBreakdown(memory, item.name, signedInt(n));
+  }
+
+  return {
+    attributes,
+    hp: resourceRows("hp", "vig", hpFn, "hp", "HP"),
+    fp: resourceRows("fp", "mind", fpFn, "fp", "FP"),
+    stamina: resourceRows("stamina", "end", stamFn, "stamina", "Stamina"),
+    maxLoad: resourceRows("maxLoad", "end", loadFn, "equipLoad", "Equip Load"),
+    absorption,
+    resist,
+    poise,
+    discovery: discovery.length > 1 || effective.arc !== invested.arc ? discovery : [],
+    memory: memory.length > 1 ? memory : [],
   };
 }
 
@@ -578,6 +745,7 @@ if (typeof module !== "undefined") {
     parseDamageRemaining,
     talismanAttributeBonuses,
     itemAttributeBonuses,
+    singleAttributeBonuses,
     itemResourceBonuses,
     applyAttributeBonuses,
     applyEffectiveStats,

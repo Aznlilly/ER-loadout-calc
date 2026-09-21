@@ -213,8 +213,35 @@ with sync_playwright() as p:
         raise SystemExit("active Godrick's Great Rune should raise endurance-based max load")
     if "15" not in end_txt:
         raise SystemExit("active Godrick's should show effective endurance 15")
+    end_html = page.inner_html("#status-attr-end")
+    if "Godrick" not in end_html:
+        raise SystemExit("endurance tooltip should list Godrick's Great Rune")
     if "→" not in hp_on:
         raise SystemExit("active Godrick's should raise HP above the invested-vigor base")
+    page.click('[data-slot="chest"]')
+    page.wait_for_timeout(200)
+    page.fill("#picker-search", "Commoner's Simple Garb")
+    page.wait_for_timeout(200)
+    page.click('#picker-list [data-item-id="chest-commoner-s-simple-garb"]')
+    page.wait_for_timeout(200)
+    page.click('[data-slot="tal1"]')
+    page.wait_for_timeout(200)
+    page.fill("#picker-search", "Two Fingers Heirloom")
+    page.wait_for_timeout(200)
+    page.click('#picker-list [data-item-id="two-fingers-heirloom"]')
+    page.wait_for_timeout(200)
+    fai_html = page.inner_html("#status-attr-fai")
+    print("Faith tooltip:", fai_html)
+    if "Godrick" not in fai_html or "Commoner" not in fai_html or "Two Fingers" not in fai_html:
+        raise SystemExit("faith tooltip should list Godrick's Great Rune, Commoner's Simple Garb, and Two Fingers Heirloom")
+    if "+5" not in fai_html or "+1" not in fai_html:
+        raise SystemExit("faith tooltip should include each contributor's amount")
+    page.evaluate(
+        """() => {
+      setSlotItem("chest", null);
+      setSlotItem("tal1", null);
+    }"""
+    )
     rune_import = page.evaluate(
         """() => {
       applySaveCharacter({

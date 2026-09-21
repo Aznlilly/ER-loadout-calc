@@ -109,6 +109,58 @@ table.status-table td:last-child {
 .status-base { color: var(--text-dim); }
 .status-down { color: #c47a7a; }
 .status-empty { color: var(--text-dim); font-size: 0.88rem; }
+.status-tip-host {
+  position: relative;
+  display: inline-block;
+  min-width: 100%;
+  cursor: help;
+  outline: none;
+}
+.status-tip-host:hover,
+.status-tip-host:focus {
+  text-decoration: underline dotted var(--accent-dim);
+  text-underline-offset: 3px;
+}
+.status-tip { display: none; }
+.status-float-tip {
+  position: fixed;
+  z-index: 200;
+  min-width: 230px;
+  max-width: 300px;
+  padding: 10px 12px;
+  background: #2a261f;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+.status-float-tip.hidden { display: none; }
+.status-tip-title {
+  display: block;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.78rem;
+  margin-bottom: 6px;
+}
+.status-tip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+.status-tip-name {
+  color: var(--text-dim);
+  min-width: 0;
+}
+.status-tip-val {
+  flex-shrink: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
 
 .search-box { width: 100%; margin-bottom: 8px; }
 
