@@ -104,6 +104,34 @@ def overlay_param_stats(items):
     print(f"param overlay: {applied}/{len(items)} pieces, {changed} differed from wiki scrape")
 
 
+def overlay_param_status(items):
+    """Hidden attribute / HP-FP-stamina bonuses from resident SpEffects."""
+    from param_io import catalog_status_mods, ensure_status_in_effect
+
+    ids_path = Path("data/game_ids.json")
+    if not ids_path.exists():
+        print("skip status overlay (data/game_ids.json not found)")
+        return
+    with open(ids_path) as fh:
+        game_ids = json.load(fh)
+    mods_by_id = catalog_status_mods("armor", game_ids)
+    if not mods_by_id:
+        print("skip status overlay (no SpEffect bonuses matched)")
+        return
+    applied = 0
+    for item in items:
+        mods = mods_by_id.get(item["id"])
+        if not mods:
+            continue
+        if mods.get("statBonus"):
+            item["statBonus"] = mods["statBonus"]
+        if mods.get("resourceBonus"):
+            item["resourceBonus"] = mods["resourceBonus"]
+        item["effect"] = ensure_status_in_effect(item.get("effect") or "", mods)
+        applied += 1
+    print(f"status overlay: {applied} pieces with hidden attribute/resource bonuses")
+
+
 def main():
     out = []
     seen_ids = {}
@@ -122,6 +150,9 @@ def main():
                 n += 1
             seen_ids[item_id] = True
 
+            effect = (r.get("special", "") or "").strip()
+            if effect in ("-", "—", "–"):
+                effect = ""
             item = {
                 "id": item_id,
                 "name": name,
@@ -144,7 +175,7 @@ def main():
                     "vitality": to_num(r.get("vitality")),
                     "poise": to_num(r.get("poise")),
                 },
-                "effect": r.get("special", "") or "",
+                "effect": effect,
                 "source": source,
                 "dlc": is_dlc,
                 "altered": "(altered)" in name.lower(),
@@ -154,6 +185,7 @@ def main():
             out.append(item)
 
     overlay_param_stats(out)
+    overlay_param_status(out)
     apply_icons(out)
     with open("data/armor.json", "w") as f:
         json.dump(out, f, indent=1)

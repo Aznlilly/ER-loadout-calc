@@ -129,9 +129,24 @@ function addAttributeBonuses(into, extra) {
 function itemAttributeBonuses(items) {
   const out = emptyAttributeBonuses();
   for (const item of items || []) {
-    addAttributeBonuses(out, parseAttributeBonuses(item && item.effect));
+    if (!item) continue;
+    if (item.statBonus) addAttributeBonuses(out, item.statBonus);
+    else addAttributeBonuses(out, parseAttributeBonuses(item.effect));
   }
   return out;
+}
+
+function itemResourceBonuses(item) {
+  const out = emptyResourceBonuses();
+  if (!item) return out;
+  if (item.resourceBonus) {
+    out.hp = item.resourceBonus.hp || 0;
+    out.fp = item.resourceBonus.fp || 0;
+    out.stamina = item.resourceBonus.stamina || 0;
+    out.equipLoad = item.resourceBonus.equipLoad || 0;
+    return out;
+  }
+  return parseResourceBonuses(item.effect);
 }
 
 function talismanAttributeBonuses(talismans) {
@@ -318,12 +333,12 @@ function combineItemEffects(items) {
   let memorySlots = 0;
   let poise = 0;
   for (const item of items || []) {
-    const effect = item && item.effect;
-    const res = parseResourceBonuses(effect);
+    const res = itemResourceBonuses(item);
     resources.hp += res.hp;
     resources.fp += res.fp;
     resources.stamina += res.stamina;
     resources.equipLoad += res.equipLoad;
+    const effect = item && item.effect;
     const rb = parseResistanceBonuses(effect);
     resist.immunity += rb.immunity;
     resist.robustness += rb.robustness;
@@ -418,7 +433,7 @@ function computeMaxEquipLoad(endurance, items, equipLoadTable) {
   const base = baseEquipLoadForEndurance(endurance, equipLoadTable);
   let bonus = 0;
   for (const item of items || []) {
-    bonus += parseResourceBonuses(item && item.effect).equipLoad;
+    bonus += itemResourceBonuses(item).equipLoad;
   }
   return base * (1 + bonus);
 }
@@ -563,6 +578,7 @@ if (typeof module !== "undefined") {
     parseDamageRemaining,
     talismanAttributeBonuses,
     itemAttributeBonuses,
+    itemResourceBonuses,
     applyAttributeBonuses,
     applyEffectiveStats,
     applyGreatRuneStats,

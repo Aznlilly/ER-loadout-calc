@@ -717,6 +717,18 @@ function toggleLock(slot) {
   renderEquipment();
 }
 
+function formatStatBonusShort(item) {
+  if (!item || !item.statBonus) return "";
+  const shorts = { vig: "VIG", mind: "MIN", end: "END", str: "STR", dex: "DEX", int: "INT", fai: "FAI", arc: "ARC" };
+  const parts = [];
+  for (const key of STAT_KEYS) {
+    const n = item.statBonus[key];
+    if (!n) continue;
+    parts.push(`${n > 0 ? "+" : ""}${n} ${shorts[key]}`);
+  }
+  return parts.join(", ");
+}
+
 function renderSlot(slot, inactive) {
   const item = inactive ? null : itemForSlot(slot);
   const locked = !inactive && EQUIPMENT[slot].locked;
@@ -728,12 +740,14 @@ function renderSlot(slot, inactive) {
   ].filter(Boolean).join(" ");
   const name = item ? escapeHtml(armorDisplayName(item, slot)) : "Empty";
   const weight = item ? `${item.weight}` : "";
+  const bonus = item ? formatStatBonusShort(item) : "";
   return `<div class="${classes}" data-slot="${slot}" role="button" tabindex="0" aria-label="${escapeHtml(SLOT_LABELS[slot])}${item ? ": " + escapeHtml(item.name) : ""}">
     <button type="button" class="lock-btn" data-lock="${slot}" title="${locked ? "Unlock this slot" : "Lock this slot"}" aria-pressed="${locked}" aria-label="${locked ? "Unlock" : "Lock"} ${escapeHtml(SLOT_LABELS[slot])}">${locked ? "Locked" : "Lock"}</button>
     <span class="slot-label">${escapeHtml(SLOT_LABELS[slot])}</span>
     ${iconHtml(item)}
     <span class="slot-name">${name}</span>
     <span class="slot-weight">${weight !== "" ? weight + " wt" : ""}</span>
+    ${bonus ? `<span class="slot-effect">${escapeHtml(bonus)}</span>` : ""}
   </div>`;
 }
 
@@ -787,7 +801,7 @@ function pickerCandidates(slot) {
   if (kind === "armor") {
     const includeAltered = document.getElementById("include-altered").checked;
     return ARMOR.filter((a) => a.slot === slot && isIncluded(a, "armor") && (includeAltered || !a.altered))
-      .filter((a) => !q || a.name.toLowerCase().includes(q));
+      .filter((a) => !q || a.name.toLowerCase().includes(q) || (a.effect || "").toLowerCase().includes(q));
   }
   if (kind === "weapon") {
     return WEAPONS.filter((w) => isIncluded(w, "weapons"))
@@ -814,9 +828,17 @@ function renderPickerList() {
     div.setAttribute("role", "button");
     div.tabIndex = 0;
     div.setAttribute("aria-label", it.name);
-    const extra = (kind === "talisman" || kind === "rune")
-      ? `<span class="eff">${escapeHtml(it.effect || "")}</span>`
-      : `<span class="eff">${it.weight} wt${it.category ? " · " + escapeHtml(it.category) : ""}</span>`;
+    const bonus = formatStatBonusShort(it);
+    let extra;
+    if (kind === "talisman" || kind === "rune") {
+      extra = `<span class="eff">${escapeHtml(it.effect || "")}</span>`;
+    } else {
+      const bits = [`${it.weight} wt`];
+      if (it.category) bits.push(it.category);
+      if (bonus) bits.push(bonus);
+      else if (it.effect) bits.push(it.effect);
+      extra = `<span class="eff">${escapeHtml(bits.join(" · "))}</span>`;
+    }
     const weightBit = kind === "rune" ? "" : ` (${it.weight})`;
     div.innerHTML = `${iconHtml(it)}<span>${escapeHtml(armorDisplayName(it))}${sourceTagHtml(it.source)}${weightBit}</span>${extra}`;
     div.addEventListener("click", () => {

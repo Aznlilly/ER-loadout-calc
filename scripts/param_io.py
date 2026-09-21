@@ -136,6 +136,217 @@ def load_protectors(path: Path | None = None) -> dict[int, dict]:
     return out
 
 
+def s8(data: bytes, off: int) -> int:
+    return struct.unpack_from("<b", data, off)[0]
+
+
+_STATUS_ADD = (
+    ("addLifeForceStatus", "vig"),
+    ("addWillpowerStatus", "mind"),
+    ("addEndureStatus", "end"),
+    ("addStrengthStatus", "str"),
+    ("addDexterityStatus", "dex"),
+    ("addMagicStatus", "int"),
+    ("addFaithStatus", "fai"),
+    ("addLuckStatus", "arc"),
+)
+_STATUS_POINT = (
+    ("changeStrengthPoint", "str"),
+    ("changeAgilityPoint", "dex"),
+    ("changeMagicPoint", "int"),
+    ("changeFaithPoint", "fai"),
+    ("changeLuckPoint", "arc"),
+)
+_RESOURCE_RATE = (
+    ("maxHpRate", "hp"),
+    ("maxMpRate", "fp"),
+    ("maxStaminaRate", "stamina"),
+    ("equipWeightChangeRate", "equipLoad"),
+)
+_STAT_EFFECT_LABELS = {
+    "vig": "Vigor",
+    "mind": "Mind",
+    "end": "Endurance",
+    "str": "Strength",
+    "dex": "Dexterity",
+    "int": "Intelligence",
+    "fai": "Faith",
+    "arc": "Arcane",
+}
+_RESOURCE_EFFECT_LABELS = {
+    "hp": "max HP",
+    "fp": "max FP",
+    "stamina": "max Stamina",
+    "equipLoad": "Equip Load",
+}
+
+
+def _empty_status_mods() -> dict:
+    return {"statBonus": {}, "resourceBonus": {}}
+
+
+def _speffect_status_mods(data: bytes, offs: dict[str, int]) -> dict:
+    mods = _empty_status_mods()
+    for field, key in _STATUS_ADD:
+        off = offs.get(field)
+        if off is None or off >= len(data):
+            continue
+        n = s8(data, off)
+        if n:
+            mods["statBonus"][key] = mods["statBonus"].get(key, 0) + n
+    for field, key in _STATUS_POINT:
+        off = offs.get(field)
+        if off is None or off + 4 > len(data):
+            continue
+        n = i32(data, off)
+        if n:
+            mods["statBonus"][key] = mods["statBonus"].get(key, 0) + n
+    for field, key in _RESOURCE_RATE:
+        off = offs.get(field)
+        if off is None or off + 4 > len(data):
+            continue
+        rate = f32(data, off)
+        delta = round(rate - 1.0, 4)
+        if abs(delta) > 1e-6:
+            mods["resourceBonus"][key] = round(mods["resourceBonus"].get(key, 0) + delta, 4)
+    return mods
+
+
+def _merge_status_mods(into: dict, extra: dict) -> dict:
+    for key, n in (extra.get("statBonus") or {}).items():
+        into["statBonus"][key] = into["statBonus"].get(key, 0) + n
+    for key, n in (extra.get("resourceBonus") or {}).items():
+        into["resourceBonus"][key] = round(into["resourceBonus"].get(key, 0) + n, 4)
+    return into
+
+
+@lru_cache(maxsize=1)
+def _speffect_status_table() -> dict[int, dict]:
+    path = PARAM_DIR / "SpEffectParam.param"
+    xml = SMITHBOX_PARAMDEF / "SpEffect.xml"
+    if not path.exists() or not xml.exists():
+        return {}
+    offs = paramdef_offsets(xml)
+    out: dict[int, dict] = {}
+    for pid, _name, _off, data in iter_param_rows(path):
+        mods = _speffect_status_mods(data, offs)
+        if mods["statBonus"] or mods["resourceBonus"]:
+            out[pid] = mods
+    return out
+
+
+def _mods_for_speffect_ids(ids: list[int]) -> dict:
+    table = _speffect_status_table()
+    mods = _empty_status_mods()
+    for eid in ids:
+        if eid <= 0:
+            continue
+        extra = table.get(eid)
+        if extra:
+            _merge_status_mods(mods, extra)
+    if not mods["statBonus"] and not mods["resourceBonus"]:
+        return {}
+    return mods
+
+
+@lru_cache(maxsize=1)
+def _protector_def_offsets() -> dict[str, int]:
+    return paramdef_offsets(SMITHBOX_PARAMDEF / "EquipParamProtector.xml")
+
+
+@lru_cache(maxsize=1)
+def _accessory_def_offsets() -> dict[str, int]:
+    return paramdef_offsets(SMITHBOX_PARAMDEF / "EquipParamAccessory.xml")
+
+
+def protector_status_mods(data: bytes) -> dict:
+    xml = SMITHBOX_PARAMDEF / "EquipParamProtector.xml"
+    if not xml.exists() or len(data) < 52:
+        return {}
+    offs = _protector_def_offsets()
+    ids = [
+        i32(data, offs["residentSpEffectId"]),
+        i32(data, offs["residentSpEffectId2"]),
+        i32(data, offs["residentSpEffectId3"]),
+    ]
+    return _mods_for_speffect_ids(ids)
+
+
+def accessory_status_mods(data: bytes) -> dict:
+    xml = SMITHBOX_PARAMDEF / "EquipParamAccessory.xml"
+    if not xml.exists() or len(data) < 8:
+        return {}
+    offs = _accessory_def_offsets()
+    ids = [i32(data, offs["refId"])]
+    for key in (
+        "residentSpEffectId1",
+        "residentSpEffectId2",
+        "residentSpEffectId3",
+        "residentSpEffectId4",
+    ):
+        off = offs.get(key)
+        if off is not None and off + 4 <= len(data):
+            ids.append(i32(data, off))
+    return _mods_for_speffect_ids(ids)
+
+
+def catalog_status_mods(kind: str, game_ids: dict) -> dict[str, dict]:
+    """catalog id -> {statBonus, resourceBonus} from regulation SpEffects."""
+    table = game_ids.get(kind) or {}
+    out: dict[str, dict] = {}
+    if kind == "armor":
+        path = PARAM_DIR / "EquipParamProtector.param"
+        reader = protector_status_mods
+    elif kind == "talismans":
+        path = PARAM_DIR / "EquipParamAccessory.param"
+        reader = accessory_status_mods
+    else:
+        return out
+    if not path.exists():
+        return out
+    for pid, _name, _off, data in iter_param_rows(path):
+        cid = table.get(str(pid))
+        if not cid:
+            continue
+        mods = reader(data)
+        if mods:
+            out[cid] = mods
+    return out
+
+
+def ensure_status_in_effect(effect: str, mods: dict) -> str:
+    """Append hidden attribute / resource bonuses the wiki special field omitted."""
+    stats = mods.get("statBonus") or {}
+    resources = mods.get("resourceBonus") or {}
+    text = (effect or "").strip()
+    if text in ("-", "—", "–"):
+        text = ""
+    lower = text.lower()
+    missing: list[str] = []
+    for key, label in _STAT_EFFECT_LABELS.items():
+        n = stats.get(key)
+        if n and label.lower() not in lower:
+            missing.append(f"{n:+d} {label}")
+    for key, label in _RESOURCE_EFFECT_LABELS.items():
+        n = resources.get(key)
+        if not n:
+            continue
+        if any(token in lower for token in (label.lower(), key if key != "equipLoad" else "equip load")):
+            continue
+        pct = round(n * 100, 1)
+        pct_s = str(int(pct)) if pct == int(pct) else str(pct)
+        missing.append(f"{'+' if n > 0 else ''}{pct_s}% {label}")
+    if not missing:
+        return text
+    extra = "; ".join(missing) + "."
+    if not text.strip():
+        return extra
+    trimmed = text.rstrip()
+    if trimmed[-1] not in ".!?":
+        trimmed += "."
+    return trimmed + " " + extra
+
+
 def item_lot_armor_ids(*paths: Path) -> set[int]:
     ids: set[int] = set()
     for path in paths:

@@ -385,6 +385,9 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "arc": 3
+  },
   "icon": "img/armor/helm-thiollier-s-mask.png",
   "areas": [
    "Enir-Ilim"
@@ -417,6 +420,10 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "int": 1,
+   "arc": 1
+  },
   "icon": "img/armor/helm-high-priest-hat.png",
   "areas": [
    "Scadu Altus"
@@ -805,6 +812,11 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "resourceBonus": {
+   "hp": 0.02,
+   "stamina": 0.05,
+   "equipLoad": 0.045
+  },
   "icon": "img/armor/helm-fire-knight-helm.png",
   "areas": [
    "Shadow Keep"
@@ -901,6 +913,9 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "int": 2
+  },
   "icon": "img/armor/helm-salza-s-hood.png",
   "areas": [
    "Shadow Keep"
@@ -1029,6 +1044,9 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "dex": 5
+  },
   "icon": "img/armor/helm-curseblade-mask.png",
   "areas": [
    "Abyssal Woods",
@@ -1199,6 +1217,9 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "str": 5
+  },
   "icon": "img/armor/helm-horned-warrior-helm.png",
   "areas": [
    "Abyssal Woods",
@@ -1231,10 +1252,14 @@
    "vitality": 11.0,
    "poise": 8.0
   },
-  "effect": "Heightens intensity of the storm by 4%, boosts Strength by +3 and Dexerity by +3, but reduces restorative effect of sacred tears by -9% and lowers focus by -45.",
+  "effect": "Heightens intensity of the storm by 4%, boosts Strength by +3 and Dexerity by +3, but reduces restorative effect of sacred tears by -9% and lowers focus by -45. +3 Dexterity.",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "str": 3,
+   "dex": 3
+  },
   "icon": "img/armor/helm-divine-beast-helm.png",
   "areas": [
    "Abyssal Woods",
@@ -1267,10 +1292,14 @@
    "vitality": 9.0,
    "poise": 8.0
   },
-  "effect": "Heightens the power of divine bird feathers by 10%, boosts Strength by +3 and Dexerity by +4, but reduces restorative effect of sacred tears by -9% and lowers focus by -45.",
+  "effect": "Heightens the power of divine bird feathers by 10%, boosts Strength by +3 and Dexerity by +4, but reduces restorative effect of sacred tears by -9% and lowers focus by -45. +4 Dexterity.",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "str": 3,
+   "dex": 4
+  },
   "icon": "img/armor/helm-divine-bird-helm.png",
   "areas": [
    "Abyssal Woods",
@@ -1371,6 +1400,11 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "int": 1,
+   "fai": 1,
+   "arc": 1
+  },
   "icon": "img/armor/helm-circlet-of-light.png",
   "areas": [
    "Enir-Ilim"
@@ -1435,10 +1469,14 @@
    "vitality": 24.0,
    "poise": 13.0
   },
-  "effect": "Heightens intensity of the storm by 10%, boosts Strength by +4 and Dexerity by +4, but reduces restorative effect of sacred tears by -11% and lowers focus by -63.",
+  "effect": "Heightens intensity of the storm by 10%, boosts Strength by +4 and Dexerity by +4, but reduces restorative effect of sacred tears by -11% and lowers focus by -63. +4 Dexterity.",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "str": 4,
+   "dex": 4
+  },
   "icon": "img/armor/helm-divine-beast-head.png",
   "areas": [
    "Belurat, Tower Settlement"
@@ -1471,6 +1509,9 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "resourceBonus": {
+   "fp": 0.06
+  },
   "icon": "img/armor/helm-st-trina-s-blossom.png",
   "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/St._Trina%27s_Blossom"
@@ -1565,6 +1606,9 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "vig": 2
+  },
   "icon": "img/armor/helm-imp-head-lion.png",
   "areas": [
    "Ancient Ruins of Rauh"
@@ -1661,6 +1705,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "arc": 4
+  },
   "icon": "img/armor/helm-albinauric-mask.png",
   "areas": [
    "Mt. Gelmir"
@@ -2812,6 +2859,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "dex": 1
+  },
   "icon": "img/armor/helm-consort-s-mask.png",
   "areas": [
    "Altus Plateau",
@@ -2845,6 +2895,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "vig": 1
+  },
   "icon": "img/armor/helm-crimson-hood.png",
   "areas": [
    "Limgrave"
@@ -3958,6 +4011,13 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "int": 2,
+   "fai": 2
+  },
+  "resourceBonus": {
+   "hp": -0.09
+  },
   "icon": "img/armor/helm-greathood.png",
   "areas": [
    "Mountaintops of the Giants"
@@ -4062,6 +4122,13 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "str": 2,
+   "int": 2
+  },
+  "resourceBonus": {
+   "fp": -0.09
+  },
   "icon": "img/armor/helm-haima-glintstone-crown.png",
   "areas": [
    "Altus Plateau"
@@ -4094,6 +4161,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/helm-haligtree-helm.png",
   "areas": [
    "Miquella's Haligtree"
@@ -4126,6 +4196,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 2
+  },
   "icon": "img/armor/helm-haligtree-knight-helm.png",
   "areas": [
    "Miquella's Haligtree"
@@ -4158,6 +4231,13 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "end": 2,
+   "int": 2
+  },
+  "resourceBonus": {
+   "fp": -0.09
+  },
   "icon": "img/armor/helm-hierodas-glintstone-crown.png",
   "areas": [
    "Mt. Gelmir"
@@ -4319,6 +4399,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "int": 2
+  },
   "icon": "img/armor/helm-imp-head-cat.png",
   "areas": [
    "Altus Plateau",
@@ -4359,6 +4442,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 2
+  },
   "icon": "img/armor/helm-imp-head-corpse.png",
   "areas": [
    "Leyndell, Royal Capital"
@@ -4391,6 +4477,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "arc": 2
+  },
   "icon": "img/armor/helm-imp-head-elder.png",
   "areas": [
    "Consecrated Snowfield",
@@ -4424,6 +4513,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "str": 2
+  },
   "icon": "img/armor/helm-imp-head-fanged.png",
   "areas": [
    "Altus Plateau",
@@ -4462,6 +4554,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "dex": 2
+  },
   "icon": "img/armor/helm-imp-head-long-tongued.png",
   "areas": [
    "Altus Plateau",
@@ -4496,6 +4591,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "end": 2
+  },
   "icon": "img/armor/helm-imp-head-wolf.png",
   "areas": [
    "Altus Plateau",
@@ -4735,6 +4833,12 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "int": 3
+  },
+  "resourceBonus": {
+   "stamina": -0.09
+  },
   "icon": "img/armor/helm-karolos-glintstone-crown.png",
   "areas": [
    "Liurnia of the Lakes"
@@ -4835,6 +4939,13 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "dex": 3,
+   "int": 3
+  },
+  "resourceBonus": {
+   "hp": -0.18
+  },
   "icon": "img/armor/helm-lazuli-glintstone-crown.png",
   "areas": [
    "Liurnia of the Lakes"
@@ -5098,6 +5209,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "arc": 1
+  },
   "icon": "img/armor/helm-marais-mask.png",
   "areas": [
    "Altus Plateau"
@@ -5204,6 +5318,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "arc": 3
+  },
   "icon": "img/armor/helm-mask-of-confidence.png",
   "areas": [
    "Liurnia of the Lakes"
@@ -5302,6 +5419,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "mind": 1
+  },
   "icon": "img/armor/helm-navy-hood.png",
   "areas": [
    "Altus Plateau"
@@ -5670,6 +5790,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "dex": 3
+  },
   "icon": "img/armor/helm-okina-mask.png",
   "areas": [
    "Mountaintops of the Giants"
@@ -5740,6 +5863,12 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "int": 3
+  },
+  "resourceBonus": {
+   "hp": -0.09
+  },
   "icon": "img/armor/helm-olivinus-glintstone-crown.png",
   "areas": [
    "Liurnia of the Lakes"
@@ -5806,6 +5935,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "str": 2
+  },
   "icon": "img/armor/helm-omensmirk-mask.png",
   "areas": [
    "Leyndell, Royal Capital"
@@ -5914,6 +6046,12 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "mind": 3
+  },
+  "resourceBonus": {
+   "stamina": -0.09
+  },
   "icon": "img/armor/helm-preceptor-s-big-hat.png",
   "areas": [
    "Liurnia of the Lakes"
@@ -6056,6 +6194,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "int": 3
+  },
   "icon": "img/armor/helm-queen-s-crescent-crown.png",
   "areas": [
    "Roundtable Hold"
@@ -6384,6 +6525,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/helm-ruler-s-mask.png",
   "areas": [
    "Altus Plateau"
@@ -6416,6 +6560,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/helm-sacred-crown-helm.png",
   "areas": [
    "Miquella's Haligtree"
@@ -6578,6 +6725,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "arc": 8
+  },
   "icon": "img/armor/helm-silver-tear-mask.png",
   "areas": [
    "Nokron, Eternal City"
@@ -6840,6 +6990,13 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "int": 6
+  },
+  "resourceBonus": {
+   "hp": -0.09,
+   "stamina": -0.09
+  },
   "icon": "img/armor/helm-twinsage-glintstone-crown.png",
   "areas": [
    "Liurnia of the Lakes"
@@ -7012,6 +7169,13 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "int": 3,
+   "arc": 3
+  },
+  "resourceBonus": {
+   "stamina": -0.18
+  },
   "icon": "img/armor/helm-witch-s-glintstone-crown.png",
   "areas": [
    "Limgrave",
@@ -7073,7 +7237,7 @@
    "vitality": 16.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -7105,10 +7269,13 @@
    "vitality": 53.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "+2 Faith.",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 2
+  },
   "icon": "img/armor/chest-gold-tattoo-chest.png",
   "areas": [
    "Leyndell, Royal Capital"
@@ -7137,7 +7304,7 @@
    "vitality": 37.0,
    "poise": 35.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -7173,7 +7340,7 @@
    "vitality": 14.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -7209,7 +7376,7 @@
    "vitality": 12.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": true,
@@ -7471,6 +7638,9 @@
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
+  "statBonus": {
+   "arc": 2
+  },
   "icon": "img/armor/chest-thiollier-s-garb.png",
   "areas": [
    "Enir-Ilim"
@@ -8666,7 +8836,7 @@
    "vitality": 21.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -8731,7 +8901,7 @@
    "vitality": 46.0,
    "poise": 13.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -8770,7 +8940,7 @@
    "vitality": 30.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -8811,7 +8981,7 @@
    "vitality": 76.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -8847,7 +9017,7 @@
    "vitality": 83.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -8879,7 +9049,7 @@
    "vitality": 54.0,
    "poise": 15.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -8916,7 +9086,7 @@
    "vitality": 42.0,
    "poise": 34.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -8948,7 +9118,7 @@
    "vitality": 38.0,
    "poise": 34.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9012,7 +9182,7 @@
    "vitality": 32.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9045,7 +9215,7 @@
    "vitality": 23.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9077,7 +9247,7 @@
    "vitality": 50.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9113,7 +9283,7 @@
    "vitality": 18.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9181,7 +9351,7 @@
    "vitality": 55.0,
    "poise": 47.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9214,7 +9384,7 @@
    "vitality": 23.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9246,7 +9416,7 @@
    "vitality": 18.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9280,7 +9450,7 @@
    "vitality": 55.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9313,7 +9483,7 @@
    "vitality": 35.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9349,7 +9519,7 @@
    "vitality": 32.0,
    "poise": 27.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9384,7 +9554,7 @@
    "vitality": 60.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9420,6 +9590,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/chest-commoner-s-garb.png",
   "areas": [
    "Ainsel River",
@@ -9458,6 +9631,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/chest-commoner-s-simple-garb.png",
   "areas": [
    "Limgrave"
@@ -9486,7 +9662,7 @@
    "vitality": 55.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9587,7 +9763,7 @@
    "vitality": 23.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9653,7 +9829,7 @@
    "vitality": 80.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9686,7 +9862,7 @@
    "vitality": 21.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9720,7 +9896,7 @@
    "vitality": 21.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9752,7 +9928,7 @@
    "vitality": 23.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9787,7 +9963,7 @@
    "vitality": 71.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9819,7 +9995,7 @@
    "vitality": 18.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9853,7 +10029,7 @@
    "vitality": 18.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9885,7 +10061,7 @@
    "vitality": 108.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9915,7 +10091,7 @@
    "vitality": 93.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -9945,7 +10121,7 @@
    "vitality": 83.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -9977,7 +10153,7 @@
    "vitality": 63.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10009,7 +10185,7 @@
    "vitality": 24.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10044,7 +10220,7 @@
    "vitality": 38.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10080,7 +10256,7 @@
    "vitality": 23.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10112,7 +10288,7 @@
    "vitality": 24.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10145,7 +10321,7 @@
    "vitality": 63.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10178,7 +10354,7 @@
    "vitality": 23.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10211,7 +10387,7 @@
    "vitality": 24.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10243,7 +10419,7 @@
    "vitality": 50.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10275,7 +10451,7 @@
    "vitality": 24.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10307,7 +10483,7 @@
    "vitality": 71.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10339,7 +10515,7 @@
    "vitality": 18.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10371,7 +10547,7 @@
    "vitality": 11.0,
    "poise": 18.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10406,7 +10582,7 @@
    "vitality": 55.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10442,7 +10618,7 @@
    "vitality": 55.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10477,7 +10653,7 @@
    "vitality": 50.0,
    "poise": 40.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10509,7 +10685,7 @@
    "vitality": 55.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10541,7 +10717,7 @@
    "vitality": 38.0,
    "poise": 31.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10573,7 +10749,7 @@
    "vitality": 50.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10605,7 +10781,7 @@
    "vitality": 67.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10637,7 +10813,7 @@
    "vitality": 63.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10667,7 +10843,7 @@
    "vitality": 76.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10697,7 +10873,7 @@
    "vitality": 76.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10730,7 +10906,7 @@
    "vitality": 83.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10762,7 +10938,7 @@
    "vitality": 38.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10800,7 +10976,7 @@
    "vitality": 46.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10832,7 +11008,7 @@
    "vitality": 71.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10864,7 +11040,7 @@
    "vitality": 76.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10896,7 +11072,7 @@
    "vitality": 63.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10932,7 +11108,7 @@
    "vitality": 90.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -10969,7 +11145,7 @@
    "vitality": 83.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11001,7 +11177,7 @@
    "vitality": 38.0,
    "poise": 34.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11034,7 +11210,7 @@
    "vitality": 17.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11066,7 +11242,7 @@
    "vitality": 63.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11132,7 +11308,7 @@
    "vitality": 76.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11164,7 +11340,7 @@
    "vitality": 76.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11196,7 +11372,7 @@
    "vitality": 76.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11229,7 +11405,7 @@
    "vitality": 21.0,
    "poise": 18.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11261,7 +11437,7 @@
    "vitality": 38.0,
    "poise": 33.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11293,7 +11469,7 @@
    "vitality": 71.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11325,7 +11501,7 @@
    "vitality": 83.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11357,7 +11533,7 @@
    "vitality": 60.0,
    "poise": 25.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11392,7 +11568,7 @@
    "vitality": 61.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11425,7 +11601,7 @@
    "vitality": 23.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11461,7 +11637,7 @@
    "vitality": 46.0,
    "poise": 38.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11494,7 +11670,7 @@
    "vitality": 50.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11526,7 +11702,7 @@
    "vitality": 18.0,
    "poise": 18.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11558,7 +11734,7 @@
    "vitality": 18.0,
    "poise": 18.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11595,7 +11771,7 @@
    "vitality": 61.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11627,7 +11803,7 @@
    "vitality": 16.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11660,7 +11836,7 @@
    "vitality": 25.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11701,7 +11877,7 @@
    "vitality": 64.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11737,7 +11913,7 @@
    "vitality": 34.0,
    "poise": 33.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11772,7 +11948,7 @@
    "vitality": 71.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11804,7 +11980,7 @@
    "vitality": 32.0,
    "poise": 34.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11837,7 +12013,7 @@
    "vitality": 21.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11869,7 +12045,7 @@
    "vitality": 25.0,
    "poise": 28.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11901,7 +12077,7 @@
    "vitality": 21.0,
    "poise": 27.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11933,7 +12109,7 @@
    "vitality": 21.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -11965,7 +12141,7 @@
    "vitality": 50.0,
    "poise": 18.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -11997,7 +12173,7 @@
    "vitality": 63.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12029,7 +12205,7 @@
    "vitality": 10.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12061,7 +12237,7 @@
    "vitality": 67.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12091,7 +12267,7 @@
    "vitality": 21.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12124,7 +12300,7 @@
    "vitality": 19.0,
    "poise": 18.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12156,7 +12332,7 @@
    "vitality": 22.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12192,6 +12368,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/chest-commoner-s-garb-altered.png",
   "areas": [
    "Leyndell, Royal Capital",
@@ -12225,6 +12404,9 @@
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/chest-commoner-s-simple-garb-altered.png",
   "areas": [
    "Limgrave"
@@ -12253,7 +12435,7 @@
    "vitality": 45.0,
    "poise": 15.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12289,7 +12471,7 @@
    "vitality": 63.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12322,7 +12504,7 @@
    "vitality": 76.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12423,7 +12605,7 @@
    "vitality": 24.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12456,7 +12638,7 @@
    "vitality": 21.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12488,7 +12670,7 @@
    "vitality": 63.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12518,7 +12700,7 @@
    "vitality": 21.0,
    "poise": 18.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12552,7 +12734,7 @@
    "vitality": 21.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12584,7 +12766,7 @@
    "vitality": 10.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12616,7 +12798,7 @@
    "vitality": 16.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12648,7 +12830,7 @@
    "vitality": 66.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12680,7 +12862,7 @@
    "vitality": 67.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12712,7 +12894,7 @@
    "vitality": 57.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12744,7 +12926,7 @@
    "vitality": 54.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12776,7 +12958,7 @@
    "vitality": 23.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12808,7 +12990,7 @@
    "vitality": 21.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12840,7 +13022,7 @@
    "vitality": 50.0,
    "poise": 45.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12873,7 +13055,7 @@
    "vitality": 42.0,
    "poise": 43.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12905,7 +13087,7 @@
    "vitality": 55.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -12939,7 +13121,7 @@
    "vitality": 21.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -12971,7 +13153,7 @@
    "vitality": 21.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13035,7 +13217,7 @@
    "vitality": 60.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13065,7 +13247,7 @@
    "vitality": 42.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13098,7 +13280,7 @@
    "vitality": 34.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13130,7 +13312,7 @@
    "vitality": 42.0,
    "poise": 15.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13205,7 +13387,7 @@
    "vitality": 25.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13237,7 +13419,7 @@
    "vitality": 22.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13269,7 +13451,7 @@
    "vitality": 76.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13302,7 +13484,7 @@
    "vitality": 61.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13334,7 +13516,7 @@
    "vitality": 21.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13366,7 +13548,7 @@
    "vitality": 57.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13398,7 +13580,7 @@
    "vitality": 45.0,
    "poise": 15.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13434,7 +13616,7 @@
    "vitality": 67.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13468,7 +13650,7 @@
    "vitality": 50.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13503,7 +13685,7 @@
    "vitality": 24.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13539,7 +13721,7 @@
    "vitality": 21.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13571,7 +13753,7 @@
    "vitality": 45.0,
    "poise": 38.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13603,7 +13785,7 @@
    "vitality": 47.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13635,7 +13817,7 @@
    "vitality": 99.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13667,7 +13849,7 @@
    "vitality": 11.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13699,7 +13881,7 @@
    "vitality": 0.0,
    "poise": 13.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13729,7 +13911,7 @@
    "vitality": 42.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13761,7 +13943,7 @@
    "vitality": 23.0,
    "poise": 25.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13795,7 +13977,7 @@
    "vitality": 21.0,
    "poise": 25.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13827,7 +14009,7 @@
    "vitality": 21.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13862,7 +14044,7 @@
    "vitality": 55.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13897,7 +14079,7 @@
    "vitality": 24.0,
    "poise": 25.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13929,7 +14111,7 @@
    "vitality": 21.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -13961,7 +14143,7 @@
    "vitality": 46.0,
    "poise": 13.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -13993,7 +14175,7 @@
    "vitality": 38.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14025,7 +14207,7 @@
    "vitality": 50.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14060,7 +14242,7 @@
    "vitality": 42.0,
    "poise": 15.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14093,7 +14275,7 @@
    "vitality": 55.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14128,7 +14310,7 @@
    "vitality": 49.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14161,7 +14343,7 @@
    "vitality": 64.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14228,7 +14410,7 @@
    "vitality": 83.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14268,7 +14450,7 @@
    "vitality": 64.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14301,7 +14483,7 @@
    "vitality": 76.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14337,7 +14519,7 @@
    "vitality": 67.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14369,7 +14551,7 @@
    "vitality": 63.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14401,7 +14583,7 @@
    "vitality": 57.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14433,7 +14615,7 @@
    "vitality": 75.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14469,7 +14651,7 @@
    "vitality": 32.0,
    "poise": 33.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14502,7 +14684,7 @@
    "vitality": 10.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14565,7 +14747,7 @@
    "vitality": 25.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14598,7 +14780,7 @@
    "vitality": 22.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14630,7 +14812,7 @@
    "vitality": 24.0,
    "poise": 22.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14664,7 +14846,7 @@
    "vitality": 57.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14699,7 +14881,7 @@
    "vitality": 45.0,
    "poise": 15.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14731,7 +14913,7 @@
    "vitality": 34.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14763,7 +14945,7 @@
    "vitality": 35.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14796,7 +14978,7 @@
    "vitality": 32.0,
    "poise": 28.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14862,7 +15044,7 @@
    "vitality": 29.0,
    "poise": 30.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -14894,7 +15076,7 @@
    "vitality": 55.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14928,7 +15110,7 @@
    "vitality": 35.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -14961,7 +15143,7 @@
    "vitality": 57.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -15058,7 +15240,7 @@
    "vitality": 67.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -15090,7 +15272,7 @@
    "vitality": 64.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -15122,7 +15304,7 @@
    "vitality": 46.0,
    "poise": 39.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -15155,7 +15337,7 @@
    "vitality": 38.0,
    "poise": 35.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -15187,7 +15369,7 @@
    "vitality": 18.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -15219,7 +15401,7 @@
    "vitality": 52.0,
    "poise": 24.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -15251,7 +15433,7 @@
    "vitality": 19.0,
    "poise": 21.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -15287,7 +15469,7 @@
    "vitality": 38.0,
    "poise": 35.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -15320,7 +15502,7 @@
    "vitality": 50.0,
    "poise": 16.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -15360,7 +15542,7 @@
    "vitality": 48.0,
    "poise": 13.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": false,
@@ -15390,7 +15572,7 @@
    "vitality": 42.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Elden Ring",
   "dlc": false,
   "altered": true,
@@ -15422,7 +15604,7 @@
    "vitality": 3.0,
    "poise": 2.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -15454,10 +15636,13 @@
    "vitality": 16.0,
    "poise": 1.0
   },
-  "effect": "-",
+  "effect": "+1 Faith.",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/gauntlets-gold-tattoo-arm.png",
   "areas": [
    "Leyndell, Royal Capital"
@@ -15486,7 +15671,7 @@
    "vitality": 5.0,
    "poise": 3.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -15522,7 +15707,7 @@
    "vitality": 14.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -15558,7 +15743,7 @@
    "vitality": 24.0,
    "poise": 2.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15591,7 +15776,7 @@
    "vitality": 18.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15623,7 +15808,7 @@
    "vitality": 8.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15655,7 +15840,7 @@
    "vitality": 17.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15689,7 +15874,7 @@
    "vitality": 4.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15719,7 +15904,7 @@
    "vitality": 13.0,
    "poise": 3.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15751,7 +15936,7 @@
    "vitality": 25.0,
    "poise": 2.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15783,7 +15968,7 @@
    "vitality": 19.0,
    "poise": 1.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15843,7 +16028,7 @@
    "vitality": 15.0,
    "poise": 3.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15875,7 +16060,7 @@
    "vitality": 18.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15941,7 +16126,7 @@
    "vitality": 8.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -15975,7 +16160,7 @@
    "vitality": 17.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16005,7 +16190,7 @@
    "vitality": 6.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16043,7 +16228,7 @@
    "vitality": 8.0,
    "poise": 6.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16111,7 +16296,7 @@
    "vitality": 8.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16143,7 +16328,7 @@
    "vitality": 14.0,
    "poise": 3.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16207,7 +16392,7 @@
    "vitality": 21.0,
    "poise": 2.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16247,7 +16432,7 @@
    "vitality": 20.0,
    "poise": 3.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16279,7 +16464,7 @@
    "vitality": 12.0,
    "poise": 3.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16309,7 +16494,7 @@
    "vitality": 6.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16345,7 +16530,7 @@
    "vitality": 8.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16381,7 +16566,7 @@
    "vitality": 8.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16416,7 +16601,7 @@
    "vitality": 8.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16448,7 +16633,7 @@
    "vitality": 12.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -16481,7 +16666,7 @@
    "vitality": 14.0,
    "poise": 3.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19637,7 +19822,7 @@
    "vitality": 5.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -19669,10 +19854,13 @@
    "vitality": 43.0,
    "poise": 4.0
   },
-  "effect": "-",
+  "effect": "+1 Faith.",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
+  "statBonus": {
+   "fai": 1
+  },
   "icon": "img/armor/legs-gold-tattoo-leg.png",
   "areas": [
    "Leyndell, Royal Capital"
@@ -19701,7 +19889,7 @@
    "vitality": 9.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -19737,7 +19925,7 @@
    "vitality": 23.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Tarnished Edition",
   "dlc": false,
   "altered": false,
@@ -19773,7 +19961,7 @@
    "vitality": 44.0,
    "poise": 6.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19806,7 +19994,7 @@
    "vitality": 20.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19838,7 +20026,7 @@
    "vitality": 15.0,
    "poise": 12.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19870,7 +20058,7 @@
    "vitality": 31.0,
    "poise": 28.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19904,7 +20092,7 @@
    "vitality": 11.0,
    "poise": 11.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19934,7 +20122,7 @@
    "vitality": 24.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19966,7 +20154,7 @@
    "vitality": 47.0,
    "poise": 6.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -19998,7 +20186,7 @@
    "vitality": 35.0,
    "poise": 2.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20058,7 +20246,7 @@
    "vitality": 29.0,
    "poise": 7.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20090,7 +20278,7 @@
    "vitality": 26.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20156,7 +20344,7 @@
    "vitality": 15.0,
    "poise": 11.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20190,7 +20378,7 @@
    "vitality": 31.0,
    "poise": 27.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20220,7 +20408,7 @@
    "vitality": 11.0,
    "poise": 11.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20258,7 +20446,7 @@
    "vitality": 15.0,
    "poise": 17.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20326,7 +20514,7 @@
    "vitality": 15.0,
    "poise": 11.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20358,7 +20546,7 @@
    "vitality": 26.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20422,7 +20610,7 @@
    "vitality": 39.0,
    "poise": 6.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20462,7 +20650,7 @@
    "vitality": 37.0,
    "poise": 10.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20494,7 +20682,7 @@
    "vitality": 17.0,
    "poise": 5.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20526,7 +20714,7 @@
    "vitality": 11.0,
    "poise": 11.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20562,7 +20750,7 @@
    "vitality": 15.0,
    "poise": 13.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20633,7 +20821,7 @@
    "vitality": 15.0,
    "poise": 14.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20665,7 +20853,7 @@
    "vitality": 22.0,
    "poise": 19.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,
@@ -20698,7 +20886,7 @@
    "vitality": 26.0,
    "poise": 8.0
   },
-  "effect": "-",
+  "effect": "",
   "source": "Shadow of the Erdtree",
   "dlc": true,
   "altered": false,

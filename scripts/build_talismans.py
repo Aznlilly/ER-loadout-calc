@@ -7,6 +7,32 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from icon_map import apply_icons
+from param_io import catalog_status_mods, ensure_status_in_effect
+
+
+def overlay_param_status(items):
+    ids_path = Path("data/game_ids.json")
+    if not ids_path.exists():
+        print("skip status overlay (data/game_ids.json not found)")
+        return
+    with open(ids_path) as fh:
+        game_ids = json.load(fh)
+    mods_by_id = catalog_status_mods("talismans", game_ids)
+    if not mods_by_id:
+        print("skip status overlay (no SpEffect bonuses matched)")
+        return
+    applied = 0
+    for item in items:
+        mods = mods_by_id.get(item["id"])
+        if not mods:
+            continue
+        if mods.get("statBonus"):
+            item["statBonus"] = mods["statBonus"]
+        if mods.get("resourceBonus"):
+            item["resourceBonus"] = mods["resourceBonus"]
+        item["effect"] = ensure_status_in_effect(item.get("effect") or "", mods)
+        applied += 1
+    print(f"status overlay: {applied} talismans with attribute/resource bonuses")
 
 
 def to_num(s):
@@ -70,6 +96,7 @@ def main():
             "dlc": source == "Shadow of the Erdtree",
         })
 
+    overlay_param_status(out)
     apply_icons(out)
     with open("data/talismans.json", "w") as f:
         json.dump(out, f, indent=1)

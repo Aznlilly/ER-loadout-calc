@@ -97,6 +97,22 @@ with sync_playwright() as p:
         true
       );
       if (stacked.end !== 20 || stacked.mind !== 15) return "stack";
+      const armorWant = {
+        "chest-commoner-s-garb": { fai: 1 },
+        "helm-high-priest-hat": { int: 1, arc: 1 },
+        "helm-thiollier-s-mask": { arc: 3 },
+        "chest-gold-tattoo-chest": { fai: 2 },
+        "helm-haligtree-knight-helm": { fai: 2 },
+        "helm-salza-s-hood": { int: 2 },
+      };
+      for (const [id, want] of Object.entries(armorWant)) {
+        const item = ARMOR.find((a) => a.id === id);
+        if (!item) return `missing ${id}`;
+        const got = itemAttributeBonuses([item]);
+        for (const k of keys) {
+          if ((got[k] || 0) !== (want[k] || 0)) return `${id} ${k}=${got[k]}`;
+        }
+      }
       return "ok";
     }"""
     )

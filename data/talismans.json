@@ -6,10 +6,10 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/aged-one-s-exultation.png",
   "areas": [
    "Abyssal Woods"
   ],
-  "icon": "img/talismans/aged-one-s-exultation.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Aged_One%27s_Exultation"
  },
  {
@@ -19,10 +19,10 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/ailment-talisman.png",
   "areas": [
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/ailment-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Ailment_Talisman"
  },
  {
@@ -32,10 +32,10 @@
   "weight": 1.1,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/arrow-s-soaring-sting-talisman.png",
   "areas": [
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/arrow-s-soaring-sting-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Arrow%27s_Soaring_Sting_Talisman"
  },
  {
@@ -45,8 +45,8 @@
   "weight": 1.3,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/beloved-stardust.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Beloved_Stardust"
  },
  {
@@ -56,10 +56,10 @@
   "weight": 1.3,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/blade-of-mercy.png",
   "areas": [
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/blade-of-mercy.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Blade_of_Mercy"
  },
  {
@@ -69,10 +69,10 @@
   "weight": 1.2,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/blessed-blue-dew-talisman.png",
   "areas": [
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/blessed-blue-dew-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Blessed_Blue_Dew_Talisman"
  },
  {
@@ -82,10 +82,10 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/boltdrake-talisman-3.png",
   "areas": [
    "Shadow Keep"
   ],
-  "icon": "img/talismans/boltdrake-talisman-3.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman_%2B3"
  },
  {
@@ -95,8 +95,8 @@
   "weight": 1.1,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/cerulean-seed-talisman-1.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Seed_Talisman_%2B1"
  },
  {
@@ -106,11 +106,11 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/clarifying-horn-charm-2.png",
   "areas": [
    "Charo's Hidden Grave",
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/clarifying-horn-charm-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Clarifying_Horn_Charm_%2B2"
  },
  {
@@ -120,8 +120,11 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
+  "resourceBonus": {
+   "hp": 0.1
+  },
   "icon": "img/talismans/crimson-amber-medallion-3.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion_%2B3"
  },
  {
@@ -131,8 +134,11 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
+  "resourceBonus": {
+   "fp": 0.13
+  },
   "icon": "img/talismans/cerulean-amber-medallion-3.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion_%2B3"
  },
  {
@@ -142,8 +148,8 @@
   "weight": 1.1,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/crimson-seed-talisman-1.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Seed_Talisman_%2B1"
  },
  {
@@ -153,8 +159,8 @@
   "weight": 1.2,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/crusade-insignia.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Crusade_Insignia"
  },
  {
@@ -164,10 +170,10 @@
   "weight": 0.8,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/dried-bouquet.png",
   "areas": [
    "Belurat, Tower Settlement"
   ],
-  "icon": "img/talismans/dried-bouquet.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Dried_Bouquet"
  },
  {
@@ -177,10 +183,10 @@
   "weight": 0.7,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/enraged-divine-beast.png",
   "areas": [
    "Roundtable Hold"
   ],
-  "icon": "img/talismans/enraged-divine-beast.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Enraged_Divine_Beast"
  },
  {
@@ -190,10 +196,10 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/fine-crucible-feather-talisman.png",
   "areas": [
    "Ancient Ruins of Rauh"
   ],
-  "icon": "img/talismans/fine-crucible-feather-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Fine_Crucible_Feather_Talisman"
  },
  {
@@ -203,8 +209,8 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/flamedrake-talisman-3.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman_%2B3"
  },
  {
@@ -214,10 +220,10 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/golden-braid.png",
   "areas": [
    "Scaduview"
   ],
-  "icon": "img/talismans/golden-braid.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Golden_Braid"
  },
  {
@@ -227,10 +233,10 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/immunizing-horn-charm-2.png",
   "areas": [
    "Belurat, Tower Settlement"
   ],
-  "icon": "img/talismans/immunizing-horn-charm-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Immunizing_Horn_Charm_%2B2"
  },
  {
@@ -240,8 +246,8 @@
   "weight": 0.8,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/lacerating-crossed-tree.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Lacerating_Crossed-tree"
  },
  {
@@ -251,10 +257,10 @@
   "weight": 1.2,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/mottled-necklace-2.png",
   "areas": [
    "Ancient Ruins of Rauh"
   ],
-  "icon": "img/talismans/mottled-necklace-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace_%2B2"
  },
  {
@@ -264,10 +270,13 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "statBonus": {
+   "arc": 5
+  },
+  "icon": "img/talismans/outer-god-heirloom.png",
   "areas": [
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/outer-god-heirloom.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Outer_God_Heirloom"
  },
  {
@@ -277,8 +286,8 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/pearl-shield-talisman.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Pearl_Shield_Talisman"
  },
  {
@@ -288,10 +297,10 @@
   "weight": 1.2,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/pearldrake-talisman-3.png",
   "areas": [
    "Shadow Keep"
   ],
-  "icon": "img/talismans/pearldrake-talisman-3.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman_%2B3"
  },
  {
@@ -301,10 +310,10 @@
   "weight": 0.8,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/rellana-s-cameo.png",
   "areas": [
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/rellana-s-cameo.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Rellana%27s_Cameo"
  },
  {
@@ -314,8 +323,8 @@
   "weight": 0.3,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/retaliatory-crossed-tree.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Retaliatory_Crossed-tree"
  },
  {
@@ -325,10 +334,10 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/sharpshot-talisman.png",
   "areas": [
    "Scaduview"
   ],
-  "icon": "img/talismans/sharpshot-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Sharpshot_Talisman"
  },
  {
@@ -338,8 +347,8 @@
   "weight": 0.8,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/shattered-stone-talisman.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Shattered_Stone_Talisman"
  },
  {
@@ -349,10 +358,10 @@
   "weight": 1.3,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/smithing-talisman.png",
   "areas": [
    "Scadu Altus"
   ],
-  "icon": "img/talismans/smithing-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Smithing_Talisman"
  },
  {
@@ -362,10 +371,10 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/spelldrake-talisman-3.png",
   "areas": [
    "Gravesite Plain"
   ],
-  "icon": "img/talismans/spelldrake-talisman-3.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman_%2B3"
  },
  {
@@ -375,8 +384,8 @@
   "weight": 0.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/st-trina-s-smile.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/St._Trina%27s_Smile"
  },
  {
@@ -386,10 +395,10 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/stalwart-horn-charm-2.png",
   "areas": [
    "Scadu Altus"
   ],
-  "icon": "img/talismans/stalwart-horn-charm-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Stalwart_Horn_Charm_%2B2"
  },
  {
@@ -399,10 +408,10 @@
   "weight": 1.9,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/talisman-of-all-crucibles.png",
   "areas": [
    "Ancient Ruins of Rauh"
   ],
-  "icon": "img/talismans/talisman-of-all-crucibles.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Talisman_of_All_Crucibles"
  },
  {
@@ -412,10 +421,10 @@
   "weight": 3.0,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "icon": "img/talismans/talisman-of-lord-s-bestowal.png",
   "areas": [
    "Shadow Keep"
   ],
-  "icon": "img/talismans/talisman-of-lord-s-bestowal.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Talisman_of_Lord%27s_Bestowal"
  },
  {
@@ -425,8 +434,8 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/talisman-of-the-dread.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Talisman_of_the_Dread"
  },
  {
@@ -436,8 +445,8 @@
   "weight": 1.2,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/two-handed-sword-talisman.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Two-handed_Sword_Talisman"
  },
  {
@@ -447,8 +456,8 @@
   "weight": 1.0,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/two-headed-turtle-talisman.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Two-headed_Turtle_Talisman"
  },
  {
@@ -458,8 +467,8 @@
   "weight": 4.5,
   "source": "Shadow of the Erdtree",
   "dlc": true,
-  "areas": [],
   "icon": "img/talismans/verdigris-discus.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Verdigris_Discus"
  },
  {
@@ -469,10 +478,13 @@
   "weight": 0.6,
   "source": "Shadow of the Erdtree",
   "dlc": true,
+  "resourceBonus": {
+   "stamina": 0.17
+  },
+  "icon": "img/talismans/viridian-amber-medallion-3.png",
   "areas": [
    "Scadu Altus"
   ],
-  "icon": "img/talismans/viridian-amber-medallion-3.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion_%2B3"
  },
  {
@@ -482,10 +494,13 @@
   "weight": 0.3,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "hp": 0.06
+  },
+  "icon": "img/talismans/crimson-amber-medallion.png",
   "areas": [
    "Weeping Peninsula"
   ],
-  "icon": "img/talismans/crimson-amber-medallion.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion"
  },
  {
@@ -495,10 +510,13 @@
   "weight": 0.3,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "hp": 0.07
+  },
+  "icon": "img/talismans/crimson-amber-medallion-1.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/crimson-amber-medallion-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion_%2B1"
  },
  {
@@ -508,11 +526,14 @@
   "weight": 0.3,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "hp": 0.08
+  },
+  "icon": "img/talismans/crimson-amber-medallion-2.png",
   "areas": [
    "Leyndell, Ashen Capital",
    "Leyndell, Royal Capital"
   ],
-  "icon": "img/talismans/crimson-amber-medallion-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Amber_Medallion_%2B2"
  },
  {
@@ -522,10 +543,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/crimson-seed-talisman.png",
   "areas": [
    "Altus Plateau"
   ],
-  "icon": "img/talismans/crimson-seed-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crimson_Seed_Talisman"
  },
  {
@@ -535,11 +556,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/blessed-dew-talisman.png",
   "areas": [
    "Leyndell, Royal Capital",
    "Weeping Peninsula"
   ],
-  "icon": "img/talismans/blessed-dew-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Blessed_Dew_Talisman"
  },
  {
@@ -549,10 +570,13 @@
   "weight": 0.3,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "fp": 0.07
+  },
+  "icon": "img/talismans/cerulean-amber-medallion.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/cerulean-amber-medallion.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion"
  },
  {
@@ -562,10 +586,13 @@
   "weight": 0.3,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "fp": 0.09
+  },
+  "icon": "img/talismans/cerulean-amber-medallion-1.png",
   "areas": [
    "Mountaintops of the Giants"
   ],
-  "icon": "img/talismans/cerulean-amber-medallion-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion_%2B1"
  },
  {
@@ -575,8 +602,11 @@
   "weight": 0.3,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
+  "resourceBonus": {
+   "fp": 0.11
+  },
   "icon": "img/talismans/cerulean-amber-medallion-2.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Amber_Medallion_%2B2"
  },
  {
@@ -586,10 +616,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/cerulean-seed-talisman.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/cerulean-seed-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Cerulean_Seed_Talisman"
  },
  {
@@ -599,10 +629,13 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "stamina": 0.11
+  },
+  "icon": "img/talismans/viridian-amber-medallion.png",
   "areas": [
    "Weeping Peninsula"
   ],
-  "icon": "img/talismans/viridian-amber-medallion.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion"
  },
  {
@@ -612,11 +645,14 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "stamina": 0.13
+  },
+  "icon": "img/talismans/viridian-amber-medallion-1.png",
   "areas": [
    "Altus Plateau",
    "Capital Outskirts"
   ],
-  "icon": "img/talismans/viridian-amber-medallion-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion_%2B1"
  },
  {
@@ -626,10 +662,13 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "stamina": 0.15
+  },
+  "icon": "img/talismans/viridian-amber-medallion-2.png",
   "areas": [
    "Miquella's Haligtree"
   ],
-  "icon": "img/talismans/viridian-amber-medallion-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Viridian_Amber_Medallion_%2B2"
  },
  {
@@ -639,10 +678,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/green-turtle-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/green-turtle-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Green_Turtle_Talisman"
  },
  {
@@ -652,10 +691,13 @@
   "weight": 1.5,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "equipLoad": 0.15
+  },
+  "icon": "img/talismans/arsenal-charm.png",
   "areas": [
    "Roundtable Hold"
   ],
-  "icon": "img/talismans/arsenal-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Arsenal_Charm"
  },
  {
@@ -665,10 +707,13 @@
   "weight": 1.5,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "equipLoad": 0.17
+  },
+  "icon": "img/talismans/arsenal-charm-1.png",
   "areas": [
    "Altus Plateau"
   ],
-  "icon": "img/talismans/arsenal-charm-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Arsenal_Charm%2B1"
  },
  {
@@ -678,12 +723,15 @@
   "weight": 1.5,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "equipLoad": 0.19
+  },
+  "icon": "img/talismans/great-jar-s-arsenal.png",
   "areas": [
    "Caelid",
    "Dragonbarrow",
    "Siofra River"
   ],
-  "icon": "img/talismans/great-jar-s-arsenal.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Great-jar%27s_Arsenal"
  },
  {
@@ -693,10 +741,15 @@
   "weight": 1.5,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "hp": 0.03,
+   "stamina": 0.07,
+   "equipLoad": 0.05
+  },
+  "icon": "img/talismans/erdtree-s-favor.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/erdtree-s-favor.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Erdtree%27s_Favor"
  },
  {
@@ -706,10 +759,15 @@
   "weight": 1.5,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "hp": 0.035,
+   "stamina": 0.085,
+   "equipLoad": 0.065
+  },
+  "icon": "img/talismans/erdtree-s-favor-1.png",
   "areas": [
    "Leyndell, Royal Capital"
   ],
-  "icon": "img/talismans/erdtree-s-favor-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Erdtree%27s_Favor_%2B1"
  },
  {
@@ -719,11 +777,16 @@
   "weight": 1.5,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "hp": 0.04,
+   "stamina": 0.1,
+   "equipLoad": 0.08
+  },
+  "icon": "img/talismans/erdtree-s-favor-2.png",
   "areas": [
    "Leyndell, Ashen Capital",
    "Leyndell, Royal Capital"
   ],
-  "icon": "img/talismans/erdtree-s-favor-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Erdtree%27s_Favor_%2B2"
  },
  {
@@ -733,10 +796,16 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "vig": 3,
+   "end": 3,
+   "str": 3,
+   "dex": 3
+  },
+  "icon": "img/talismans/radagon-s-scarseal.png",
   "areas": [
    "Weeping Peninsula"
   ],
-  "icon": "img/talismans/radagon-s-scarseal.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Radagon%27s_Scarseal"
  },
  {
@@ -746,11 +815,17 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "vig": 5,
+   "end": 5,
+   "str": 5,
+   "dex": 5
+  },
+  "icon": "img/talismans/radagon-s-soreseal.png",
   "areas": [
    "Caelid",
    "Dragonbarrow"
   ],
-  "icon": "img/talismans/radagon-s-soreseal.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Radagon%27s_Soreseal"
  },
  {
@@ -760,11 +835,17 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "mind": 3,
+   "int": 3,
+   "fai": 3,
+   "arc": 3
+  },
+  "icon": "img/talismans/marika-s-scarseal.png",
   "areas": [
    "Nokron, Eternal City",
    "Siofra River"
   ],
-  "icon": "img/talismans/marika-s-scarseal.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Marika%27s_Scarseal"
  },
  {
@@ -774,10 +855,16 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "mind": 5,
+   "int": 5,
+   "fai": 5,
+   "arc": 5
+  },
+  "icon": "img/talismans/marika-s-soreseal.png",
   "areas": [
    "Miquella's Haligtree"
   ],
-  "icon": "img/talismans/marika-s-soreseal.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Marika%27s_Soreseal"
  },
  {
@@ -787,10 +874,13 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "str": 5
+  },
+  "icon": "img/talismans/starscourge-heirloom.png",
   "areas": [
    "Caelid"
   ],
-  "icon": "img/talismans/starscourge-heirloom.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Starscourge_Heirloom"
  },
  {
@@ -800,10 +890,13 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "dex": 5
+  },
+  "icon": "img/talismans/prosthesis-wearer-heirloom.png",
   "areas": [
    "Caelid"
   ],
-  "icon": "img/talismans/prosthesis-wearer-heirloom.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Prosthesis-wearer_Heirloom"
  },
  {
@@ -813,10 +906,13 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "int": 5
+  },
+  "icon": "img/talismans/stargazer-heirloom.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/stargazer-heirloom.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Stargazer_Heirloom"
  },
  {
@@ -826,10 +922,13 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "fai": 5
+  },
+  "icon": "img/talismans/two-fingers-heirloom.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/two-fingers-heirloom.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Two_Fingers_Heirloom"
  },
  {
@@ -839,11 +938,11 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/dragoncrest-shield-talisman.png",
   "areas": [
    "Caelid",
    "Dragonbarrow"
   ],
-  "icon": "img/talismans/dragoncrest-shield-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Shield_Talisman"
  },
  {
@@ -853,10 +952,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/dragoncrest-shield-talisman-1.png",
   "areas": [
    "Altus Plateau"
   ],
-  "icon": "img/talismans/dragoncrest-shield-talisman-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Shield_Talisman_%2B1"
  },
  {
@@ -866,10 +965,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/dragoncrest-shield-talisman-2.png",
   "areas": [
    "Crumbling Farum Azula"
   ],
-  "icon": "img/talismans/dragoncrest-shield-talisman-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Shield_Talisman_%2B2"
  },
  {
@@ -879,10 +978,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/dragoncrest-greatshield-talisman.png",
   "areas": [
    "Miquella's Haligtree"
   ],
-  "icon": "img/talismans/dragoncrest-greatshield-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Dragoncrest_Greatshield_Talisman"
  },
  {
@@ -892,10 +991,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/spelldrake-talisman.png",
   "areas": [
    "Weeping Peninsula"
   ],
-  "icon": "img/talismans/spelldrake-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman"
  },
  {
@@ -905,10 +1004,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/spelldrake-talisman-1.png",
   "areas": [
    "Caelid"
   ],
-  "icon": "img/talismans/spelldrake-talisman-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman%2B1"
  },
  {
@@ -918,11 +1017,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/spelldrake-talisman-2.png",
   "areas": [
    "Miquella's Haligtree",
    "Mountaintops of the Giants"
   ],
-  "icon": "img/talismans/spelldrake-talisman-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Spelldrake_Talisman%2B2"
  },
  {
@@ -932,11 +1031,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/flamedrake-talisman.png",
   "areas": [
    "Crumbling Farum Azula",
    "Limgrave"
   ],
-  "icon": "img/talismans/flamedrake-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman"
  },
  {
@@ -946,12 +1045,12 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/flamedrake-talisman-1.png",
   "areas": [
    "Capital Outskirts",
    "Leyndell, Royal Capital",
    "Mountaintops of the Giants"
   ],
-  "icon": "img/talismans/flamedrake-talisman-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman_%2B1"
  },
  {
@@ -961,11 +1060,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/flamedrake-talisman-2.png",
   "areas": [
    "Crumbling Farum Azula",
    "Dragonbarrow"
   ],
-  "icon": "img/talismans/flamedrake-talisman-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Flamedrake_Talisman_%2B2"
  },
  {
@@ -975,10 +1074,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/boltdrake-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/boltdrake-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman"
  },
  {
@@ -988,10 +1087,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/boltdrake-talisman-1.png",
   "areas": [
    "Altus Plateau"
   ],
-  "icon": "img/talismans/boltdrake-talisman-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman_%2B1"
  },
  {
@@ -1001,10 +1100,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/boltdrake-talisman-2.png",
   "areas": [
    "Crumbling Farum Azula"
   ],
-  "icon": "img/talismans/boltdrake-talisman-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Boltdrake_Talisman_%2B2"
  },
  {
@@ -1014,10 +1113,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/haligdrake-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/haligdrake-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Haligdrake_Talisman"
  },
  {
@@ -1027,10 +1126,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/haligdrake-talisman-1.png",
   "areas": [
    "Leyndell, Royal Capital"
   ],
-  "icon": "img/talismans/haligdrake-talisman-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Haligdrake_Talisman_%2B1"
  },
  {
@@ -1040,10 +1139,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/haligdrake-talisman-2.png",
   "areas": [
    "Mohgwyn Palace"
   ],
-  "icon": "img/talismans/haligdrake-talisman-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Haligdrake_Talisman_%2B2"
  },
  {
@@ -1053,10 +1152,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/pearldrake-talisman.png",
   "areas": [
    "Crumbling Farum Azula"
   ],
-  "icon": "img/talismans/pearldrake-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman"
  },
  {
@@ -1066,10 +1165,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/pearldrake-talisman-1.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/pearldrake-talisman-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman_%2B1"
  },
  {
@@ -1079,10 +1178,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/pearldrake-talisman-2.png",
   "areas": [
    "Miquella's Haligtree"
   ],
-  "icon": "img/talismans/pearldrake-talisman-2.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Pearldrake_Talisman_%2B2"
  },
  {
@@ -1092,11 +1191,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/immunizing-horn-charm.png",
   "areas": [
    "Ainsel River",
    "Lake of Rot"
   ],
-  "icon": "img/talismans/immunizing-horn-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Immunizing_Horn_Charm"
  },
  {
@@ -1106,11 +1205,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/immunizing-horn-charm-1.png",
   "areas": [
    "Ainsel River",
    "Lake of Rot"
   ],
-  "icon": "img/talismans/immunizing-horn-charm-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Immunizing_Horn_Charm_%2B1"
  },
  {
@@ -1120,10 +1219,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/stalwart-horn-charm.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/stalwart-horn-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Stalwart_Horn_Charm"
  },
  {
@@ -1133,10 +1232,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/stalwart-horn-charm-1.png",
   "areas": [
    "Consecrated Snowfield"
   ],
-  "icon": "img/talismans/stalwart-horn-charm-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Stalwart_Horn_Charm_%2B1"
  },
  {
@@ -1146,11 +1245,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/clarifying-horn-charm.png",
   "areas": [
    "Nokron, Eternal City",
    "Siofra River"
   ],
-  "icon": "img/talismans/clarifying-horn-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Clarifying_Horn_Charm"
  },
  {
@@ -1160,11 +1259,11 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/clarifying-horn-charm-1.png",
   "areas": [
    "Nokron, Eternal City",
    "Siofra River"
   ],
-  "icon": "img/talismans/clarifying-horn-charm-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Clarifying_Horn_Charm_%2B1"
  },
  {
@@ -1174,11 +1273,11 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/mottled-necklace.png",
   "areas": [
    "Nokron, Eternal City",
    "Siofra River"
   ],
-  "icon": "img/talismans/mottled-necklace.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace"
  },
  {
@@ -1188,11 +1287,11 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/mottled-necklace-1.png",
   "areas": [
    "Nokron, Eternal City",
    "Siofra River"
   ],
-  "icon": "img/talismans/mottled-necklace-1.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Mottled_Necklace_%2B1"
  },
  {
@@ -1202,10 +1301,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/prince-of-death-s-pustule.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/prince-of-death-s-pustule.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Prince_of_Death%27s_Pustule"
  },
  {
@@ -1215,10 +1314,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/prince-of-death-s-cyst.png",
   "areas": [
    "Deeproot Depths"
   ],
-  "icon": "img/talismans/prince-of-death-s-cyst.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Prince_of_Death%27s_Cyst"
  },
  {
@@ -1228,10 +1327,10 @@
   "weight": 1.1,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/dagger-talisman.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/dagger-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Dagger_Talisman"
  },
  {
@@ -1241,10 +1340,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/curved-sword-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/curved-sword-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Curved_Sword_Talisman"
  },
  {
@@ -1254,10 +1353,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/twinblade-talisman.png",
   "areas": [
    "Weeping Peninsula"
   ],
-  "icon": "img/talismans/twinblade-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Twinblade_Talisman"
  },
  {
@@ -1267,10 +1366,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/axe-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/axe-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Axe_Talisman"
  },
  {
@@ -1280,10 +1379,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/hammer-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/hammer-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Hammer_Talisman"
  },
  {
@@ -1293,10 +1392,10 @@
   "weight": 0.5,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/spear-talisman.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/spear-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Spear_Talisman"
  },
  {
@@ -1306,10 +1405,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/lance-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/lance-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Lance_Talisman"
  },
  {
@@ -1319,10 +1418,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/claw-talisman.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/claw-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Claw_Talisman"
  },
  {
@@ -1332,8 +1431,8 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
   "icon": "img/talismans/greatshield-talisman.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Greatshield_Talisman"
  },
  {
@@ -1343,10 +1442,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/arrow-s-sting-talisman.png",
   "areas": [
    "Caelid"
   ],
-  "icon": "img/talismans/arrow-s-sting-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Arrow%27s_Sting_Talisman"
  },
  {
@@ -1356,10 +1455,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/arrow-s-reach-talisman.png",
   "areas": [
    "Consecrated Snowfield"
   ],
-  "icon": "img/talismans/arrow-s-reach-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Arrow%27s_Reach_Talisman"
  },
  {
@@ -1369,10 +1468,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/graven-school-talisman.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/graven-school-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Graven-school_Talisman"
  },
  {
@@ -1382,11 +1481,11 @@
   "weight": 1.0,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/graven-mass-talisman.png",
   "areas": [
    "Consecrated Snowfield",
    "Miquella's Haligtree"
   ],
-  "icon": "img/talismans/graven-mass-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Graven-mass_Talisman"
  },
  {
@@ -1396,10 +1495,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/faithful-s-canvas-talisman.png",
   "areas": [
    "Caelid"
   ],
-  "icon": "img/talismans/faithful-s-canvas-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Faithful%27s_Canvas_Talisman"
  },
  {
@@ -1409,10 +1508,10 @@
   "weight": 1.0,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/flock-s-canvas-talisman.png",
   "areas": [
    "Caelid"
   ],
-  "icon": "img/talismans/flock-s-canvas-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Flock%27s_Canvas_Talisman"
  },
  {
@@ -1422,10 +1521,13 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "resourceBonus": {
+   "hp": -0.15
+  },
+  "icon": "img/talismans/primal-glintstone-blade.png",
   "areas": [
    "Mountaintops of the Giants"
   ],
-  "icon": "img/talismans/primal-glintstone-blade.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Primal_Glintstone_Blade"
  },
  {
@@ -1435,12 +1537,12 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/moon-of-nokstella.png",
   "areas": [
    "Ainsel River",
    "Lake of Rot",
    "Nokstella, Eternal City"
   ],
-  "icon": "img/talismans/moon-of-nokstella.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Moon_of_Nokstella"
  },
  {
@@ -1450,10 +1552,10 @@
   "weight": 0.5,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/old-lord-s-talisman.png",
   "areas": [
    "Crumbling Farum Azula"
   ],
-  "icon": "img/talismans/old-lord-s-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Old_Lord%27s_Talisman"
  },
  {
@@ -1463,10 +1565,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/radagon-icon.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/radagon-icon.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Radagon_Icon"
  },
  {
@@ -1476,10 +1578,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/roar-medallion.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/roar-medallion.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Roar_Medallion"
  },
  {
@@ -1489,10 +1591,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/companion-jar.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/companion-jar.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Companion_Jar"
  },
  {
@@ -1502,10 +1604,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/perfumer-s-talisman.png",
   "areas": [
    "Altus Plateau"
   ],
-  "icon": "img/talismans/perfumer-s-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Perfumer%27s_Talisman"
  },
  {
@@ -1515,10 +1617,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/carian-filigreed-crest.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/carian-filigreed-crest.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Carian_Filigreed_Crest"
  },
  {
@@ -1528,6 +1630,7 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/warrior-jar-shard.png",
   "areas": [
    "Caelid",
    "Crumbling Farum Azula",
@@ -1535,7 +1638,6 @@
    "Liurnia of the Lakes",
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/warrior-jar-shard.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Warrior_Jar_Shard"
  },
  {
@@ -1545,6 +1647,7 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/shard-of-alexander.png",
   "areas": [
    "Caelid",
    "Crumbling Farum Azula",
@@ -1552,7 +1655,6 @@
    "Liurnia of the Lakes",
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/shard-of-alexander.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Shard_of_Alexander"
  },
  {
@@ -1562,10 +1664,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/godfrey-icon.png",
   "areas": [
    "Altus Plateau"
   ],
-  "icon": "img/talismans/godfrey-icon.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Godfrey_Icon"
  },
  {
@@ -1575,10 +1677,10 @@
   "weight": 0.5,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/bull-goat-s-talisman.png",
   "areas": [
    "Dragonbarrow"
   ],
-  "icon": "img/talismans/bull-goat-s-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Bull-goat%27s_Talisman"
  },
  {
@@ -1588,10 +1690,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/blue-dancer-charm.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/blue-dancer-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Blue_Dancer_Charm"
  },
  {
@@ -1601,10 +1703,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/magic-scorpion-charm.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/magic-scorpion-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Magic_Scorpion_Charm"
  },
  {
@@ -1614,10 +1716,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/fire-scorpion-charm.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/fire-scorpion-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Fire_Scorpion_Charm"
  },
  {
@@ -1627,11 +1729,11 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/lightning-scorpion-charm.png",
   "areas": [
    "Altus Plateau",
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/lightning-scorpion-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Lightning_Scorpion_Charm"
  },
  {
@@ -1641,11 +1743,11 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/sacred-scorpion-charm.png",
   "areas": [
    "Caelid",
    "Limgrave"
   ],
-  "icon": "img/talismans/sacred-scorpion-charm.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Sacred_Scorpion_Charm"
  },
  {
@@ -1655,10 +1757,10 @@
   "weight": 1.1,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/crucible-scale-talisman.png",
   "areas": [
    "Leyndell, Royal Capital"
   ],
-  "icon": "img/talismans/crucible-scale-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Scale_Talisman"
  },
  {
@@ -1668,11 +1770,11 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/crucible-feather-talisman.png",
   "areas": [
    "Altus Plateau",
    "Capital Outskirts"
   ],
-  "icon": "img/talismans/crucible-feather-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Feather_Talisman"
  },
  {
@@ -1682,10 +1784,10 @@
   "weight": 0.5,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/crucible-knot-talisman.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/crucible-knot-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crucible_Knot_Talisman"
  },
  {
@@ -1695,10 +1797,10 @@
   "weight": 1.4,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/red-feathered-branchsword.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/red-feathered-branchsword.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Red-feathered_Branchsword"
  },
  {
@@ -1708,10 +1810,10 @@
   "weight": 1.1,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/blue-feathered-branchsword.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/blue-feathered-branchsword.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Blue-feathered_Branchsword"
  },
  {
@@ -1721,10 +1823,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/ritual-sword-talisman.png",
   "areas": [
    "Altus Plateau"
   ],
-  "icon": "img/talismans/ritual-sword-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Ritual_Sword_Talisman"
  },
  {
@@ -1734,10 +1836,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/ritual-shield-talisman.png",
   "areas": [
    "Leyndell, Royal Capital"
   ],
-  "icon": "img/talismans/ritual-shield-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Ritual_Shield_Talisman"
  },
  {
@@ -1747,10 +1849,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/assassin-s-crimson-dagger.png",
   "areas": [
    "Limgrave"
   ],
-  "icon": "img/talismans/assassin-s-crimson-dagger.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Assassin%27s_Crimson_Dagger"
  },
  {
@@ -1760,10 +1862,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/assassin-s-cerulean-dagger.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/assassin-s-cerulean-dagger.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Assassin%27s_Cerulean_Dagger"
  },
  {
@@ -1773,10 +1875,10 @@
   "weight": 1.4,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/winged-sword-insignia.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/winged-sword-insignia.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Winged_Sword_Insignia"
  },
  {
@@ -1786,8 +1888,8 @@
   "weight": 1.4,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
   "icon": "img/talismans/rotten-winged-sword-insignia.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Rotten_Winged_Sword_Insignia"
  },
  {
@@ -1797,12 +1899,15 @@
   "weight": 1.6,
   "source": "Elden Ring",
   "dlc": false,
+  "statBonus": {
+   "dex": 5
+  },
+  "icon": "img/talismans/millicent-s-prosthesis.png",
   "areas": [
    "Altus Plateau",
    "Miquella's Haligtree",
    "Mountaintops of the Giants"
   ],
-  "icon": "img/talismans/millicent-s-prosthesis.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Millicent%27s_Prosthesis"
  },
  {
@@ -1812,10 +1917,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/godskin-swaddling-cloth.png",
   "areas": [
    "Mountaintops of the Giants"
   ],
-  "icon": "img/talismans/godskin-swaddling-cloth.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Godskin_Swaddling_Cloth"
  },
  {
@@ -1825,10 +1930,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/kindred-of-rot-s-exultation.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/kindred-of-rot-s-exultation.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Kindred_of_Rot%27s_Exultation"
  },
  {
@@ -1838,10 +1943,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/lord-of-blood-s-exultation.png",
   "areas": [
    "Leyndell, Royal Capital"
   ],
-  "icon": "img/talismans/lord-of-blood-s-exultation.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Lord_of_Blood%27s_Exultation"
  },
  {
@@ -1851,11 +1956,11 @@
   "weight": 1.0,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/taker-s-cameo.png",
   "areas": [
    "Mountaintops of the Giants",
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/taker-s-cameo.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Taker%27s_Cameo"
  },
  {
@@ -1865,10 +1970,10 @@
   "weight": 1.2,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/ancestral-spirit-s-horn.png",
   "areas": [
    "Roundtable Hold"
   ],
-  "icon": "img/talismans/ancestral-spirit-s-horn.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Ancestral_Spirit%27s_Horn"
  },
  {
@@ -1878,10 +1983,10 @@
   "weight": 1.2,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/gold-scarab.png",
   "areas": [
    "Caelid"
   ],
-  "icon": "img/talismans/gold-scarab.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Gold_Scarab"
  },
  {
@@ -1891,11 +1996,11 @@
   "weight": 1.2,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/silver-scarab.png",
   "areas": [
    "Miquella's Haligtree",
    "Mountaintops of the Giants"
   ],
-  "icon": "img/talismans/silver-scarab.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Silver_Scarab"
  },
  {
@@ -1905,10 +2010,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/crepus-s-vial.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/crepus-s-vial.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Crepus%27s_Vial"
  },
  {
@@ -1918,10 +2023,10 @@
   "weight": 0.9,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/concealing-veil.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/concealing-veil.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Concealing_Veil"
  },
  {
@@ -1931,10 +2036,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/longtail-cat-talisman.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/longtail-cat-talisman.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Longtail_Cat_Talisman"
  },
  {
@@ -1944,10 +2049,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/furled-finger-s-trick-mirror.png",
   "areas": [
    "Roundtable Hold"
   ],
-  "icon": "img/talismans/furled-finger-s-trick-mirror.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Furled_Finger%27s_Trick-mirror"
  },
  {
@@ -1957,10 +2062,10 @@
   "weight": 0.7,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/host-s-trick-mirror.png",
   "areas": [
    "Roundtable Hold"
   ],
-  "icon": "img/talismans/host-s-trick-mirror.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Host%27s_Trick-mirror"
  },
  {
@@ -1970,10 +2075,10 @@
   "weight": 0.6,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/shabriri-s-woe.png",
   "areas": [
    "Liurnia of the Lakes"
   ],
-  "icon": "img/talismans/shabriri-s-woe.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Shabriri%27s_Woe"
  },
  {
@@ -1983,10 +2088,10 @@
   "weight": 0.8,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/daedicar-s-woe.png",
   "areas": [
    "Mt. Gelmir"
   ],
-  "icon": "img/talismans/daedicar-s-woe.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Daedicar%27s_Woe"
  },
  {
@@ -1996,6 +2101,7 @@
   "weight": 1.0,
   "source": "Elden Ring",
   "dlc": false,
+  "icon": "img/talismans/sacrificial-twig.png",
   "areas": [
    "Altus Plateau",
    "Caelid",
@@ -2008,7 +2114,6 @@
    "Mt. Gelmir",
    "Weeping Peninsula"
   ],
-  "icon": "img/talismans/sacrificial-twig.png",
   "wiki": "https://eldenring.wiki.fextralife.com/Sacrificial_Twig"
  },
  {
@@ -2018,8 +2123,8 @@
   "weight": 0.5,
   "source": "Elden Ring",
   "dlc": false,
-  "areas": [],
   "icon": "img/talismans/entwining-umbilical-cord.png",
+  "areas": [],
   "wiki": "https://eldenring.wiki.fextralife.com/Entwining_Umbilical_Cord"
  }
 ]

@@ -32,7 +32,7 @@ If a number, location, or item looks wrong, [open a GitHub issue](https://github
 
 ## Where the data comes from
 
-- **Armor weight, absorption, resistances, and poise** come from Elden Ring’s own game data (`EquipParamProtector`).
+- **Armor weight, absorption, resistances, and poise** come from Elden Ring’s own game data (`EquipParamProtector`). Hidden attribute bonuses on helms, chests, and the rest (Intelligence crowns, Commoner's Garb +1 Faith, Thiollier's Arcane, Gold Tattoos) come from the same files' SpEffects, not just wiki flavor text.
 - **Weapon affinity scaling** (Heavy, Keen, Occult, and the rest) comes from `EquipParamWeapon`. Upgrade level is read from your save when you import one; this build does not compute live Attack Rating at +N (that needs the game’s reinforce graphs).
 - **Where to find things** is merged from game data and the wiki. Map pickups use `ItemLotParam_map` row IDs (which encode `m10_00` Stormveil, `m60_42_36` Church of Elleh, and so on) plus the Smithbox map list. Enemy farms use MSB placements joined to `NpcParam` item lots. Shops and named lots still use their param labels. The wiki fills in quest-only items and anything the params do not name.
 - **Weapon reference attack, and talisman effect text** still come from that wiki.

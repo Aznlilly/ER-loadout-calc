@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const { computeMaxEquipLoad, totalWeight, loadClass, allowedLoadClass, isHeavierLoadClass, applyGreatRuneStats, parseAttributeBonuses, parseResourceBonuses, parseResistanceBonuses, applyEffectiveStats, hpFromVigor, fpFromMind, staminaFromEndurance, computeCharacterStatus } =
+const { computeMaxEquipLoad, totalWeight, loadClass, allowedLoadClass, isHeavierLoadClass, applyGreatRuneStats, parseAttributeBonuses, parseResourceBonuses, parseResistanceBonuses, applyEffectiveStats, itemAttributeBonuses, hpFromVigor, fpFromMind, staminaFromEndurance, computeCharacterStatus } =
   require("../js/calc.js");
 const { optimizeArmor, minimizeWeightForTarget, negationObjective, scoreItem } = require("../js/optimizer.js");
 
@@ -300,5 +300,44 @@ for (const ratio of [0.299, 0.30, 0.45, 0.699, 0.70, 0.999, 1.0]) {
   if (status.effective.end !== 20 || status.effective.mind !== 15) fail("status effective stats should stack Soreseal + Godrick");
   if (status.hp <= hpFromVigor(10)) fail("Godrick vigor should raise HP above invested vigor");
   if (status.absorption.phy >= 0) fail("Soreseal 15% more damage taken should make naked physical absorption negative");
+
+  const armorById = Object.fromEntries(armor.map((a) => [a.id, a]));
+  const hidden = {
+    "chest-commoner-s-garb": { fai: 1 },
+    "chest-commoner-s-simple-garb": { fai: 1 },
+    "helm-haligtree-helm": { fai: 1 },
+    "helm-haligtree-knight-helm": { fai: 2 },
+    "helm-thiollier-s-mask": { arc: 3 },
+    "chest-thiollier-s-garb": { arc: 2 },
+    "chest-gold-tattoo-chest": { fai: 2 },
+    "gauntlets-gold-tattoo-arm": { fai: 1 },
+    "legs-gold-tattoo-leg": { fai: 1 },
+    "helm-high-priest-hat": { int: 1, arc: 1 },
+    "helm-salza-s-hood": { int: 2 },
+    "helm-twinsage-glintstone-crown": { int: 6 },
+    "helm-queen-s-crescent-crown": { int: 3 },
+  };
+  for (const [id, want] of Object.entries(hidden)) {
+    const item = armorById[id];
+    if (!item) fail(`missing armor ${id}`);
+    const got = itemAttributeBonuses([item]);
+    for (const key of ["vig", "mind", "end", "str", "dex", "int", "fai", "arc"]) {
+      if ((got[key] || 0) !== (want[key] || 0)) fail(`${id} ${key} bonus ${got[key]} != ${want[key] || 0}`);
+    }
+  }
+  const snow = armorById["helm-snow-witch-hat"];
+  if (snow && itemAttributeBonuses([snow]).int) fail("Snow Witch Hat should not invent an Intelligence bonus");
+  const twinsage = computeCharacterStatus({
+    invested: base,
+    armor: [armorById["helm-twinsage-glintstone-crown"]],
+    talismans: [],
+    rune: null,
+    runeActive: false,
+    weapons: [],
+    equipLoadTable,
+    level: 1,
+  });
+  if (twinsage.effective.int !== 16) fail("Twinsage Glintstone Crown should add +6 Intelligence");
+  if (twinsage.hp >= hpFromVigor(10)) fail("Twinsage Glintstone Crown should reduce max HP");
 }
 
