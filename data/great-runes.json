@@ -1,0 +1,74 @@
+[
+ {
+  "id": "godrick-s-great-rune",
+  "name": "Godrick's Great Rune",
+  "effect": "Raises all attributes by +5",
+  "statBonus": 5,
+  "source": "Elden Ring",
+  "areas": [
+   "Stormveil Castle"
+  ],
+  "wiki": "https://eldenring.wiki.fextralife.com/Godrick%27s_Great_Rune",
+  "icon": "img/great-runes/godrick-s-great-rune.png"
+ },
+ {
+  "id": "radahn-s-great-rune",
+  "name": "Radahn's Great Rune",
+  "effect": "Raises maximum HP, FP and Stamina by 15%",
+  "statBonus": 0,
+  "source": "Elden Ring",
+  "areas": [
+   "Caelid"
+  ],
+  "wiki": "https://eldenring.wiki.fextralife.com/Radahn%27s_Great_Rune",
+  "icon": "img/great-runes/radahn-s-great-rune.png"
+ },
+ {
+  "id": "morgott-s-great-rune",
+  "name": "Morgott's Great Rune",
+  "effect": "Raises maximum HP by 25%",
+  "statBonus": 0,
+  "source": "Elden Ring",
+  "areas": [
+   "Leyndell, Royal Capital"
+  ],
+  "wiki": "https://eldenring.wiki.fextralife.com/Morgott%27s_Great_Rune",
+  "icon": "img/great-runes/morgott-s-great-rune.png"
+ },
+ {
+  "id": "rykard-s-great-rune",
+  "name": "Rykard's Great Rune",
+  "effect": "Restores HP upon defeating enemies",
+  "statBonus": 0,
+  "source": "Elden Ring",
+  "areas": [
+   "Mt. Gelmir"
+  ],
+  "wiki": "https://eldenring.wiki.fextralife.com/Rykard%27s_Great_Rune",
+  "icon": "img/great-runes/rykard-s-great-rune.png"
+ },
+ {
+  "id": "mohg-s-great-rune",
+  "name": "Mohg's Great Rune",
+  "effect": "Grants a blessing of blood to summoned phantoms",
+  "statBonus": 0,
+  "source": "Elden Ring",
+  "areas": [
+   "Mohgwyn Palace"
+  ],
+  "wiki": "https://eldenring.wiki.fextralife.com/Mohg%27s_Great_Rune",
+  "icon": "img/great-runes/mohg-s-great-rune.png"
+ },
+ {
+  "id": "malenia-s-great-rune",
+  "name": "Malenia's Great Rune",
+  "effect": "Attacks recover HP for a short time after taking damage; reduces Flask of Crimson Tears healing",
+  "statBonus": 0,
+  "source": "Elden Ring",
+  "areas": [
+   "Miquella's Haligtree"
+  ],
+  "wiki": "https://eldenring.wiki.fextralife.com/Malenia%27s_Great_Rune",
+  "icon": "img/great-runes/malenia-s-great-rune.png"
+ }
+]

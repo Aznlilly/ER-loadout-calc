@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const { computeMaxEquipLoad, totalWeight, loadClass, allowedLoadClass, isHeavierLoadClass } =
+const { computeMaxEquipLoad, totalWeight, loadClass, allowedLoadClass, isHeavierLoadClass, applyGreatRuneStats, parseAttributeBonuses, parseResourceBonuses, parseResistanceBonuses, applyEffectiveStats, hpFromVigor, fpFromMind, staminaFromEndurance, computeCharacterStatus } =
   require("../js/calc.js");
 const { optimizeArmor, minimizeWeightForTarget, negationObjective, scoreItem } = require("../js/optimizer.js");
 
@@ -188,5 +188,117 @@ for (const ratio of [0.299, 0.30, 0.45, 0.699, 0.70, 0.999, 1.0]) {
   }
   assertWithinCap(fireResult, maxLoad, 0.999, "heavy fire");
   console.log("\nmax fire negation @ heavy load:", fireSum.toFixed(1), "vs total-negation fire", totalNegFire.toFixed(1));
+}
+
+{
+  const base = { vig: 10, mind: 10, end: 10, str: 10, dex: 10, int: 10, fai: 10, arc: 10 };
+  const off = applyGreatRuneStats(base, { statBonus: 5 }, false);
+  const on = applyGreatRuneStats(base, { statBonus: 5 }, true);
+  const capped = applyGreatRuneStats({ ...base, str: 97 }, { statBonus: 5 }, true);
+  if (off.end !== 10) fail("inactive Godrick should leave endurance alone");
+  if (on.end !== 15 || on.str !== 15) fail("active Godrick should add +5 to attributes");
+  if (capped.str !== 99) fail("Godrick's bonus should cap at 99");
+
+  const soreseal = parseAttributeBonuses("Raises Vigor, Endurance, Strength, and Dexterity by 5, but increases all damage taken by 15%.");
+  const marika = parseAttributeBonuses("Raises Mind, Intelligence, Faith, and Arcane by 3, but increases all damage taken by 10%.");
+  const heirloom = parseAttributeBonuses("Raises Strength by 5.");
+  const millicent = parseAttributeBonuses("Raises dexterity by 5 and raises attack power with successive attacks (4% → 6% → 11%).");
+  const outerGod = parseAttributeBonuses("Raises arcane +5");
+  const godrickText = parseAttributeBonuses("Raises all attributes by +5");
+  const poise = parseAttributeBonuses("Raises Poise by 33%.");
+  if (soreseal.str !== 5 || soreseal.end !== 5 || soreseal.mind !== 0) fail("Radagon's Soreseal should boost VIG/END/STR/DEX");
+  if (marika.mind !== 3 || marika.int !== 3 || marika.str !== 0) fail("Marika's Scarseal should boost MIN/INT/FAI/ARC");
+  if (heirloom.str !== 5 || heirloom.dex !== 0) fail("Starscourge Heirloom should boost Strength only");
+  if (millicent.dex !== 5 || millicent.str !== 0) fail("Millicent's Prosthesis should boost Dexterity only");
+  if (outerGod.arc !== 5) fail("Outer God Heirloom should parse 'Raises arcane +5'");
+  if (godrickText.vig !== 5 || godrickText.arc !== 5) fail("all-attributes text should boost every stat");
+  if (poise.str !== 0 || poise.end !== 0) fail("poise bonuses must not be treated as attributes");
+
+  const stacked = applyEffectiveStats(
+    base,
+    [{ effect: "Raises Vigor, Endurance, Strength, and Dexterity by 5, but increases all damage taken by 15%." }],
+    { statBonus: 5 },
+    true
+  );
+  if (stacked.end !== 20 || stacked.str !== 20 || stacked.mind !== 15) {
+    fail("Godrick + Radagon's Soreseal should stack (+10 VIG/END/STR/DEX, +5 elsewhere)");
+  }
+
+  const expectedTalismanBonuses = {
+    "radagon-s-scarseal": { vig: 3, end: 3, str: 3, dex: 3 },
+    "radagon-s-soreseal": { vig: 5, end: 5, str: 5, dex: 5 },
+    "marika-s-scarseal": { mind: 3, int: 3, fai: 3, arc: 3 },
+    "marika-s-soreseal": { mind: 5, int: 5, fai: 5, arc: 5 },
+    "starscourge-heirloom": { str: 5 },
+    "prosthesis-wearer-heirloom": { dex: 5 },
+    "stargazer-heirloom": { int: 5 },
+    "two-fingers-heirloom": { fai: 5 },
+    "outer-god-heirloom": { arc: 5 },
+    "millicent-s-prosthesis": { dex: 5 },
+  };
+  for (const t of talismans) {
+    const got = parseAttributeBonuses(t.effect);
+    const want = expectedTalismanBonuses[t.id] || {};
+    for (const key of ["vig", "mind", "end", "str", "dex", "int", "fai", "arc"]) {
+      if ((got[key] || 0) !== (want[key] || 0)) {
+        fail(`talisman ${t.id} ${key} bonus ${got[key]} != ${want[key] || 0}`);
+      }
+    }
+  }
+  const greatRunes = JSON.parse(fs.readFileSync(path.join(dataDir, "great-runes.json")));
+  for (const rune of greatRunes) {
+    const got = parseAttributeBonuses(rune.effect);
+    if (rune.id === "godrick-s-great-rune") {
+      if (got.str !== 5 || got.arc !== 5) fail("Godrick effect text should parse +5 all");
+    } else if (["vig", "mind", "end", "str", "dex", "int", "fai", "arc"].some((key) => got[key])) {
+      fail(`${rune.name} effect should not parse as attributes`);
+    }
+  }
+
+  if (hpFromVigor(10) !== 414) fail("Vigor 10 should be 414 HP");
+  if (hpFromVigor(40) !== 1450) fail("Vigor 40 should be 1450 HP");
+  if (staminaFromEndurance(10) !== 96) fail("Endurance 10 should be 96 stamina");
+  if (fpFromMind(1) !== 50) fail("Mind 1 should be 50 FP");
+
+  const erdtree = parseResourceBonuses("Raises maximum HP (3%), Stamina (7%), and Equip Load (5%)");
+  if (erdtree.hp !== 0.03 || erdtree.stamina !== 0.07 || erdtree.equipLoad !== 0.05) {
+    fail("Erdtree's Favor should parse HP/Stamina/Equip Load percents");
+  }
+  const radahn = parseResourceBonuses("Raises maximum HP, FP and Stamina by 15%");
+  if (radahn.hp !== 0.15 || radahn.fp !== 0.15 || radahn.stamina !== 0.15) fail("Radahn's Great Rune should parse +15% HP/FP/Stamina");
+  const morgott = parseResourceBonuses("Raises maximum HP by 25%");
+  if (morgott.hp !== 0.25 || morgott.fp !== 0) fail("Morgott's Great Rune should parse +25% HP only");
+  const primal = parseResourceBonuses("Spells consume 25% less FP, but maximum HP is reduced by 15%.");
+  if (Math.abs(primal.hp + 0.15) > 1e-9) fail("Primal Glintstone Blade should reduce max HP 15%");
+  const fireHelm = parseResourceBonuses("Increases maximum HP by 2%, Stamina by 5%, and Equip Load by 4%.");
+  if (fireHelm.hp !== 0.02 || fireHelm.stamina !== 0.05 || fireHelm.equipLoad !== 0.04) {
+    fail("Fire Knight Helm should parse HP/Stamina/Equip Load percents");
+  }
+  const flask = parseResourceBonuses("Boosts HP restoration from Flask of Crimson Tears by 20%");
+  if (flask.hp !== 0) fail("flask restoration text must not count as max HP");
+
+  const helm = parseAttributeBonuses("+1 to Intelligence, Faith, and Arcane\nBoosts the power of Miquella's incantations by 10%.");
+  if (helm.int !== 1 || helm.fai !== 1 || helm.arc !== 1 || helm.str !== 0) fail("Circlet of Light should parse +1 INT/FAI/ARC");
+  const storm = parseAttributeBonuses("Heightens intensity of the storm by 4%, boosts Strength by +3 and Dexerity by +3, but reduces restorative effect of sacred tears by -9% and lowers focus by -45.");
+  if (storm.str !== 3 || storm.dex !== 3) fail("Divine Beast helm should parse STR/DEX despite Dexerity typo");
+  const albinauric = parseAttributeBonuses("+2 Intelligence, +2 Faith. Reduces max HP by 9%.");
+  if (albinauric.int !== 2 || albinauric.fai !== 2) fail("Albinauric mask-style +N STAT lists should parse");
+
+  const mottled = parseResistanceBonuses("Raises Immunity, Robustness, and Focus by 40");
+  if (mottled.immunity !== 40 || mottled.focus !== 40 || mottled.vitality !== 0) fail("Mottled Necklace should parse three resistances");
+
+  const status = computeCharacterStatus({
+    invested: base,
+    armor: [],
+    talismans: [{ effect: "Raises Vigor, Endurance, Strength, and Dexterity by 5, but increases all damage taken by 15%.", weight: 0.8 }],
+    rune: { effect: "Raises all attributes by +5", statBonus: 5 },
+    runeActive: true,
+    weapons: [],
+    equipLoadTable,
+    level: 1,
+  });
+  if (status.effective.end !== 20 || status.effective.mind !== 15) fail("status effective stats should stack Soreseal + Godrick");
+  if (status.hp <= hpFromVigor(10)) fail("Godrick vigor should raise HP above invested vigor");
+  if (status.absorption.phy >= 0) fail("Soreseal 15% more damage taken should make naked physical absorption negative");
 }
 

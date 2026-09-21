@@ -9,12 +9,31 @@
 <body>
 <header class="site-header">
   <h1>Elden Ring Loadout Optimizer</h1>
-  <p class="tagline">Enter your character's stats, lock any equipment you want to keep, and let the optimizer fill the rest.</p>
+  <p class="tagline">Load a save, or enter stats by hand. Lock anything you want to keep, then let the optimizer fill the rest.</p>
 </header>
 
 <main>
+  <section class="panel" id="panel-save">
+    <h2>1. Load Save</h2>
+    <p class="hint">Start here if you have an Elden Ring save. Import fills stats, equipment, and the item pool so you do not have to enter everything by hand. You can skip this and type stats below instead.</p>
+    <div class="save-import-row">
+      <button type="button" class="primary-btn" id="load-save-btn">Load Save…</button>
+      <input type="file" id="save-file-input" accept=".sl2,.co2,.bak,application/octet-stream" hidden>
+      <span class="hint" id="save-import-status"></span>
+    </div>
+    <p class="save-import-safe">This does not modify your save in any way. It only reads items from the file into the calculator - nothing is written back. All files stay on your computer.</p>
+    <div class="save-import-hint">
+      <p class="hint">Click <strong>Load Save…</strong>, then copy this path and paste it into the file picker address bar:</p>
+      <div class="save-import-path-row">
+        <code id="save-import-path">%APPDATA%\EldenRing</code>
+        <button type="button" class="preset-btn" id="copy-save-path-btn">Copy</button>
+      </div>
+      <p class="hint">Open your Steam ID folder and choose <code>ER0000.sl2</code> (vanilla) or <code>ER0000.co2</code> (Seamless Co-op). Other same-format mod saves work too; unknown/mod items are skipped.</p>
+    </div>
+  </section>
+
   <section class="panel" id="panel-character">
-    <h2>1. Character</h2>
+    <h2>2. Character</h2>
     <div class="grid stats-grid">
       <label>Vigor <input type="number" id="stat-vig" min="1" max="99" value="10"></label>
       <label>Mind <input type="number" id="stat-min" min="1" max="99" value="10"></label>
@@ -36,8 +55,8 @@
   </section>
 
   <section class="panel" id="panel-equipment">
-    <h2>2. Equipment <span class="hint">(lock any slot so Optimize leaves it alone)</span></h2>
-    <p class="hint equip-hint">Click a slot to choose an item. Weapons and shields can go in either hand; their weight is subtracted from the armor budget. Locked pieces stay put; unlocked armor is what the optimizer fills around them. Weapon and talisman suggestions appear under Results and are not auto-equipped.</p>
+    <h2>3. Equipment <span class="hint">(lock any slot so Optimize leaves it alone)</span></h2>
+    <p class="hint equip-hint">Click a slot to choose an item. Weapons and shields can go in either hand; their weight is subtracted from the armor budget. Locked pieces stay put; unlocked armor is what the optimizer fills around them. Equip one Great Rune and turn Rune Arc on to apply its blessing. Godrick's +5 and talismans that raise attributes (Soreseals, Heirlooms, Millicent's Prosthesis) count for load and weapon requirements; character level still uses invested stats. Weapon and talisman suggestions appear under Results and are not auto-equipped.</p>
     <div class="equip-actions">
       <button type="button" class="preset-btn" id="unequip-all" title="Clears unlocked slots only">Unequip All</button>
       <button type="button" class="preset-btn danger-btn" id="reset-tool" title="Clears stats, equipment, imported save data, item-pool excludes, and all saved settings" onclick="erResetTool()">Reset Tool</button>
@@ -50,6 +69,7 @@
     </div>
 
     <div class="equip-talisman-bar">
+      <div id="equip-great-rune" class="equip-great-rune"></div>
       <label class="pouch-control">Talisman pouches
         <select id="talisman-slot-count">
           <option value="1">1 (starting)</option>
@@ -63,6 +83,32 @@
     <p class="derived" id="equip-load-readout">Current load: <strong id="equip-current-load">—</strong></p>
   </section>
 
+  <section class="panel" id="panel-status">
+    <h2>4. Status</h2>
+    <p class="hint">In-game totals from your invested stats plus equipped armor, talismans, and an active Great Rune. Character level still uses invested stats. Weapon attack numbers are wiki reference AR at a high, fixed investment — not live Attack Rating for your spread.</p>
+    <div class="status-grid" id="status-grid">
+      <div class="status-col">
+        <h3>Attributes</h3>
+        <table class="status-table" id="status-attributes"></table>
+      </div>
+      <div class="status-col">
+        <h3>Body</h3>
+        <table class="status-table" id="status-body"></table>
+      </div>
+      <div class="status-col">
+        <h3>Absorption</h3>
+        <table class="status-table" id="status-absorption"></table>
+      </div>
+      <div class="status-col">
+        <h3>Resistances</h3>
+        <table class="status-table" id="status-resistances"></table>
+      </div>
+    </div>
+    <h3>Attack (equipped)</h3>
+    <p class="hint">Reference attack from the wiki. Wieldable uses effective Strength / Dexterity / Intelligence / Faith / Arcane, including two-handing if that box is checked under weapon recommendations.</p>
+    <div id="status-attack"></div>
+  </section>
+
   <div id="save-character-overlay" class="item-picker-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="save-character-title">
     <div class="item-picker">
       <h3 id="save-character-title">Import from save</h3>
@@ -72,7 +118,7 @@
         <label><input type="checkbox" id="save-import-inventory" checked> Inventory (item pool)</label>
         <label><input type="checkbox" id="save-import-chest" checked> Chest (item pool)</label>
         <label><input type="checkbox" id="save-import-stats" checked> Stats (and talisman pouches)</label>
-        <label><input type="checkbox" id="save-import-equipped" checked> Currently equipped (imports onto unlocked slots only)</label>
+        <label><input type="checkbox" id="save-import-equipped" checked> Currently equipped (armor, weapons, talismans, Great Rune)</label>
       </div>
       <div class="picker-actions">
         <button type="button" class="primary-btn" id="save-import-confirm">Import</button>
@@ -94,7 +140,7 @@
   </div>
 
   <section class="panel" id="panel-item-pool">
-    <h2>3. Item Pool <span class="hint">(what the optimizer &amp; weapon list are allowed to pick from)</span></h2>
+    <h2>5. Item Pool <span class="hint">(what the optimizer &amp; weapon list are allowed to pick from)</span></h2>
 
     <div class="goal-row">
       <label><input type="checkbox" id="source-elden-ring" checked> Elden Ring <span class="hint">(base game)</span></label>
@@ -116,21 +162,6 @@
       <input type="checkbox" id="include-upgrades" checked>
       Use weapon upgrade levels from the save
     </label>
-
-    <div class="save-import-row">
-      <button type="button" class="preset-btn" id="load-save-btn">Load Save…</button>
-      <input type="file" id="save-file-input" accept=".sl2,.co2,.bak,application/octet-stream" hidden>
-      <span class="hint" id="save-import-status"></span>
-    </div>
-    <p class="save-import-safe">This does not modify your save in any way. It only reads items from the file into the calculator - nothing is written back. All files stay on your computer.</p>
-    <div class="save-import-hint">
-      <p class="hint">Click <strong>Load Save…</strong>, then copy this path and paste it into the file picker address bar:</p>
-      <div class="save-import-path-row">
-        <code id="save-import-path">%APPDATA%\EldenRing</code>
-        <button type="button" class="preset-btn" id="copy-save-path-btn">Copy</button>
-      </div>
-      <p class="hint">Open your Steam ID folder and choose <code>ER0000.sl2</code> (vanilla) or <code>ER0000.co2</code> (Seamless Co-op). Other same-format mod saves work too; unknown/mod items are skipped.</p>
-    </div>
 
     <button type="button" id="toggle-item-pool-drawer" class="preset-btn" aria-expanded="false">Customize Item Pool ▾</button>
 
@@ -171,7 +202,7 @@
   </section>
 
   <section class="panel" id="panel-goal">
-    <h2>4. Optimization Goal</h2>
+    <h2>6. Optimization Goal</h2>
 
     <div class="goal-row">
       <label><input type="radio" name="goal" value="poise" checked> Maximize Poise</label>

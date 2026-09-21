@@ -18,8 +18,14 @@ const ER_SAVE = (() => {
   const HANDLE_WEAPON = 0x80000000;
   const HANDLE_ARMOR = 0x90000000;
   const HANDLE_ACCESSORY = 0xA0000000;
+  const HANDLE_GOODS = 0xB0000000;
   const ITEM_ARMOR_PREFIX = 0x10000000;
   const ITEM_ACCESSORY_PREFIX = 0x20000000;
+  const ITEM_GOODS_PREFIX = 0x40000000;
+  const GREAT_RUNE_GOODS_IDS = new Set([
+    191, 192, 193, 194, 195, 196,
+    8148, 8149, 8150, 8151, 8152, 8153,
+  ]);
 
   const AES_KEY = new Uint8Array([
     0x99, 0xad, 0x2d, 0x50, 0xed, 0xf2, 0xfb, 0x01,
@@ -193,6 +199,7 @@ const ER_SAVE = (() => {
     tal3: 0x4C,
     tal4: 0x50,
   };
+  const RUNE_SLOT_OFFSET = 0x40;
 
   function emptyOwned() {
     return { weapons: [], armor: [], talismans: [] };
@@ -202,7 +209,13 @@ const ER_SAVE = (() => {
     const h = handle >>> 0;
     const rawId = itemId >>> 0;
     const kind = (h & 0xF0000000) >>> 0;
-    if (!h || rawId === 0 || rawId === 0xFFFFFFFF) return null;
+    if (!h) return null;
+    if (kind === HANDLE_GOODS) {
+      const id = decodeGoodsId(rawId) || ((h ^ HANDLE_GOODS) >>> 0);
+      if (GREAT_RUNE_GOODS_IDS.has(id)) return { type: "greatRunes", id };
+      return null;
+    }
+    if (rawId === 0 || rawId === 0xFFFFFFFF) return null;
     if (kind === HANDLE_WEAPON) return { type: "weapons", id: rawId };
     if (kind === HANDLE_ARMOR) {
       const id = (rawId & ITEM_ARMOR_PREFIX) ? (rawId ^ ITEM_ARMOR_PREFIX) >>> 0 : rawId;
@@ -212,7 +225,17 @@ const ER_SAVE = (() => {
       const id = (rawId & ITEM_ACCESSORY_PREFIX) ? (rawId ^ ITEM_ACCESSORY_PREFIX) >>> 0 : rawId;
       return { type: "talismans", id: id || ((h ^ HANDLE_ACCESSORY) >>> 0) };
     }
+    if (kind === HANDLE_GOODS) {
+      const id = decodeGoodsId(rawId) || ((h ^ HANDLE_GOODS) >>> 0);
+      if (GREAT_RUNE_GOODS_IDS.has(id)) return { type: "greatRunes", id };
+    }
     return null;
+  }
+
+  function decodeGoodsId(itemId) {
+    const iid = itemId >>> 0;
+    if (!iid || iid === 0xFFFFFFFF) return 0;
+    return (iid & ITEM_GOODS_PREFIX) ? (iid ^ ITEM_GOODS_PREFIX) >>> 0 : iid;
   }
 
   function decodeLooseHandle(handle) {
@@ -220,6 +243,10 @@ const ER_SAVE = (() => {
     if (!h) return null;
     const kind = (h & 0xF0000000) >>> 0;
     if (kind === HANDLE_ACCESSORY) return { type: "talismans", id: (h ^ HANDLE_ACCESSORY) >>> 0 };
+    if (kind === HANDLE_GOODS) {
+      const id = (h ^ HANDLE_GOODS) >>> 0;
+      if (GREAT_RUNE_GOODS_IDS.has(id)) return { type: "greatRunes", id };
+    }
     return null;
   }
 
@@ -239,6 +266,7 @@ const ER_SAVE = (() => {
       level: view.getUint32(pgdOffset + 0x60, true),
       talismanSlotCount: Math.max(1, Math.min(4, 1 + extra)),
       gender,
+      greatRuneOn: view.getUint8(pgdOffset + 0xF7) !== 0,
     };
   }
 
@@ -280,7 +308,7 @@ const ER_SAVE = (() => {
     const h = handle >>> 0;
     if (!h) return;
     const rec = handleMap.get(h) || decodeLooseHandle(h);
-    if (rec) owned[rec.type].push(rec.id);
+    if (rec && owned[rec.type]) owned[rec.type].push(rec.id);
   }
 
   function readInventory(view, off, commonCap, keyCap, handleMap) {
@@ -310,7 +338,9 @@ const ER_SAVE = (() => {
 
   function ownedFromHandleMap(handleMap) {
     const owned = emptyOwned();
-    for (const rec of handleMap.values()) owned[rec.type].push(rec.id);
+    for (const rec of handleMap.values()) {
+      if (owned[rec.type]) owned[rec.type].push(rec.id);
+    }
     return owned;
   }
 
@@ -318,6 +348,17 @@ const ER_SAVE = (() => {
     const h = handle >>> 0;
     const iid = itemId >>> 0;
     return (!h || h === 0xFFFFFFFF) && (iid === 0 || iid === 0xFFFFFFFF);
+  }
+
+  function decodeGreatRuneEquip(handle, itemId, handleMap) {
+    const h = handle >>> 0;
+    const iid = itemId >>> 0;
+    if (isEmptyEquip(h, iid)) return null;
+    const rec = handleMap.get(h) || decodeLooseHandle(h);
+    if (rec && rec.type === "greatRunes") return rec;
+    const goodsId = decodeGoodsId(iid) || ((h & 0xF0000000) === HANDLE_GOODS ? (h ^ HANDLE_GOODS) >>> 0 : 0);
+    if (GREAT_RUNE_GOODS_IDS.has(goodsId)) return { type: "greatRunes", id: goodsId };
+    return null;
   }
 
   function resolveEquipped(handle, itemId, handleMap) {
@@ -344,6 +385,7 @@ const ER_SAVE = (() => {
     const equipped = {};
     if (handlesOff + 0x58 > view.byteLength) {
       for (const slot of Object.keys(EQUIPPED_SLOT_OFFSETS)) equipped[slot] = null;
+      equipped.rune = null;
       return equipped;
     }
     for (const [slot, off] of Object.entries(EQUIPPED_SLOT_OFFSETS)) {
@@ -353,6 +395,11 @@ const ER_SAVE = (() => {
         handleMap
       );
     }
+    equipped.rune = decodeGreatRuneEquip(
+      view.getUint32(handlesOff + RUNE_SLOT_OFFSET, true),
+      view.getUint32(idsOff + RUNE_SLOT_OFFSET, true),
+      handleMap
+    );
     return equipped;
   }
 
@@ -580,6 +627,19 @@ const ER_SAVE = (() => {
         skipped++;
       }
     }
+    const runeRec = equipped && equipped.rune;
+    if (!runeRec) {
+      slots.rune = null;
+    } else {
+      const catalogId = catalogIdFor(runeRec, gameIds);
+      if (catalogId) {
+        slots.rune = { id: catalogId, affinity: 0, upgrade: 0 };
+        filled++;
+      } else {
+        slots.rune = null;
+        skipped++;
+      }
+    }
     return { slots, filled, skipped };
   }
 
@@ -609,6 +669,7 @@ const ER_SAVE = (() => {
     HANDLE_WEAPON,
     HANDLE_ARMOR,
     HANDLE_ACCESSORY,
+    HANDLE_GOODS,
   };
 })();
 

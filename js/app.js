@@ -3,11 +3,13 @@
 let ARMOR = [];
 let WEAPONS = [];
 let TALISMANS = [];
+let GREAT_RUNES = [];
 let EQUIP_LOAD_TABLE = {};
 let ARMOR_BY_ID = new Map();
 let WEAPONS_BY_ID = new Map();
 let TALISMANS_BY_ID = new Map();
-let GAME_IDS = { weapons: {}, armor: {}, talismans: {} };
+let GREAT_RUNES_BY_ID = new Map();
+let GAME_IDS = { weapons: {}, armor: {}, talismans: {}, greatRunes: {} };
 let WEAPON_VARIANTS = {};
 let OWNED_WEAPON_INSTANCES = {};
 
@@ -37,6 +39,7 @@ const SLOT_LABELS = {
   tal2: "Talisman 2",
   tal3: "Talisman 3",
   tal4: "Talisman 4",
+  rune: "Great Rune",
 };
 
 function emptySlot() {
@@ -45,6 +48,8 @@ function emptySlot() {
 
 let EQUIPMENT = Object.fromEntries(ALL_SLOTS.map((s) => [s, emptySlot()]));
 let talismanSlotCount = 4;
+let greatRuneId = null;
+let greatRuneActive = false;
 let loadRatio = 0.699;
 let pickerSlot = null;
 let characterGender = "male";
@@ -136,7 +141,8 @@ function setCharacterGender(gender) {
   document.querySelectorAll("img[data-item-id]").forEach((img) => {
     const item = ARMOR_BY_ID.get(img.dataset.itemId)
       || WEAPONS_BY_ID.get(img.dataset.itemId)
-      || TALISMANS_BY_ID.get(img.dataset.itemId);
+      || TALISMANS_BY_ID.get(img.dataset.itemId)
+      || GREAT_RUNES_BY_ID.get(img.dataset.itemId);
     const src = itemIconSrc(item);
     if (src) img.src = src;
   });
@@ -171,6 +177,7 @@ function sourceCellHtml(item) {
 }
 
 function slotKind(slot) {
+  if (slot === "rune") return "rune";
   if (ARMOR_SLOTS.includes(slot)) return "armor";
   if (WEAPON_SLOTS.includes(slot)) return "weapon";
   return "talisman";
@@ -206,15 +213,21 @@ function buildIndexes() {
   ARMOR_BY_ID = new Map(ARMOR.map((a) => [a.id, a]));
   WEAPONS_BY_ID = new Map(WEAPONS.map((w) => [w.id, w]));
   TALISMANS_BY_ID = new Map(TALISMANS.map((t) => [t.id, t]));
+  GREAT_RUNES_BY_ID = new Map(GREAT_RUNES.map((r) => [r.id, r]));
 }
 
 function itemForSlot(slot) {
+  if (slot === "rune") return equippedGreatRune();
   const id = EQUIPMENT[slot] && EQUIPMENT[slot].id;
   if (!id) return null;
   const kind = slotKind(slot);
   if (kind === "armor") return ARMOR_BY_ID.get(id) || null;
   if (kind === "weapon") return WEAPONS_BY_ID.get(id) || null;
   return TALISMANS_BY_ID.get(id) || null;
+}
+
+function equippedGreatRune() {
+  return (greatRuneId && GREAT_RUNES_BY_ID.get(greatRuneId)) || null;
 }
 
 function activeTalismanSlots() {
@@ -226,17 +239,19 @@ function isTalismanSlotActive(slot) {
 }
 
 async function loadData() {
-  const [armor, weapons, talismans, equipLoadTable, gameIds, weaponVariants] = await Promise.all([
+  const [armor, weapons, talismans, greatRunes, equipLoadTable, gameIds, weaponVariants] = await Promise.all([
     fetch("data/armor.json").then((r) => r.json()),
     fetch("data/weapons.json").then((r) => r.json()),
     fetch("data/talismans.json").then((r) => r.json()),
+    fetch("data/great-runes.json").then((r) => r.json()).catch(() => []),
     fetch("data/equip_load_table.json").then((r) => r.json()),
-    fetch("data/game_ids.json").then((r) => r.json()).catch(() => ({ weapons: {}, armor: {}, talismans: {} })),
+    fetch("data/game_ids.json").then((r) => r.json()).catch(() => ({ weapons: {}, armor: {}, talismans: {}, greatRunes: {} })),
     fetch("data/weapon_variants.json").then((r) => r.json()).catch(() => ({})),
   ]);
   ARMOR = armor;
   WEAPONS = weapons;
   TALISMANS = talismans;
+  GREAT_RUNES = greatRunes;
   EQUIP_LOAD_TABLE = equipLoadTable;
   GAME_IDS = gameIds;
   WEAPON_VARIANTS = weaponVariants;
@@ -256,6 +271,28 @@ function getStats() {
   };
 }
 
+function getEffectGear() {
+  return [...getSelectedTalismans(), ...getEquippedArmor()];
+}
+
+function getEffectiveStats() {
+  return applyEffectiveStats(getStats(), getEffectGear(), equippedGreatRune(), greatRuneActive);
+}
+
+function getCharacterStatus() {
+  const invested = getStats();
+  return computeCharacterStatus({
+    invested,
+    armor: getEquippedArmor(),
+    talismans: getSelectedTalismans(),
+    rune: equippedGreatRune(),
+    runeActive: greatRuneActive,
+    weapons: getEquippedWeapons(),
+    equipLoadTable: EQUIP_LOAD_TABLE,
+    level: Math.max(1, computeLevel(invested)),
+  });
+}
+
 function computeLevel(stats) {
   const sum = stats.vig + stats.mind + stats.end + stats.str + stats.dex + stats.int + stats.fai + stats.arc;
   return sum - 79;
@@ -263,11 +300,94 @@ function computeLevel(stats) {
 
 function updateDerivedCharacterInfo() {
   const stats = getStats();
+  const status = getCharacterStatus();
   document.getElementById("derived-level").textContent = Math.max(1, computeLevel(stats));
-  const baseLoad = baseEquipLoadForEndurance(stats.end, EQUIP_LOAD_TABLE);
-  document.getElementById("derived-base-load").textContent = baseLoad.toFixed(1);
+  document.getElementById("derived-base-load").textContent = status.loadBase.toFixed(1);
+  renderStatusPanel(status);
   updateLoadBudgetDisplay();
   updateEquipLoadReadout();
+}
+
+function statusChangedHtml(from, to, digits) {
+  const fmt = (n) => (digits == null ? String(Math.round(n)) : Number(n).toFixed(digits));
+  if (Math.abs(from - to) < 1e-6) return fmt(to);
+  const klass = to > from ? "status-boost" : "status-down";
+  return `<span class="status-base">${fmt(from)}</span> → <span class="${klass}">${fmt(to)}</span>`;
+}
+
+function renderStatusPanel(status) {
+  const attrEl = document.getElementById("status-attributes");
+  const bodyEl = document.getElementById("status-body");
+  const absEl = document.getElementById("status-absorption");
+  const resEl = document.getElementById("status-resistances");
+  const atkEl = document.getElementById("status-attack");
+  if (!attrEl || !status) return;
+
+  let attrHtml = "";
+  for (const key of STAT_KEYS) {
+    attrHtml += `<tr><th>${STAT_LABELS[key]}</th><td id="status-attr-${key}">${statusChangedHtml(status.invested[key], status.effective[key])}</td></tr>`;
+  }
+  attrEl.innerHTML = attrHtml;
+
+  const cls = status.loadClass;
+  bodyEl.innerHTML = `
+    <tr><th>HP</th><td id="status-hp">${statusChangedHtml(hpFromVigor(status.invested.vig), status.hp)}</td></tr>
+    <tr><th>FP</th><td id="status-fp">${statusChangedHtml(fpFromMind(status.invested.mind), status.fp)}</td></tr>
+    <tr><th>Stamina</th><td id="status-stamina">${statusChangedHtml(staminaFromEndurance(status.invested.end), status.stamina)}</td></tr>
+    <tr><th>Max Equip Load</th><td id="status-max-load">${statusChangedHtml(baseEquipLoadForEndurance(status.invested.end, EQUIP_LOAD_TABLE), status.maxLoad, 1)}</td></tr>
+    <tr><th>Current Load</th><td>${status.weight.toFixed(1)} / ${status.maxLoad.toFixed(1)} <span class="badge ${cls}">${(status.ratio * 100).toFixed(1)}% ${cls}</span></td></tr>
+    <tr><th>Poise</th><td id="status-poise">${status.poise.toFixed(1)}</td></tr>
+    <tr><th>Discovery</th><td id="status-discovery">${status.discovery}</td></tr>
+    <tr><th>Memory Slots</th><td id="status-memory">${status.memorySlots}</td></tr>`;
+
+  const absorbLabels = {
+    phy: "Physical",
+    strike: "VS Strike",
+    slash: "VS Slash",
+    pierce: "VS Pierce",
+    magic: "Magic",
+    fire: "Fire",
+    lightning: "Lightning",
+    holy: "Holy",
+  };
+  let absHtml = "";
+  for (const dt of DAMAGE_TYPES) {
+    absHtml += `<tr><th>${absorbLabels[dt]}</th><td>${statusChangedHtml(status.armorNeg[dt] || 0, status.absorption[dt] || 0, 1)}</td></tr>`;
+  }
+  absEl.innerHTML = absHtml;
+
+  resEl.innerHTML = `
+    <tr><th>Immunity</th><td id="status-immunity">${status.resistances.immunity}</td></tr>
+    <tr><th>Robustness</th><td id="status-robustness">${status.resistances.robustness}</td></tr>
+    <tr><th>Focus</th><td id="status-focus">${status.resistances.focus}</td></tr>
+    <tr><th>Vitality</th><td id="status-vitality">${status.resistances.vitality}</td></tr>`;
+
+  const twoHanding = !!(document.getElementById("weapon-two-hand") && document.getElementById("weapon-two-hand").checked);
+  const rows = [];
+  for (const slot of WEAPON_SLOTS) {
+    const weapon = itemForSlot(slot);
+    if (!weapon) continue;
+    const req = checkRequirements(weapon, status.effective, twoHanding);
+    const atk = weapon.attack || {};
+    const bits = [];
+    if (atk.phy) bits.push(`${atk.phy} Phy`);
+    if (atk.magic) bits.push(`${atk.magic} Mag`);
+    if (atk.fire) bits.push(`${atk.fire} Fire`);
+    if (atk.lightning) bits.push(`${atk.lightning} Ltng`);
+    if (atk.holy) bits.push(`${atk.holy} Holy`);
+    const wield = req.met ? "Yes" : "No";
+    rows.push(`<tr>
+      <td>${SLOT_LABELS[slot]}</td>
+      <td>${iconHtml(weapon, "result-icon")} ${escapeHtml(armorDisplayName(weapon, slot))}</td>
+      <td>${bits.length ? bits.join(" / ") : "—"}</td>
+      <td>${wield}</td>
+    </tr>`);
+  }
+  if (rows.length) {
+    atkEl.innerHTML = `<table class="result-table"><thead><tr><th>Slot</th><th>Weapon</th><th>Reference AR</th><th>Wieldable</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
+  } else {
+    atkEl.innerHTML = `<p class="status-empty">No weapons equipped. Reference AR and wield checks appear here when you fill a hand slot.</p>`;
+  }
 }
 
 function sourceEnabled(source) {
@@ -416,6 +536,8 @@ function saveState() {
   const payload = {
     slots: EQUIPMENT,
     talismanSlotCount,
+    greatRune: greatRuneId,
+    greatRuneActive,
     stats: getStats(),
     loadRatio,
     goal: document.querySelector('input[name="goal"]:checked')?.value,
@@ -467,6 +589,10 @@ function loadSavedState() {
     const sel = document.getElementById("talisman-slot-count");
     if (sel) sel.value = String(talismanSlotCount);
   }
+  if (data.greatRune && GREAT_RUNES_BY_ID.has(data.greatRune)) {
+    greatRuneId = data.greatRune;
+  }
+  if (typeof data.greatRuneActive === "boolean") greatRuneActive = data.greatRuneActive;
   if (data.slots) {
     for (const slot of ALL_SLOTS) {
       const saved = data.slots[slot];
@@ -557,6 +683,15 @@ function loadSavedState() {
 }
 
 function setSlotItem(slot, id, meta) {
+  if (slot === "rune") {
+    greatRuneId = id || null;
+    if (!greatRuneId) greatRuneActive = false;
+    saveEquipment();
+    renderEquipment();
+    updateDerivedCharacterInfo();
+    renderWeaponResults();
+    return;
+  }
   if (slotKind(slot) === "talisman" && id) {
     for (const other of activeTalismanSlots()) {
       if (other !== slot && EQUIPMENT[other].id === id) {
@@ -572,6 +707,7 @@ function setSlotItem(slot, id, meta) {
   saveEquipment();
   renderEquipment();
   updateDerivedCharacterInfo();
+  renderWeaponResults();
 }
 
 function toggleLock(slot) {
@@ -601,16 +737,39 @@ function renderSlot(slot, inactive) {
   </div>`;
 }
 
+function renderGreatRuneSlot() {
+  const item = equippedGreatRune();
+  const active = !!(item && greatRuneActive);
+  const classes = [
+    "equip-slot",
+    "great-rune-slot",
+    item ? "filled" : "",
+    active ? "locked" : "",
+  ].filter(Boolean).join(" ");
+  const name = item ? escapeHtml(item.name) : "Empty";
+  const effect = item ? escapeHtml(item.effect || "") : "";
+  const activeLabel = active ? "Active" : "Off";
+  return `<div class="${classes}" data-slot="rune" role="button" tabindex="0" aria-label="Great Rune${item ? ": " + escapeHtml(item.name) : ""}">
+    <button type="button" class="lock-btn active-btn" data-rune-active="1" ${item ? "" : "disabled"} title="${item ? "Toggle Rune Arc (active blessing)" : "Equip a Great Rune first"}" aria-pressed="${active}" aria-label="${active ? "Rune Arc on" : "Rune Arc off"}">${activeLabel}</button>
+    <span class="slot-label">Great Rune</span>
+    ${iconHtml(item)}
+    <span class="slot-name">${name}</span>
+    <span class="slot-effect">${effect}</span>
+  </div>`;
+}
+
 function renderEquipment() {
   const left = document.getElementById("equip-weapons-left");
   const armor = document.getElementById("equip-armor");
   const right = document.getElementById("equip-weapons-right");
   const tals = document.getElementById("equip-talismans");
+  const rune = document.getElementById("equip-great-rune");
   if (!left) return;
   left.innerHTML = WEAPON_SLOTS_LEFT.map((s) => renderSlot(s, false)).join("");
   armor.innerHTML = ARMOR_SLOTS.map((s) => renderSlot(s, false)).join("");
   right.innerHTML = WEAPON_SLOTS_RIGHT.map((s) => renderSlot(s, false)).join("");
   tals.innerHTML = TALISMAN_SLOTS.map((s) => renderSlot(s, !isTalismanSlotActive(s))).join("");
+  if (rune) rune.innerHTML = renderGreatRuneSlot();
   updateEquipLoadReadout();
 }
 
@@ -634,6 +793,9 @@ function pickerCandidates(slot) {
     return WEAPONS.filter((w) => isIncluded(w, "weapons"))
       .filter((w) => !q || w.name.toLowerCase().includes(q) || (w.category || "").toLowerCase().includes(q));
   }
+  if (kind === "rune") {
+    return GREAT_RUNES.filter((r) => !q || r.name.toLowerCase().includes(q) || (r.effect || "").toLowerCase().includes(q));
+  }
   return TALISMANS.filter((t) => isIncluded(t, "talismans"))
     .filter((t) => !q || t.name.toLowerCase().includes(q) || (t.effect || "").toLowerCase().includes(q));
 }
@@ -642,8 +804,9 @@ function renderPickerList() {
   if (!pickerSlot) return;
   const list = document.getElementById("picker-list");
   const items = pickerCandidates(pickerSlot).slice(0, 250);
-  const currentId = EQUIPMENT[pickerSlot].id;
+  const currentId = pickerSlot === "rune" ? greatRuneId : EQUIPMENT[pickerSlot].id;
   list.innerHTML = "";
+  const kind = slotKind(pickerSlot);
   for (const it of items) {
     const div = document.createElement("div");
     div.className = "pick-item picker-item" + (it.id === currentId ? " selected" : "");
@@ -651,10 +814,11 @@ function renderPickerList() {
     div.setAttribute("role", "button");
     div.tabIndex = 0;
     div.setAttribute("aria-label", it.name);
-    const extra = slotKind(pickerSlot) === "talisman"
+    const extra = (kind === "talisman" || kind === "rune")
       ? `<span class="eff">${escapeHtml(it.effect || "")}</span>`
       : `<span class="eff">${it.weight} wt${it.category ? " · " + escapeHtml(it.category) : ""}</span>`;
-    div.innerHTML = `${iconHtml(it)}<span>${escapeHtml(armorDisplayName(it))}${sourceTagHtml(it.source)} (${it.weight})</span>${extra}`;
+    const weightBit = kind === "rune" ? "" : ` (${it.weight})`;
+    div.innerHTML = `${iconHtml(it)}<span>${escapeHtml(armorDisplayName(it))}${sourceTagHtml(it.source)}${weightBit}</span>${extra}`;
     div.addEventListener("click", () => {
       setSlotItem(pickerSlot, it.id, defaultMetaForPicker(it.id));
       closePicker();
@@ -689,6 +853,8 @@ function unequipAll() {
     EQUIPMENT[slot].affinity = 0;
     EQUIPMENT[slot].upgrade = 0;
   }
+  greatRuneId = null;
+  greatRuneActive = false;
   saveEquipment();
   renderEquipment();
   updateDerivedCharacterInfo();
@@ -698,8 +864,10 @@ function unequipAll() {
 function setupEquipmentBoard() {
   document.getElementById("equip-board").addEventListener("click", onEquipClick);
   document.getElementById("equip-talismans").addEventListener("click", onEquipClick);
+  document.getElementById("equip-great-rune").addEventListener("click", onEquipClick);
   document.getElementById("equip-board").addEventListener("keydown", onEquipKey);
   document.getElementById("equip-talismans").addEventListener("keydown", onEquipKey);
+  document.getElementById("equip-great-rune").addEventListener("keydown", onEquipKey);
 
   document.getElementById("talisman-slot-count").addEventListener("change", (e) => {
     const n = parseInt(e.target.value, 10);
@@ -737,6 +905,18 @@ function setupEquipmentBoard() {
 }
 
 function onEquipClick(e) {
+  const activeBtn = e.target.closest("[data-rune-active]");
+  if (activeBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!equippedGreatRune() || activeBtn.disabled) return;
+    greatRuneActive = !greatRuneActive;
+    saveEquipment();
+    renderEquipment();
+    updateDerivedCharacterInfo();
+    renderWeaponResults();
+    return;
+  }
   const lockBtn = e.target.closest("[data-lock]");
   if (lockBtn) {
     e.preventDefault();
@@ -813,11 +993,14 @@ function optimizeArmorForLoad(pool, objective, requiredSlots) {
 }
 
 function getLoadBudget() {
-  const stats = getStats();
+  const stats = getEffectiveStats();
   const talismans = getSelectedTalismans();
   const weapons = getEquippedWeapons();
   const armor = getEquippedArmor();
-  const maxLoad = computeMaxEquipLoad(stats.end, talismans, EQUIP_LOAD_TABLE);
+  const loadItems = [...talismans, ...armor];
+  const rune = equippedGreatRune();
+  if (rune && greatRuneActive) loadItems.push(rune);
+  const maxLoad = computeMaxEquipLoad(stats.end, loadItems, EQUIP_LOAD_TABLE);
   const ratio = loadRatio;
   const talismanWeight = totalWeight(talismans);
   const weaponWeight = totalWeight(weapons);
@@ -1135,7 +1318,7 @@ function scoreTalismanSuggestion(t, objective, preferEquipLoad) {
 }
 
 function renderSuggestions(resultsEl, objective, ctx) {
-  const stats = getStats();
+  const stats = getEffectiveStats();
   const twoHanding = document.getElementById("weapon-two-hand").checked;
   const onlyMeetable = document.getElementById("weapon-only-meetable").checked;
   const rows = [];
@@ -1246,7 +1429,7 @@ function populateWeaponCategories() {
 }
 
 function renderWeaponResults() {
-  const stats = getStats();
+  const stats = getEffectiveStats();
   const twoHanding = document.getElementById("weapon-two-hand").checked;
   const onlyMeetable = document.getElementById("weapon-only-meetable").checked;
   const category = document.getElementById("weapon-category").value || null;
@@ -1603,10 +1786,11 @@ function itemFitsImportedSlot(slot, id) {
     return !!(it && it.slot === slot);
   }
   if (kind === "weapon") return WEAPONS_BY_ID.has(id);
+  if (kind === "rune") return GREAT_RUNES_BY_ID.has(id);
   return TALISMANS_BY_ID.has(id);
 }
 
-function applySaveEquipped(equipped) {
+function applySaveEquipped(equipped, extra) {
   const { slots, filled, skipped } = ER_SAVE.mapEquipped(equipped, GAME_IDS);
   let neededPouches = talismanSlotCount;
   TALISMAN_SLOTS.forEach((slot, i) => {
@@ -1633,6 +1817,10 @@ function applySaveEquipped(equipped) {
     EQUIPMENT[slot].upgrade = (id && rec && rec.upgrade) || 0;
     if (id) applied++;
   }
+  const runeRec = slots.rune;
+  greatRuneId = runeRec && runeRec.id && GREAT_RUNES_BY_ID.has(runeRec.id) ? runeRec.id : null;
+  greatRuneActive = !!(greatRuneId && extra && extra.greatRuneOn);
+  if (greatRuneId) applied++;
   saveState();
   renderEquipment();
   updateDerivedCharacterInfo();
@@ -1670,7 +1858,9 @@ function applySaveCharacter(character, opts) {
     parts.push(`RL ${character.level} stats`);
   }
   if (opts.equipped) {
-    const result = applySaveEquipped(character.equipped);
+    const result = applySaveEquipped(character.equipped, {
+      greatRuneOn: !!(character.stats && character.stats.greatRuneOn),
+    });
     const extra = result.lockedSkip ? `, left ${result.lockedSkip} locked` : "";
     parts.push(`${result.applied} equipped items${extra}`);
   }
@@ -1811,6 +2001,7 @@ async function init() {
     document.getElementById(id).addEventListener("change", () => {
       saveState();
       renderWeaponResults();
+      updateDerivedCharacterInfo();
     });
   });
 

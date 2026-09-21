@@ -4235,5 +4235,19 @@
   "8220": "rellana-s-cameo",
   "8230": "blade-of-mercy",
   "8240": "talisman-of-all-crucibles"
+ },
+ "greatRunes": {
+  "191": "godrick-s-great-rune",
+  "8148": "godrick-s-great-rune",
+  "192": "radahn-s-great-rune",
+  "8149": "radahn-s-great-rune",
+  "193": "morgott-s-great-rune",
+  "8150": "morgott-s-great-rune",
+  "194": "rykard-s-great-rune",
+  "8151": "rykard-s-great-rune",
+  "195": "mohg-s-great-rune",
+  "8152": "mohg-s-great-rune",
+  "196": "malenia-s-great-rune",
+  "8153": "malenia-s-great-rune"
  }
 }

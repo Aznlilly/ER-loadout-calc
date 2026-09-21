@@ -49,6 +49,12 @@ def main() -> None:
     assert game_ids["weapons"]["67530000"] == "idus-sword"
     assert game_ids["talismans"]["1000"] == "crimson-amber-medallion"
     assert game_ids["talismans"]["6110"] == "ancestral-spirit-s-horn"
+    assert game_ids["greatRunes"]["191"] == "godrick-s-great-rune"
+    assert game_ids["greatRunes"]["8148"] == "godrick-s-great-rune"
+    assert game_ids["greatRunes"]["8150"] == "morgott-s-great-rune"
+    runes = json.loads((ROOT / "data" / "great-runes.json").read_text(encoding="utf-8"))
+    assert len(runes) == 6
+    assert all(r.get("icon") for r in runes)
 
     weapons = json.loads((ROOT / "data" / "weapons.json").read_text(encoding="utf-8"))
     armor = json.loads((ROOT / "data" / "armor.json").read_text(encoding="utf-8"))

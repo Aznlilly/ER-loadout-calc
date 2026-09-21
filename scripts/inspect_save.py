@@ -11,8 +11,11 @@ STRIDE = 0x280010
 HANDLE_WEAPON = 0x80000000
 HANDLE_ARMOR = 0x90000000
 HANDLE_ACCESSORY = 0xA0000000
+HANDLE_GOODS = 0xB0000000
 ITEM_ARMOR = 0x10000000
 ITEM_ACCESSORY = 0x20000000
+ITEM_GOODS = 0x40000000
+GREAT_RUNE_IDS = {191, 192, 193, 194, 195, 196, 8148, 8149, 8150, 8151, 8152, 8153}
 HELD_COMMON, HELD_KEY = 0xA80, 0x180
 CHEST_COMMON, CHEST_KEY = 0x780, 0x80
 EQUIPPED_OFFSETS = [
@@ -26,6 +29,7 @@ EQUIPPED_OFFSETS = [
     ("chest", 0x34),
     ("gauntlets", 0x38),
     ("legs", 0x3C),
+    ("rune", 0x40),
     ("tal1", 0x44),
     ("tal2", 0x48),
     ("tal3", 0x4C),
@@ -76,6 +80,10 @@ def decode_item(handle: int, item_id: int) -> tuple[str, int] | None:
     if kind == HANDLE_ACCESSORY:
         raw = item_id if not (item_id & ITEM_ACCESSORY) else item_id ^ ITEM_ACCESSORY
         return "talismans", raw or (handle ^ HANDLE_ACCESSORY)
+    if kind == HANDLE_GOODS:
+        raw = decode_goods_id(item_id) or (handle ^ HANDLE_GOODS)
+        if raw in GREAT_RUNE_IDS:
+            return "greatRunes", raw
     return None
 
 
@@ -86,7 +94,7 @@ def collect(buf: bytes, data_off: int, mode: str):
     count = 5120 if version > 81 else 5118
     off = data_off + 0x20
     handles = {}
-    owned = {"weapons": [], "armor": [], "talismans": []}
+    owned = {"weapons": [], "armor": [], "talismans": [], "greatRunes": []}
     for _ in range(count):
         handle = u32(buf, off)
         item_id = u32(buf, off + 4)
@@ -112,6 +120,7 @@ def collect(buf: bytes, data_off: int, mode: str):
         "level": u32(buf, off + 0x60),
         "talismanExtra": buf[off + 0xBE],
         "gender": buf[off + 0xB6],
+        "greatRuneOn": buf[off + 0xF7] != 0,
     }
     return {"version": version, "owned": owned, "handles": handles, "name": name, "stats": stats, "pgd": off}
 
@@ -121,6 +130,31 @@ def take_inv_item(handle, handles, items):
         items.append(handles[handle])
     elif (handle & 0xF0000000) == HANDLE_ACCESSORY:
         items.append(("talismans", handle ^ HANDLE_ACCESSORY))
+
+
+def decode_goods_id(item_id: int) -> int:
+    iid = item_id & 0xFFFFFFFF
+    if iid in (0, 0xFFFFFFFF):
+        return 0
+    if iid & ITEM_GOODS:
+        return iid ^ ITEM_GOODS
+    return iid
+
+
+def decode_great_rune(handle, item_id, handles):
+    h = handle & 0xFFFFFFFF
+    iid = item_id & 0xFFFFFFFF
+    if h in (0, 0xFFFFFFFF) and iid in (0, 0xFFFFFFFF):
+        return None
+    rec = handles.get(h)
+    if rec and rec[0] == "greatRunes":
+        return rec
+    goods = decode_goods_id(iid)
+    if not goods and (h & 0xF0000000) == HANDLE_GOODS:
+        goods = h ^ HANDLE_GOODS
+    if goods in GREAT_RUNE_IDS:
+        return ("greatRunes", goods)
+    return None
 
 
 def resolve_equipped(handle, item_id, handles):
@@ -146,7 +180,12 @@ def read_equipped(buf: bytes, pgd: int, handles: dict):
     hs = ids + 0x58
     out = {}
     for name, off in EQUIPPED_OFFSETS:
-        out[name] = resolve_equipped(u32(buf, hs + off), u32(buf, ids + off), handles)
+        hid = u32(buf, hs + off)
+        iid = u32(buf, ids + off)
+        if name == "rune":
+            out[name] = decode_great_rune(hid, iid, handles)
+        else:
+            out[name] = resolve_equipped(hid, iid, handles)
     return out
 
 

@@ -63,6 +63,9 @@ assert(gameIds.armor["5350000"] === "helm-silver-grooved-helm", "silver grooved 
 assert(gameIds.weapons["31540000"] === "silver-grooved-shield", "silver grooved shield id");
 assert(gameIds.weapons["1060100"] === "celebrant-s-sickle", "infix affinity sickle");
 assert(gameIds.talismans["1000"] === "crimson-amber-medallion", "crimson amber id");
+assert(gameIds.greatRunes["191"] === "godrick-s-great-rune", "godrick restored id");
+assert(gameIds.greatRunes["8148"] === "godrick-s-great-rune", "godrick unrestored id");
+assert(gameIds.greatRunes["8150"] === "morgott-s-great-rune", "morgott goods id is not the sharpshot talisman");
 
 const mapped = ER_SAVE.mapOwned({
   weapons: [2000010, 99999999],
@@ -103,8 +106,20 @@ assert(mapped.instances.longsword[0].affinity === 0, "owned longsword standard")
   assert(eq.slots.tal1 && eq.slots.tal1.id === "crimson-amber-medallion", "map equipped medallion");
   assert(eq.slots.r2 === null, "unknown equipped weapon becomes empty");
   assert(eq.slots.l1 === null, "empty equipped slot stays empty");
+  assert(eq.slots.rune === null, "missing great rune stays empty");
   assert(eq.filled === 4, `expected 4 filled, got ${eq.filled}`);
   assert(eq.skipped === 1, `expected 1 skipped, got ${eq.skipped}`);
+}
+
+{
+  const godrick = ER_SAVE.mapEquipped({
+    rune: { type: "greatRunes", id: 191 },
+  }, gameIds);
+  assert(godrick.slots.rune && godrick.slots.rune.id === "godrick-s-great-rune", "map restored Godrick great rune");
+  const unrestored = ER_SAVE.mapEquipped({
+    rune: { type: "greatRunes", id: 8148 },
+  }, gameIds);
+  assert(unrestored.slots.rune && unrestored.slots.rune.id === "godrick-s-great-rune", "map unrestored Godrick great rune id");
 }
 
 // Mini slot: version 1, one weapon, remaining empty gaitems, then PlayerGameData name/level.
@@ -128,6 +143,7 @@ assert(mapped.instances.longsword[0].affinity === 0, "owned longsword standard")
   assert(parsed && parsed.name === "TestHero", `name ${parsed && parsed.name}`);
   assert(parsed.stats && parsed.stats.level === 12, `level ${parsed && parsed.stats && parsed.stats.level}`);
   assert(parsed.stats.gender === "female", `default gender ${parsed.stats.gender}`);
+  assert(parsed.stats.greatRuneOn === false, "default great rune off");
   view.setUint8(off + 0xB6, 1);
   const male = ER_SAVE.parseGaItems(view, 0);
   assert(male && male.stats.gender === "male", `male gender ${male && male.stats && male.stats.gender}`);

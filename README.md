@@ -1,6 +1,6 @@
 # Elden Ring Loadout Optimizer
 
-A fan-made calculator for Elden Ring. Enter your stats, equip what you already want to keep, and it will fill the remaining armor slots for a goal you pick — most poise, most defense, a damage type, a resistance, or the lightest set that still hits a target. It also ranks weapons and shields against your stats.
+A fan-made calculator for Elden Ring. Load a save or enter your stats, equip what you already want to keep, and it will fill the remaining armor slots for a goal you pick — most poise, most defense, a damage type, a resistance, or the lightest set that still hits a target. It also ranks weapons and shields against your stats.
 
 Covers the base game, Shadow of the Erdtree, and the Tarnished Pack / Tarnished Edition extras. That extra gear is normal obtainable equipment if you own the pack, not cut or hidden content.
 
@@ -18,11 +18,11 @@ To run this repo locally (for development), you still need a tiny server so the 
 
 ## What you can do
 
-- Type your eight stats. Level and max equip load update from that, including extra load from talismans like Erdtree's Favor or Great-Jar's Arsenal.
+- Import a character from your Elden Ring save first if you have one. That only *reads* the file in your browser — it is never uploaded and never written back. On Windows, the saves live under `%APPDATA%\EldenRing`. Paste that into the file picker’s address bar, open your Steam ID folder, and choose `ER0000.sl2` (or `ER0000.co2` for a Seamless Co-op save).
+- Type or adjust your eight stats. Level, HP, FP, stamina, and max equip load update from that, including talismans like Erdtree's Favor or Great-Jar's Arsenal.
 - Click a slot to equip armor, weapons, shields, or talismans. Lock a slot if you do not want the optimizer to change it.
 - Set a weight cap with Light / Medium / Heavy (the same roll thresholds as the game) or a custom slider.
 - Turn sources and map regions on or off, or exclude individual items, so the optimizer only uses gear you actually have access to.
-- Import a character from your Elden Ring save. That only *reads* the file in your browser — it is never uploaded and never written back. On Windows, the saves live under `%APPDATA%\EldenRing`. Paste that into the file picker’s address bar, open your Steam ID folder, and choose `ER0000.sl2` (or `ER0000.co2` for a Seamless Co-op save).
 
 Weapon recommendations use each weapon's scaling against your stats. Turn on affinities to rank Heavy / Keen / Occult / … from the game files; if you imported a save, only infusions you own are used, and upgrade levels come from that save. Attack numbers in the table are still wiki reference values at a high, fixed stat investment, not live Attack Rating for *your* stats and upgrade. Use the ranking as a guide for which weapons your spread actually pays off.
 

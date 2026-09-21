@@ -30,7 +30,16 @@ with sync_playwright() as p:
     load_save = page.locator("#load-save-btn")
     print("Load Save button:", load_save.count())
     if load_save.count() != 1:
-        raise SystemExit("item pool should have a Load Save button")
+        raise SystemExit("Load Save should be in its own section near the top")
+    section_order = page.evaluate("""() => Array.from(document.querySelectorAll("main > section.panel")).map(s => s.id)""")
+    print("Section order:", section_order)
+    expected = ["panel-save", "panel-character", "panel-equipment", "panel-status", "panel-item-pool", "panel-goal", "panel-results", "panel-weapons"]
+    if section_order != expected:
+        raise SystemExit(f"unexpected section order: {section_order}")
+    if page.locator("#panel-save #load-save-btn").count() != 1:
+        raise SystemExit("Load Save button should live in the top Load Save section")
+    if page.locator("#panel-item-pool #load-save-btn").count() != 0:
+        raise SystemExit("Load Save should not still be inside Item Pool")
     hint = page.inner_text(".save-import-hint")
     if "ER0000.sl2" not in hint or "ER0000.co2" not in hint:
         raise SystemExit("save import hint should mention .sl2 and Seamless .co2")
@@ -51,6 +60,49 @@ with sync_playwright() as p:
     print("Game ID table loaded:", ids_ok)
     if not ids_ok:
         raise SystemExit("game_ids.json should map Longsword")
+    runes_ok = page.evaluate(
+        """() => GREAT_RUNES && GREAT_RUNES.length === 6 && GREAT_RUNES_BY_ID.get("godrick-s-great-rune")"""
+    )
+    print("Great Runes loaded:", bool(runes_ok))
+    if not runes_ok:
+        raise SystemExit("great-runes.json should load six Great Runes including Godrick's")
+    if page.locator('[data-slot="rune"]').count() != 1:
+        raise SystemExit("equipment board should have a Great Rune slot")
+    bonus_ok = page.evaluate(
+        """() => {
+      const expected = {
+        "radagon-s-scarseal": { vig: 3, end: 3, str: 3, dex: 3 },
+        "radagon-s-soreseal": { vig: 5, end: 5, str: 5, dex: 5 },
+        "marika-s-scarseal": { mind: 3, int: 3, fai: 3, arc: 3 },
+        "marika-s-soreseal": { mind: 5, int: 5, fai: 5, arc: 5 },
+        "starscourge-heirloom": { str: 5 },
+        "prosthesis-wearer-heirloom": { dex: 5 },
+        "stargazer-heirloom": { int: 5 },
+        "two-fingers-heirloom": { fai: 5 },
+        "outer-god-heirloom": { arc: 5 },
+        "millicent-s-prosthesis": { dex: 5 },
+      };
+      const keys = ["vig", "mind", "end", "str", "dex", "int", "fai", "arc"];
+      for (const t of TALISMANS) {
+        const got = parseAttributeBonuses(t.effect);
+        const want = expected[t.id] || {};
+        for (const k of keys) {
+          if ((got[k] || 0) !== (want[k] || 0)) return `${t.id} ${k}=${got[k]}`;
+        }
+      }
+      const stacked = applyEffectiveStats(
+        { vig: 10, mind: 10, end: 10, str: 10, dex: 10, int: 10, fai: 10, arc: 10 },
+        [TALISMANS.find((t) => t.id === "radagon-s-soreseal")],
+        GREAT_RUNES_BY_ID.get("godrick-s-great-rune"),
+        true
+      );
+      if (stacked.end !== 20 || stacked.mind !== 15) return "stack";
+      return "ok";
+    }"""
+    )
+    print("Attribute bonus parser:", bonus_ok)
+    if bonus_ok != "ok":
+        raise SystemExit(f"talisman/rune attribute bonuses failed: {bonus_ok}")
     variants_ok = page.evaluate(
         """() => WEAPON_VARIANTS && WEAPON_VARIANTS.longsword && WEAPON_VARIANTS.longsword['100']"""
     )
@@ -120,6 +172,88 @@ with sync_playwright() as p:
         raise SystemExit("stats should persist across reloads")
     page.fill("#stat-str", "10")
     page.wait_for_timeout(100)
+
+    page.click('[data-slot="rune"]')
+    page.wait_for_timeout(200)
+    page.fill("#picker-search", "godrick")
+    page.wait_for_timeout(200)
+    page.click("#picker-list .pick-item")
+    page.wait_for_timeout(200)
+    rune_name = page.text_content('[data-slot="rune"] .slot-name')
+    print("Equipped Great Rune:", rune_name)
+    if "Godrick" not in (rune_name or ""):
+        raise SystemExit("should be able to equip Godrick's Great Rune")
+    load_off = float(page.text_content("#derived-base-load"))
+    page.click("[data-rune-active]")
+    page.wait_for_timeout(200)
+    load_on = float(page.text_content("#derived-base-load"))
+    end_txt = page.inner_text("#status-attr-end")
+    hp_on = page.inner_text("#status-hp")
+    pressed = page.get_attribute("[data-rune-active]", "aria-pressed")
+    print("Load with Godrick off/on:", load_off, load_on, "pressed", pressed, "END", end_txt)
+    if pressed != "true":
+        raise SystemExit("Rune Arc toggle should become active")
+    if load_on <= load_off:
+        raise SystemExit("active Godrick's Great Rune should raise endurance-based max load")
+    if "15" not in end_txt:
+        raise SystemExit("active Godrick's should show effective endurance 15")
+    if "→" not in hp_on:
+        raise SystemExit("active Godrick's should raise HP above the invested-vigor base")
+    rune_import = page.evaluate(
+        """() => {
+      applySaveCharacter({
+        name: "RuneImporter",
+        level: 12,
+        stats: { greatRuneOn: true },
+        equipped: { rune: { type: "greatRunes", id: 191 } },
+      }, { equipped: true });
+      return { id: greatRuneId, active: greatRuneActive };
+    }"""
+    )
+    print("Imported Great Rune:", rune_import)
+    if rune_import["id"] != "godrick-s-great-rune" or not rune_import["active"]:
+        raise SystemExit("equipped import should set Godrick's Great Rune and Rune Arc active")
+    page.evaluate(
+        """() => {
+      greatRuneId = null;
+      greatRuneActive = false;
+      saveState();
+      renderEquipment();
+      updateDerivedCharacterInfo();
+    }"""
+    )
+
+    load_plain = float(page.text_content("#derived-base-load"))
+    soreseal_load = page.evaluate(
+        """() => {
+      setSlotItem("tal1", "radagon-s-soreseal");
+      return document.getElementById("derived-base-load").textContent;
+    }"""
+    )
+    soreseal_end = page.inner_text("#status-attr-end")
+    soreseal_mind = page.inner_text("#status-attr-mind")
+    print("Load with Radagon's Soreseal:", load_plain, soreseal_load)
+    if float(soreseal_load) <= load_plain:
+        raise SystemExit("Radagon's Soreseal should raise endurance-based max load")
+    if "15" not in soreseal_end:
+        raise SystemExit("Radagon's Soreseal should show effective endurance 15")
+    if "→" in soreseal_mind:
+        raise SystemExit("Radagon's Soreseal should not boost mind")
+    wield = page.evaluate(
+        """() => {
+      const mace = WEAPONS.find((w) => w.id === "mace");
+      const before = checkRequirements(mace, getStats(), false);
+      setSlotItem("tal1", "starscourge-heirloom");
+      const after = checkRequirements(mace, getEffectiveStats(), false);
+      const str = getEffectiveStats().str;
+      setSlotItem("tal1", null);
+      return { beforeMet: before.met, afterMet: after.met, str };
+    }"""
+    )
+    print("Mace wield with Starscourge Heirloom:", wield)
+    if wield["beforeMet"] or not wield["afterMet"] or wield["str"] != 15:
+        raise SystemExit("Starscourge Heirloom should let STR 10 meet Mace's 12 STR")
+    page.evaluate("() => { setSlotItem('tal1', null); }")
 
     heavy_rank = page.evaluate(
         """() => {
