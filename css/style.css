@@ -486,6 +486,32 @@ a.wiki-link:hover { text-decoration: underline; }
   align-items: center;
 }
 
+.equip-slot-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#equip-weapons-left .equip-slot-wrap { flex-direction: row; }
+#equip-weapons-right .equip-slot-wrap { flex-direction: row-reverse; }
+
+.slot-weapon-mods {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 104px;
+}
+.slot-weapon-mods-empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+.slot-weapon-mods select {
+  width: 100%;
+  font-size: 0.72rem;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
 .equip-slot {
   width: 108px;
   min-height: 118px;
@@ -681,6 +707,11 @@ a.wiki-link:hover { text-decoration: underline; }
 @media (max-width: 720px) {
   .equip-board { grid-template-columns: 1fr; }
   .equip-col { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .equip-slot-wrap,
+  #equip-weapons-left .equip-slot-wrap,
+  #equip-weapons-right .equip-slot-wrap {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {

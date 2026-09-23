@@ -349,10 +349,40 @@ with sync_playwright() as p:
     page.wait_for_timeout(200)
     page.fill("#picker-search", "dagger")
     page.wait_for_timeout(200)
-    page.locator("#picker-list .pick-item").first.click()
+    page.click('#picker-list [data-item-id="dagger"]')
     page.wait_for_timeout(200)
     r1_before = page.text_content('[data-slot="r1"] .slot-name')
     print("Equipped R1:", r1_before)
+    r1_aff = page.input_value('[data-weapon-affinity="r1"]')
+    r1_up = page.input_value('[data-weapon-upgrade="r1"]')
+    print("R1 default infusion/upgrade:", r1_aff, r1_up)
+    if r1_aff != "0" or r1_up != "0":
+        raise SystemExit("new weapon should default to Standard +0")
+    aff_options = page.eval_on_selector_all(
+        '[data-weapon-affinity="r1"] option', "els => els.map(e => e.value)"
+    )
+    if "0" not in aff_options or "1200" not in aff_options:
+        raise SystemExit("infusable weapon should offer Standard and Occult")
+    page.select_option('[data-weapon-affinity="r1"]', "1200")
+    page.select_option('[data-weapon-upgrade="r1"]', "15")
+    page.wait_for_timeout(150)
+    r1_before = page.text_content('[data-slot="r1"] .slot-name')
+    print("R1 after Occult +15:", r1_before)
+    if "Occult" not in (r1_before or "") or "+15" not in (r1_before or ""):
+        raise SystemExit("R1 name should show Occult and +15")
+    phy_atk = page.inner_text("#status-atk-phy")
+    phy_html = page.inner_html("#status-atk-phy")
+    print("Status physical attack:", phy_atk)
+    if "181" not in (phy_atk or ""):
+        raise SystemExit("Attack column should total Dagger physical reference AR")
+    if "Dagger" not in phy_html:
+        raise SystemExit("physical attack tooltip should list the equipped Dagger")
+    page.reload(wait_until="networkidle")
+    page.wait_for_timeout(400)
+    if page.input_value('[data-weapon-affinity="r1"]') != "1200":
+        raise SystemExit("weapon affinity should persist across reloads")
+    if page.input_value('[data-weapon-upgrade="r1"]') != "15":
+        raise SystemExit("weapon upgrade should persist across reloads")
     page.click('[data-lock="r1"]')
     page.wait_for_timeout(150)
 
@@ -366,6 +396,25 @@ with sync_playwright() as p:
     print("Equipped L1:", l1_name)
     if "Beast Crest Heater" not in (l1_name or ""):
         raise SystemExit("expected Beast Crest Heater Shield in L1")
+    phy_after_l1 = page.inner_text("#status-atk-phy")
+    atk_heading = page.inner_text("#status-attack-heading")
+    phy_left = page.inner_text("#status-atk-left-phy")
+    left_html = page.inner_html("#status-atk-left-phy")
+    left_heading = page.inner_text("#status-attack-left-heading")
+    print("Status physical after L1:", phy_after_l1, atk_heading)
+    print("Status left physical after L1:", phy_left, left_heading)
+    if "281" in (phy_after_l1 or ""):
+        raise SystemExit("Attack Power must not sum R1 Dagger and L1 shield")
+    if "181" not in (phy_after_l1 or ""):
+        raise SystemExit("Attack Power should stay R1 Dagger after L1 shield")
+    if "R1" not in (atk_heading or ""):
+        raise SystemExit("Attack heading should name the R1 slot")
+    if "100" not in (phy_left or ""):
+        raise SystemExit("left-hand Attack should show Beast Crest Heater Shield physical AR")
+    if "Beast Crest" not in (left_html or ""):
+        raise SystemExit("left-hand physical tooltip should list the shield")
+    if "L1" not in (left_heading or ""):
+        raise SystemExit("left Attack heading should name the L1 slot")
     page.click('[data-slot="r2"]')
     page.wait_for_timeout(200)
     page.fill("#picker-search", "Beast Crest Heater Shield")

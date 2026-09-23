@@ -51,6 +51,36 @@ function variantDisplayName(weapon, affinityCode, upgrade, includeUpgrades) {
   return name;
 }
 
+function affinityCodesForWeapon(weapon, variants) {
+  const table = (weapon && variants && variants[weapon.id]) || {};
+  const codes = Object.keys(table)
+    .map((k) => Number(k))
+    .filter((n) => AFFINITY_LABELS[n] != null)
+    .sort((a, b) => a - b);
+  if (!codes.includes(0)) codes.unshift(0);
+  return codes.length ? codes : [0];
+}
+
+function maxUpgradeForWeapon(weapon, variants) {
+  if (!weapon) return 0;
+  const mat = String(weapon.upgradeMaterial || "").trim();
+  if (mat === "-" || mat === "—") return 0;
+  if (/somber/i.test(mat)) return 10;
+  if (/smithing/i.test(mat)) return 25;
+  return affinityCodesForWeapon(weapon, variants).length > 1 ? 25 : 10;
+}
+
+function clampWeaponMeta(weapon, affinity, upgrade, variants) {
+  const codes = affinityCodesForWeapon(weapon, variants);
+  let aff = Number(affinity);
+  if (!Number.isFinite(aff) || !codes.includes(aff)) aff = 0;
+  let up = Number(upgrade);
+  if (!Number.isFinite(up)) up = 0;
+  const maxUp = maxUpgradeForWeapon(weapon, variants);
+  up = Math.max(0, Math.min(maxUp, Math.floor(up)));
+  return { affinity: aff, upgrade: up };
+}
+
 function scalingFromVariant(weapon, variant) {
   if (variant && variant.correct) {
     const c = variant.correct;
@@ -212,6 +242,9 @@ if (typeof module !== "undefined") {
     gradeWeight,
     expandWeaponVariants,
     variantDisplayName,
+    affinityCodesForWeapon,
+    maxUpgradeForWeapon,
+    clampWeaponMeta,
     AFFINITY_LABELS,
   };
 }

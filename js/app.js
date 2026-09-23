@@ -160,13 +160,9 @@ function armorDisplayName(item, slot) {
   const name = (item && item.name) || "";
   if (item && item.altered && !/\(altered\)/i.test(name)) return `${name} (Altered)`;
   if (slot && slotKind(slot) === "weapon" && item) {
-    const aff = EQUIPMENT[slot] && EQUIPMENT[slot].affinity;
-    const up = EQUIPMENT[slot] && EQUIPMENT[slot].upgrade;
-    const includeUpgrades = document.getElementById("include-upgrades")?.checked;
-    const includeAffinities = document.getElementById("include-affinities")?.checked;
-    if ((includeAffinities && aff) || (includeUpgrades && up)) {
-      return variantDisplayName(item, includeAffinities ? aff : 0, includeUpgrades ? up : 0, includeUpgrades);
-    }
+    const aff = (EQUIPMENT[slot] && EQUIPMENT[slot].affinity) || 0;
+    const up = (EQUIPMENT[slot] && EQUIPMENT[slot].upgrade) || 0;
+    if (aff || up) return variantDisplayName(item, aff, up, true);
   }
   return name;
 }
@@ -185,13 +181,13 @@ function slotKind(slot) {
 
 function defaultMetaForPicker(id) {
   if (!pickerSlot || slotKind(pickerSlot) !== "weapon") return undefined;
-  const owned = OWNED_WEAPON_INSTANCES[id] || [];
-  if (!owned.length) return { affinity: 0, upgrade: 0 };
-  let best = owned[0];
-  for (const o of owned) {
-    if ((o.upgrade || 0) > (best.upgrade || 0)) best = o;
+  if (EQUIPMENT[pickerSlot].id === id) {
+    return {
+      affinity: EQUIPMENT[pickerSlot].affinity || 0,
+      upgrade: EQUIPMENT[pickerSlot].upgrade || 0,
+    };
   }
-  return { affinity: best.affinity || 0, upgrade: best.upgrade || 0 };
+  return { affinity: 0, upgrade: 0 };
 }
 
 function weaponRankOpts(extra) {
@@ -281,6 +277,8 @@ function getEffectiveStats() {
 
 function getCharacterStatus() {
   const invested = getStats();
+  const right = statusScreenWeapon(WEAPON_SLOTS_RIGHT);
+  const left = statusScreenWeapon(WEAPON_SLOTS_LEFT);
   return computeCharacterStatus({
     invested,
     armor: getEquippedArmor(),
@@ -288,6 +286,10 @@ function getCharacterStatus() {
     rune: equippedGreatRune(),
     runeActive: greatRuneActive,
     weapons: getEquippedWeapons(),
+    attackWeapon: right.weapon,
+    attackSlot: right.slot,
+    attackLeftWeapon: left.weapon,
+    attackLeftSlot: left.slot,
     equipLoadTable: EQUIP_LOAD_TABLE,
     level: Math.max(1, computeLevel(invested)),
   });
@@ -387,12 +389,36 @@ function setupStatusTooltips() {
   window.addEventListener("resize", hideStatusFloatTip);
 }
 
+function fillAttackTypeColumn(opts) {
+  const headingEl = opts.headingEl;
+  const tableEl = opts.tableEl;
+  const slot = opts.slot || opts.defaultSlot;
+  const labels = opts.labels || {};
+  if (headingEl) headingEl.textContent = `Attack (${SLOT_LABELS[slot] || slot})`;
+  if (!tableEl) return;
+  let html = "";
+  for (const dt of ATTACK_TYPES) {
+    const from = (opts.base && opts.base[dt]) || 0;
+    const to = (opts.adjusted && opts.adjusted[dt]) || 0;
+    const inner = (from === 0 && to === 0) ? "—" : statusChangedHtml(from, to);
+    html += `<tr><th>${labels[dt] || dt}</th><td>${statusTipHtml(
+      inner,
+      labels[dt] || dt,
+      (opts.tips && opts.tips[dt]) || [],
+      `${opts.idPrefix}-${dt}`
+    )}</td></tr>`;
+  }
+  tableEl.innerHTML = html;
+}
+
 function renderStatusPanel(status) {
   hideStatusFloatTip();
   const attrEl = document.getElementById("status-attributes");
   const bodyEl = document.getElementById("status-body");
   const absEl = document.getElementById("status-absorption");
   const resEl = document.getElementById("status-resistances");
+  const atkTypeEl = document.getElementById("status-attack-types");
+  const atkLeftTypeEl = document.getElementById("status-attack-left-types");
   const atkEl = document.getElementById("status-attack");
   if (!attrEl || !status) return;
   const tips = status.breakdown || {};
@@ -445,6 +471,36 @@ function renderStatusPanel(status) {
     <tr><th>Robustness</th><td>${statusTipHtml(String(status.resistances.robustness), "Robustness", tips.resist && tips.resist.robustness, "status-robustness")}</td></tr>
     <tr><th>Focus</th><td>${statusTipHtml(String(status.resistances.focus), "Focus", tips.resist && tips.resist.focus, "status-focus")}</td></tr>
     <tr><th>Vitality</th><td>${statusTipHtml(String(status.resistances.vitality), "Vitality", tips.resist && tips.resist.vitality, "status-vitality")}</td></tr>`;
+
+  const attackLabels = {
+    phy: "Physical",
+    magic: "Magic",
+    fire: "Fire",
+    lightning: "Lightning",
+    holy: "Holy",
+  };
+  fillAttackTypeColumn({
+    headingEl: document.getElementById("status-attack-heading"),
+    tableEl: atkTypeEl,
+    slot: status.attackSlot,
+    defaultSlot: "r1",
+    base: status.attackBase,
+    adjusted: status.attack,
+    tips: (tips.attack) || {},
+    idPrefix: "status-atk",
+    labels: attackLabels,
+  });
+  fillAttackTypeColumn({
+    headingEl: document.getElementById("status-attack-left-heading"),
+    tableEl: atkLeftTypeEl,
+    slot: status.attackLeftSlot,
+    defaultSlot: "l1",
+    base: status.attackLeftBase,
+    adjusted: status.attackLeft,
+    tips: (tips.attackLeft) || {},
+    idPrefix: "status-atk-left",
+    labels: attackLabels,
+  });
 
   const twoHanding = !!(document.getElementById("weapon-two-hand") && document.getElementById("weapon-two-hand").checked);
   const rows = [];
@@ -584,6 +640,14 @@ function getEquippedWeapons() {
   return WEAPON_SLOTS.map((s) => itemForSlot(s)).filter(Boolean);
 }
 
+function statusScreenWeapon(slots) {
+  for (const slot of slots || []) {
+    const item = itemForSlot(slot);
+    if (item) return { slot, weapon: item };
+  }
+  return { slot: null, weapon: null };
+}
+
 function getEquippedArmor() {
   return ARMOR_SLOTS.map((s) => itemForSlot(s)).filter(Boolean);
 }
@@ -685,12 +749,22 @@ function loadSavedState() {
       const item = id && (
         ARMOR_BY_ID.get(id) || WEAPONS_BY_ID.get(id) || TALISMANS_BY_ID.get(id)
       );
-      EQUIPMENT[slot] = {
-        id: item ? id : null,
-        locked: !!saved.locked,
-        affinity: item && saved.affinity ? saved.affinity : 0,
-        upgrade: item && saved.upgrade ? saved.upgrade : 0,
-      };
+      if (item && slotKind(slot) === "weapon") {
+        const clamped = clampWeaponMeta(item, saved.affinity, saved.upgrade, WEAPON_VARIANTS);
+        EQUIPMENT[slot] = {
+          id,
+          locked: !!saved.locked,
+          affinity: clamped.affinity,
+          upgrade: clamped.upgrade,
+        };
+      } else {
+        EQUIPMENT[slot] = {
+          id: item ? id : null,
+          locked: !!saved.locked,
+          affinity: item && saved.affinity ? saved.affinity : 0,
+          upgrade: item && saved.upgrade ? saved.upgrade : 0,
+        };
+      }
     }
   }
 
@@ -786,8 +860,15 @@ function setSlotItem(slot, id, meta) {
     }
   }
   EQUIPMENT[slot].id = id;
-  EQUIPMENT[slot].affinity = (meta && meta.affinity) || 0;
-  EQUIPMENT[slot].upgrade = (meta && meta.upgrade) || 0;
+  if (slotKind(slot) === "weapon" && id) {
+    const weapon = WEAPONS_BY_ID.get(id);
+    const clamped = clampWeaponMeta(weapon, meta && meta.affinity, meta && meta.upgrade, WEAPON_VARIANTS);
+    EQUIPMENT[slot].affinity = clamped.affinity;
+    EQUIPMENT[slot].upgrade = clamped.upgrade;
+  } else {
+    EQUIPMENT[slot].affinity = (meta && meta.affinity) || 0;
+    EQUIPMENT[slot].upgrade = (meta && meta.upgrade) || 0;
+  }
   saveEquipment();
   renderEquipment();
   updateDerivedCharacterInfo();
@@ -813,6 +894,27 @@ function formatStatBonusShort(item) {
   return parts.join(", ");
 }
 
+function weaponModsHtml(slot, item) {
+  if (!item) return "";
+  const meta = clampWeaponMeta(item, EQUIPMENT[slot].affinity, EQUIPMENT[slot].upgrade, WEAPON_VARIANTS);
+  const codes = affinityCodesForWeapon(item, WEAPON_VARIANTS);
+  const affOpts = codes.map((code) => {
+    const label = AFFINITY_LABELS[code] || "Standard";
+    const selected = code === meta.affinity ? " selected" : "";
+    return `<option value="${code}"${selected}>${escapeHtml(label)}</option>`;
+  }).join("");
+  const maxUp = maxUpgradeForWeapon(item, WEAPON_VARIANTS);
+  let upOpts = "";
+  for (let i = 0; i <= maxUp; i++) {
+    const selected = i === meta.upgrade ? " selected" : "";
+    upOpts += `<option value="${i}"${selected}>+${i}</option>`;
+  }
+  return `<div class="slot-weapon-mods">
+    <select class="slot-aff-select" data-weapon-affinity="${slot}" aria-label="${escapeHtml(SLOT_LABELS[slot])} affinity">${affOpts}</select>
+    <select class="slot-up-select" data-weapon-upgrade="${slot}" aria-label="${escapeHtml(SLOT_LABELS[slot])} upgrade">${upOpts}</select>
+  </div>`;
+}
+
 function renderSlot(slot, inactive) {
   const item = inactive ? null : itemForSlot(slot);
   const locked = !inactive && EQUIPMENT[slot].locked;
@@ -825,7 +927,7 @@ function renderSlot(slot, inactive) {
   const name = item ? escapeHtml(armorDisplayName(item, slot)) : "Empty";
   const weight = item ? `${item.weight}` : "";
   const bonus = item ? formatStatBonusShort(item) : "";
-  return `<div class="${classes}" data-slot="${slot}" role="button" tabindex="0" aria-label="${escapeHtml(SLOT_LABELS[slot])}${item ? ": " + escapeHtml(item.name) : ""}">
+  const inner = `<div class="${classes}" data-slot="${slot}" role="button" tabindex="0" aria-label="${escapeHtml(SLOT_LABELS[slot])}${item ? ": " + escapeHtml(item.name) : ""}">
     <button type="button" class="lock-btn" data-lock="${slot}" title="${locked ? "Unlock this slot" : "Lock this slot"}" aria-pressed="${locked}" aria-label="${locked ? "Unlock" : "Lock"} ${escapeHtml(SLOT_LABELS[slot])}">${locked ? "Locked" : "Lock"}</button>
     <span class="slot-label">${escapeHtml(SLOT_LABELS[slot])}</span>
     ${iconHtml(item)}
@@ -833,6 +935,11 @@ function renderSlot(slot, inactive) {
     <span class="slot-weight">${weight !== "" ? weight + " wt" : ""}</span>
     ${bonus ? `<span class="slot-effect">${escapeHtml(bonus)}</span>` : ""}
   </div>`;
+  if (slotKind(slot) !== "weapon") return inner;
+  const mods = item
+    ? weaponModsHtml(slot, item)
+    : `<div class="slot-weapon-mods slot-weapon-mods-empty" aria-hidden="true"></div>`;
+  return `<div class="equip-slot-wrap">${inner}${mods}</div>`;
 }
 
 function renderGreatRuneSlot() {
@@ -974,6 +1081,7 @@ function setupEquipmentBoard() {
   document.getElementById("equip-board").addEventListener("keydown", onEquipKey);
   document.getElementById("equip-talismans").addEventListener("keydown", onEquipKey);
   document.getElementById("equip-great-rune").addEventListener("keydown", onEquipKey);
+  document.getElementById("equip-board").addEventListener("change", onWeaponModChange);
 
   document.getElementById("talisman-slot-count").addEventListener("change", (e) => {
     const n = parseInt(e.target.value, 10);
@@ -1037,11 +1145,42 @@ function onEquipClick(e) {
 }
 
 function onEquipKey(e) {
+  if (e.target && e.target.closest && e.target.closest("select")) return;
   if (e.key !== "Enter" && e.key !== " ") return;
   const slotEl = e.target.closest("[data-slot]");
   if (!slotEl || slotEl.classList.contains("inactive")) return;
   e.preventDefault();
   openPicker(slotEl.getAttribute("data-slot"));
+}
+
+function onWeaponModChange(e) {
+  const affEl = e.target.closest("[data-weapon-affinity]");
+  const upEl = e.target.closest("[data-weapon-upgrade]");
+  const slot = (affEl && affEl.getAttribute("data-weapon-affinity"))
+    || (upEl && upEl.getAttribute("data-weapon-upgrade"));
+  if (!slot || !EQUIPMENT[slot] || !EQUIPMENT[slot].id) return;
+  const weapon = itemForSlot(slot);
+  const affSelect = affEl || document.querySelector(`[data-weapon-affinity="${slot}"]`);
+  const upSelect = upEl || document.querySelector(`[data-weapon-upgrade="${slot}"]`);
+  const meta = clampWeaponMeta(
+    weapon,
+    affSelect ? affSelect.value : EQUIPMENT[slot].affinity,
+    upSelect ? upSelect.value : EQUIPMENT[slot].upgrade,
+    WEAPON_VARIANTS
+  );
+  EQUIPMENT[slot].affinity = meta.affinity;
+  EQUIPMENT[slot].upgrade = meta.upgrade;
+  if (affSelect && String(affSelect.value) !== String(meta.affinity)) affSelect.value = String(meta.affinity);
+  if (upSelect && String(upSelect.value) !== String(meta.upgrade)) upSelect.value = String(meta.upgrade);
+  const nameEl = document.querySelector(`[data-slot="${slot}"] .slot-name`);
+  if (nameEl && weapon) nameEl.textContent = armorDisplayName(weapon, slot);
+  const slotEl = document.querySelector(`[data-slot="${slot}"]`);
+  if (slotEl && weapon) {
+    slotEl.setAttribute("aria-label", `${SLOT_LABELS[slot]}: ${weapon.name}`);
+  }
+  saveEquipment();
+  updateDerivedCharacterInfo();
+  renderWeaponResults();
 }
 
 function clampLoadRatio(raw) {
@@ -1919,8 +2058,15 @@ function applySaveEquipped(equipped, extra) {
     const rec = slots[slot];
     const id = rec && rec.id && itemFitsImportedSlot(slot, rec.id) ? rec.id : null;
     EQUIPMENT[slot].id = id;
-    EQUIPMENT[slot].affinity = (id && rec && rec.affinity) || 0;
-    EQUIPMENT[slot].upgrade = (id && rec && rec.upgrade) || 0;
+    if (id && slotKind(slot) === "weapon") {
+      const weapon = WEAPONS_BY_ID.get(id);
+      const clamped = clampWeaponMeta(weapon, rec && rec.affinity, rec && rec.upgrade, WEAPON_VARIANTS);
+      EQUIPMENT[slot].affinity = clamped.affinity;
+      EQUIPMENT[slot].upgrade = clamped.upgrade;
+    } else {
+      EQUIPMENT[slot].affinity = (id && rec && rec.affinity) || 0;
+      EQUIPMENT[slot].upgrade = (id && rec && rec.upgrade) || 0;
+    }
     if (id) applied++;
   }
   const runeRec = slots.rune;

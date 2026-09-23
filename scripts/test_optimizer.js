@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const { computeMaxEquipLoad, totalWeight, loadClass, allowedLoadClass, isHeavierLoadClass, applyGreatRuneStats, parseAttributeBonuses, parseResourceBonuses, parseResistanceBonuses, applyEffectiveStats, itemAttributeBonuses, hpFromVigor, fpFromMind, staminaFromEndurance, computeCharacterStatus } =
+const { computeMaxEquipLoad, totalWeight, loadClass, allowedLoadClass, isHeavierLoadClass, applyGreatRuneStats, parseAttributeBonuses, parseResourceBonuses, parseResistanceBonuses, parseDamageDealt, applyEffectiveStats, itemAttributeBonuses, hpFromVigor, fpFromMind, staminaFromEndurance, computeCharacterStatus } =
   require("../js/calc.js");
 const { optimizeArmor, minimizeWeightForTarget, negationObjective, scoreItem } = require("../js/optimizer.js");
 
@@ -286,6 +286,64 @@ for (const ratio of [0.299, 0.30, 0.45, 0.699, 0.70, 0.999, 1.0]) {
 
   const mottled = parseResistanceBonuses("Raises Immunity, Robustness, and Focus by 40");
   if (mottled.immunity !== 40 || mottled.focus !== 40 || mottled.vitality !== 0) fail("Mottled Necklace should parse three resistances");
+
+  const magicScorp = parseDamageDealt("Raises Magic Damage by 12%, but increases Physical Damage taken by 10%.");
+  if (magicScorp.magic !== 0.12 || magicScorp.phy !== 0) fail("Magic Scorpion Charm should raise magic damage 12% only");
+  const fireScorp = parseDamageDealt("Raises Fire Damage, but increases Physical Damage taken by 10%.");
+  if (fireScorp.fire !== 0.12) fail("Fire Scorpion Charm missing wiki percent should still be 12%");
+  const rakshasa = parseDamageDealt("Boosts All Damage by 2% but increases damage taken");
+  if (rakshasa.phy !== 0.02 || rakshasa.holy !== 0.02) fail("Rakshasa-style all-damage should apply to every attack type");
+  const rotExult = parseDamageDealt("Raises attack power (+10% AR) for 20 seconds when something nearby suffers from poison or rot.");
+  if (rotExult.phy !== 0) fail("conditional attack-power text must not count as always-on damage");
+
+  const atkStatus = computeCharacterStatus({
+    invested: base,
+    armor: [{ name: "Rakshasa Armor", effect: "Boosts All Damage by 2%" }],
+    talismans: [{ name: "Fire Scorpion Charm", effect: "Raises Fire Damage, but increases Physical Damage taken by 10%." }],
+    rune: null,
+    runeActive: false,
+    weapons: [
+      { name: "Longsword", attack: { phy: 100, magic: 0, fire: 0, lightning: 0, holy: 0 } },
+      { name: "Magma Blade", attack: { phy: 50, fire: 50 } },
+    ],
+    attackWeapon: { name: "Magma Blade", attack: { phy: 50, fire: 50 } },
+    attackSlot: "r1",
+    attackLeftWeapon: { name: "Longsword", attack: { phy: 100, magic: 0, fire: 0, lightning: 0, holy: 0 } },
+    attackLeftSlot: "l1",
+    equipLoadTable,
+    level: 1,
+  });
+  if (Math.abs(atkStatus.attack.phy - 51) > 1e-6) fail(`physical attack should be the selected weapon 50 + 2%: ${atkStatus.attack.phy}`);
+  if (Math.abs(atkStatus.attack.fire - 57) > 1e-6) fail(`fire attack should be 50 + 12% + 2%: ${atkStatus.attack.fire}`);
+  if (atkStatus.attackSlot !== "r1") fail("attackSlot should round-trip");
+  if (Math.abs(atkStatus.attackLeft.phy - 102) > 1e-6) fail(`left-hand physical should be Longsword 100 + 2%: ${atkStatus.attackLeft.phy}`);
+  if (Math.abs(atkStatus.attackLeft.fire - 0) > 1e-6) fail(`left-hand fire should stay 0 without a fire weapon: ${atkStatus.attackLeft.fire}`);
+  if (atkStatus.attackLeftSlot !== "l1") fail("attackLeftSlot should round-trip");
+  const fireTip = (atkStatus.breakdown.attack.fire || []).map((row) => `${row.name} ${row.value}`).join("; ");
+  if (!/magma blade/i.test(fireTip) || !/fire scorpion/i.test(fireTip) || !/rakshasa/i.test(fireTip)) {
+    fail(`fire attack breakdown missing a contributor: ${fireTip}`);
+  }
+  const dualHands = computeCharacterStatus({
+    invested: base,
+    armor: [],
+    talismans: [],
+    rune: null,
+    runeActive: false,
+    weapons: [
+      { name: "Longsword", attack: { phy: 100 } },
+      { name: "Magma Blade", attack: { phy: 50, fire: 50 } },
+    ],
+    attackWeapon: { name: "Longsword", attack: { phy: 100 } },
+    attackSlot: "r1",
+    attackLeftWeapon: { name: "Magma Blade", attack: { phy: 50, fire: 50 } },
+    attackLeftSlot: "l1",
+    equipLoadTable,
+    level: 1,
+  });
+  if (Math.abs(dualHands.attack.phy - 100) > 1e-6) fail(`status Attack Power is one armament, not both hands: ${dualHands.attack.phy}`);
+  if (Math.abs(dualHands.attack.fire - 0) > 1e-6) fail(`off-hand fire should not add into right-hand Attack Power: ${dualHands.attack.fire}`);
+  if (Math.abs(dualHands.attackLeft.phy - 50) > 1e-6) fail(`left-hand Attack Power should be Magma Blade physical: ${dualHands.attackLeft.phy}`);
+  if (Math.abs(dualHands.attackLeft.fire - 50) > 1e-6) fail(`left-hand Attack Power should keep Magma Blade fire: ${dualHands.attackLeft.fire}`);
 
   const status = computeCharacterStatus({
     invested: base,

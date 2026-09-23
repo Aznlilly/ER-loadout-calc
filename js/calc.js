@@ -6,9 +6,11 @@
 // "damage taken" penalties are extra multiplicative layers.
 
 const DAMAGE_TYPES = ["phy", "strike", "slash", "pierce", "magic", "fire", "lightning", "holy"];
+const ATTACK_TYPES = ["phy", "magic", "fire", "lightning", "holy"];
 const RESIST_TYPES = ["immunity", "robustness", "focus", "vitality", "poise"];
 const PHYSICAL_TYPES = ["phy", "strike", "slash", "pierce"];
 const ELEMENTAL_TYPES = ["magic", "fire", "lightning", "holy"];
+const SCORPION_CHARM_DAMAGE = 0.12;
 
 const STAT_KEYS = ["vig", "mind", "end", "str", "dex", "int", "fai", "arc"];
 const STAT_LABELS = { vig: "Vigor", mind: "Mind", end: "Endurance", str: "Strength", dex: "Dexterity", int: "Intelligence", fai: "Faith", arc: "Arcane" };
@@ -338,6 +340,78 @@ function parseDamageRemaining(effectText) {
   return remaining;
 }
 
+function emptyDamageDealt() {
+  const out = {};
+  for (const dt of ATTACK_TYPES) out[dt] = 0;
+  return out;
+}
+
+function isConditionalOffenseText(text) {
+  return /when hp|hp is below|hp is at maximum|successive attacks|after each|after defeating|when summoned|in the vicinity|nearby suffers|precision-aimed|charged spells|attack power of skills|arrows and bolts|damage of storms|lower equipment load/i.test(text);
+}
+
+/**
+ * Unconditional outgoing damage bonuses from talisman / armor effect text.
+ * Scorpion charms missing a percent in wiki text use the in-game 12%.
+ */
+function parseDamageDealt(effectText) {
+  const out = emptyDamageDealt();
+  if (!effectText || isConditionalOffenseText(effectText)) return out;
+  const text = String(effectText);
+
+  const all = text.match(/boosts all damage by\s+([\d.]+)%/i);
+  if (all) {
+    const n = parseFloat(all[1]) / 100;
+    for (const dt of ATTACK_TYPES) out[dt] += n;
+  }
+
+  const typed = [
+    ["phy", /raises physical (?:attack|damage) by\s+([\d.]+)%/i],
+    ["magic", /raises magic damage(?: by\s+([\d.]+)%)?/i],
+    ["fire", /raises fire damage(?: by\s+([\d.]+)%)?/i],
+    ["lightning", /raises lightning damage(?: by\s+([\d.]+)%)?/i],
+    ["holy", /raises holy damage(?: by\s+([\d.]+)%)?/i],
+  ];
+  for (const [key, re] of typed) {
+    const m = text.match(re);
+    if (!m) continue;
+    out[key] += m[1] ? parseFloat(m[1]) / 100 : SCORPION_CHARM_DAMAGE;
+  }
+  return out;
+}
+
+function combineDamageDealt(items) {
+  const out = emptyDamageDealt();
+  for (const item of items || []) {
+    const extra = parseDamageDealt(item && item.effect);
+    for (const dt of ATTACK_TYPES) out[dt] += extra[dt];
+  }
+  return out;
+}
+
+function computeAttackStatus(weapon, effectItems) {
+  const base = emptyDamageDealt();
+  const breakdown = {};
+  for (const dt of ATTACK_TYPES) breakdown[dt] = [];
+  const atk = (weapon && weapon.attack) || {};
+  for (const dt of ATTACK_TYPES) {
+    const n = Number(atk[dt]) || 0;
+    if (!n) continue;
+    base[dt] += n;
+    pushBreakdown(breakdown[dt], weapon.name, String(Math.round(n)));
+  }
+  const dealt = combineDamageDealt(effectItems);
+  const adjusted = emptyDamageDealt();
+  for (const dt of ATTACK_TYPES) {
+    adjusted[dt] = base[dt] * (1 + dealt[dt]);
+    for (const item of effectItems || []) {
+      const n = parseDamageDealt(item && item.effect)[dt];
+      if (n) pushBreakdown(breakdown[dt], item.name, signedPct(n));
+    }
+  }
+  return { base, adjusted, dealt, breakdown };
+}
+
 function combineItemEffects(items) {
   const resources = emptyResourceBonuses();
   const resist = emptyResistBonuses();
@@ -550,6 +624,14 @@ function computeCharacterStatus(opts) {
   const poise = computeTotalPoise(armor, talismans);
   const discovery = Math.max(0, Math.floor(100 + (effective.arc - 1) + effects.discovery));
   const memorySlots = 2 + effects.memorySlots;
+  const attackWeapon = opts && opts.attackWeapon !== undefined
+    ? opts.attackWeapon
+    : ((weapons && weapons[0]) || null);
+  const attackLeftWeapon = opts && opts.attackLeftWeapon !== undefined
+    ? opts.attackLeftWeapon
+    : null;
+  const attack = computeAttackStatus(attackWeapon, effectItems);
+  const attackLeft = computeAttackStatus(attackLeftWeapon, effectItems);
 
   return {
     invested,
@@ -573,6 +655,12 @@ function computeCharacterStatus(opts) {
     absorption,
     resistances,
     resources: effects.resources,
+    attackBase: attack.base,
+    attack: attack.adjusted,
+    attackSlot: (opts && opts.attackSlot) || null,
+    attackLeftBase: attackLeft.base,
+    attackLeft: attackLeft.adjusted,
+    attackLeftSlot: (opts && opts.attackLeftSlot) || null,
     breakdown: buildStatusBreakdown({
       invested,
       effective,
@@ -583,6 +671,9 @@ function computeCharacterStatus(opts) {
       effectItems,
       equipLoadTable,
       level,
+      weapons,
+      attackBreakdown: attack.breakdown,
+      attackLeftBreakdown: attackLeft.breakdown,
     }),
   };
 }
@@ -727,12 +818,15 @@ function buildStatusBreakdown(opts) {
     poise,
     discovery: discovery.length > 1 || effective.arc !== invested.arc ? discovery : [],
     memory: memory.length > 1 ? memory : [],
+    attack: opts.attackBreakdown || {},
+    attackLeft: opts.attackLeftBreakdown || {},
   };
 }
 
 if (typeof module !== "undefined") {
   module.exports = {
     DAMAGE_TYPES,
+    ATTACK_TYPES,
     RESIST_TYPES,
     STAT_KEYS,
     STAT_LABELS,
@@ -743,6 +837,7 @@ if (typeof module !== "undefined") {
     parseResourceBonuses,
     parseResistanceBonuses,
     parseDamageRemaining,
+    parseDamageDealt,
     talismanAttributeBonuses,
     itemAttributeBonuses,
     singleAttributeBonuses,
@@ -763,5 +858,6 @@ if (typeof module !== "undefined") {
     computeResistances,
     combineAbsorption,
     computeCharacterStatus,
+    computeAttackStatus,
   };
 }
