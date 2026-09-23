@@ -7,6 +7,7 @@
 
 const DAMAGE_TYPES = ["phy", "strike", "slash", "pierce", "magic", "fire", "lightning", "holy"];
 const ATTACK_TYPES = ["phy", "magic", "fire", "lightning", "holy"];
+const WEAPON_STATUS_SLOTS = ["r1", "r2", "r3", "l1", "l2", "l3"];
 const RESIST_TYPES = ["immunity", "robustness", "focus", "vitality", "poise"];
 const PHYSICAL_TYPES = ["phy", "strike", "slash", "pierce"];
 const ELEMENTAL_TYPES = ["magic", "fire", "lightning", "holy"];
@@ -389,6 +390,25 @@ function combineDamageDealt(items) {
   return out;
 }
 
+function resolveAttackWeapons(opts, weapons) {
+  const provided = (opts && opts.attackWeapons) || {};
+  const map = {};
+  for (const slot of WEAPON_STATUS_SLOTS) {
+    if (Object.prototype.hasOwnProperty.call(provided, slot)) {
+      map[slot] = provided[slot] || null;
+    } else if (slot === "r1" && opts && opts.attackWeapon !== undefined) {
+      map[slot] = opts.attackWeapon;
+    } else if (slot === "l1" && opts && opts.attackLeftWeapon !== undefined) {
+      map[slot] = opts.attackLeftWeapon;
+    } else if (slot === "r1") {
+      map[slot] = (weapons && weapons[0]) || null;
+    } else {
+      map[slot] = null;
+    }
+  }
+  return map;
+}
+
 function computeAttackStatus(weapon, effectItems) {
   const base = emptyDamageDealt();
   const breakdown = {};
@@ -624,14 +644,20 @@ function computeCharacterStatus(opts) {
   const poise = computeTotalPoise(armor, talismans);
   const discovery = Math.max(0, Math.floor(100 + (effective.arc - 1) + effects.discovery));
   const memorySlots = 2 + effects.memorySlots;
-  const attackWeapon = opts && opts.attackWeapon !== undefined
-    ? opts.attackWeapon
-    : ((weapons && weapons[0]) || null);
-  const attackLeftWeapon = opts && opts.attackLeftWeapon !== undefined
-    ? opts.attackLeftWeapon
-    : null;
-  const attack = computeAttackStatus(attackWeapon, effectItems);
-  const attackLeft = computeAttackStatus(attackLeftWeapon, effectItems);
+  const attackWeapons = resolveAttackWeapons(opts, weapons);
+  const attackBySlot = {};
+  const attackBreakdownBySlot = {};
+  for (const slot of WEAPON_STATUS_SLOTS) {
+    const computed = computeAttackStatus(attackWeapons[slot], effectItems);
+    attackBySlot[slot] = {
+      base: computed.base,
+      adjusted: computed.adjusted,
+      weapon: attackWeapons[slot] || null,
+    };
+    attackBreakdownBySlot[slot] = computed.breakdown;
+  }
+  const attack = attackBySlot.r1;
+  const attackLeft = attackBySlot.l1;
 
   return {
     invested,
@@ -655,12 +681,13 @@ function computeCharacterStatus(opts) {
     absorption,
     resistances,
     resources: effects.resources,
+    attackBySlot,
     attackBase: attack.base,
     attack: attack.adjusted,
-    attackSlot: (opts && opts.attackSlot) || null,
+    attackSlot: (opts && opts.attackSlot) || (attack.weapon ? "r1" : null),
     attackLeftBase: attackLeft.base,
     attackLeft: attackLeft.adjusted,
-    attackLeftSlot: (opts && opts.attackLeftSlot) || null,
+    attackLeftSlot: (opts && opts.attackLeftSlot) || (attackLeft.weapon ? "l1" : null),
     breakdown: buildStatusBreakdown({
       invested,
       effective,
@@ -672,8 +699,9 @@ function computeCharacterStatus(opts) {
       equipLoadTable,
       level,
       weapons,
-      attackBreakdown: attack.breakdown,
-      attackLeftBreakdown: attackLeft.breakdown,
+      attackBreakdown: attackBreakdownBySlot.r1,
+      attackLeftBreakdown: attackBreakdownBySlot.l1,
+      attackBreakdownBySlot,
     }),
   };
 }
@@ -820,6 +848,7 @@ function buildStatusBreakdown(opts) {
     memory: memory.length > 1 ? memory : [],
     attack: opts.attackBreakdown || {},
     attackLeft: opts.attackLeftBreakdown || {},
+    attackBySlot: opts.attackBreakdownBySlot || {},
   };
 }
 
@@ -827,6 +856,7 @@ if (typeof module !== "undefined") {
   module.exports = {
     DAMAGE_TYPES,
     ATTACK_TYPES,
+    WEAPON_STATUS_SLOTS,
     RESIST_TYPES,
     STAT_KEYS,
     STAT_LABELS,

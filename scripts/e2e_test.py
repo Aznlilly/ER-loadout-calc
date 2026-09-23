@@ -370,8 +370,8 @@ with sync_playwright() as p:
     print("R1 after Occult +15:", r1_before)
     if "Occult" not in (r1_before or "") or "+15" not in (r1_before or ""):
         raise SystemExit("R1 name should show Occult and +15")
-    phy_atk = page.inner_text("#status-atk-phy")
-    phy_html = page.inner_html("#status-atk-phy")
+    phy_atk = page.inner_text("#status-atk-r1-phy")
+    phy_html = page.inner_html("#status-atk-r1-phy")
     print("Status physical attack:", phy_atk)
     if "181" not in (phy_atk or ""):
         raise SystemExit("Attack column should total Dagger physical reference AR")
@@ -396,25 +396,37 @@ with sync_playwright() as p:
     print("Equipped L1:", l1_name)
     if "Beast Crest Heater" not in (l1_name or ""):
         raise SystemExit("expected Beast Crest Heater Shield in L1")
-    phy_after_l1 = page.inner_text("#status-atk-phy")
-    atk_heading = page.inner_text("#status-attack-heading")
-    phy_left = page.inner_text("#status-atk-left-phy")
-    left_html = page.inner_html("#status-atk-left-phy")
-    left_heading = page.inner_text("#status-attack-left-heading")
+    phy_after_l1 = page.inner_text("#status-atk-r1-phy")
+    atk_heading = page.inner_text("#status-attack-heading-r1")
+    phy_left = page.inner_text("#status-atk-l1-phy")
+    left_html = page.inner_html("#status-atk-l1-phy")
+    left_heading = page.inner_text("#status-attack-heading-l1")
+    r2_phy = page.inner_text("#status-atk-r2-phy")
+    r3_phy = page.inner_text("#status-atk-r3-phy")
+    l2_phy = page.inner_text("#status-atk-l2-phy")
+    l3_phy = page.inner_text("#status-atk-l3-phy")
+    r2_heading = page.inner_text("#status-attack-heading-r2")
     print("Status physical after L1:", phy_after_l1, atk_heading)
     print("Status left physical after L1:", phy_left, left_heading)
     if "281" in (phy_after_l1 or ""):
         raise SystemExit("Attack Power must not sum R1 Dagger and L1 shield")
     if "181" not in (phy_after_l1 or ""):
         raise SystemExit("Attack Power should stay R1 Dagger after L1 shield")
-    if "R1" not in (atk_heading or ""):
-        raise SystemExit("Attack heading should name the R1 slot")
+    if "Right 1" not in (atk_heading or ""):
+        raise SystemExit("Attack heading should name the Right 1 slot")
     if "100" not in (phy_left or ""):
         raise SystemExit("left-hand Attack should show Beast Crest Heater Shield physical AR")
     if "Beast Crest" not in (left_html or ""):
         raise SystemExit("left-hand physical tooltip should list the shield")
-    if "L1" not in (left_heading or ""):
-        raise SystemExit("left Attack heading should name the L1 slot")
+    if "Left 1" not in (left_heading or ""):
+        raise SystemExit("left Attack heading should name the Left 1 slot")
+    if "Right 2" not in (r2_heading or ""):
+        raise SystemExit("Right 2 Attack heading should stay Right 2")
+    for empty_phy, empty_name in ((r2_phy, "Right 2"), (r3_phy, "Right 3"), (l2_phy, "Left 2"), (l3_phy, "Left 3")):
+        if "181" in (empty_phy or "") or "100" in (empty_phy or ""):
+            raise SystemExit(f"empty {empty_name} Attack must not copy another slot")
+        if "—" not in (empty_phy or "") and "-" not in (empty_phy or ""):
+            raise SystemExit(f"empty {empty_name} Attack should show a dash")
     page.click('[data-slot="r2"]')
     page.wait_for_timeout(200)
     page.fill("#picker-search", "Beast Crest Heater Shield")
@@ -422,6 +434,29 @@ with sync_playwright() as p:
     r2_picker = page.inner_html("#picker-list")
     print("Shields also in right-hand picker:", "Beast Crest Heater" in r2_picker)
     page.click("#picker-close")
+    page.wait_for_timeout(150)
+    page.click('[data-slot="r2"]')
+    page.wait_for_timeout(200)
+    page.fill("#picker-search", "longsword")
+    page.wait_for_timeout(200)
+    page.click('#picker-list [data-item-id="longsword"]')
+    page.wait_for_timeout(200)
+    r2_name = page.text_content('[data-slot="r2"] .slot-name')
+    r2_phy_filled = page.inner_text("#status-atk-r2-phy")
+    r1_phy_with_r2 = page.inner_text("#status-atk-r1-phy")
+    print("Equipped R2:", r2_name, r2_phy_filled)
+    if "Longsword" not in (r2_name or ""):
+        raise SystemExit("expected Longsword in R2")
+    if "269" not in (r2_phy_filled or ""):
+        raise SystemExit("R2 Attack should show Longsword physical AR")
+    if "181" not in (r1_phy_with_r2 or ""):
+        raise SystemExit("R1 Attack should stay Dagger after filling R2")
+    if "269" in (r1_phy_with_r2 or ""):
+        raise SystemExit("R1 Attack must not copy R2 Longsword")
+    page.click('[data-slot="r2"]')
+    page.wait_for_timeout(150)
+    page.click("#picker-unequip")
+    page.wait_for_timeout(150)
 
     # Equip + lock a talisman in slot 1
     page.click('[data-slot="tal1"]')

@@ -345,6 +345,34 @@ for (const ratio of [0.299, 0.30, 0.45, 0.699, 0.70, 0.999, 1.0]) {
   if (Math.abs(dualHands.attackLeft.phy - 50) > 1e-6) fail(`left-hand Attack Power should be Magma Blade physical: ${dualHands.attackLeft.phy}`);
   if (Math.abs(dualHands.attackLeft.fire - 50) > 1e-6) fail(`left-hand Attack Power should keep Magma Blade fire: ${dualHands.attackLeft.fire}`);
 
+  const sixSlots = computeCharacterStatus({
+    invested: base,
+    armor: [{ name: "Rakshasa Armor", effect: "Boosts All Damage by 2%" }],
+    talismans: [],
+    rune: null,
+    runeActive: false,
+    weapons: [],
+    attackWeapons: {
+      r1: { name: "Longsword", attack: { phy: 100 } },
+      r2: { name: "Magma Blade", attack: { phy: 50, fire: 50 } },
+      r3: null,
+      l1: { name: "Dagger", attack: { phy: 80 } },
+      l2: null,
+      l3: { name: "Moonveil", attack: { phy: 70, magic: 90 } },
+    },
+    equipLoadTable,
+    level: 1,
+  });
+  if (Math.abs(sixSlots.attackBySlot.r1.adjusted.phy - 102) > 1e-6) fail(`R1 should be Longsword 100 + 2%: ${sixSlots.attackBySlot.r1.adjusted.phy}`);
+  if (Math.abs(sixSlots.attackBySlot.r2.adjusted.fire - 51) > 1e-6) fail(`R2 should be Magma Blade fire 50 + 2%: ${sixSlots.attackBySlot.r2.adjusted.fire}`);
+  if ((sixSlots.attackBySlot.r3.adjusted.phy || 0) !== 0) fail("empty R3 should stay 0");
+  if (Math.abs(sixSlots.attackBySlot.l1.adjusted.phy - 81.6) > 1e-6) fail(`L1 should be Dagger 80 + 2%: ${sixSlots.attackBySlot.l1.adjusted.phy}`);
+  if ((sixSlots.attackBySlot.l2.adjusted.phy || 0) !== 0) fail("empty L2 should stay 0");
+  if (Math.abs(sixSlots.attackBySlot.l3.adjusted.magic - 91.8) > 1e-6) fail(`L3 should be Moonveil magic 90 + 2%: ${sixSlots.attackBySlot.l3.adjusted.magic}`);
+  if ((sixSlots.attackBySlot.r1.adjusted.fire || 0) !== 0) fail("R1 must not pick up Magma Blade fire from R2");
+  if (Math.abs(sixSlots.attack.phy - 102) > 1e-6) fail("attack alias should stay R1");
+  if (Math.abs(sixSlots.attackLeft.phy - 81.6) > 1e-6) fail("attackLeft alias should stay L1");
+
   const status = computeCharacterStatus({
     invested: base,
     armor: [],

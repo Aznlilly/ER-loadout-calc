@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elden Ring Loadout Optimizer</title>
-<link rel="stylesheet" href="css/style.css?v=rune1">
+<link rel="stylesheet" href="css/style.css?v=slot3">
 </head>
 <body>
 <header class="site-header">
@@ -85,7 +85,7 @@
 
   <section class="panel" id="panel-status">
     <h2>4. Status</h2>
-    <p class="hint">In-game totals from your invested stats plus equipped armor, talismans, and an active Great Rune. Hover a changed value to see which items contribute. Character level still uses invested stats. Attack Power is one armament per hand (same as switching the selected slot in-game), then unconditional damage bonuses from gear — wiki reference AR, not live Attack Rating for your spread, infusion, or upgrade.</p>
+    <p class="hint">In-game totals from your invested stats plus equipped armor, talismans, and an active Great Rune. Hover a changed value to see which items contribute. Character level still uses invested stats. Each Attack column is one weapon slot (Right 1–3 and Left 1–3), plus unconditional damage bonuses from gear — wiki reference AR, not live Attack Rating for your spread, infusion, or upgrade. Slots are not added together.</p>
     <div class="status-grid" id="status-grid">
       <div class="status-col">
         <h3>Attributes</h3>
@@ -103,17 +103,35 @@
         <h3>Resistances</h3>
         <table class="status-table" id="status-resistances"></table>
       </div>
-      <div class="status-col">
-        <h3 id="status-attack-heading">Attack (R1)</h3>
-        <table class="status-table" id="status-attack-types"></table>
+    </div>
+    <div class="status-attack-grid" id="status-attack-grid">
+      <div class="status-col" id="status-attack-col-r1">
+        <h3 id="status-attack-heading-r1">Attack (Right 1)</h3>
+        <table class="status-table" id="status-attack-types-r1"></table>
       </div>
-      <div class="status-col">
-        <h3 id="status-attack-left-heading">Attack (L1)</h3>
-        <table class="status-table" id="status-attack-left-types"></table>
+      <div class="status-col" id="status-attack-col-r2">
+        <h3 id="status-attack-heading-r2">Attack (Right 2)</h3>
+        <table class="status-table" id="status-attack-types-r2"></table>
+      </div>
+      <div class="status-col" id="status-attack-col-r3">
+        <h3 id="status-attack-heading-r3">Attack (Right 3)</h3>
+        <table class="status-table" id="status-attack-types-r3"></table>
+      </div>
+      <div class="status-col" id="status-attack-col-l1">
+        <h3 id="status-attack-heading-l1">Attack (Left 1)</h3>
+        <table class="status-table" id="status-attack-types-l1"></table>
+      </div>
+      <div class="status-col" id="status-attack-col-l2">
+        <h3 id="status-attack-heading-l2">Attack (Left 2)</h3>
+        <table class="status-table" id="status-attack-types-l2"></table>
+      </div>
+      <div class="status-col" id="status-attack-col-l3">
+        <h3 id="status-attack-heading-l3">Attack (Left 3)</h3>
+        <table class="status-table" id="status-attack-types-l3"></table>
       </div>
     </div>
     <h3>Attack (equipped)</h3>
-    <p class="hint">Per-slot wiki reference AR. The Attack columns above are the active right-hand weapon (R1, then R2 / R3) and the active left-hand weapon (L1, then L2 / L3), each plus Scorpion Charms and similar always-on bonuses. They are not added together. Wieldable uses effective Strength / Dexterity / Intelligence / Faith / Arcane, including two-handing if that box is checked under weapon recommendations.</p>
+    <p class="hint">Per-slot wiki reference AR. The Attack columns above match Right 1–3 and Left 1–3, each plus Scorpion Charms and similar always-on bonuses. They are not added together. Wieldable uses effective Strength / Dexterity / Intelligence / Faith / Arcane, including two-handing if that box is checked under weapon recommendations.</p>
     <div id="status-attack"></div>
   </section>
 
@@ -320,11 +338,11 @@ function erResetTool() {
   location.replace(url);
 }
 </script>
-<script src="js/calc.js?v=rune1"></script>
-<script src="js/optimizer.js?v=rune1"></script>
-<script src="js/weapons.js?v=rune1"></script>
-<script src="js/save-parser.js?v=rune1"></script>
-<script src="js/app.js?v=rune1"></script>
+<script src="js/calc.js?v=slot3"></script>
+<script src="js/optimizer.js?v=slot3"></script>
+<script src="js/weapons.js?v=slot3"></script>
+<script src="js/save-parser.js?v=slot3"></script>
+<script src="js/app.js?v=slot3"></script>
 <script
   data-goatcounter="https://in-a.elsewhere.moe/count"
   async

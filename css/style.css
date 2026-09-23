@@ -76,11 +76,19 @@ input[type="number"], input[type="text"], select {
 .derived { color: var(--text-dim); font-size: 0.9rem; }
 .derived strong { color: var(--accent); }
 
-.status-grid {
+.status-grid,
+.status-attack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px 24px;
   margin-top: 12px;
+}
+.status-attack-grid {
+  gap: 16px;
+  margin-top: 16px;
+}
+.status-col-empty {
+  opacity: 0.55;
 }
 .status-col h3, #panel-status h3 {
   margin: 0 0 8px;
@@ -513,14 +521,14 @@ a.wiki-link:hover { text-decoration: underline; }
 }
 
 .equip-slot {
-  width: 108px;
+  width: 116px;
   min-height: 118px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: #0f0d0a;
   cursor: pointer;
   position: relative;
-  padding: 8px 6px 6px;
+  padding: 22px 6px 6px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -539,8 +547,10 @@ a.wiki-link:hover { text-decoration: underline; }
 .equip-slot .slot-label {
   font-size: 0.68rem;
   color: var(--text-dim);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 .equip-slot .slot-icon,
 .equip-slot .slot-placeholder {
@@ -711,6 +721,10 @@ a.wiki-link:hover { text-decoration: underline; }
   #equip-weapons-left .equip-slot-wrap,
   #equip-weapons-right .equip-slot-wrap {
     flex-direction: column;
+  }
+  .status-grid,
+  .status-attack-grid {
+    grid-template-columns: 1fr;
   }
 }
 

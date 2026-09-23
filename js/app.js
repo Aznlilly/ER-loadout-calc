@@ -29,12 +29,12 @@ const SLOT_LABELS = {
   chest: "Chest",
   gauntlets: "Gauntlets",
   legs: "Legs",
-  r1: "R1",
-  r2: "R2",
-  r3: "R3",
-  l1: "L1",
-  l2: "L2",
-  l3: "L3",
+  r1: "Right 1",
+  r2: "Right 2",
+  r3: "Right 3",
+  l1: "Left 1",
+  l2: "Left 2",
+  l3: "Left 3",
   tal1: "Talisman 1",
   tal2: "Talisman 2",
   tal3: "Talisman 3",
@@ -277,8 +277,8 @@ function getEffectiveStats() {
 
 function getCharacterStatus() {
   const invested = getStats();
-  const right = statusScreenWeapon(WEAPON_SLOTS_RIGHT);
-  const left = statusScreenWeapon(WEAPON_SLOTS_LEFT);
+  const attackWeapons = {};
+  for (const slot of WEAPON_SLOTS) attackWeapons[slot] = itemForSlot(slot);
   return computeCharacterStatus({
     invested,
     armor: getEquippedArmor(),
@@ -286,10 +286,11 @@ function getCharacterStatus() {
     rune: equippedGreatRune(),
     runeActive: greatRuneActive,
     weapons: getEquippedWeapons(),
-    attackWeapon: right.weapon,
-    attackSlot: right.slot,
-    attackLeftWeapon: left.weapon,
-    attackLeftSlot: left.slot,
+    attackWeapons,
+    attackWeapon: attackWeapons.r1,
+    attackSlot: attackWeapons.r1 ? "r1" : null,
+    attackLeftWeapon: attackWeapons.l1,
+    attackLeftSlot: attackWeapons.l1 ? "l1" : null,
     equipLoadTable: EQUIP_LOAD_TABLE,
     level: Math.max(1, computeLevel(invested)),
   });
@@ -417,8 +418,6 @@ function renderStatusPanel(status) {
   const bodyEl = document.getElementById("status-body");
   const absEl = document.getElementById("status-absorption");
   const resEl = document.getElementById("status-resistances");
-  const atkTypeEl = document.getElementById("status-attack-types");
-  const atkLeftTypeEl = document.getElementById("status-attack-left-types");
   const atkEl = document.getElementById("status-attack");
   if (!attrEl || !status) return;
   const tips = status.breakdown || {};
@@ -479,28 +478,24 @@ function renderStatusPanel(status) {
     lightning: "Lightning",
     holy: "Holy",
   };
-  fillAttackTypeColumn({
-    headingEl: document.getElementById("status-attack-heading"),
-    tableEl: atkTypeEl,
-    slot: status.attackSlot,
-    defaultSlot: "r1",
-    base: status.attackBase,
-    adjusted: status.attack,
-    tips: (tips.attack) || {},
-    idPrefix: "status-atk",
-    labels: attackLabels,
-  });
-  fillAttackTypeColumn({
-    headingEl: document.getElementById("status-attack-left-heading"),
-    tableEl: atkLeftTypeEl,
-    slot: status.attackLeftSlot,
-    defaultSlot: "l1",
-    base: status.attackLeftBase,
-    adjusted: status.attackLeft,
-    tips: (tips.attackLeft) || {},
-    idPrefix: "status-atk-left",
-    labels: attackLabels,
-  });
+  const bySlot = status.attackBySlot || {};
+  const tipBySlot = (tips.attackBySlot) || {};
+  for (const slot of WEAPON_SLOTS) {
+    const col = bySlot[slot] || {};
+    const colEl = document.getElementById(`status-attack-col-${slot}`);
+    if (colEl) colEl.classList.toggle("status-col-empty", !col.weapon);
+    fillAttackTypeColumn({
+      headingEl: document.getElementById(`status-attack-heading-${slot}`),
+      tableEl: document.getElementById(`status-attack-types-${slot}`),
+      slot,
+      defaultSlot: slot,
+      base: col.base,
+      adjusted: col.adjusted,
+      tips: tipBySlot[slot] || {},
+      idPrefix: `status-atk-${slot}`,
+      labels: attackLabels,
+    });
+  }
 
   const twoHanding = !!(document.getElementById("weapon-two-hand") && document.getElementById("weapon-two-hand").checked);
   const rows = [];
@@ -638,14 +633,6 @@ function getSelectedTalismans() {
 
 function getEquippedWeapons() {
   return WEAPON_SLOTS.map((s) => itemForSlot(s)).filter(Boolean);
-}
-
-function statusScreenWeapon(slots) {
-  for (const slot of slots || []) {
-    const item = itemForSlot(slot);
-    if (item) return { slot, weapon: item };
-  }
-  return { slot: null, weapon: null };
 }
 
 function getEquippedArmor() {
