@@ -199,10 +199,11 @@ const ER_SAVE = (() => {
     tal3: 0x4C,
     tal4: 0x50,
   };
-  const RUNE_SLOT_OFFSET = 0x40;
+  // ChrAsm slot 10: EquippedGreatRune. Slots 0–5 weapons, 6–9 ammo, 11 unused, 12–15 armor, 16 unused, 17–20 talismans.
+  const RUNE_SLOT_OFFSET = 0x28;
 
   function emptyOwned() {
-    return { weapons: [], armor: [], talismans: [] };
+    return { weapons: [], armor: [], talismans: [], greatRunes: [] };
   }
 
   function decodeGaItem(handle, itemId) {
@@ -356,9 +357,36 @@ const ER_SAVE = (() => {
     if (isEmptyEquip(h, iid)) return null;
     const rec = handleMap.get(h) || decodeLooseHandle(h);
     if (rec && rec.type === "greatRunes") return rec;
-    const goodsId = decodeGoodsId(iid) || ((h & 0xF0000000) === HANDLE_GOODS ? (h ^ HANDLE_GOODS) >>> 0 : 0);
+    const fromId = goodsIdFromRaw(iid);
+    const fromHandle = goodsIdFromRaw(h);
+    const goodsId = fromId || fromHandle;
     if (GREAT_RUNE_GOODS_IDS.has(goodsId)) return { type: "greatRunes", id: goodsId };
     return null;
+  }
+
+  function goodsIdFromRaw(raw) {
+    const v = raw >>> 0;
+    if (!v || v === 0xFFFFFFFF) return 0;
+    if (GREAT_RUNE_GOODS_IDS.has(v)) return v;
+    const stripped = decodeGoodsId(v);
+    if (GREAT_RUNE_GOODS_IDS.has(stripped)) return stripped;
+    if ((v & 0xF0000000) === HANDLE_GOODS) {
+      const id = (v ^ HANDLE_GOODS) >>> 0;
+      if (GREAT_RUNE_GOODS_IDS.has(id)) return id;
+    }
+    return 0;
+  }
+
+  function firstRestoredGreatRune(owned) {
+    const ids = (owned && owned.greatRunes) || [];
+    return ids.find((id) => id >= 191 && id <= 196);
+  }
+
+  function fillEquippedGreatRune(equipped, inventory, chest, stats) {
+    if (equipped.rune) return;
+    if (!(stats && stats.greatRuneOn)) return;
+    const id = firstRestoredGreatRune(inventory) || firstRestoredGreatRune(chest);
+    if (id != null) equipped.rune = { type: "greatRunes", id };
   }
 
   function resolveEquipped(handle, itemId, handleMap) {
@@ -409,14 +437,24 @@ const ER_SAVE = (() => {
     const held = readInventory(view, off, HELD_COMMON, HELD_KEY, parsed.handleMap);
     let inventory = held ? held.owned : ownedFromHandleMap(parsed.handleMap);
     let chest = emptyOwned();
-    if (!held) return { inventory, chest, equipped };
+    if (!held) {
+      fillEquippedGreatRune(equipped, inventory, chest, parsed.stats);
+      return { inventory, chest, equipped };
+    }
     off = held.off + 0x74 + 0x8C + 0x18;
-    if (off + 4 > view.byteLength) return { inventory, chest, equipped };
+    if (off + 4 > view.byteLength) {
+      fillEquippedGreatRune(equipped, inventory, chest, parsed.stats);
+      return { inventory, chest, equipped };
+    }
     const proj = view.getUint32(off, true);
-    if (proj > MAX_PROJECTILES) return { inventory, chest, equipped };
+    if (proj > MAX_PROJECTILES) {
+      fillEquippedGreatRune(equipped, inventory, chest, parsed.stats);
+      return { inventory, chest, equipped };
+    }
     off += 4 + proj * 8 + 0x9C + 0xC + 0x12F;
     const stored = readInventory(view, off, CHEST_COMMON, CHEST_KEY, parsed.handleMap);
     if (stored) chest = stored.owned;
+    fillEquippedGreatRune(equipped, inventory, chest, parsed.stats);
     return { inventory, chest, equipped };
   }
 
@@ -660,7 +698,7 @@ const ER_SAVE = (() => {
       const out = emptyOwned();
       for (const bag of bags) {
         if (!bag) continue;
-        for (const type of ["weapons", "armor", "talismans"]) {
+        for (const type of ["weapons", "armor", "talismans", "greatRunes"]) {
           out[type].push(...(bag[type] || []));
         }
       }
@@ -670,6 +708,8 @@ const ER_SAVE = (() => {
     HANDLE_ARMOR,
     HANDLE_ACCESSORY,
     HANDLE_GOODS,
+    RUNE_SLOT_OFFSET,
+    readEquipped,
   };
 })();
 

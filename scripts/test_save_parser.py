@@ -128,6 +128,16 @@ def main() -> None:
     assert map_eq(chosen, "helm") is None
     assert map_eq(chosen, "tal2") is None
 
+    freya = None
+    for slot in range(10):
+        parsed = inspect_save.parse_slot(buf, slot, "compact")
+        if parsed and parsed["name"] == "Freya":
+            freya = parsed
+            break
+    assert freya, "Freya character missing from test save"
+    assert freya["stats"]["greatRuneOn"]
+    assert map_eq(freya, "rune") == "godrick-s-great-rune"
+
     lilly = None
     for slot in range(10):
         parsed = inspect_save.parse_slot(buf, slot, "compact")

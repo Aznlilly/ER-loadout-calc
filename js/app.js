@@ -900,13 +900,13 @@ function weaponModsHtml(slot, item) {
   const codes = affinityCodesForWeapon(item, WEAPON_VARIANTS);
   const affOpts = codes.map((code) => {
     const label = AFFINITY_LABELS[code] || "Standard";
-    const selected = code === meta.affinity ? " selected" : "";
+    const selected = Number(code) === Number(meta.affinity) ? " selected" : "";
     return `<option value="${code}"${selected}>${escapeHtml(label)}</option>`;
   }).join("");
   const maxUp = maxUpgradeForWeapon(item, WEAPON_VARIANTS);
   let upOpts = "";
   for (let i = 0; i <= maxUp; i++) {
-    const selected = i === meta.upgrade ? " selected" : "";
+    const selected = i === Number(meta.upgrade) ? " selected" : "";
     upOpts += `<option value="${i}"${selected}>+${i}</option>`;
   }
   return `<div class="slot-weapon-mods">

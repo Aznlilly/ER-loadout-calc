@@ -29,7 +29,7 @@ EQUIPPED_OFFSETS = [
     ("chest", 0x34),
     ("gauntlets", 0x38),
     ("legs", 0x3C),
-    ("rune", 0x40),
+    ("rune", 0x28),
     ("tal1", 0x44),
     ("tal2", 0x48),
     ("tal3", 0x4C),
@@ -130,6 +130,10 @@ def take_inv_item(handle, handles, items):
         items.append(handles[handle])
     elif (handle & 0xF0000000) == HANDLE_ACCESSORY:
         items.append(("talismans", handle ^ HANDLE_ACCESSORY))
+    elif (handle & 0xF0000000) == HANDLE_GOODS:
+        gid = handle ^ HANDLE_GOODS
+        if gid in GREAT_RUNE_IDS:
+            items.append(("greatRunes", gid))
 
 
 def decode_goods_id(item_id: int) -> int:
@@ -154,7 +158,30 @@ def decode_great_rune(handle, item_id, handles):
         goods = h ^ HANDLE_GOODS
     if goods in GREAT_RUNE_IDS:
         return ("greatRunes", goods)
+    if (iid & 0xF0000000) == HANDLE_GOODS:
+        gid = iid ^ HANDLE_GOODS
+        if gid in GREAT_RUNE_IDS:
+            return ("greatRunes", gid)
     return None
+
+
+def first_restored_great_rune(items):
+    for kind, pid in items or []:
+        if kind == "greatRunes" and 191 <= pid <= 196:
+            return kind, pid
+    return None
+
+
+def fill_equipped_great_rune(parsed, held, chest):
+    equipped = parsed.get("equipped") or {}
+    if equipped.get("rune"):
+        return
+    if not parsed.get("stats", {}).get("greatRuneOn"):
+        return
+    rec = first_restored_great_rune(held) or first_restored_great_rune(chest)
+    if rec:
+        equipped["rune"] = rec
+        parsed["equipped"] = equipped
 
 
 def resolve_equipped(handle, item_id, handles):
@@ -223,6 +250,7 @@ def parse_slot(buf: bytes, slot: int, mode: str):
         parsed["held"] = held
         parsed["held_counts"] = (held_c, held_k)
         parsed["chest"] = []
+        fill_equipped_great_rune(parsed, held, [])
         return parsed
     off += 4 + proj * 8
     off += 0x9C + 0xC + 0x12F
@@ -232,6 +260,7 @@ def parse_slot(buf: bytes, slot: int, mode: str):
     parsed["held_counts"] = (held_c, held_k)
     parsed["chest_counts"] = (chest_c, chest_k)
     parsed["proj"] = proj
+    fill_equipped_great_rune(parsed, held, chest)
     return parsed
 
 

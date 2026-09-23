@@ -122,6 +122,21 @@ assert(mapped.instances.longsword[0].affinity === 0, "owned longsword standard")
   assert(unrestored.slots.rune && unrestored.slots.rune.id === "godrick-s-great-rune", "map unrestored Godrick great rune id");
 }
 
+assert(ER_SAVE.RUNE_SLOT_OFFSET === 0x28, "equipped Great Rune is ChrAsm slot 10 at +0x28, not the 0x40 gap before talismans");
+
+{
+  const buf = new Uint8Array(0x400);
+  const view = new DataView(buf.buffer);
+  const idsOff = 0x1B0 + 0xD0 + 0x58 + 0x1C;
+  view.setUint32(idsOff + ER_SAVE.RUNE_SLOT_OFFSET, 191, true);
+  view.setUint32(idsOff + 0x40, 192, true);
+  const eq = ER_SAVE.readEquipped(view, 0, new Map());
+  assert(eq.rune && eq.rune.type === "greatRunes" && eq.rune.id === 191, `slot 10 should be Godrick, got ${JSON.stringify(eq.rune)}`);
+  view.setUint32(idsOff + ER_SAVE.RUNE_SLOT_OFFSET, 0x40000000 + 8148, true);
+  const prefixed = ER_SAVE.readEquipped(view, 0, new Map());
+  assert(prefixed.rune && prefixed.rune.id === 8148, `prefixed unrestored Godrick id, got ${JSON.stringify(prefixed.rune)}`);
+}
+
 // Mini slot: version 1, one weapon, remaining empty gaitems, then PlayerGameData name/level.
 {
   const count = 5118;

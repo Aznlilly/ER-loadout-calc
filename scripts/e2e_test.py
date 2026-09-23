@@ -603,6 +603,9 @@ with sync_playwright() as p:
         l1: EQUIPMENT.l1.id,
         l1Affinity: EQUIPMENT.l1.affinity,
         l1Upgrade: EQUIPMENT.l1.upgrade,
+        l1AffSelect: document.querySelector('[data-weapon-affinity="l1"]') && document.querySelector('[data-weapon-affinity="l1"]').value,
+        l1UpSelect: document.querySelector('[data-weapon-upgrade="l1"]') && document.querySelector('[data-weapon-upgrade="l1"]').value,
+        l1Name: document.querySelector('[data-slot="l1"] .slot-name') && document.querySelector('[data-slot="l1"] .slot-name').textContent,
         tal1: EQUIPMENT.tal1.id,
       };
       for (const slot of ALL_SLOTS) {
@@ -625,6 +628,10 @@ with sync_playwright() as p:
         raise SystemExit("equipped import should fill unlocked L1 from the save")
     if equipped_import["l1Affinity"] != 100 or equipped_import["l1Upgrade"] != 10:
         raise SystemExit("equipped import should read Heavy +10 from the weapon id")
+    if equipped_import["l1AffSelect"] != "100" or equipped_import["l1UpSelect"] != "10":
+        raise SystemExit("L1 affinity/upgrade dropdowns should match imported Heavy +10")
+    if "Heavy" not in (equipped_import["l1Name"] or "") or "+10" not in (equipped_import["l1Name"] or ""):
+        raise SystemExit("L1 name should show Heavy +10 after import")
     if equipped_import["tal1"] != "crimson-amber-medallion":
         raise SystemExit("equipped import should fill unlocked talisman from the save")
 
